@@ -8,4 +8,11 @@ get-config:
 
 put-config:
 	echo raspberry | pbcopy
-	scp ./config/*.yaml ${USER}@${IP}:/home/homeassistant/.homeassistant
+	scp -rp ./ ${USER}@${IP}:/home/pi/
+	ssh ${USER}@${IP} "make finish-put-config"
+
+finish-put-config:
+	sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/
+
+make secrets:
+	cp ./config/secrets.yaml.sample ./config/secrets.yaml
