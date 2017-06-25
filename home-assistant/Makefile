@@ -13,6 +13,7 @@ put-config:
 
 finish-put-config:
 	sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/
+	sudo reboot
 
 make secrets:
 	cp ./config/secrets.yaml.sample ./config/secrets.yaml
