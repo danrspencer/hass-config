@@ -21,6 +21,7 @@ frontend:
 config:
 
 http:
+  api_password: !secret hass_password
   # Uncomment this to add a password (recommended!)
   # api_password: PASSWORD
   # Uncomment this if you are using SSL or running in Docker etc
@@ -57,8 +58,8 @@ tts:
   platform: google
 
 nest:
-  client_id: ***REMOVED***
-  client_secret: ***REMOVED***
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
 
 group: !include groups.yaml
 automation: !include automations.yaml
