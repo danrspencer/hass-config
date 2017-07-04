@@ -49,9 +49,8 @@ logbook:
 # Track the sun
 sun:
 
-# Weather Prediction
-sensor:
-  platform: yr
+sensor: !include sensors.yaml
+
 
 # Text to speech
 tts:
@@ -60,6 +59,20 @@ tts:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
+  sensors:
+    monitored_conditions:
+      - 'temperature'
+      - 'humidity'
+      - 'target'
+  binary_sensors:
+    monitored_conditions:
+      - 'online'
+
+light:
+  - platform: hyperion
+    host: 192.168.0.27
+    port: 19444
+    name: TV
 
 group: !include groups.yaml
 automation: !include automations.yaml
