@@ -6,7 +6,10 @@ get-config:
 
 put-config:
 	scp -rp ./ ${USER}@${IP}:/home/pi/
-	ssh ${USER}@${IP} "./scripts/put-config.sh"
+	ssh ${USER}@${IP} "sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/"
+
+check-config:
+	ssh ${USER}@${IP} "./scripts/check-config.sh"
 
 restart-hass:
 	ssh ${USER}@${IP} "sudo systemctl restart home-assistant@homeassistant.service"

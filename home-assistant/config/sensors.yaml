@@ -22,4 +22,10 @@
   resource: http://192.168.0.2/api/***REMOVED***/sensors/36
   value_template: '{{ value_json.state.temperature | float / 100 }}'
   unit_of_measurement: °C
-  name: 'Kitchen Temperature'
+  name: 'Entrance Hall Temperature'
+
+- platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload

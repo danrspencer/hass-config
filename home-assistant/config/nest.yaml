@@ -9,4 +9,3 @@ sensors:
 binary_sensors:
   monitored_conditions:
     - 'online'
-    - 'has_leaf'
