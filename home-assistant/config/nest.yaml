@@ -1,0 +1,12 @@
+client_id: !secret nest_client_id
+client_secret: !secret nest_client_secret
+sensors:
+  monitored_conditions:
+    - 'temperature'
+    - 'humidity'
+    - 'target'
+    - 'operation_mode'
+binary_sensors:
+  monitored_conditions:
+    - 'online'
+    - 'has_leaf'

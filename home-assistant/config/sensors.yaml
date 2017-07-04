@@ -4,10 +4,22 @@
   resource: http://192.168.0.2/api/***REMOVED***/sensors/7
   value_template: '{{ value_json.state.lightlevel }}'
   unit_of_measurement: Lux
-  name: 'Kitchen Lux'
+  name: 'Kitchen Light'
 
 - platform: rest
   resource: http://192.168.0.2/api/***REMOVED***/sensors/5
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Kitchen Temperature'
+
+- platform: rest
+  resource: http://192.168.0.2/api/***REMOVED***/sensors/38
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Entrance Hall Light'
+
+- platform: rest
+  resource: http://192.168.0.2/api/***REMOVED***/sensors/36
   value_template: '{{ value_json.state.temperature | float / 100 }}'
   unit_of_measurement: °C
   name: 'Kitchen Temperature'
