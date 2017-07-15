@@ -1,30 +1,41 @@
-IP=			192.168.0.35
+IP=			hassbian.local
 USER=		pi
-
-get-config:
-	scp ${USER}@${IP}:/home/homeassistant/.homeassistant/*.yaml ./config
 
 put-config:
 	scp -rp ./ ${USER}@${IP}:/home/pi/
 	ssh ${USER}@${IP} "sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/"
+	ssh ${USER}@${IP} "sudo cp ./appdaemon/conf/*.yaml /opt/appdaemon/conf/"
 
 check-config:
 	ssh ${USER}@${IP} "./scripts/check-config.sh"
 
-restart-hass:
-	ssh ${USER}@${IP} "sudo systemctl restart home-assistant@homeassistant.service"
-
 tail-logs:
 	ssh ${USER}@${IP} "tail -f /home/homeassistant/.homeassistant/home-assistant.log"
 
-make secrets:
-	cp ./config/secrets.yaml.sample ./config/secrets.yaml
+restart-hass:
+	ssh ${USER}@${IP} "sudo systemctl restart home-assistant@homeassistant.service"
 
 upgrade-hass:
 	ssh ${USER}@${IP} "./scripts/upgrade-hass.sh"
+
+install-app-daemon:
+	ssh ${USER}@${IP} "./scripts/install-app-daemon.sh"
+
+secrets:
+	cp ./config/secrets.yaml.sample ./config/secrets.yaml
 
 put-authorized-keys:
 	scp ~/.ssh/id_rsa.pub ${USER}@${IP}:/home/pi
 	ssh ${USER}@${IP} "mkdir -p ~/.ssh \
 									&& mv ./id_rsa.pub ~/.ssh/authorized_keys \
 									&& chmod 600 ~/.ssh/authorized_keys"
+
+get-config:
+	scp ${USER}@${IP}:/home/homeassistant/.homeassistant/*.yaml ./config
+	scp ${USER}@${IP}:/opt/appdaemon/conf/*.yaml ./appdaemon/conf
+
+
+setup-new-hass: secrets put-authorized-keys put-config upgrade-hass install-app-daemon
+
+reset-nest:
+	ssh ${USER}@${IP} "sudo rm /home/homeassistant/.homeassistant/nest.conf"
