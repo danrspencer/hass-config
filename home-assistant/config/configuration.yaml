@@ -19,6 +19,8 @@ frontend:
 config:
 updater:
 discovery:
+  ignore:
+  - apple_tv
 conversation:
 history:
 logbook:

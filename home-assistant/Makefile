@@ -3,11 +3,9 @@ USER=		pi
 
 put-config:
 	scp -rp ./ ${USER}@${IP}:/home/pi/
-	ssh ${USER}@${IP} "sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/"
-	ssh ${USER}@${IP} "sudo cp ./appdaemon/conf/*.yaml /opt/appdaemon/conf/"
-
-check-config:
-	ssh ${USER}@${IP} "./scripts/check-config.sh"
+	ssh ${USER}@${IP} "sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/ \
+									&& sudo cp ./appdaemon/conf/*.yaml /opt/appdaemon/conf/ \
+									&& ./scripts/check-config.sh"
 
 tail-logs:
 	ssh ${USER}@${IP} "tail -f /home/homeassistant/.homeassistant/home-assistant.log"
@@ -34,8 +32,7 @@ get-config:
 	scp ${USER}@${IP}:/home/homeassistant/.homeassistant/*.yaml ./config
 	scp ${USER}@${IP}:/opt/appdaemon/conf/*.yaml ./appdaemon/conf
 
-
-setup-new-hass: secrets put-authorized-keys put-config upgrade-hass install-app-daemon
+setup-new-hass: secrets put-authorized-keys put-config upgrade-hass install-dependencies install-app-daemon
 
 reset-nest:
-	ssh ${USER}@${IP} "sudo rm /home/homeassistant/.homeassistant/nest.conf"
+	ssh ${USER}@${IP} "sudo rm /home/homeassistant/.homeassistant/nest.con"
