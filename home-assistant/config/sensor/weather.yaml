@@ -1,0 +1,27 @@
+- platform: metoffice
+  api_key: !secret metoffice_key
+  monitored_conditions:
+  - weather
+  - temperature
+  - feels_like_temperature
+  - wind_speed
+  - wind_direction
+  - wind_gust
+  - visibility
+  - uv
+  - humidity
+
+- platform: darksky
+  api_key: !secret darksky_key
+  monitored_conditions:
+  - summary
+  - icon
+  - minutely_summary
+  - precip_type
+  - precip_intensity
+  - precip_probability
+  - precip_intensity_max
+  - nearest_storm_distance
+
+- platform: moon
+- platform: yr

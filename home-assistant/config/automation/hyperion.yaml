@@ -1,0 +1,176 @@
+- alias: "Hyperion Off"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Off"
+  action:
+    service: shell_command.h_hyperion_off
+
+- alias: "Cinema Brighten Lights"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Cinema Brighten Lights"
+  action:
+    service: shell_command.h_cinema_brighten_lights
+
+- alias: "Cinema Dim Lights"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Cinema Dim Lights"
+  action:
+    service: shell_command.h_cinema_dim_lights
+
+- alias: "Color Traces"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Color Traces"
+  action:
+    service: shell_command.h_color_traces
+
+- alias: "Mood Blobs Blue"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Blue"
+  action:
+    service: shell_command.h_mood_blobs_blue
+
+- alias: "Mood Blobs Cold"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Cold"
+  action:
+    service: shell_command.h_mood_blobs_cold
+
+- alias: "Mood Blobs Full Color"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Full Color"
+  action:
+    service: shell_command.h_mood_blobs_full_color
+
+- alias: "Mood Blobs Green"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Green"
+  action:
+    service: shell_command.h_mood_blobs_green
+
+- alias: "Mood Blobs Red"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Red"
+  action:
+    service: shell_command.h_mood_blobs_red
+
+- alias: "Mood Blobs Warm"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Warm"
+  action:
+    service: shell_command.h_mood_blobs_warm
+
+- alias: "Police Lights Single"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Police Lights Single"
+  action:
+    service: shell_command.h_police_lights_single
+
+- alias: "Police Lights Solid"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Police Lights Solid"
+  action:
+    service: shell_command.h_police_lights_solid
+
+- alias: "Rainbow Mood"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Mood Blobs Rainbow"
+  action:
+    service: shell_command.h_rainbow_mood
+
+- alias: "Rainbow Swirl"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Rainbow Swirl"
+  action:
+    service: shell_command.h_rainbow_swirl
+
+- alias: "Random"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Random"
+  action:
+    service: shell_command.h_random
+
+- alias: "Running Dots"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Running Dots"
+  action:
+    service: shell_command.h_running_dots
+
+- alias: "Snake"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Snake"
+  action:
+    service: shell_command.h_snake
+
+- alias: "Sparks Color"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Sparks Color"
+  action:
+    service: shell_command.h_sparks_color
+
+- alias: "Strobe Blue"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Strobe Blue"
+  action:
+    service: shell_command.h_strobe_blue
+
+
+- alias: "Strobe Raspberry"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Strobe Raspberry"
+  action:
+    service: shell_command.h_strobe_raspberry
+
+- alias: "Strobe White"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "Strobe White"
+  action:
+    service: shell_command.h_strobe_white
+
+- alias: "System Shutdown"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    state: "System Shutdown"
+  action:
+    service: shell_command.h_system_shutdown

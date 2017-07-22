@@ -3,7 +3,7 @@ USER=		pi
 
 put-config:
 	scp -rp ./ ${USER}@${IP}:/home/pi/
-	ssh ${USER}@${IP} "sudo cp ./config/*.yaml /home/homeassistant/.homeassistant/ \
+	ssh ${USER}@${IP} "sudo cp -r ./config/* /home/homeassistant/.homeassistant/ \
 									&& sudo cp ./appdaemon/conf/*.yaml /opt/appdaemon/conf/ \
 									&& ./scripts/check-config.sh"
 

@@ -1,14 +1,9 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: 53.7167
-  longitude: -1.85
-  # Impacts weather/sunrise data (altitude above sea level in meters)
+  latitude: ***REMOVED***
+  longitude: ***REMOVED***
   elevation: 150
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
 
 http:
@@ -18,21 +13,27 @@ http:
 frontend:
 config:
 updater:
-discovery:
-  ignore:
-  - apple_tv
 conversation:
 history:
 logbook:
 sun:
 
+discovery:
+  ignore:
+    - apple_tv
+
 tts:
   platform: google
 
 # Includes
+automation: !include_dir_merge_list automation
+group: !include_dir_merge_named group
+input_select: !include input_select.yaml
 light: !include lights.yaml
 nest: !include nest.yaml
-sensor: !include sensors.yaml
-
-group: !include groups.yaml
-automation: !include automations.yaml
+remote: !include remotes.yaml
+scene: !include scenes.yaml
+sensor: !include_dir_merge_list sensor
+shell_command: !include shell_commands.yaml
+switch: !include switches.yaml
+weather: !include weather.yaml

@@ -1,0 +1,41 @@
+kitchen_lights:
+  name: Kitchen
+  entities:
+  - sensor.kitchen_light
+  - light.kitchen
+  - light.kitchen_lightstrip
+  - light.kitchen_spot_1
+  - light.kitchen_spot_2
+  - light.kitchen_spot_3
+  - light.kitchen_spot_4
+  - light.kitchen_spot_5
+  - light.kitchen_spot_6
+  - light.kitchen_lamp_1
+  - light.kitchen_lamp_2
+
+living_room_lights:
+  name: Living Room
+  entities:
+  - light.living_room
+  - light.living_room_lamp
+  - light.living_room_spot_1
+  - light.living_room_spot_2
+  - light.living_room_spot_3
+  - switch.living_room_light_tree
+  - switch.hyperion
+  - input_select.hyperion_effect
+
+top_floor_lights:
+  name: Top Floor
+  entities:
+  - light.den
+  - light.den_lamp_1
+  - light.den_lamp_2
+
+hallways_lights:
+  name: Hallways
+  entities:
+  - sensor.entrance_hall_light
+  - light.entrance_hall
+  - light.first_floor_landing
+  - light.top_floor_landing

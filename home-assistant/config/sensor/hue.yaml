@@ -1,5 +1,3 @@
-- platform: yr
-
 - platform: rest
   resource: http://192.168.0.2/api/***REMOVED***/sensors/7
   value_template: '{{ value_json.state.lightlevel }}'
@@ -23,14 +21,3 @@
   value_template: '{{ value_json.state.temperature | float / 100 }}'
   unit_of_measurement: °C
   name: 'Entrance Hall Temperature'
-
-- platform: speedtest
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
-- platform: fastdotcom
-  minute:
-    - 0
-    - 30
