@@ -26,3 +26,15 @@ hyperion_effect:
   - "Sparks"
   - "Color Traces"
   initial: "Off"
+
+living_room_tv:
+  name: Living Room TV
+  options:
+    - Power Off
+    - Watch TV
+    - Watch Apple TV
+    - Watch Shield TV
+    - Watch Smart TV
+    - Listen to Music
+  initial: Power Off
+  icon: mdi:television

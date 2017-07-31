@@ -2,9 +2,9 @@
   switches:
     hyperion:
       friendly_name: TV Ambilight
-      command_on: '/home/homeassistant/.homeassistant/hyperion/on.sh'
-      command_off: '/home/homeassistant/.homeassistant/hyperion/off.sh'
-      command_state: '/home/homeassistant/.homeassistant/hyperion/status.sh'
+      command_on: '/config/hyperion/on.sh'
+      command_off: '/config/hyperion/off.sh'
+      command_state: '/config/hyperion/status.sh'
 
 # - platform: command_line
 #   switches:

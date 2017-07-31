@@ -1,0 +1,13 @@
+living_room_activities:
+  name: Living Room
+  entities:
+  - remote.living_room_tv
+  - input_select.living_room_tv
+  - light.living_room
+  - light.living_room_lamp
+  - light.living_room_spot_1
+  - light.living_room_spot_2
+  - light.living_room_spot_3
+  - switch.living_room_light_tree
+  - switch.hyperion
+  - input_select.hyperion_effect

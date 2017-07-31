@@ -2,15 +2,23 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Off"
+    to: "Off"
   action:
     service: shell_command.h_hyperion_off
+
+- alias: "Knight Rider"
+  trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    to: "Knight Rider"
+  action:
+    service: shell_command.h_knight_rider
 
 - alias: "Cinema Brighten Lights"
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Cinema Brighten Lights"
+    to: "Cinema Brighten Lights"
   action:
     service: shell_command.h_cinema_brighten_lights
 
@@ -18,7 +26,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Cinema Dim Lights"
+    to: "Cinema Dim Lights"
   action:
     service: shell_command.h_cinema_dim_lights
 
@@ -26,7 +34,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Color Traces"
+    to: "Color Traces"
   action:
     service: shell_command.h_color_traces
 
@@ -34,7 +42,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Blue"
+    to: "Mood Blobs Blue"
   action:
     service: shell_command.h_mood_blobs_blue
 
@@ -42,7 +50,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Cold"
+    to: "Mood Blobs Cold"
   action:
     service: shell_command.h_mood_blobs_cold
 
@@ -50,7 +58,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Full Color"
+    to: "Mood Blobs Full Color"
   action:
     service: shell_command.h_mood_blobs_full_color
 
@@ -58,7 +66,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Green"
+    to: "Mood Blobs Green"
   action:
     service: shell_command.h_mood_blobs_green
 
@@ -66,7 +74,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Red"
+    to: "Mood Blobs Red"
   action:
     service: shell_command.h_mood_blobs_red
 
@@ -74,7 +82,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Warm"
+    to: "Mood Blobs Warm"
   action:
     service: shell_command.h_mood_blobs_warm
 
@@ -82,7 +90,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Police Lights Single"
+    to: "Police Lights Single"
   action:
     service: shell_command.h_police_lights_single
 
@@ -90,7 +98,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Police Lights Solid"
+    to: "Police Lights Solid"
   action:
     service: shell_command.h_police_lights_solid
 
@@ -98,7 +106,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Mood Blobs Rainbow"
+    to: "Mood Blobs Rainbow"
   action:
     service: shell_command.h_rainbow_mood
 
@@ -106,7 +114,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Rainbow Swirl"
+    to: "Rainbow Swirl"
   action:
     service: shell_command.h_rainbow_swirl
 
@@ -114,7 +122,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Random"
+    to: "Random"
   action:
     service: shell_command.h_random
 
@@ -122,7 +130,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Running Dots"
+    to: "Running Dots"
   action:
     service: shell_command.h_running_dots
 
@@ -130,7 +138,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Snake"
+    to: "Snake"
   action:
     service: shell_command.h_snake
 
@@ -138,7 +146,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Sparks Color"
+    to: "Sparks Color"
   action:
     service: shell_command.h_sparks_color
 
@@ -146,7 +154,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Strobe Blue"
+    to: "Strobe Blue"
   action:
     service: shell_command.h_strobe_blue
 
@@ -155,7 +163,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Strobe Raspberry"
+    to: "Strobe Raspberry"
   action:
     service: shell_command.h_strobe_raspberry
 
@@ -163,7 +171,7 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "Strobe White"
+    to: "Strobe White"
   action:
     service: shell_command.h_strobe_white
 
@@ -171,6 +179,6 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    state: "System Shutdown"
+    to: "System Shutdown"
   action:
     service: shell_command.h_system_shutdown

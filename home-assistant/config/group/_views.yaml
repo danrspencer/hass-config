@@ -1,0 +1,90 @@
+default_view:
+  view: yes
+  entities:
+  - scene.everything_off
+  - group.meta_switches
+  - group.meta_lights
+
+living_room:
+  name: Living Room
+  icon: mdi:sofa
+  view: yes
+  entities:
+  - group.living_room_activities
+  - sensor.living_room_tv
+  - media_player.living_room
+  - media_player.living_room_tv
+
+kitchen:
+  name: Kitchen
+  icon: mdi:food-variant
+  view: yes
+  entities:
+  - sensor.kitchen_temperature
+  - binary_sensor.kitchen_motion
+  - group.kitchen_lights
+  - media_player.ground_floor
+  - media_player.hear_go
+  - media_player.kitchen
+
+top_floor:
+  name: Top Floor
+  icon: mdi:castle
+  view: yes
+  entities:
+  - group.den_lights
+  - light.top_floor_landing
+  - media_player.top_floor
+  - media_player.den
+  - media_player.bedroom
+  - media_player.dressing_room
+
+lights:
+  name: Lights
+  icon: mdi:lightbulb
+  view: yes
+  entities:
+  - group.living_room_lights
+  - group.kitchen_lights
+  - group.top_floor_lights
+  - group.hallway_lights
+
+media:
+  name: Media
+  icon: mdi:speaker-wireless
+  view: yes
+  entities:
+  - remote.living_room_tv
+  - input_select.living_room_tv
+  - media_player.living_room_tv
+  - media_player.everything
+  - media_player.living_room
+  - media_player.ground_floor
+  - media_player.hear_go
+  - media_player.kitchen
+  - media_player.top_floor
+  - media_player.den
+  - media_player.bedroom
+  - media_player.dressing_room
+
+house:
+  name: House
+  icon: mdi:home-modern
+  view: yes
+  entities:
+  - group.house_temperature
+  - group.house_other
+  - group.smoke_detector
+  - group.network
+  - group.phones
+
+outside:
+  name: Outside
+  icon: mdi:weather-partlycloudy
+  view: yes
+  entities:
+  - group.misc_weather
+  - group.dark_sky
+  - group.met_office
+  - weather.met_office_whitecote
+  - weather.openweathermap

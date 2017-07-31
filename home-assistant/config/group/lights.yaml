@@ -25,14 +25,14 @@ living_room_lights:
   - switch.hyperion
   - input_select.hyperion_effect
 
-top_floor_lights:
-  name: Top Floor
+den_lights:
+  name: Den
   entities:
   - light.den
   - light.den_lamp_1
   - light.den_lamp_2
 
-hallways_lights:
+hallway_lights:
   name: Hallways
   entities:
   - sensor.entrance_hall_light

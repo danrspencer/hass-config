@@ -5,18 +5,27 @@ homeassistant:
   elevation: 150
   unit_system: metric
   time_zone: Europe/London
+  customize: !include customize.yaml
 
 http:
   api_password: !secret hass_password
+  base_url: ***REMOVED***.duckdns.org
+  trusted_networks:
+  - 127.0.0.1
+  - 192.168.0.0/24
+  # ssl_certificate: /ssl/fullchain.pem
+  # ssl_key: /ssl/privkey.pem
 
 # Enablers
 frontend:
 config:
 updater:
 conversation:
-history:
+history: !include history.yaml
 logbook:
 sun:
+
+ios:
 
 discovery:
   ignore:
@@ -27,12 +36,14 @@ tts:
 
 # Includes
 automation: !include_dir_merge_list automation
+binary_sensor: !include_dir_merge_list binary_sensor
 group: !include_dir_merge_named group
 input_select: !include input_select.yaml
 light: !include lights.yaml
 nest: !include nest.yaml
 remote: !include remotes.yaml
 scene: !include scenes.yaml
+script: !include scripts.yaml
 sensor: !include_dir_merge_list sensor
 shell_command: !include shell_commands.yaml
 switch: !include switches.yaml

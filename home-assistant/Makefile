@@ -1,20 +1,22 @@
-IP=			hassbian.local
-USER=		pi
+IP=			hassio.local
+USER=		root
 
 put-config:
-	scp -rp ./ ${USER}@${IP}:/home/pi/
-	ssh ${USER}@${IP} "sudo cp -r ./config/* /home/homeassistant/.homeassistant/ \
-									&& sudo cp ./appdaemon/conf/*.yaml /opt/appdaemon/conf/ \
-									&& ./scripts/check-config.sh"
+	scp -rp ./config/* ${USER}@${IP}:/config
+	# ssh ${USER}@${IP} "sudo cp -r ./config/* /config/ \
+	# 							&& ./scripts/check-config.sh"
+
+get-config:
+	scp -rp ${USER}@${IP}:/config/* ./config
 
 tail-logs:
-	ssh ${USER}@${IP} "tail -f /home/homeassistant/.homeassistant/home-assistant.log"
+	ssh ${USER}@${IP} "hassio homeassistant logs"
 
 restart-hass:
-	ssh ${USER}@${IP} "sudo systemctl restart home-assistant@homeassistant.service"
+	ssh ${USER}@${IP} "hassio homeassistant restart"
 
 upgrade-hass:
-	ssh ${USER}@${IP} "./scripts/upgrade-hass.sh"
+	ssh ${USER}@${IP} "hassio homeassistant restart"
 
 install-app-daemon:
 	ssh ${USER}@${IP} "./scripts/install-app-daemon.sh"
@@ -28,9 +30,6 @@ put-authorized-keys:
 									&& mv ./id_rsa.pub ~/.ssh/authorized_keys \
 									&& chmod 600 ~/.ssh/authorized_keys"
 
-get-config:
-	scp ${USER}@${IP}:/home/homeassistant/.homeassistant/*.yaml ./config
-	scp ${USER}@${IP}:/opt/appdaemon/conf/*.yaml ./appdaemon/conf
 
 setup-new-hass: secrets put-authorized-keys put-config upgrade-hass install-dependencies install-app-daemon
 

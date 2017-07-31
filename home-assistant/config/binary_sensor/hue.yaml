@@ -1,0 +1,11 @@
+- platform: rest
+  resource: !secret hue_kitchen_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Kitchen Motion'
+
+- platform: rest
+  resource: !secret hue_entrance_hall_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Entrance Hall Motion'
