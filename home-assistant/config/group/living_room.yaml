@@ -1,5 +1,6 @@
 living_room_activities:
   name: Living Room
+  icon: mdi:sofa
   entities:
   - remote.living_room_tv
   - input_select.living_room_tv

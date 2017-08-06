@@ -1,0 +1,7 @@
+- platform: uk_transport
+  app_id: !secret transportapi_app_id
+  app_key: !secret transportapi_key
+  queries:
+  - mode: train
+    origin: KLF
+    destination: LDS

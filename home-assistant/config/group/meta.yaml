@@ -4,13 +4,5 @@ meta_switches:
   entities:
   - group.living_room_activities
   - group.kitchen_lights
-  - group.top_floor
-
-meta_lights:
-  name: Lights
-  icon: mdi:home-variant
-  entities:
-  - group.living_room_lights
-  - group.kitchen_lights
-  - group.hallway_lights
   - group.den_lights
+  - group.hallway_lights

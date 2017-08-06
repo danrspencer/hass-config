@@ -15,24 +15,34 @@ http:
   - 192.168.0.0/24
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
+#
+# upnp:
+#   unit: GBytes
+#   external_port: 80
 
 # Enablers
-frontend:
 config:
-updater:
 conversation:
-history: !include history.yaml
+frontend:
+ios:
 logbook:
 sun:
-
-ios:
+updater:
 
 discovery:
   ignore:
     - apple_tv
 
+history: !include history.yaml
+recorder:
+  purge_days: 7
+
 tts:
-  platform: google
+  platform: amazon_polly
+  aws_access_key_id: !secret aws_access_key_id
+  aws_secret_access_key: !secret aws_secret_access_key
+  profile_name: hass
+  region_name: eu-west-2
 
 # Includes
 automation: !include_dir_merge_list automation

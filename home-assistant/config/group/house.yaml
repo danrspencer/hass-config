@@ -1,16 +1,15 @@
-house_temperature:
-  name: House Temperature
+house_climate:
+  name: House Climate
   entities:
+  - climate.house
   - binary_sensor.house_thermostat_online
-  - sensor.house_thermostat_target
-  - sensor.house_thermostat_temperature
   - sensor.kitchen_temperature
   - sensor.entrance_hall_temperature
+  - sensor.house_thermostat_humidity
 
 house_other:
-  name: House
+  name: House Other
   entities:
-  - sensor.house_thermostat_humidity
   - sensor.kitchen_light
   - binary_sensor.kitchen_motion
   - sensor.entrance_hall_light
@@ -23,6 +22,8 @@ network:
   - sensor.speedtest_download
   - sensor.speedtest_upload
   - sensor.speedtest_ping
+  - sensor.igd_received_bytes
+  - sensor.igd_sent_bytes
 
 smoke_detector:
   name: Smoke Detector
@@ -40,3 +41,4 @@ phones:
   - device_tracker.dphone
   - sensor.laurens_iphone_battery_level
   - sensor.laurens_iphone_battery_state
+  - device_tracker.laurens_iphone

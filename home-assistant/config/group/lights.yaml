@@ -1,5 +1,6 @@
 kitchen_lights:
   name: Kitchen
+  icon: mdi:food-variant
   entities:
   - sensor.kitchen_light
   - light.kitchen
@@ -27,6 +28,7 @@ living_room_lights:
 
 den_lights:
   name: Den
+  icon: mdi:gamepad-variant
   entities:
   - light.den
   - light.den_lamp_1
@@ -34,6 +36,7 @@ den_lights:
 
 hallway_lights:
   name: Hallways
+  icon: mdi:ceiling-light
   entities:
   - sensor.entrance_hall_light
   - light.entrance_hall

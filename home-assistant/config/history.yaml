@@ -3,7 +3,6 @@ include:
   - sensor
   - switch
   - light
-  - climate
   - sun
 exclude:
   entities:

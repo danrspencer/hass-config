@@ -1,9 +1,12 @@
 default_view:
   view: yes
   entities:
+  - device_tracker.dphone
+  - device_tracker.laurens_iphone
+  - sensor.next_train_to_lds
+  - climate.house
   - scene.everything_off
   - group.meta_switches
-  - group.meta_lights
 
 living_room:
   name: Living Room
@@ -72,7 +75,7 @@ house:
   icon: mdi:home-modern
   view: yes
   entities:
-  - group.house_temperature
+  - group.house_climate
   - group.house_other
   - group.smoke_detector
   - group.network
@@ -86,5 +89,3 @@ outside:
   - group.misc_weather
   - group.dark_sky
   - group.met_office
-  - weather.met_office_whitecote
-  - weather.openweathermap
