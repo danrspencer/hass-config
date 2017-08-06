@@ -4,3 +4,7 @@
     group.all_remotes: off
     group.all_switches: off
     group.media: off
+
+# - name: Kitchen Morning
+#   entities:
+#     kitchen_lights_morning: on

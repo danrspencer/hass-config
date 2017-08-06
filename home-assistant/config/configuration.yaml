@@ -38,11 +38,11 @@ recorder:
   purge_days: 7
 
 tts:
-  platform: amazon_polly
-  aws_access_key_id: !secret aws_access_key_id
-  aws_secret_access_key: !secret aws_secret_access_key
-  profile_name: hass
-  region_name: eu-west-2
+  platform: google
+  # platform: amazon_polly
+  # aws_access_key_id: !secret aws_access_key_id
+  # aws_secret_access_key: !secret aws_secret_access_key
+  # region_name: eu-west-2
 
 # Includes
 automation: !include_dir_merge_list automation
