@@ -1,0 +1,141 @@
+- alias: Hallways Lights Morning
+  trigger:
+  - platform: sun
+    event: sunrise
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Morning
+  condition:
+    condition: state
+    entity_id: light.kitchen
+    state: 'on'
+
+- alias: Hallways Lights Day
+  trigger:
+  - platform: time
+    at: '09:00:00'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Day
+  condition:
+    condition: state
+    entity_id: light.kitchen
+    state: 'on'
+
+- alias: Hallways Lights Evening
+  trigger:
+  - platform: sun
+    event: sunset
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Evening
+  condition:
+    condition: state
+    entity_id: light.kitchen
+    state: 'on'
+
+- alias: Hallways Lights Night
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Night
+  condition:
+    condition: state
+    entity_id: light.kitchen
+    state: 'on'
+
+- alias: Hallway Lights Morning - Motion
+  trigger:
+  - entity_id: binary_sensor.entrance_hall_motion
+    platform: state
+    from: 'off'
+    to: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Morning
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: light.kitchen
+      state: 'off'
+    - condition: time
+      after: '05:00:00'
+      before: '09:00:00'
+
+- alias: Hallway Lights Day - Motion
+  trigger:
+  - entity_id: binary_sensor.entrance_hall_motion
+    platform: state
+    from: 'off'
+    to: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Day
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: light.kitchen
+      state: 'off'
+    - condition: time
+      after: '09:00:00'
+    - condition: sun
+      before: sunset
+
+- alias: Hallway Lights Evening - Motion
+  trigger:
+  - entity_id: binary_sensor.entrance_hall_motion
+    platform: state
+    from: 'off'
+    to: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Evening
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: light.kitchen
+      state: 'off'
+    - condition: sun
+      after: sunset
+    - condition: time
+      before: '23:00:00'
+
+- alias: Hallway Lights Night - Motion
+  trigger:
+  - entity_id: binary_sensor.entrance_hall_motion
+    platform: state
+    from: 'off'
+    to: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Night
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: light.kitchen
+      state: 'off'
+    - condition: time
+      after: '23:00:00'
+      before: '05:00:00'

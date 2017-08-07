@@ -1,0 +1,9 @@
+- alias: Turn everything off when Nest goes to away
+  trigger:
+  - entity_id: climate.house
+    platform: state
+    from: 'heat'
+    to: 'eco'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.everything_off

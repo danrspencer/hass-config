@@ -39,6 +39,7 @@ hallway_lights:
   icon: mdi:ceiling-light
   entities:
   - sensor.entrance_hall_light
-  - light.entrance_hall
+  - light.entrance_hall_1
+  - light.entrance_hall_2
   - light.first_floor_landing
   - light.top_floor_landing
