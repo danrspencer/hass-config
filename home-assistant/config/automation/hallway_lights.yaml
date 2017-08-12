@@ -1,7 +1,21 @@
-- alias: Hallways Lights Morning
+- alias: Hallways Lights Early Morning
   trigger:
-  - platform: sun
-    event: sunrise
+  - platform: time
+    at: '05:00:00'
+  action:
+  - service: light.hue_activate_scene
+    data:
+      group_name: Hallways
+      scene_name: Early Morning
+  condition:
+    condition: state
+    entity_id: light.hallways
+    state: 'on'
+
+- alias: Hallways Lights Early Morning
+  trigger:
+  - platform: time
+    at: '06:00:00'
   action:
   - service: light.hue_activate_scene
     data:
@@ -9,7 +23,7 @@
       scene_name: Morning
   condition:
     condition: state
-    entity_id: light.kitchen
+    entity_id: light.hallways
     state: 'on'
 
 - alias: Hallways Lights Day
@@ -23,7 +37,7 @@
       scene_name: Day
   condition:
     condition: state
-    entity_id: light.kitchen
+    entity_id: light.hallways
     state: 'on'
 
 - alias: Hallways Lights Evening
@@ -37,7 +51,7 @@
       scene_name: Evening
   condition:
     condition: state
-    entity_id: light.kitchen
+    entity_id: light.hallways
     state: 'on'
 
 - alias: Hallways Lights Night
@@ -51,7 +65,7 @@
       scene_name: Night
   condition:
     condition: state
-    entity_id: light.kitchen
+    entity_id: light.hallways
     state: 'on'
 
 - alias: Hallway Lights Morning - Motion
@@ -69,7 +83,7 @@
     condition: and
     conditions:
     - condition: state
-      entity_id: light.kitchen
+      entity_id: light.hallways
       state: 'off'
     - condition: time
       after: '05:00:00'
@@ -90,7 +104,7 @@
     condition: and
     conditions:
     - condition: state
-      entity_id: light.kitchen
+      entity_id: light.hallways
       state: 'off'
     - condition: time
       after: '09:00:00'
@@ -112,12 +126,12 @@
     condition: and
     conditions:
     - condition: state
-      entity_id: light.kitchen
+      entity_id: light.hallways
       state: 'off'
     - condition: sun
       after: sunset
     - condition: time
-      before: '23:00:00'
+      before: '22:00:00'
 
 - alias: Hallway Lights Night - Motion
   trigger:
@@ -134,8 +148,8 @@
     condition: and
     conditions:
     - condition: state
-      entity_id: light.kitchen
+      entity_id: light.hallways
       state: 'off'
     - condition: time
-      after: '23:00:00'
+      after: '22:00:00'
       before: '05:00:00'

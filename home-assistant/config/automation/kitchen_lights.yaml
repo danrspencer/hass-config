@@ -1,11 +1,13 @@
-- alias: Turn off kitchen light 10 minutes after last movement
+- alias: Turn off kitchen light X minutes after last movement
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
     from: 'on'
     to: 'off'
     for:
+      hours: 0
       minutes: 15
+      seconds: 0
   action:
   - service: light.turn_off
     entity_id: light.kitchen

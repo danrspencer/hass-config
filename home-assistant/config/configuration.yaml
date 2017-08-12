@@ -30,8 +30,8 @@ sun:
 updater:
 
 discovery:
-  ignore:
-    - apple_tv
+  # ignore:
+  #   - apple_tv
 
 history: !include history.yaml
 recorder:
@@ -50,6 +50,7 @@ binary_sensor: !include_dir_merge_list binary_sensor
 group: !include_dir_merge_named group
 input_select: !include input_select.yaml
 light: !include lights.yaml
+media_player: !include media_player.yaml
 nest: !include nest.yaml
 remote: !include remotes.yaml
 scene: !include scenes.yaml

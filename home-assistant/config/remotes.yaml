@@ -1,4 +1,4 @@
 - platform: harmony
   name: Living Room TV
   activity: 27367873 # Watch TV
-  scan_interval: 10
+  scan_interval: 5

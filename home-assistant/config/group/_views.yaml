@@ -4,9 +4,10 @@ default_view:
   - device_tracker.dphone
   - device_tracker.laurens_iphone
   - sensor.next_train_to_lds
+  - group.meta_switches
+  - media_player.speakers
   - climate.house
   - scene.everything_off
-  - group.meta_switches
 
 living_room:
   name: Living Room
@@ -60,8 +61,10 @@ media:
   entities:
   - remote.living_room_tv
   - input_select.living_room_tv
+  - media_player.spotify
   - media_player.living_room_tv
   - media_player.everything
+  - media_player.everything_but_tv
   - media_player.living_room
   - media_player.ground_floor
   - media_player.hear_go
@@ -90,3 +93,11 @@ outside:
   - group.misc_weather
   - group.dark_sky
   - group.met_office
+
+other:
+  name: Other
+  icon: mdi:developer-board
+  view: yes
+  entities:
+  - group.all_scripts
+  - group.all_automations

@@ -1,4 +1,4 @@
-IP=			hassio.local
+IP=			***REMOVED***.duckdns.org
 USER=		root
 
 put-config:
