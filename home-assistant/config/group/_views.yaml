@@ -99,5 +99,6 @@ other:
   view: yes
   entities:
   - media_player.spotify
+  - sensor.travis_build_status
   - group.all_scripts
   - group.all_automations
