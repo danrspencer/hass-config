@@ -4,6 +4,8 @@ switch.hyperion:
 switch.living_room_light_tree:
   icon: mdi:lightbulb
 
+#light.
+
 group.all_automations:
   hidden: false
 

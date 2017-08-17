@@ -6,4 +6,4 @@ install:
 script:
   - hass -c ./home-assistant/config --script check_config
 before_install:
-  - mv travis_secrets.yaml secrets.yaml
+  - mv ./home-assistant/config/secrets.yaml.sample ./home-assistant/config/secrets.yaml
