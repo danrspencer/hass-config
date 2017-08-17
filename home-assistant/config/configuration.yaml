@@ -36,6 +36,12 @@ history: !include history.yaml
 recorder:
   purge_days: 7
 
+panel_iframe:
+  travis:
+    title: Travis
+    url: https://travis-ci.org/danrspencer/home-config
+    icon: mdi:code-tags-check
+
 tts:
   platform: google
   # platform: amazon_polly
