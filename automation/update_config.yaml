@@ -5,6 +5,5 @@
   action:
     service: notify.ios_dphone
     data:
-      message: "Travis Build Status"
-      data:
-        subtitle: sensor.travis_build_status
+      title: "Travis Build Status"
+      message: sensor.travis_build_status

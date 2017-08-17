@@ -2,9 +2,7 @@ IP=			***REMOVED***.duckdns.org
 USER=		root
 
 put-config:
-	scp -rp ./config/* ${USER}@${IP}:/config
-	# ssh ${USER}@${IP} "sudo cp -r ./config/* /config/ \
-	# 							&& ./scripts/check-config.sh"
+	scp -rp ./* ${USER}@${IP}:/config
 
 get-config:
 	scp -rp ${USER}@${IP}:/config/{*.yaml,**/*.yaml,*.conf} ./config
