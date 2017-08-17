@@ -1,0 +1,10 @@
+- alias: Travis Build Status
+  trigger:
+  - platform: state
+    entity_id: sensor.travis_build_status
+  action:
+    service: notify.ios_dphone
+    data:
+      message: "Travis Build Status"
+      data:
+        subtitle: sensor.travis_build_status
