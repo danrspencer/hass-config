@@ -21,6 +21,7 @@ http:
 #   external_port: 80
 
 # Enablers
+browser:
 config:
 conversation:
 discovery:
@@ -30,11 +31,6 @@ logbook:
 sun:
 updater:
   include_used_components: true
-
-panel_iframe:
-  router:
-    title: 'Router'
-    url: 'http://192.168.0.1'
 
 history: !include history.yaml
 recorder:
