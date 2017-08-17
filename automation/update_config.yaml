@@ -7,3 +7,14 @@
     data:
       title: 'Travis Build Status'
       message: '{{ sensor.travis_build_status }}'
+
+- alias: Apply New Config
+  trigger:
+  - platform: state
+    entity_id: sensor.travis_build_status
+    to: 'finished'
+  action:
+    service: notify.ios_dphone
+    data:
+      title: 'Updating Config'
+      message: 'Restarting Home Assistant'
