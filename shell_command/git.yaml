@@ -1,0 +1,1 @@
+update_from_git: 'cd /config && git pull && hassio homeassistant restart'

@@ -4,6 +4,6 @@ python:
 install:
   - pip3 install homeassistant
 script:
-  - hass -c ./home-assistant/config --script check_config
+  - hass -c . --script check_config
 before_install:
-  - mv ./home-assistant/config/secrets.yaml.sample ./home-assistant/config/secrets.yaml
+  - mv secrets.yaml.sample secrets.yaml
