@@ -51,7 +51,7 @@ lights:
   entities:
   - group.living_room_lights
   - group.kitchen_lights
-  - group.top_floor_lights
+  - group.den_lights
   - group.hallway_lights
 
 media:
@@ -61,7 +61,6 @@ media:
   entities:
   - remote.living_room_tv
   - input_select.living_room_tv
-  - media_player.spotify
   - media_player.living_room_tv
   - media_player.everything
   - media_player.everything_but_tv
@@ -99,5 +98,6 @@ other:
   icon: mdi:developer-board
   view: yes
   entities:
+  - media_player.spotify
   - group.all_scripts
   - group.all_automations

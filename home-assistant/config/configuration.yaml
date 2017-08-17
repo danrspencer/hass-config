@@ -9,7 +9,7 @@ homeassistant:
 
 http:
   api_password: !secret hass_password
-  base_url: ***REMOVED***.duckdns.org
+  base_url: ***REMOVED***.duckdns.org:8123
   trusted_networks:
   - 127.0.0.1
   - 192.168.0.0/24
@@ -23,15 +23,14 @@ http:
 # Enablers
 config:
 conversation:
+discovery:
 frontend:
 ios:
 logbook:
 sun:
 updater:
+  include_used_components: true
 
-discovery:
-  # ignore:
-  #   - apple_tv
 
 history: !include history.yaml
 recorder:
