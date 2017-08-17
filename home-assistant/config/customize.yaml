@@ -5,13 +5,13 @@ switch.living_room_light_tree:
   icon: mdi:lightbulb
 
 light.living_room:
-  icon: mdi:lightbulb-outlight
+  icon: mdi:lightbulb-outline
 
 light.kitchen:
-  icon: mdi:lightbulb-outlight
+  icon: mdi:lightbulb-outline
 
 light.hallways:
-  icon: mdi:lightbulb-outlight
+  icon: mdi:lightbulb-outline
 
 group.all_automations:
   hidden: false
