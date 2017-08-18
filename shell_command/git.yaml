@@ -1,1 +1,1 @@
-update_from_git: '/config/bash_scripts/git_pull.sh'
+update_from_git: '/config/bash_scripts/update_from_git.sh'
