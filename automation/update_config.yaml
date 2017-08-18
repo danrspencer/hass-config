@@ -6,7 +6,7 @@
     service: notify.ios_dphone
     data:
       title: 'Travis Build Status...'
-      message: '{{ sensor.travis_build_status }}'
+      message: {{ trigger.to_state.state }}
 
 - alias: Apply New Config From Git
   trigger:
