@@ -1,0 +1,36 @@
+- alias: Startup Notification
+  trigger:
+    platform: event
+    event_type: homeassistant_start
+  action:
+    service: notify.ios_dphone
+    data:
+      title: 'Home Assistant back online!'
+
+- alias: Shutdown Notification
+  trigger:
+    platform: event
+    event_type: homeassistant_stop
+  action:
+    service: notify.ios_dphone
+    data:
+      title: 'Home Assistant is going down!'
+
+- alias: Travis Build Status
+  trigger:
+  - platform: state
+    entity_id: sensor.travis_build_status
+  action:
+    service: notify.ios_dphone
+    data:
+      title: 'Travis Build Status...'
+      message: >
+        {{ trigger.to_state.state }}
+
+- alias: Apply New Config From Git
+  trigger:
+  - platform: state
+    entity_id: sensor.travis_build_status
+    to: 'finished'
+  action:
+    service: shell_command.update_from_git
