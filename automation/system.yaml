@@ -3,9 +3,10 @@
     platform: event
     event_type: homeassistant_start
   action:
-    service: notify.ios_dphone
-    data:
-      message: 'Home Assistant back online!'
+    - delay: 00:01:00 # Give HAss chance to come back up properly
+    - service: notify.ios_dphone
+      data:
+        message: 'Home Assistant back online!'
 
 - alias: Shutdown Notification
   trigger:
