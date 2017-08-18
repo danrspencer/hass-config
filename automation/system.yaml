@@ -16,6 +16,15 @@
     data:
       message: 'Home Assistant is going down!'
 
+- alias: Update notifications
+  trigger:
+    - platform: state
+      entity_id: updater.updater
+  action:
+    service: notify.ios_dphone
+    data:
+      message: 'There is a new Home Assistant release available.'
+
 - alias: Travis Build Status
   trigger:
   - platform: state
@@ -23,7 +32,7 @@
   action:
     service: notify.ios_dphone
     data:
-      message: 'Travis build status: {{ states.sensor.travis_build_status.state }}' 
+      message: 'Travis build status: {{ states.sensor.travis_build_status.state }}'
 
 - alias: Apply New Config From Git
   trigger:
