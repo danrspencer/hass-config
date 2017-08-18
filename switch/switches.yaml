@@ -2,9 +2,9 @@
   switches:
     hyperion:
       friendly_name: TV Ambilight
-      command_on: '/config/hyperion/on.sh'
-      command_off: '/config/hyperion/off.sh'
-      command_state: '/config/hyperion/status.sh'
+      command_on: '/config/bash_scripts/hyperion/on.sh'
+      command_off: '/config/bash_scripts/hyperion/off.sh'
+      command_state: '/config/bash_scripts/hyperion/status.sh'
 
 # - platform: command_line
 #   switches:

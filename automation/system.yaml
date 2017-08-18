@@ -5,7 +5,7 @@
   action:
     service: notify.ios_dphone
     data:
-      title: 'Home Assistant back online!'
+      message: 'Home Assistant back online!'
 
 - alias: Shutdown Notification
   trigger:
@@ -14,7 +14,7 @@
   action:
     service: notify.ios_dphone
     data:
-      title: 'Home Assistant is going down!'
+      message: 'Home Assistant is going down!'
 
 - alias: Travis Build Status
   trigger:
@@ -23,8 +23,7 @@
   action:
     service: notify.ios_dphone
     data:
-      title: 'Travis Build Status...'
-      message: '{{ states.sensor.travis_build_status.state }}'
+      message: 'Travis build status: {{ states.sensor.travis_build_status.state }}' 
 
 - alias: Apply New Config From Git
   trigger:
