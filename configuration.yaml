@@ -47,14 +47,14 @@ tts:
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensor
 group: !include_dir_merge_named group
-input_select: !include_dir_merge_named input_select.yaml
+input_select: !include_dir_merge_named input_select
 light: !include_dir_merge_list light
-media_player: !include_dir_merge_list media_player.yaml
+media_player: !include_dir_merge_list media_player
 nest: !include nest.yaml
 remote: !include_dir_merge_list remote
 scene: !include_dir_merge_list scene
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensor
 shell_command: !include_dir_merge_named shell_command
-switch: !include_dir_merge_named switch
+switch: !include_dir_merge_list switch
 weather: !include_dir_merge_list weather
