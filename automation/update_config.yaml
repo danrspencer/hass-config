@@ -5,7 +5,7 @@
   action:
     service: notify.ios_dphone
     data:
-      title: 'Travis Build Status'
+      title: 'Travis Build Status...'
       message: '{{ sensor.travis_build_status }}'
 
 - alias: Apply New Config
@@ -17,4 +17,4 @@
     service: notify.ios_dphone
     data:
       title: 'Updating Config'
-      message: 'Restarting Home Assistant'
+      message: 'Restarting Home Assistant...'
