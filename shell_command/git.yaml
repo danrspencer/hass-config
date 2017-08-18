@@ -1,1 +1,1 @@
-update_from_git: 'cd /config && git reset --hard origin/master && git pull && hassio homeassistant restart'
+update_from_git: 'cd /config && git reset --hard origin/master && git pull'
