@@ -34,11 +34,3 @@
     service: notify.ios_dphone
     data:
       message: 'Travis build status: {{ states.sensor.travis_build_status.state }}'
-
-- alias: Apply New Config From Git
-  trigger:
-  - platform: state
-    entity_id: sensor.travis_build_status
-    to: 'finished'
-  action:
-    service: shell_command.update_from_git
