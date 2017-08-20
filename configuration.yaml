@@ -25,6 +25,8 @@ browser:
 config:
 conversation:
 discovery:
+  ignore:
+    - apple_tv
 frontend:
 ios:
 logbook:
