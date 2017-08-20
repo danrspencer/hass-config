@@ -6,14 +6,6 @@
       command_off: '/config/bash_scripts/hyperion/off.sh'
       command_state: '/config/bash_scripts/hyperion/status.sh'
 
-# - platform: command_line
-#   switches:
-#     hyperion:
-#       friendly_name: TV Ambilight
-#       command_on: echo  '{ "command": "clearall"}' | nc 192.168.0.27 19444
-#       command_off: echo  '{ "color": [0,0,0], "command": "color", "priority": 0 }' | nc 192.168.0.27 19444
-#       command_state: echo '{"command": "serverinfo"}' | nc -i 1 192.168.0.27 19444 | grep -vq '{"priority":0}'
-
 - platform: tplink
   name: Living Room Light Tree
   host: 192.168.0.42

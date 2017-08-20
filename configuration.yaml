@@ -25,6 +25,8 @@ browser:
 config:
 conversation:
 discovery:
+  ignore:
+    - harmony_hub
 frontend:
 ios:
 logbook:
