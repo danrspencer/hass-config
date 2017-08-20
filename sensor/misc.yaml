@@ -6,5 +6,7 @@
 
 - platform: rest
   resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
+  headers:
+    Accept: application/vnd.travis-ci.2+json
   value_template: '{{ value_json[0].state }}'
   name: 'Travis Build Status'
