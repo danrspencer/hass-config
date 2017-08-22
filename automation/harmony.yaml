@@ -16,4 +16,4 @@
     service: remote.turn_on
     data_template:
       entity_id: input_select.living_room
-      activity: '{{ trigger.to_state.state }}'
+      option: '{{ trigger.to_state.state }}'
