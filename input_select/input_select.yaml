@@ -36,5 +36,5 @@ living_room_tv:
     - Watch Shield TV
     - Watch Smart TV
     - Listen to Music
-  initial: Power Off
+  initial: PowerOff
   icon: mdi:television
