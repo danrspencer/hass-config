@@ -10,8 +10,8 @@
 
 - alias: "Harmony Update Activity Select"
   trigger:
-  - platform: sensor
-    entity_id: living_room_tv
+  - platform: state
+    entity_id: sensor.living_room_tv
   action:
     service: remote.turn_on
     data_template:

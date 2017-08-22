@@ -30,7 +30,7 @@ hyperion_effect:
 living_room_tv:
   name: Living Room TV
   options:
-    - Power Off
+    - PowerOff
     - Watch TV
     - Watch Apple TV
     - Watch Shield TV
