@@ -44,6 +44,7 @@
   trigger:
   - platform: sun
     event: sunset
+    offset: "-00:30:00"
   action:
   - service: light.hue_activate_scene
     data:
@@ -130,6 +131,7 @@
       state: 'off'
     - condition: sun
       after: sunset
+      offset: "-00:30:00"
     - condition: time
       before: '22:00:00'
 
