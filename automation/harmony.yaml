@@ -3,7 +3,10 @@
   - platform: state
     entity_id: input_select.harmony
   action:
-    service: remote.turn_on
+  - service: notify.ios_dphone
+    data:
+      message: '{{ trigger.to_state.state }}'
+  - service: remote.turn_on
     data_template:
       entity_id: remote.living_room_tv
       activity: '{{ trigger.to_state.state }}'
@@ -13,7 +16,10 @@
   - platform: state
     entity_id: sensor.living_room_tv
   action:
-    service: remote.turn_on
+  - service: notify.ios_dphone
+    data:
+      message: '{{ trigger.to_state.state }}'
+  - service: remote.turn_on
     data_template:
       entity_id: input_select.living_room
       option: '{{ trigger.to_state.state }}'
