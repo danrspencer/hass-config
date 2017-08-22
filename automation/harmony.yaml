@@ -1,9 +1,9 @@
-- alias: "Harmony"
-  trigger:
-  - platform: state
-    entity_id: input_select.harmony
-  action:
-    service: remote.turn_on
-    data_template:
-      entity_id: remote.living_room_tv
-      activity: '{{ trigger.to_state.state }}'
+# - alias: "Harmony"
+#   trigger:
+#   - platform: state
+#     entity_id: input_select.harmony
+#   action:
+#     service: remote.turn_on
+#     data_template:
+#       entity_id: remote.living_room_tv
+#       activity: '{{ trigger.to_state.state }}'
