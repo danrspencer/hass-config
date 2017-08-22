@@ -19,7 +19,7 @@
   - service: notify.ios_dphone
     data:
       message: '{{ states.sensor.living_room_tv.state }}'
-  - service: remote.turn_on
+  - service: input_select.select_option
     data_template:
       entity_id: input_select.living_room
       option: '{{ states.sensor.living_room_tv.state }}'
