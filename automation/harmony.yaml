@@ -6,4 +6,4 @@
     service: remote.turn_on
     data_template:
       entity_id: remote.living_room_tv
-      activity: {{ trigger.to_state.state }}
+      activity: '{{ trigger.to_state.state }}'
