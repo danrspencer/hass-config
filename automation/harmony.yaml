@@ -1,9 +1,25 @@
-- alias: "Harmony"
+- alias: "Harmony Change Activity"
   trigger:
   - platform: state
     entity_id: input_select.harmony
   action:
-    service: remote.turn_on
+  - service: remote.turn_on
     data_template:
       entity_id: remote.living_room_tv
       activity: '{{ trigger.to_state.state }}'
+  - service: notify.ios_dphone
+    data:
+      message: 'Change activity: {{ trigger.to_state.state }}'
+
+- alias: "Harmony Update Activity Select"
+  trigger:
+  - platform: sensor
+    entity_id: living_room_tv
+  action:
+  - service: remote.turn_on
+    data_template:
+      entity_id: input_select.living_room
+      activity: '{{ trigger.to_state.state }}'
+  - service: notify.ios_dphone
+    data:
+      message: 'Update activity: {{ trigger.to_state.state }}'
