@@ -5,11 +5,11 @@
   action:
   - service: notify.ios_dphone
     data:
-      message: '{{ trigger.to_state.state }}'
+      message: '{{ states.input_select.harmony.state }}'
   - service: remote.turn_on
     data_template:
       entity_id: remote.living_room_tv
-      activity: '{{ trigger.to_state.state }}'
+      activity: '{{ states.input_select.harmony.state }}'
 
 - alias: "Harmony Update Activity Select"
   trigger:
@@ -18,8 +18,8 @@
   action:
   - service: notify.ios_dphone
     data:
-      message: '{{ trigger.to_state.state }}'
+      message: '{{ states.sensor.living_room_tv.state }}'
   - service: remote.turn_on
     data_template:
       entity_id: input_select.living_room
-      option: '{{ trigger.to_state.state }}'
+      option: '{{ states.sensor.living_room_tv.state }}'
