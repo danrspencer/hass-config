@@ -19,7 +19,7 @@ living_room:
   - group.living_room_lights
   - sensor.living_room_tv
   - media_player.living_room
-  - media_player.living_room_sheild_tv
+  - media_player.living_room_shield_tv
   - media_player.living_room_apple_tv
 
 kitchen:
