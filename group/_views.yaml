@@ -59,19 +59,8 @@ media:
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - remote.living_room_tv
-  - input_select.living_room_tv
-  - media_player.living_room_tv
-  - media_player.everything
-  - media_player.everything_but_tv
-  - media_player.living_room
-  - media_player.ground_floor
-  - media_player.hear_go
-  - media_player.kitchen
-  - media_player.top_floor
-  - media_player.den
-  - media_player.bedroom
-  - media_player.dressing_room
+  - group.living_room_tv
+  - group.speakers
 
 house:
   name: House
