@@ -3,6 +3,6 @@ meta_switches:
   icon: mdi:home-variant
   entities:
   - group.living_room_switches
-  - group.kitchen_lights
-  - group.den_lights
-  - group.hallway_lights
+  - group.lights_kitchen
+  - group.lights_den
+  - group.lights_hallway
