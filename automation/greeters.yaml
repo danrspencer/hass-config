@@ -21,6 +21,10 @@
       hours: 5
       minutes: 0
       seconds: 0
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '23:00:00'
   action:
   - service: automation.turn_on
     entity_id: input_boolean.welcome_home
