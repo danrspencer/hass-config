@@ -14,7 +14,7 @@
     entity_id: sensor.living_room_tv
   condition:
     condition: template
-    value_template: {{ states.sensor.living_room_tv.state != "PowerOff" }}
+    value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
   action:
   - service: input_select.select_option
     data_template:
