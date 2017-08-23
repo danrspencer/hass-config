@@ -10,4 +10,5 @@
   action:
   - service: tts.google_say
     entity_id: media_player.kitchen
-    message: 'Welcome home!'
+    data:
+      message: 'Welcome home!'
