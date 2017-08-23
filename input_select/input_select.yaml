@@ -30,11 +30,10 @@ hyperion_effect:
 living_room_tv:
   name: Living Room TV
   options:
-    - PowerOff
     - Watch TV
     - Watch Apple TV
     - Watch Shield TV
     - Watch Smart TV
     - Listen to Music
-  initial: PowerOff
+  initial: Watch TV
   icon: mdi:television

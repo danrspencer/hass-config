@@ -3,9 +3,6 @@
   - platform: state
     entity_id: input_select.living_room_tv
   action:
-  - service: notify.ios_dphone
-    data:
-      message: '{{ states.input_select.living_room_tv.state }}'
   - service: remote.turn_on
     data_template:
       entity_id: remote.living_room_tv
@@ -15,11 +12,11 @@
   trigger:
   - platform: state
     entity_id: sensor.living_room_tv
+  condition:
+    condition: template
+    value_template: {{ states.sensor.living_room_tv.state != "PowerOff" }}
   action:
-  - service: notify.ios_dphone
-    data:
-      message: '{{ states.sensor.living_room_tv.state }}'
   - service: input_select.select_option
     data_template:
-      entity_id: input_select.living_room
+      entity_id: input_select.living_room_tv
       option: '{{ states.sensor.living_room_tv.state }}'
