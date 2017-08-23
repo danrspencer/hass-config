@@ -42,7 +42,7 @@ tts:
   aws_access_key_id: !secret aws_access_key_id
   aws_secret_access_key: !secret aws_secret_access_key
   region_name: eu-west-1
-  voice: Amy
+  voice: Emma
 
 # Includes
 automation: !include_dir_merge_list automation

@@ -36,8 +36,6 @@ jazz_mode:
     data:
       volume_level: 0.4
   - delay: 00:00:10
-  # - wait_template: '{{ states.media_player.ground_floor.state == "playing" }}'
-  #   timeout: 00:00:10
   # Turn the lights back on, but awesome
   - service: light.turn_on
     entity_id:
