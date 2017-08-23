@@ -1,23 +1,5 @@
 jazz_mode:
   sequence:
-  # Dim the lights
-  - service: light.turn_on
-    entity_id:
-      - light.kitchen
-      - light.entrance_hall_1
-      - light.entrance_hall_2
-    data:
-      profile: relax
-      brightness: 1
-  - delay: 00:00:01
-  - service: light.turn_on
-    entity_id:
-      - light.kitchen
-      - light.entrance_hall_1
-      - light.entrance_hall_2
-    data:
-      brightness: 1
-  - delay: 00:00:05
   # Tell Google to play jazz music
   - service: media_player.volume_set
     entity_id: media_player.hear_go
@@ -36,7 +18,25 @@ jazz_mode:
     entity_id: media_player.ground_floor
     data:
       volume_level: 0.4
-  - delay: 00:00:10
+  - delay: 00:00:05
+  # Dim the lights
+  - service: light.turn_on
+    entity_id:
+      - light.kitchen
+      - light.entrance_hall_1
+      - light.entrance_hall_2
+    data:
+      profile: relax
+      brightness: 1
+  - delay: 00:00:01
+  - service: light.turn_on
+    entity_id:
+      - light.kitchen
+      - light.entrance_hall_1
+      - light.entrance_hall_2
+    data:
+      brightness: 1
+  - delay: 00:00:05
   # Turn the lights back on, but awesome
   - service: light.turn_on
     entity_id:
