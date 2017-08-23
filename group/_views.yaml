@@ -4,10 +4,10 @@ default_view:
   - device_tracker.dphone
   - device_tracker.laurens_iphone
   - sensor.next_train_to_lds
-  - group.meta_switches
-  - media_player.speakers
-  - climate.house
   - scene.everything_off
+  - group.meta_switches
+  - climate.house
+  - media_player.speakers
 
 living_room:
   name: Living Room
@@ -61,8 +61,10 @@ media:
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.media_living_room_tv
-  - group.media_speakers
+  - group.media_living_room
+  - group.media_everything_groups
+  - group.media_top_floor
+  - group.media_ground_floor
 
 house:
   name: House
@@ -91,5 +93,5 @@ other:
   entities:
   - media_player.spotify
   - sensor.travis_build_status
-  - group.all_scripts
+  - group.all_input_booleans
   - group.all_automations

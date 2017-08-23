@@ -1,0 +1,13 @@
+- alias: Welcome home
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    platform: state
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.welcome_home
+    state: 'on'
+  action:
+  - service: tts.google_say
+    entity_id: media_player.kitchen
+    message: 'Welcome home!'
