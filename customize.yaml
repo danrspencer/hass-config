@@ -4,6 +4,9 @@ switch.hyperion:
 switch.living_room_light_tree:
   icon: mdi:tree
 
+switch.living_room_tv:
+  icon: mdi:television
+
 light.living_room:
   icon: mdi:lightbulb-outline
 
