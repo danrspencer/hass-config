@@ -1,4 +1,4 @@
-- alias: Welcome home
+- alias: Welcome Home
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
@@ -10,3 +10,42 @@
       message: 'Welcome home!'
   - service: automation.turn_off
     entity_id: input_boolean.welcome_home
+
+- alias: Welcome Home Reset
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    platform: state
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 5
+      minutes: 0
+      seconds: 0
+  action:
+  - service: automation.turn_on
+    entity_id: input_boolean.welcome_home
+
+- alias: Good Morning
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    platform: state
+    to: 'on'
+  condition:
+    condition: time
+    after: '05:00:00'
+    before: '09:00:00'
+  action:
+  - service: tts.google_say
+    entity_id: media_player.kitchen
+    data:
+      message: 'Good Morning!'
+  - service: automation.turn_off
+    entity_id: input_boolean.good_morning
+
+- alias: Good Morning Reset
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  action:
+  - service: automation.turn_on
+    entity_id: input_boolean.good_morning
