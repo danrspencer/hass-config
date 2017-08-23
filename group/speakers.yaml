@@ -1,0 +1,29 @@
+speakers_everything:
+  name: Speakers
+  icon: mdi:speaker-wireless
+  entities:
+    - media_player.everything
+    - media_player.everything_but_tv
+
+speakers_ground_floor:
+  name: Speakers
+  icon: mdi:speaker-wireless
+  entities:
+  - media_player.ground_floor
+  - media_player.hear_go
+  - media_player.kitchen
+
+speakers_middle_floor:
+  name: Speakers
+  icon: mdi:speaker-wireless
+  entities:
+  - media_player.living_room
+
+speakers_top_floor:
+  name: Speakers
+  icon: mdi:speaker-wireless
+  entities:
+  - media_player.top_floor
+  - media_player.den
+  - media_player.bedroom
+  - media_player.dressing_room

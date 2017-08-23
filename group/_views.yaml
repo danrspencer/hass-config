@@ -19,7 +19,8 @@ living_room:
   - group.living_room_lights
   - sensor.living_room_tv
   - media_player.living_room
-  - media_player.living_room_tv
+  - media_player.living_room_sheild_tv
+  - media_player.living_room_apple_tv
 
 kitchen:
   name: Kitchen
@@ -41,10 +42,7 @@ top_floor:
   entities:
   - group.lights_den
   - light.top_floor_landing
-  - media_player.top_floor
-  - media_player.den
-  - media_player.bedroom
-  - media_player.dressing_room
+  - group.speakers_top_floor
 
 lights:
   name: Lights
@@ -57,14 +55,14 @@ lights:
   - group.lights_hallway
 
 media:
-  name: Media
+  name: Speakers
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.media_living_room
-  - group.media_everything_groups
-  - group.media_top_floor
-  - group.media_ground_floor
+  - group.speakers_everything_groups
+  - group.speakers_ground_floor
+  - group.speakers_middle_floor
+  - group.speakers_top_floor
 
 house:
   name: House

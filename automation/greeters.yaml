@@ -3,14 +3,10 @@
   - entity_id: binary_sensor.kitchen_motion
     platform: state
     to: 'on'
-  condition:
-    condition: state
-    entity_id: input_boolean.welcome_home
-    state: 'on'
   action:
   - service: tts.google_say
     entity_id: media_player.kitchen
     data:
       message: 'Welcome home!'
-  - service: input_boolean.turn_off
+  - service: automation.turn_off
     entity_id: input_boolean.welcome_home
