@@ -3,6 +3,7 @@ living_room_activities:
   icon: mdi:sofa
   entities:
   - remote.living_room_tv
+  - switches.living_room_tv
   - input_select.living_room_tv
   - light.living_room
   - light.living_room_lamp

@@ -1,4 +1,3 @@
 - platform: harmony
   name: Living Room TV
-  activity: '{{ states.input_select.living_room_tv.state }}'
   scan_interval: 1

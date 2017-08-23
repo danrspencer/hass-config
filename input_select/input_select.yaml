@@ -1,7 +1,8 @@
 hyperion_effect:
   name: TV Ambilight Effect
+  icon: mdi:square-inc
   options:
-  - "Off"
+  - "None"
   - "Knight Rider"
   - "Mood Blobs Blue"
   - "Mood Blobs Cold"
@@ -29,6 +30,7 @@ hyperion_effect:
 
 living_room_tv:
   name: Living Room TV
+  icon: mdi:television
   options:
     - Watch TV
     - Watch Apple TV
@@ -36,4 +38,3 @@ living_room_tv:
     - Watch Smart TV
     - Listen to Music
   initial: Watch TV
-  icon: mdi:television

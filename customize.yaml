@@ -1,8 +1,8 @@
 switch.hyperion:
-  icon: mdi:lightbulb
+  icon: mdi:square-inc
 
 switch.living_room_light_tree:
-  icon: mdi:lightbulb
+  icon: mdi:tree
 
 light.living_room:
   icon: mdi:lightbulb-outline

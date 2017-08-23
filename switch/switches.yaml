@@ -1,3 +1,18 @@
+- platform: template
+  switches:
+    living_room_tv:
+      friendly_name: Living Room TV
+      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
+      entity_id: sensor.living_room_tv
+      turn_on:
+        service:  remote.turn_on
+        data_template:
+          entity_id: remote.living_room_tv
+          activity: '{{ states.input_select.living_room_tv.state }}'
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.living_room_tv
+
 - platform: command_line
   switches:
     hyperion:
