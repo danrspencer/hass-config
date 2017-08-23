@@ -28,7 +28,7 @@ kitchen:
   entities:
   - sensor.kitchen_temperature
   - binary_sensor.kitchen_motion
-  - group.kitchen_lights
+  - group.lights_kitchen
   - media_player.ground_floor
   - media_player.hear_go
   - media_player.kitchen
@@ -39,7 +39,7 @@ top_floor:
   icon: mdi:castle
   view: yes
   entities:
-  - group.den_lights
+  - group.lights_den
   - light.top_floor_landing
   - media_player.top_floor
   - media_player.den
