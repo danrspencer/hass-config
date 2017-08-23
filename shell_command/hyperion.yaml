@@ -1,4 +1,4 @@
-h_hyperion_off: '/config/bash_scripts/hyperion/on.sh'
+h_effect_none: '/config/bash_scripts/hyperion/on.sh'
 h_mood_blobs_blue: '/config/bash_scripts/hyperion/effects.sh "Blue mood blobs"'
 h_knight_rider: '/config/bash_scripts/hyperion/effects.sh "Knight rider"'
 h_mood_blobs_cold: '/config/bash_scripts/hyperion/effects.sh "Cold mood blobs"'

@@ -4,7 +4,7 @@
     entity_id: input_select.hyperion_effect
     to: "None"
   action:
-    service: shell_command.h_hyperion_off
+    service: shell_command.h_effect_none
 
 - alias: "Knight Rider"
   trigger:
