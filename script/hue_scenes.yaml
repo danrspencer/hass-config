@@ -13,6 +13,7 @@ jazz_mode:
       - light.entrance_hall_1
       - light.entrance_hall_2
     data:
+      profile: relax
       brightness: 1
   - delay: 00:00:05
   - service: tts.amazon_polly_say
