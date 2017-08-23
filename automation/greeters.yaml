@@ -12,3 +12,5 @@
     entity_id: media_player.kitchen
     data:
       message: 'Welcome home!'
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.welcome_home
