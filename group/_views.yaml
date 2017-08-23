@@ -15,6 +15,8 @@ living_room:
   view: yes
   entities:
   - group.living_room_activities
+  - group.living_room_tv
+  - group.living_room_lights
   - sensor.living_room_tv
   - media_player.living_room
   - media_player.living_room_tv
@@ -49,18 +51,18 @@ lights:
   icon: mdi:lightbulb
   view: yes
   entities:
-  - group.living_room_lights
-  - group.kitchen_lights
-  - group.den_lights
-  - group.hallway_lights
+  - group.lights_living_room
+  - group.lights_kitchen
+  - group.lights_den
+  - group.lights_hallway
 
 media:
   name: Media
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.living_room_tv
-  - group.speakers
+  - group.media_living_room_tv
+  - group.media_speakers
 
 house:
   name: House

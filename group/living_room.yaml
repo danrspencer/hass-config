@@ -2,10 +2,22 @@ living_room_activities:
   name: Living Room
   icon: mdi:sofa
   entities:
+  - group.living_room_tv
+  - group.living_room_lights
+
+living_room_tv:
+  name: Living Room TV
+  icon: mdi:sofa
+  entities:
   - switch.living_room_tv
   - input_select.living_room_tv
   - switch.hyperion
   - input_select.hyperion_effect
+
+living_room_lights:
+  name: Living Room
+  icon: mdi:sofa
+  entities:
   - light.living_room
   - light.living_room_lamp
   - light.living_room_spot_1

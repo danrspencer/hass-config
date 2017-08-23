@@ -1,4 +1,4 @@
-living_room_tv:
+media_living_room_tv:
   name: Living Room TV
   icon: mdi:television
   entities:
@@ -6,7 +6,7 @@ living_room_tv:
   - input_select.living_room_tv
   - media_player.living_room_tv
 
-speakers:
+media_speakers:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
