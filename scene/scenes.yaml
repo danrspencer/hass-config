@@ -5,9 +5,6 @@
     group.all_switches: off
     group.media: off
 
-# - name: Jazz Mode
-#   entities:
-#
-# - name: Kitchen Morning
-#   entities:
-#     kitchen_lights_morning: on
+- name: Jazz Mode
+  entities:
+    script.jazz_mode: on

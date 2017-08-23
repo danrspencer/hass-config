@@ -33,7 +33,7 @@ kitchen:
   - media_player.ground_floor
   - media_player.hear_go
   - media_player.kitchen
-  - script.jazz_mode
+  - scene.jazz_mode
 
 top_floor:
   name: Top Floor
