@@ -2,7 +2,7 @@ meta_switches:
   name: Rooms
   icon: mdi:home-variant
   entities:
-  - group.living_room_activities
+  - group.living_room_switches
   - group.kitchen_lights
   - group.den_lights
   - group.hallway_lights
