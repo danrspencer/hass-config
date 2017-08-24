@@ -18,7 +18,7 @@ jazz_mode:
     entity_id: media_player.ground_floor
     data:
       volume_level: 0.4
-  - delay: 00:00:05
+  - delay: 00:00:02
   # Dim the lights
   - service: light.turn_on
     entity_id:
@@ -36,7 +36,7 @@ jazz_mode:
       - light.entrance_hall_2
     data:
       brightness: 1
-  - delay: 00:00:05
+  - delay: 00:00:10
   # Turn the lights back on, but awesome
   - service: light.turn_on
     entity_id:

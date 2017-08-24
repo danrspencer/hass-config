@@ -4,7 +4,7 @@
     platform: state
     to: 'on'
   action:
-  - service: tts.google_say
+  - service: tts.amazon_polly_say
     entity_id: media_player.kitchen
     data:
       message: >
@@ -40,7 +40,7 @@
     after: '05:00:00'
     before: '09:00:00'
   action:
-  - service: tts.google_say
+  - service: tts.amazon_polly_say
     entity_id: media_player.kitchen
     data:
       message: >
