@@ -1,9 +1,3 @@
-- platform: template
-  sensors:
-    living_room_tv:
-      value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
-      friendly_name: 'Living Room TV'
-
 - platform: rest
   resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
   headers:
