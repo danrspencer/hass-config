@@ -14,9 +14,9 @@
     entity_id: sensor.living_room_tv
   condition:
     condition: template
-    value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" and states.sensor.living_room_tv.state != "None" }}'
+    value_template: '{{ states.remote.living_room_tv.attributes.current_activity != "PowerOff" and states.remote.living_room_tv.attributes.current_activity != "None" }}'
   action:
   - service: input_select.select_option
     data_template:
       entity_id: input_select.living_room_tv
-      option: '{{ states.sensor.living_room_tv.state }}'
+      option: '{{ states.remote.living_room_tv.attributes.current_activity }}'
