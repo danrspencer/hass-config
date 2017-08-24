@@ -10,7 +10,7 @@
       message: >
         <speak>Welcome home!</speak>
   - service: automation.turn_off
-    entity_id: input_boolean.welcome_home
+    entity_id: automation.welcome_home
 
 - alias: Welcome Home Reset
   trigger:
@@ -28,7 +28,7 @@
     before: '23:00:00'
   action:
   - service: automation.turn_on
-    entity_id: input_boolean.welcome_home
+    entity_id: automation.welcome_home
 
 - alias: Good Morning
   trigger:
@@ -46,7 +46,7 @@
       message: >
         <speak>Good Morning!</speak>
   - service: automation.turn_off
-    entity_id: input_boolean.good_morning
+    entity_id: automation.good_morning
 
 - alias: Good Morning Reset
   trigger:
@@ -54,4 +54,4 @@
     at: '00:00:00'
   action:
   - service: automation.turn_on
-    entity_id: input_boolean.good_morning
+    entity_id: automation.good_morning
