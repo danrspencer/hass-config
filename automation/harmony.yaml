@@ -1,4 +1,4 @@
-- alias: "Harmony Change Activity"
+- alias: Harmony Change Activity
   trigger:
   - platform: state
     entity_id: input_select.living_room_tv
@@ -8,7 +8,7 @@
       entity_id: remote.living_room_tv
       activity: '{{ states.input_select.living_room_tv.state }}'
 
-- alias: "Harmony Update Activity Select"
+- alias: Harmony Update Activity Select
   trigger:
   - platform: state
     entity_id: sensor.living_room_tv

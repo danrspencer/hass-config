@@ -1,4 +1,4 @@
-- alias: "No Effect"
+- alias: Hyperion No Effect
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
@@ -6,10 +6,28 @@
   action:
     service: shell_command.hyperion_effect_none
 
-- alias: "Set Effect"
+- alias: Hyperion Set Effect
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
     from: "None"
   action:
     service: shell_command.hyperion_set_effect
+
+- alias: Hyperion Auto On
+  trigger:
+  - platform: state
+    entity_id: states.remote.living_room_tv.attributes.current_activity
+    from: "PowerOff"
+  action:
+    service: switch.turn_on
+    entity_id: switch.hyperion
+
+- alias: Hyperion Auto Off
+  trigger:
+  - platform: state
+    entity_id: states.remote.living_room_tv.attributes.current_activity
+    to: "PowerOff"
+  action:
+    service: switch.turn_on
+    entity_id: switch.hyperion
