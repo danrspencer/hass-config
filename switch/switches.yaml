@@ -2,7 +2,7 @@
   switches:
     living_room_tv:
       friendly_name: Living Room TV
-      value_template: '{{ sensor.living_room_tv != "PowerOff" }}'
+      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
       entity_id: sensor.living_room_tv
       turn_on:
         service:  remote.turn_on
