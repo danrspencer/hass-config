@@ -29,5 +29,5 @@
     entity_id: sensor.living_room_tv
     to: "PowerOff"
   action:
-    service: switch.turn_on
+    service: switch.turn_off
     entity_id: switch.hyperion
