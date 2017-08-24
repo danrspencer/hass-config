@@ -1,3 +1,9 @@
+- platform: template
+  sensors:
+    living_room_tv:
+      value_template: '{{ sensor.living_room_tv }}'
+      friendly_name: 'Living Room TV'
+
 - platform: rest
   resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
   headers:

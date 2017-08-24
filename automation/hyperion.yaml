@@ -17,7 +17,7 @@
 - alias: Hyperion Auto On
   trigger:
   - platform: state
-    entity_id: states.remote.living_room_tv.attributes.current_activity
+    entity_id: sensor.living_room_tv
     from: "PowerOff"
   action:
     service: switch.turn_on
@@ -26,7 +26,7 @@
 - alias: Hyperion Auto Off
   trigger:
   - platform: state
-    entity_id: states.remote.living_room_tv.attributes.current_activity
+    entity_id: sensor.living_room_tv
     to: "PowerOff"
   action:
     service: switch.turn_on
