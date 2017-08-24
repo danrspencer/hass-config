@@ -5,7 +5,7 @@
     to: 'on'
   action:
   - service: tts.amazon_polly_say
-    entity_id: media_player.kitchen
+    entity_id: media_player.hear_go
     data:
       message: >
         <speak>Welcome home!</speak>
@@ -41,7 +41,7 @@
     before: '09:00:00'
   action:
   - service: tts.amazon_polly_say
-    entity_id: media_player.kitchen
+    entity_id: media_player.hear_go
     data:
       message: >
         <speak>Good Morning!</speak>
