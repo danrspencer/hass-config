@@ -1,7 +1,7 @@
 - alias: Startup Notification
   trigger:
     platform: homeassistant
-    event_type: start
+    event: start
   action:
     service: notify.ios_dphone
     data:
@@ -10,7 +10,7 @@
 - alias: Shutdown Notification
   trigger:
     platform: homeassistant
-    event_type: shutdown
+    event: shutdown
   action:
     service: notify.ios_dphone
     data:
