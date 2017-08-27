@@ -42,7 +42,7 @@ tts:
   aws_secret_access_key: !secret aws_secret_access_key
   region_name: eu-west-1
   text_type: ssml
-  voice: Emma
+  voice: Brian
 
 # Includes
 automation: !include_dir_merge_list automation
