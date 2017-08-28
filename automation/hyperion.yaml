@@ -10,7 +10,9 @@
   trigger:
   - platform: state
     entity_id: input_select.hyperion_effect
-    from: "None"
+  condition:
+    condition: template
+    value_template: '{{ states.input_select.hyperion_effect.state != "None" }}'
   action:
     service: shell_command.hyperion_set_effect
 
