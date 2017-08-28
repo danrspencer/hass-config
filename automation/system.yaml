@@ -30,7 +30,7 @@
   - platform: state
     entity_id: sensor.travis_build_status
   condition:
-    condition: or
+    condition: and
     conditions:
     - condition: template
       value_template: '{{ trigger.from_state.state != "unknown" }}'
