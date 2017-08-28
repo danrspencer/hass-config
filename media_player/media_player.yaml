@@ -16,7 +16,6 @@
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
 
-media:
 - platform: ps4
   host: http://localhost:3030
   ps4_ip: 192.168.0.72
