@@ -40,6 +40,7 @@ top_floor:
   view: yes
   entities:
   - group.lights_den
+  - media_player.playstation_4
   - light.top_floor_landing
   - group.speakers_top_floor
 
