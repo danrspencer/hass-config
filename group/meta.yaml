@@ -4,5 +4,5 @@ meta_switches:
   entities:
   - group.living_room_switches
   - group.lights_kitchen
-  - group.lights_den
+  - group.den_switches
   - group.lights_hallway

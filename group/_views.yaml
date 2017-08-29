@@ -34,15 +34,16 @@ kitchen:
   - media_player.kitchen
   - scene.jazz_mode
 
-top_floor:
-  name: Top Floor
-  icon: mdi:castle
+den:
+  name: Den
+  icon: mdi:gamepad-variant
   view: yes
   entities:
-  - group.lights_den
-  - media_player.playstation_4
+  - group.den_switches
   - light.top_floor_landing
-  - group.speakers_top_floor
+  - media_player.playstation_4
+  - media_player.den
+  - media_player.top_floor
 
 lights:
   name: Lights

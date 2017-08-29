@@ -13,6 +13,19 @@
         service: remote.turn_off
         entity_id: remote.living_room_tv
 
+- platform: template
+  switches:
+    playstation_4:
+      friendly_name: PlayStation 4
+      value_template: '{{ states.media_player.playstation_4.state != "off" }}'
+      entity_id: media_player.playstation_4
+      turn_on:
+        service:  media_player.turn_on
+        entity_id: media_player.playstation_4
+      turn_off:
+        service: media_player.turn_off
+        entity_id: media_player.playstation_4
+
 - platform: command_line
   switches:
     hyperion:
