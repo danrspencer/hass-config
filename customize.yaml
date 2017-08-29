@@ -7,6 +7,9 @@ switch.living_room_light_tree:
 switch.living_room_tv:
   icon: mdi:television
 
+switch.playstation_4:
+  icon: mdi:gamepad-variant
+
 light.living_room:
   icon: mdi:lightbulb-outline
 
