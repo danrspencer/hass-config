@@ -58,7 +58,7 @@
 - alias: Hallways Lights Night
   trigger:
   - platform: time
-    at: '23:00:00'
+    at: '22:00:00'
   action:
   - service: light.hue_activate_scene
     data:
