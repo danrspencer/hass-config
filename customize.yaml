@@ -1,5 +1,5 @@
 switch.hyperion:
-  icon: mdi:square-inc
+  icon: mdi:camcorder-box
 
 switch.living_room_light_tree:
   icon: mdi:tree

@@ -27,15 +27,11 @@
 
 - alias: Travis Build Status
   trigger:
-  - platform: state
-    entity_id: sensor.travis_build_status
-  condition:
-    condition: and
-    conditions:
-    - condition: template
-      value_template: '{{ trigger.from_state.state != "unknown" }}'
-    - condition: template
-      value_template: '{{ trigger.to_state.state != "unknown" }}'
+  - platform: template
+    value_template: >
+      {{ sensor.travis_build_status == "passed"
+      or sensor.travis_build_status == "failed"
+      }}
   action:
   - service: notify.ios_dphone
     data:
