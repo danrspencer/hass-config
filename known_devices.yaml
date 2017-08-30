@@ -1,0 +1,18 @@
+
+dphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: dphone
+  picture:
+  track: true
+  vendor:
+
+laurens_iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: laurens iphone
+  picture:
+  track: true
+  vendor:

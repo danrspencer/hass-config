@@ -13,9 +13,6 @@ logs:
 restart:
 	ssh ${USER}@${IP} "hassio homeassistant restart"
 
-get-config:
-	scp -rp ${USER}@${IP}:/config/{*.yaml,**/*.yaml,*.conf} ./config
-
 secrets:
 	cp ./config/secrets.yaml.sample ./config/secrets.yaml
 
