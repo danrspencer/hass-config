@@ -29,8 +29,8 @@
   trigger:
   - platform: template
     value_template: >
-      {{ sensor.travis_build_status == "passed"
-      or sensor.travis_build_status == "failed"
+      {{ is_state('sensor.travis_build_status', 'passed')
+      or is_state('sensor.travis_build_status', 'failed')
       }}
   action:
   - service: notify.ios_dphone
