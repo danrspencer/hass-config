@@ -7,3 +7,15 @@ den_switches:
   - light.den_lamp_1
   - light.den_lamp_2
   - sensor.steam_account1
+
+den_this_week:
+  name: Activity This Week
+  entities:
+  - sensor.playstation_4_played_this_week
+  - sensor.steam_online_this_week
+
+den_last_week:
+  name: Activity Last Week
+  entities:
+  - sensor.playstation_4_played_last_week
+  - sensor.steam_online_last_week
