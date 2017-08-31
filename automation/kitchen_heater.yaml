@@ -6,7 +6,7 @@
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
-      temperature: {{ states.sensor.house_thermostat_target.state }}
+      temperature: '{{ states.sensor.house_thermostat_target.state }}'
 
 - alias: Turn off kitchen heater X minutes after last movement
   trigger:
@@ -42,4 +42,4 @@
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
-      temperature: {{ states.sensor.house_thermostat_target.state }}
+      temperature: '{{ states.sensor.house_thermostat_target.state }}'
