@@ -34,7 +34,7 @@ updater:
 
 history: !include history.yaml
 recorder:
-  purge_days: 7
+  purge_days: 14
 
 tts:
   platform: amazon_polly
@@ -47,6 +47,7 @@ tts:
 # Includes
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensor
+climate: !include_dir_merge_list climate
 group: !include_dir_merge_named group
 input_select: !include_dir_merge_named input_select
 # input_boolean: !include_dir_merge_named input_boolean

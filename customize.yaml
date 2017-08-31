@@ -10,6 +10,10 @@ switch.living_room_tv:
 switch.playstation_4:
   icon: mdi:gamepad-variant
 
+
+switch.kitchen_heater:
+  icon: mdi:radiator
+
 light.living_room:
   icon: mdi:lightbulb-outline
 

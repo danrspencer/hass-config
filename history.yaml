@@ -4,6 +4,8 @@ include:
   - switch
   - light
   - sun
+  entities:
+  - media_player.playstation_4
 exclude:
   entities:
    - sensor.last_boot

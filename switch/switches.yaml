@@ -37,3 +37,7 @@
 - platform: tplink
   name: Living Room Light Tree
   host: 192.168.0.42
+
+- platform: tplink
+  name: Kitchen Heater
+  host: 192.168.0.48

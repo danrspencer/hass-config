@@ -1,0 +1,8 @@
+- platform: generic_thermostat
+  name: Kitchen
+  heater: switch.kitchen_heater
+  target_sensor: sensor.kitchen_temperature
+  min_temp: 10
+  max_temp: 23
+  target_temp: 17
+  tolerance: 1
