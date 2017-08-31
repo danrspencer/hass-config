@@ -4,5 +4,6 @@
   target_sensor: sensor.kitchen_temperature
   min_temp: 10
   max_temp: 23
-  target_temp: 17
+  target_temp: 12
   tolerance: 1
+  operation_mode: off

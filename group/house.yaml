@@ -1,11 +1,17 @@
 house_climate:
   name: House Climate
   entities:
-  - climate.house
   - binary_sensor.house_thermostat_online
-  - sensor.kitchen_temperature
+  - climate.house
+  - climate.kitchen
   - sensor.entrance_hall_temperature
   - sensor.house_thermostat_humidity
+
+house_climate_control:
+  name: House Climate
+  entities:
+  - climate.house
+  - climate.kitchen
 
 house_other:
   name: House Other

@@ -12,6 +12,6 @@
   name: 'Travis Build Status'
 
 - platform: steam_online
-  api_key: ***REMOVED***
+  api_key: !secret steam_key
   accounts:
-    - 76561197972831800
+    - !secret steam_account

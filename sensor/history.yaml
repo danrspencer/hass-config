@@ -134,36 +134,36 @@
   end: '{{ now() }}'
 
 # Kitchen Heater
-# - platform: history_stats
-#   name: Kitchen Heater ON Last Week
-#   entity_id: switch.kitchen_heater
-#   state: 'on'
-#   start: >
-#     {{ as_timestamp(
-#         now().replace(hour=0).replace(minute=0).replace(second=0)
-#       ) - (now().weekday() + 7) * 86400
-#     }}
-#   end: >
-#     {{ as_timestamp(
-#         now().replace(hour=0).replace(minute=0).replace(second=0)
-#       ) - now().weekday() * 86400
-#     }}
-#
-# - platform: history_stats
-#   name: Kitchen Heater ON This Week
-#   entity_id: switch.kitchen_heater
-#   state: 'on'
-#   start: >
-#     {{ as_timestamp(
-#         now().replace(hour=0).replace(minute=0).replace(second=0)
-#       ) - now().weekday() * 86400
-#     }}
-#   end: '{{ now() }}'
-#
-# - platform: history_stats
-#   name: Kitchen Heater ON Today
-#   entity_id: switch.kitchen_heater
-#   state: 'on'
-#   start: >
-#     {{ now().replace(hour=0).replace(minute=0).replace(second=0) }}
-#   end: '{{ now() }}'
+- platform: history_stats
+  name: Kitchen Heater ON Last Week
+  entity_id: switch.kitchen_heater
+  state: 'on'
+  start: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - (now().weekday() + 7) * 86400
+    }}
+  end: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - now().weekday() * 86400
+    }}
+
+- platform: history_stats
+  name: Kitchen Heater ON This Week
+  entity_id: switch.kitchen_heater
+  state: 'on'
+  start: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - now().weekday() * 86400
+    }}
+  end: '{{ now() }}'
+
+- platform: history_stats
+  name: Kitchen Heater ON Today
+  entity_id: switch.kitchen_heater
+  state: 'on'
+  start: >
+    {{ now().replace(hour=0).replace(minute=0).replace(second=0) }}
+  end: '{{ now() }}'

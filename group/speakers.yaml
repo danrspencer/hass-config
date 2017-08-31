@@ -1,9 +1,16 @@
+speakers_history:
+  name: Speaker Activity
+  icon: mdi:speaker-wireless
+  entities:
+  - sensor.music_listened_to_this_week
+  - sensor.music_listened_to_last_week
+
 speakers_everything:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
-    - media_player.everything
-    - media_player.everything_but_tv
+  - media_player.everything
+  - media_player.everything_but_tv
 
 speakers_ground_floor:
   name: Speakers

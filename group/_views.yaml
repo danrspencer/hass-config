@@ -6,7 +6,7 @@ default_view:
   - sensor.next_train_to_lds
   - scene.everything_off
   - group.meta_switches
-  - climate.house
+  - group.house_climate_control
   - media_player.speakers
 
 living_room:
