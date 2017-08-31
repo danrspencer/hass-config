@@ -29,6 +29,7 @@ kitchen:
   - sensor.kitchen_temperature
   - binary_sensor.kitchen_motion
   - group.lights_kitchen
+  - climate.kitchen
   - media_player.ground_floor
   - media_player.hear_go
   - media_player.kitchen
@@ -60,7 +61,7 @@ media:
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.speakers_everything_groups
+  - group.speakers_everything
   - group.speakers_ground_floor
   - group.speakers_middle_floor
   - group.speakers_top_floor

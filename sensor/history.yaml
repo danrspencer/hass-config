@@ -28,7 +28,7 @@
 # Sky TV Watched
 - platform: history_stats
   name: Sky TV Watched Last Week
-  entity_id: remote.living_room_tv
+  entity_id: sensor.living_room_tv
   state: 'Watch TV'
   start: >
     {{ as_timestamp(
@@ -43,7 +43,7 @@
 
 - platform: history_stats
   name: Sky TV Watched This Week
-  entity_id: remote.living_room_tv
+  entity_id: sensor.living_room_tv
   state: 'Watch TV'
   start: >
     {{ as_timestamp(
@@ -55,7 +55,7 @@
 # Shield TV
 - platform: history_stats
   name: Sky TV Watched Last Week
-  entity_id: remote.living_room_tv
+  entity_id: sensor.living_room_tv
   state: 'Watch Shield TV'
   start: >
     {{ as_timestamp(
@@ -70,7 +70,7 @@
 
 - platform: history_stats
   name: Sky TV Watched This Week
-  entity_id: remote.living_room_tv
+  entity_id: sensor.living_room_tv
   state: 'Watch Shield TV'
   start: >
     {{ as_timestamp(

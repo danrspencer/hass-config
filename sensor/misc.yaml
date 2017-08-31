@@ -10,3 +10,8 @@
     Accept: application/vnd.travis-ci.2+json
   value_template: '{{ value_json.builds[0].state }}'
   name: 'Travis Build Status'
+
+- platform: steam_online
+  api_key: ***REMOVED***
+  accounts:
+    - 76561197972831800
