@@ -135,7 +135,7 @@
 
 # Kitchen Heater
 - platform: history_stats
-  name: Kitchen Heater ON Last Week
+  name: Kitchen Heater On Last Week
   entity_id: switch.kitchen_heater
   state: 'on'
   start: >
@@ -150,7 +150,7 @@
     }}
 
 - platform: history_stats
-  name: Kitchen Heater ON This Week
+  name: Kitchen Heater On This Week
   entity_id: switch.kitchen_heater
   state: 'on'
   start: >
@@ -161,7 +161,7 @@
   end: '{{ now() }}'
 
 - platform: history_stats
-  name: Kitchen Heater ON Today
+  name: Kitchen Heater On Today
   entity_id: switch.kitchen_heater
   state: 'on'
   start: >

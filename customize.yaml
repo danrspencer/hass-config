@@ -10,9 +10,11 @@ switch.living_room_tv:
 switch.playstation_4:
   icon: mdi:gamepad-variant
 
-
 switch.kitchen_heater:
   icon: mdi:radiator
+
+sensor.fastcom_download:
+  icon: mdi:speedometer
 
 light.living_room:
   icon: mdi:lightbulb-outline
