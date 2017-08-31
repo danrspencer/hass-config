@@ -28,10 +28,9 @@ kitchen:
   icon: mdi:food-variant
   view: yes
   entities:
-  - sensor.kitchen_temperature
   - binary_sensor.kitchen_motion
   - group.lights_kitchen
-  - climate.kitchen
+  - group.kitchen_climate
   - media_player.ground_floor
   - media_player.hear_go
   - media_player.kitchen
@@ -63,6 +62,7 @@ media:
   icon: mdi:speaker-wireless
   view: yes
   entities:
+  - group.speakers_activity
   - group.speakers_everything
   - group.speakers_ground_floor
   - group.speakers_middle_floor

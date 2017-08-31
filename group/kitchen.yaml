@@ -1,4 +1,4 @@
-kitchen_heater:
+kitchen_climate:
   name: Kitchen Climate
   entities:
   - climate.kitchen
