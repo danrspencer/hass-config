@@ -54,7 +54,7 @@
 
 # Shield TV
 - platform: history_stats
-  name: Sky TV Watched Last Week
+  name: Shield TV Watched Last Week
   entity_id: sensor.living_room_tv
   state: 'Watch Shield TV'
   start: >
@@ -69,7 +69,7 @@
     }}
 
 - platform: history_stats
-  name: Sky TV Watched This Week
+  name: Shield TV Watched This Week
   entity_id: sensor.living_room_tv
   state: 'Watch Shield TV'
   start: >
