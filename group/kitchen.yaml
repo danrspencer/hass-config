@@ -4,4 +4,4 @@ kitchen_climate:
   - climate.kitchen
   - sensor.kitchen_heater_on_today
   - sensor.kitchen_heater_on_this_week
-  - sensor.kitchen_heater_on_last_week
+  # - sensor.kitchen_heater_on_last_week

@@ -80,6 +80,8 @@ house:
   - group.smoke_detector
   - group.network
   - group.phones
+  - group.house_activity_this_week
+  - group.house_activity_last_week
 
 outside:
   name: Outside
