@@ -133,6 +133,33 @@
     }}
   end: '{{ now() }}'
 
+# Steam Games
+- platform: history_stats
+  name: Steam Games Played Last Week
+  entity_id: binary_sensor.steam_playing
+  state: 'on'
+  start: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - (now().weekday() + 7) * 86400
+    }}
+  end: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - now().weekday() * 86400
+    }}
+
+- platform: history_stats
+  name: Steam Games Played This Week
+  entity_id: binary_sensor.steam_playing
+  state: 'on'
+  start: >
+    {{ as_timestamp(
+        now().replace(hour=0).replace(minute=0).replace(second=0)
+      ) - now().weekday() * 86400
+    }}
+  end: '{{ now() }}'
+
 # Kitchen Heater
 - platform: history_stats
   name: Kitchen Heater On Last Week

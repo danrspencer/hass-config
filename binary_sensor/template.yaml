@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    steam_playing:
+      value_template: '{{ states.sensor.steam_76561197972831800.attributes.Game != "None" }}'
+      friendly_name: 'Steam - Playing'

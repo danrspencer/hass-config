@@ -6,7 +6,6 @@ den_switches:
   - light.den
   - light.den_lamp_1
   - light.den_lamp_2
-  - sensor.steam_account1
 
 den_this_week:
   name: Activity This Week

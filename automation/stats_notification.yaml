@@ -1,10 +1,10 @@
-# Here's some stats from last week!
-#
-# Music Listened To: {{ states.sensor.music_listened_to_last_week.state }}
-#
-# Total TV Watched: {{ states.sensor.total_tv_watched_last_week.state }}
-# Sky TV Watched: {{ states.sensor.sky_tv_watched_last_week.state }}
-# Shield TV Watched: {{ states.sensor.shield_tv_watched_last_week.state }}
-#
-# PlayStation 4 Played: {{ states.sensor.playstation_4_played_last_week.state }}
-# Steam Online: {{ states.sensor.steam_online_last_week.state }}
+Here's some stats from last week!
+
+Music Listened To: {{ states.sensor.music_listened_to_last_week.state }}
+
+Total TV Watched: {{ states.sensor.total_tv_watched_last_week.state }}
+Sky TV Watched: {{ states.sensor.sky_tv_watched_last_week.state }}
+Shield TV Watched: {{ states.sensor.shield_tv_watched_last_week.state }}
+
+PlayStation 4 Played: {{ states.sensor.playstation_4_played_last_week.state }}
+Steam Played: {{ states.sensor.steam_online_last_week.state }}

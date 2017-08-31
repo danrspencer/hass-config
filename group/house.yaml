@@ -56,7 +56,7 @@ house_activity_this_week:
   - sensor.sky_tv_watched_this_week
   - sensor.shield_tv_watched_this_week
   - sensor.playstation_4_played_this_week
-  - sensor.steam_played_this_week
+  - sensor.steam_games_played_this_week
   - sensor.kitchen_heater_on_this_week
 
 house_activity_last_week:
@@ -66,5 +66,5 @@ house_activity_last_week:
   - sensor.sky_tv_watched_last_week
   - sensor.shield_tv_watched_last_week
   - sensor.playstation_4_played_last_week
-  - sensor.steam_played_last_week
+  - sensor.steam_games_played_last_week
   - sensor.kitchen_heater_on_last_week

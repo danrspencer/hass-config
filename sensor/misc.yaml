@@ -14,4 +14,4 @@
 - platform: steam_online
   api_key: !secret steam_key
   accounts:
-    - !secret steam_account
+    - 76561197972831800
