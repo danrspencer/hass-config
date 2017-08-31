@@ -17,7 +17,7 @@
   client_secret: !secret spotify_client_secret
 
 - platform: ps4
-  host: http://localhost:3030
+  host: http://localhost:3131
   ps4_ip: 192.168.0.72
   name: "PlayStation 4"
   local_store: games
