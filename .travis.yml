@@ -5,6 +5,6 @@ install:
   - pip3 install homeassistant
 script:
   - hass -c . --script check_config | tee check.output
-  - less check.output | grep -v ERROR
+  - ! less test.tmp | grep -q ERROR
 before_install:
   - mv secrets.yaml.sample secrets.yaml
