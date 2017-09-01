@@ -20,6 +20,6 @@
         Shield TV Watched: {{ states.sensor.shield_tv_watched_this_week.state }} hrs
 
         PlayStation 4 Played: {{ states.sensor.playstation_4_played_this_week.state }} hrs
-        Steam Played: {{ states.sensor.steam_games_played_this_week.state }} hrs
+        Steam Games Played: {{ states.sensor.steam_games_played_this_week.state }} hrs
 
         Kitchen Heater On: {{ states.sensor.kitchen_heater_on_this_week.state }} hrs
