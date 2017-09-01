@@ -1,4 +1,4 @@
-- alias: Startup Notification
+- alias: Weekly Summary
   trigger:
     platform: time
     at: '19:00:00'
