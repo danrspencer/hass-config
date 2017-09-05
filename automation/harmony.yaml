@@ -20,3 +20,23 @@
     data_template:
       entity_id: input_select.living_room_tv
       option: '{{ states.sensor.living_room_tv.state }}'
+
+- alias: Harmony Auto On
+  trigger:
+  - platform: state
+    entity_id: sensor.living_room_tv
+    from: "PowerOff"
+  action:
+  - service: switch.turn_on
+    entity_id: switch.hyperion
+  - service: switch.turn_on
+    entity_id: switch.living_room_light_tree
+
+- alias: Harmony Auto Off
+  trigger:
+  - platform: state
+    entity_id: sensor.living_room_tv
+    to: "PowerOff"
+  action:
+  - service: switch.turn_off
+    entity_id: switch.hyperion

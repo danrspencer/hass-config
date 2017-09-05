@@ -15,21 +15,3 @@
     value_template: '{{ states.input_select.hyperion_effect.state != "None" }}'
   action:
     service: shell_command.hyperion_set_effect
-
-- alias: Hyperion Auto On
-  trigger:
-  - platform: state
-    entity_id: sensor.living_room_tv
-    from: "PowerOff"
-  action:
-    service: switch.turn_on
-    entity_id: switch.hyperion
-
-- alias: Hyperion Auto Off
-  trigger:
-  - platform: state
-    entity_id: sensor.living_room_tv
-    to: "PowerOff"
-  action:
-    service: switch.turn_off
-    entity_id: switch.hyperion
