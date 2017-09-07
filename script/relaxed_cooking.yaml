@@ -1,0 +1,17 @@
+relaxed_cooking:
+  sequence:
+  - service: light.turn_on
+    entity_id:
+    - light.entrance_hall_1
+    data:
+      profile: relax
+  - service: light.turn_on
+    entity_id:
+    - light.entrance_hall_2
+    data:
+      profile: relax
+      brightness_pct: 25
+  - service: light.hue_activate_scene
+    data:
+      group_name: 'Kitchen'
+      scene_name: 'Relaxed cooking'

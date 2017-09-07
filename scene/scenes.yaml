@@ -5,6 +5,6 @@
     group.all_switches: off
     group.media: off
 
-- name: Jazz Mode
+- name: Relaxed Cooking
   entities:
-    script.jazz_mode: on
+    script.relaxed_cooking: on
