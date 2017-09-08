@@ -2,7 +2,7 @@
 
 set -e
 
-API_KEY=`less ../secrets.yaml | grep destiny2_api_key |  awk '{print $2}'`
+API_KEY=`less /config/secrets.yaml | grep destiny2_api_key |  awk '{print $2}'`
 
 STRIKER=2958378809
 SUNBREAKER=3105935002
