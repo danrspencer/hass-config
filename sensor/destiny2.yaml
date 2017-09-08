@@ -1,0 +1,4 @@
+- platform: command_line
+  name: Destiny 2 Subclass Element
+  command: /config/bash_scripts/destiny2_subclass.sh
+  scan_interval: 60
