@@ -11,6 +11,18 @@
   name: 'Kitchen Temperature'
 
 - platform: rest
+  resource: !secret hue_living_room_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Living Room Light'
+
+- platform: rest
+  resource: !secret hue_living_room_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Living Room Temperature'
+
+- platform: rest
   resource: !secret hue_entrance_hall_light
   value_template: '{{ value_json.state.lightlevel }}'
   unit_of_measurement: Lux
