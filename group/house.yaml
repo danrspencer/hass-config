@@ -5,6 +5,7 @@ house_climate:
   - climate.house
   - climate.kitchen
   - sensor.entrance_hall_temperature
+  - sensor.living_room_temperature
   - sensor.house_thermostat_humidity
 
 house_climate_control:
@@ -20,6 +21,9 @@ house_other:
   - binary_sensor.kitchen_motion
   - sensor.entrance_hall_light
   - binary_sensor.entrance_hall_motion
+  - sensor.living_room_light
+  - binary_sensor.living_room_motion
+
 
 network:
   name: Network
