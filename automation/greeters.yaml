@@ -11,7 +11,8 @@
   - service: tts.amazon_polly_say
     entity_id: media_player.hear_go
     data:
-      message: 'Welcome home!'
+      message: >
+        Welcome home!
   - service: automation.turn_off
     entity_id: automation.welcome_home
   - delay: 00:00:30
@@ -56,7 +57,8 @@
   - service: tts.amazon_polly_say
     entity_id: media_player.hear_go
     data:
-      message: 'Good Morning!'
+      message: >
+        Good Morning!
   - service: automation.turn_off
     entity_id: automation.good_morning
   - delay: 00:00:30
