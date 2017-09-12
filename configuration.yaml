@@ -41,7 +41,7 @@ tts:
   aws_access_key_id: !secret aws_access_key_id
   aws_secret_access_key: !secret aws_secret_access_key
   region_name: eu-west-1
-  text_type: ssml
+  text_type: text
   voice: Brian
 
 # Includes
