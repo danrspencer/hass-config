@@ -4,8 +4,8 @@ house_climate:
   - binary_sensor.house_thermostat_online
   - climate.house
   - climate.kitchen
-  - sensor.entrance_hall_temperature
   - sensor.living_room_temperature
+  - sensor.entrance_hall_temperature
   - sensor.house_thermostat_humidity
 
 house_climate_control:
