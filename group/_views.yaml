@@ -3,6 +3,7 @@ default_view:
   entities:
   - device_tracker.dphone
   - device_tracker.laurens_iphone
+  - sensor.day_phase
   - sensor.next_train_to_lds
   - scene.everything_off
   - group.meta_switches
