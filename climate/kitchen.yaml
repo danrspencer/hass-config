@@ -5,5 +5,5 @@
   min_temp: 10
   max_temp: 23
   target_temp: 12
-  tolerance: 0
+  tolerance: 0.5
   operation_mode: off
