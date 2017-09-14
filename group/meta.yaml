@@ -5,4 +5,6 @@ meta_switches:
   - group.living_room_switches
   - group.lights_kitchen
   - group.den_switches
+  - group.lights_bedroom
+  - group.lights_dressing_room
   - group.lights_hallway
