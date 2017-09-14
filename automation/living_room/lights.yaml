@@ -1,4 +1,4 @@
-- alias: Turn off living_room light X minutes after last movement
+- alias: Living Room Lights Off
   trigger:
   - entity_id: binary_sensor.living_room_motion
     platform: state
@@ -14,88 +14,32 @@
     data:
       transition: 15
 
-- alias: Living Room Lights Morning
+- alias: Living Room Lights On
   trigger:
   - entity_id: binary_sensor.living_room_motion
     platform: state
     from: 'off'
     to: 'on'
+  condition:
+    condition: state
+    entity_id: light.living_room
+    state: 'off'
   action:
   - service: light.hue_activate_scene
-    data:
+    data_template:
       group_name: Living Room
-      scene_name: Morning
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.living_room
-      state: 'off'
-    - condition: time
-      after: '05:00:00'
-      before: '09:00:00'
+      scene_name: '{{ states.sensor.day_phase.state }}'
 
-- alias: Living Room Lights Day
+- alias: Living Room Lights Update
   trigger:
-  - entity_id: binary_sensor.living_room_motion
+  - entity_id: sensor.day_phase
     platform: state
-    from: 'off'
-    to: 'on'
+  condition:
+    condition: state
+    entity_id: light.living_room
+    state: 'on'
   action:
   - service: light.hue_activate_scene
-    data:
+    data_template:
       group_name: Living Room
-      scene_name: Day
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.living_room
-      state: 'off'
-    - condition: time
-      after: '09:00:00'
-    - condition: sun
-      before: sunset
-
-- alias: Living Room Lights Evening
-  trigger:
-  - entity_id: binary_sensor.living_room_motion
-    platform: state
-    from: 'off'
-    to: 'on'
-  action:
-  - service: light.hue_activate_scene
-    data:
-      group_name: Living Room
-      scene_name: Evening
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.living_room
-      state: 'off'
-    - condition: sun
-      after: sunset
-    - condition: time
-      before: '22:00:00'
-
-- alias: Living Room Lights Night
-  trigger:
-  - entity_id: binary_sensor.living_room_motion
-    platform: state
-    from: 'off'
-    to: 'on'
-  action:
-  - service: light.hue_activate_scene
-    data:
-      group_name: Living Room
-      scene_name: Night
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.living_room
-      state: 'off'
-    - condition: time
-      after: '22:00:00'
-      before: '05:00:00'
+      scene_name: '{{ states.sensor.day_phase.state }}'
