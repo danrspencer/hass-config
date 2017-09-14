@@ -1,0 +1,25 @@
+# Dressing Room
+- alias: Dressing Room Lights Set
+  trigger:
+  - entity_id: light.dressing_room
+    platform: state
+    to: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data_template:
+      group_name: Dressing Room
+      scene_name: '{{ states.sensor.day_phase.state }}'
+
+- alias: Dressing Room Lights Update
+  trigger:
+  - entity_id: sensor.day_phase
+    platform: state
+  condition:
+    condition: state
+    entity_id: light.dressing_room
+    state: 'on'
+  action:
+  - service: light.hue_activate_scene
+    data_template:
+      group_name: Dressing Room
+      scene_name: '{{ states.sensor.day_phase.state }}'
