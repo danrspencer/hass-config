@@ -28,9 +28,19 @@ lights_den:
   name: Den
   icon: mdi:gamepad-variant
   entities:
-  - light.den
-  - light.den_lamp_1
-  - light.den_lamp_2
+  - light.den_lamp
+
+lights_bedroom:
+  name: Bedroom
+  icon: mdi:hotel
+  entities:
+  - light.bedroom_lamp
+
+lights_dressing_room:
+  name: Dressing Room
+  icon: mdi:tshirt-crew
+  entities:
+  - light.dressing_room_lamp
 
 lights_hallway:
   name: Hallways
