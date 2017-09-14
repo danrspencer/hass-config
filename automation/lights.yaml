@@ -33,7 +33,8 @@
 
 - alias: Kitchen Lights Update
   trigger:
-  - platform: sensor.day_phase
+  - entity_id: sensor.day_phase
+    platform: state
   condition:
     condition: state
     entity_id: light.hallways
