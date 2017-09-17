@@ -7,6 +7,7 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 ***-- this document is still very much work in progress --***
 
 ## Interesting Bits
+- Workflow / Build Pipeline
 - [Day Phase Sensor](#day-phase-sensor)
 - [Lighting Automations (Philips Hue)](#lighting-automations)
 - Harmony Integration
