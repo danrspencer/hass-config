@@ -20,14 +20,14 @@
   condition:
     condition: and
     conditions:
-      - condition: template
-        value_template: >
-          {{ states.media_player.playstation_4.state != 'off' }}
-      - condition: template
-        value_template: >
-          {{ states.sensor.day_phase.state == 'Evening'
-          or states.sensor.day_phase.state == 'Night'
-          }}
+    - condition: template
+      value_template: >
+        {{ states.media_player.playstation_4.state != 'off' }}
+    - condition: template
+      value_template: >
+        {{ states.sensor.day_phase.state == 'Evening'
+        or states.sensor.day_phase.state == 'Night'
+        }}
   action:
   - service: light.on
     entity_id: light.den
@@ -50,7 +50,7 @@
   - entity_id: sensor.destiny_2_subclass_element
     platform: state
   condition:
-    condition: tempate
+    condition: template
     value_template: >
       {{ states.media_player.playstation_4.attributes.source == 'Destiny 2' }}
   action:
