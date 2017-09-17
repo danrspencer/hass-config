@@ -4,7 +4,7 @@
 
 My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal ideas / use it for examples.
 
-*this document is still very much work in progress*
+***this document is still very much work in progress***
 
 ## Interesting Bits
 - [Day Phase Sensor](#day-phase-sensor)
