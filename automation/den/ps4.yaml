@@ -17,17 +17,17 @@
   trigger:
   - entity_id: media_player.playstation_4
     platform: state
-  condition:
-    condition: and
-    conditions:
-    - condition: template
-      value_template: >
-        {{ states.media_player.playstation_4.state != 'off' }}
-    - condition: template
-      value_template: >
-        {{ states.sensor.day_phase.state == 'Evening'
-        or states.sensor.day_phase.state == 'Night'
-        }}
+  # condition:
+  #   condition: and
+  #   conditions:
+  #   - condition: template
+  #     value_template: >
+  #       {{ states.media_player.playstation_4.state != 'off' }}
+  #   - condition: template
+  #     value_template: >
+  #       {{ states.sensor.day_phase.state == 'Evening'
+  #       or states.sensor.day_phase.state == 'Night'
+  #       }}
   action:
   - service: light.on
     entity_id: light.den
