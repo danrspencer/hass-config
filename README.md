@@ -6,9 +6,9 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 
 *this document is still very much work in progress*
 
-## Interesting Bits:
+## Interesting Bits
 - [Day Phase Sensor](#day-phase-sensor)
-- Day Phase Lighting
+- [Day Phase Lighting (Philips Hue)](#day-phase-lighting)
 - Harmony Integration
 - Hyperion Integration
 - Dynamic Group For Active Media Players
@@ -42,3 +42,7 @@ Example:
 ```
 
 [Current sensor config](https://github.com/danrspencer/hass-config/blob/master/sensor/template.yaml)
+
+## <a name="day-phase-lighting"></a>Day Phase Lighting (Philips Hue)
+
+The `Day Phase Sensor` allows me to keep my lighting automations very simple. For rooms with motion sensors I generally have three basic automations:
