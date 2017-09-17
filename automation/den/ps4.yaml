@@ -47,7 +47,7 @@
 
 - alias: Den Lamp Destiny 2 Sync
   trigger:
-  - entity_id: states.sensor.destiny_2_subclass_element.state
+  - entity_id: sensor.destiny_2_subclass_element
     platform: state
   condition:
     condition: tempate
