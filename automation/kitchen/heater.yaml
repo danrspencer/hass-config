@@ -25,7 +25,7 @@
     data:
       operation_mode: 'off'
 
-- alias: Kitchen Heater On
+- alias: Kitchen Heater Auto On
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
