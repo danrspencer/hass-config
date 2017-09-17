@@ -29,20 +29,20 @@
         or states.sensor.day_phase.state == 'Night'
         }}
   action:
-  - service: light.turn_on
-    entity_id: light.den
+  - service: light.hue_activate_scene
     data_template:
-      rgb_color: >
+      group_name: Den
+      scene_name: >
         {% if states.media_player.playstation_4.attributes.source == 'Destiny 2' %}
           {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
-            {{ [63, 79, 255] }}
+            D2 Arc
           {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
-            {{ [121, 84, 255] }}
+            D2 Void
           {% else %}
-            {{ [121, 192, 255] }}
+            D2 Solar
           {% endif %}
         {% else %}
-          {{ [18, 86, 255] }}
+          PS4 Default
         {% endif %}
 
 - alias: Den Lamp Destiny 2 Sync
@@ -54,15 +54,14 @@
     value_template: >
       {{ states.media_player.playstation_4.attributes.source == 'Destiny 2' }}
   action:
-  - service: light.on
-    entity_id: light.den
+  - service: light.hue_activate_scene
     data_template:
-      rgb_color: >
+      group_name: Den
+      scene_name: >
         {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
-          {{ [63, 79, 255] }}
+          D2 Arc
         {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
-          {{ [121, 84, 255] }}
+          D2 Void
         {% else %}
-          {{ [121, 192, 255] }}
+          D2 Solar
         {% endif %}
-      flash: 'short'
