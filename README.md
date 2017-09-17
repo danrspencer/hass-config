@@ -39,7 +39,7 @@ The `Day Phase Sensor` is one of the lynch pins of my HA setup. It uses a combin
         {% endif %}
 ```
 
-[Current sensor config](https://github.com/danrspencer/hass-config/blob/master/sensor/template.yaml)
+[Actual sensor config](https://github.com/danrspencer/hass-config/blob/master/sensor/template.yaml)
 
 ## <a name="day-phase-lighting"></a>Day Phase Lighting (Philips Hue)
 
