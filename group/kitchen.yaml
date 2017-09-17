@@ -2,6 +2,6 @@ kitchen_climate:
   name: Kitchen Climate
   entities:
   - climate.kitchen
+  - automation.kitchen_heater_auto_on
   - sensor.kitchen_heater_on_today
   - sensor.kitchen_heater_on_this_week
-  # - sensor.kitchen_heater_on_last_week

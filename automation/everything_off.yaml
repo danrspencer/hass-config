@@ -1,4 +1,4 @@
-- alias: Turn everything off when Nest goes to away
+- alias: Everything Off On Nest Away
   trigger:
   - entity_id: climate.house
     platform: state

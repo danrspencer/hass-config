@@ -1,14 +1,16 @@
-- alias: Sync heater at Startup
+- alias: Kitchen Heater Sync At Startup
   trigger:
-    platform: homeassistant
+  - platform: homeassistant
     event: start
+  - entity_id: sensor.house_thermostat_target
+    platform: state
   action:
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
       temperature: '{{ states.sensor.house_thermostat_target.state }}'
 
-- alias: Turn off kitchen heater X minutes after last movement
+- alias: Kitchen Heater Off
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
@@ -23,7 +25,7 @@
     data:
       operation_mode: 'off'
 
-- alias: Turn on kitchen heater on motion
+- alias: Kitchen Heater On
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
@@ -33,13 +35,3 @@
     entity_id: climate.kitchen
     data:
       operation_mode: 'auto'
-
-- alias: Sync with Nest target temperature
-  trigger:
-  - entity_id: sensor.house_thermostat_target
-    platform: state
-  action:
-    service: climate.set_temperature
-    entity_id: climate.kitchen
-    data_template:
-      temperature: '{{ states.sensor.house_thermostat_target.state }}'

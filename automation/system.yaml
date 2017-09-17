@@ -1,4 +1,4 @@
-- alias: Startup Notification
+- alias: System Startup Notification
   trigger:
     platform: homeassistant
     event: start
@@ -7,7 +7,7 @@
     data:
       message: 'Home Assistant back online!'
 
-- alias: Shutdown Notification
+- alias: System Shutdown Notification
   trigger:
     platform: homeassistant
     event: shutdown
@@ -16,7 +16,7 @@
     data:
       message: 'Home Assistant is going down!'
 
-- alias: Update notifications
+- alias: System Update notifications
   trigger:
     - platform: state
       entity_id: updater.updater
@@ -25,7 +25,7 @@
     data:
       message: 'There is a new Home Assistant release available.'
 
-- alias: Travis Build Status
+- alias: System Travis Build Status
   trigger:
   - platform: template
     value_template: >
