@@ -14,7 +14,6 @@
         {% else %}
             Night
         {% endif %}
-
     active_media_players:
       friendly_name: 'Active Media Players'
       value_template: >

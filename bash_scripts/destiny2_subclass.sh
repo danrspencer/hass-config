@@ -18,13 +18,13 @@ STORMCALLER=1751782730
 
 RES=`curl -s --header "X-API-Key: ${API_KEY}" https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018428481758/?components=203`
 
-if [[ ${RES} == *"${STRIKER}"* ]];
+if [[ ${RES} == *"${STORMCALLER}"* ]];
 then
   echo "Arc"
-elif [[ ${RES} == *"${SUNBREAKER}"* ]];
+elif [[ ${RES} == *"${DAWNBLADE}"* ]];
 then
   echo "Solar"
-elif [[ ${RES} == *"${SENTINEL}"* ]];
+elif [[ ${RES} == *"${VOIDWALKER}"* ]];
 then
   echo "Void"
 else

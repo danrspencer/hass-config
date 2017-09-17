@@ -5,5 +5,5 @@
   action:
   - service: group.set
     data_template:
-      object_id: media_active
+      object_id: media_active_players
       entities: '{{ trigger.to_state.state }}'
