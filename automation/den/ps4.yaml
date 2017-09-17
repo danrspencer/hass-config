@@ -1,20 +1,35 @@
+- alias: Den Lamp Off
+  trigger:
+  - entity_id: media_player.playstation_4
+    platform: state
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  action:
+  - service: light.turn_off
+    entity_id: light.den
+    data:
+      transition: 15
+
 - alias: Den Lamp On
   trigger:
   - entity_id: media_player.playstation_4
     platform: state
   condition:
-    condition: template
-    value_template: >
-      {{ states.sensor.day_phase.state == 'Evening'
-      or states.sensor.day_phase.state == 'Night'
-      }}
+    condition: and
+    conditions:
+      - condition: template
+        value_template: >
+          {{ states.media_player.playstation_4.state != 'off' }}
+      - condition: template
+        value_template: >
+          {{ states.sensor.day_phase.state == 'Evening'
+          or states.sensor.day_phase.state == 'Night'
+          }}
   action:
-  - service_template: >
-      {% if states.media_player.playstation_4.state == 'off' %}
-        light.off
-      {% else %}
-        light.on
-      {% endif %}
+  - service: light.on
     entity_id: light.den
     data_template:
       rgb_color: >
