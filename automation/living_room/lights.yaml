@@ -51,3 +51,8 @@
     data_template:
       group_name: Living Room
       scene_name: '{{ states.sensor.day_phase.state }}'
+  - service_template: >
+      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
+        switch.turn_on
+      {% endif %}
+    entity_id: switch.living_room_light_tree
