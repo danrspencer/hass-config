@@ -27,11 +27,12 @@
 
 - alias: System Travis Build Status
   trigger:
-  - platform: template
-    value_template: >
-      {{ is_state('sensor.travis_build_status', 'passed')
-      or is_state('sensor.travis_build_status', 'failed')
-      }}
+  - platform: state
+    entity_id: sensor.travis_build_status
+    # to: 'passed'
+  # - platform: state
+  #   entity_id: sensor.travis_build_status
+  #   to: 'failed'
   action:
   - service: notify.ios_dphone
     data:
