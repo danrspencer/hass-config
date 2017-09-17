@@ -1,0 +1,53 @@
+- alias: Den Lamp On
+  trigger:
+  - entity_id: media_player.playstation_4
+    platform: state
+  condition:
+    condition: template
+    value_template: >
+      {{ states.sensor.day_phase.state == 'Evening'
+      or states.sensor.day_phase.state == 'Night'
+      }}
+  action:
+  - service_template: >
+      {% if states.media_player.playstation_4.state == 'off' %}
+        light.off
+      {% else %}
+        light.on
+      {% endif %}
+    entity_id: light.den
+    data_template:
+      rgb_color: >
+        {% if states.media_player.playstation_4.attributes.source == 'Destiny 2' %}
+          {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
+            [63, 79, 255]
+          {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
+            [121, 84, 255]
+          {% else %}
+            [121, 192, 255]
+          {% endif %}
+        {% else %}
+          [18, 86, 255]
+        {% endif %}
+
+- alias: Den Lamp Destiny 2 Sync
+  trigger:
+  - entity_id: states.sensor.destiny_2_subclass_element.state
+    platform: state
+  condition:
+    condition: tempate
+    value_template: >
+      {{ states.media_player.playstation_4.attributes.source == 'Destiny 2' }}
+  action:
+  - service: light.on
+    entity_id: light.den
+    data_template:
+      rgb_color: >
+        {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
+          [63, 79, 255]
+        {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
+          [121, 84, 255]
+        {% else %}
+          [121, 192, 255]
+        {% endif %}
+      flash: 'short'
