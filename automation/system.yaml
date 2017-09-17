@@ -29,10 +29,7 @@
   trigger:
   - platform: state
     entity_id: sensor.travis_build_status
-    # to: 'passed'
-  # - platform: state
-  #   entity_id: sensor.travis_build_status
-  #   to: 'failed'
+    from: 'started'
   action:
   - service: notify.ios_dphone
     data:
