@@ -1,6 +1,7 @@
 - platform: template
   sensors:
     day_phase:
+      friendly_name: 'Day Phase'
       value_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
@@ -13,10 +14,20 @@
         {% else %}
             Night
         {% endif %}
-      friendly_name: 'Day Phase'
+
+    active_media_players:
+      friendly_name: 'Active Media Players'
+      value_template: >
+        {{ states.media_player
+          | rejectattr('state', 'equalto', 'off')
+          | rejectattr('state', 'equalto', 'idle')
+          | map(attribute ='entity_id')
+          | join(', ')
+        }}
     living_room_tv:
-      value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
       friendly_name: 'Living Room TV'
+      value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
+
 
 - platform: rest
   resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds

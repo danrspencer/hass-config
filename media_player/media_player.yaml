@@ -1,17 +1,3 @@
-- platform: universal
-  name: Speakers
-  children:
-  - media_player.everything
-  - media_player.everything_but_tv
-  - media_player.ground_floor
-  - media_player.top_floor
-  - media_player.kitchen
-  - media_player.living_room
-  - media_player.hear_go
-  - media_player.den
-  - media_player.bedroom
-  - media_player.dressing_room
-
 - platform: spotify
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret

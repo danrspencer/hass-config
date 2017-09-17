@@ -1,0 +1,9 @@
+- alias: Media Update Active Group
+  trigger:
+  - entity_id: sensor.active_media_players
+    platform: state
+  action:
+  - service: group.set
+    data_template:
+      object_id: media_active
+      entities: '{{ trigger.to_state.state }}'
