@@ -8,7 +8,7 @@ default_view:
   - scene.everything_off
   - group.meta_switches
   - group.house_climate_control
-  - group.media_active_players
+  - group.media_players_active
 
 living_room:
   name: Living Room
