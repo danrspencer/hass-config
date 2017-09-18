@@ -7,7 +7,7 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 ***-- this document is still very much work in progress --***
 
 ## Interesting Bits
-- Workflow / Build Pipeline
+- [Workflow / Build Pipeline](#workflow)
 - [Day Phase Sensor](#day-phase-sensor)
 - [Lighting Automations (Philips Hue)](#lighting-automations)
 - Harmony Integration
@@ -21,7 +21,9 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 
 My config is validated using [Travis CI](https://travis-ci.org/danrspencer/hass-config) after each push using the latest version of Home Assistant. HA uses a [sensor](https://github.com/danrspencer/hass-config/blob/master/sensor/misc.yaml) to monitor the Travis build state and sends me notifications of the outcome for each build.
 
-After a successful build I use my [Makefile](https://github.com/danrspencer/hass-config/blob/master/Makefile) to push the update to Home Assistant and restart the service.
+After a successful build I use the [Makefile](https://github.com/danrspencer/hass-config/blob/master/Makefile) to push the update to Home Assistant and restart the service.
+
+![Notification Example](https://github.com/danrspencer/hass-config/blob/master/documentation/images/build-notifications.jpeg)
 
 TODO: Create a Hassio addon which can automate updating the config. Then update the notifications for a successful build to provide an actionable "Update and Restart" prompt.
 
