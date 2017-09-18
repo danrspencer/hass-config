@@ -17,6 +17,14 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 - Nest Synced Generic Thermostat
 - Destiny 2 Integration
 
+## <a name="workflow"></a>Workflow / Build Pipeline
+
+My config is validated using [Travis CI](https://travis-ci.org/danrspencer/hass-config) after each push using the latest version of Home Assistant. HA uses a [sensor](https://github.com/danrspencer/hass-config/blob/master/sensor/misc.yaml) to monitor the Travis build state and sends me notifications of the outcome for each build.
+
+After a successful build I use my [Makefile](https://github.com/danrspencer/hass-config/blob/master/Makefile) to push the update to Home Assistant and restart the service.
+
+TODO: Create a Hassio addon which can automate updating the config. Then update the notifications for a successful build to provide an actionable "Update and Restart" prompt.
+
 ## <a name="day-phase-sensor"></a>Day Phase Sensor
 
 The `Day Phase Sensor` is one of the lynch pins of my HA setup. It uses a combination of time and sun position to decide if the it's currently `Morning`, `Day`, `Evening` or `Night`. This allows me to easily keep automations that rely on the time of day easily in sync and removes a lot of duplication.
