@@ -99,12 +99,13 @@ outside:
   - group.dark_sky
   - group.met_office
 
-other:
+system:
   name: Other
   icon: mdi:developer-board
   view: yes
   entities:
   - media_player.spotify
   - sensor.travis_build_status
+  - group.system_pi_stats
   - group.all_input_booleans
   - group.all_automations
