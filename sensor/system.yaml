@@ -1,0 +1,21 @@
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_use_percent
+    - type: swap_use_percent
+    - type: processor_use
+    - type: since_last_boot
+    - type: load_15m
+    - type: network_in
+      arg: wlan0
+    - type: network_out
+      arg: wlan0
+
+- platform: command_line
+  name: CPU Temp
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) }}'
+
+- platform: cpuspeed
