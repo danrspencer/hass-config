@@ -1,6 +1,6 @@
 # Home Assistant Config
 
-![Build Status](https://travis-ci.org/danrspencer/hass-config.svg?branch=master)
+[![Build Status](https://travis-ci.org/danrspencer/hass-config.svg?branch=master)](https://travis-ci.org/danrspencer/hass-config)
 
 My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal ideas / use it for examples.
 
