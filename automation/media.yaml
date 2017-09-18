@@ -10,4 +10,5 @@
   - service: group.set_visibility
     entity_id: group.media_players_active
     data_template:
-      visible: '{{ states.sensor.media_players_active.state != '' }}'
+      visible: >
+        {{ states.sensor.media_players_active.state != '' }}
