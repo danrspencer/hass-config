@@ -3,18 +3,17 @@
   - entity_id: sensor.media_players_active
     platform: state
   action:
-  - service_template: >
-      {% if trigger.to_state.state != '' %}
-        group.set
-      {% endif %}
-    data_template:
-      object_id: media_players_active
-      visible: true
-      entities: '{{ trigger.to_state.state }}'
-  - service_template: >
+  - service: group.set
+    data_template: >
       {% if trigger.to_state.state == '' %}
-        group.set
+        {{ {
+          'object_id': 'media_players_active',
+          'visible': false
+        } }}
+      {% else %}
+        {{ {
+          'object_id': 'media_players_active',
+          'visible': true,
+          'entities': trigger.to_state.state
+        } }}
       {% endif %}
-    data:
-      object_id: media_players_active
-      visible: false
