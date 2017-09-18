@@ -23,7 +23,7 @@ My config is validated using [Travis CI](https://travis-ci.org/danrspencer/hass-
 
 After a successful build I use the [Makefile](https://github.com/danrspencer/hass-config/blob/master/Makefile) to push the update to Home Assistant and restart the service.
 
-![Notification Example](https://github.com/danrspencer/hass-config/blob/master/documentation/images/build-notifications.jpeg)
+![Notification Example](https://github.com/danrspencer/hass-config/blob/master/documentation/images/build-notifications.jpeg =400x)
 
 TODO: Create a Hassio addon which can automate updating the config. Then update the notifications for a successful build to provide an actionable "Update and Restart" prompt.
 
