@@ -7,7 +7,7 @@
       {% if trigger.to_state.state != '' %}
         group.set
       {% endif %}
-    data_template: >
+    data_template:
       object_id: media_players_active
       visible: true
       entities: '{{ trigger.to_state.state }}'
@@ -15,6 +15,6 @@
       {% if trigger.to_state.state == '' %}
         group.set
       {% endif %}
-    data_template: >
+    data:
       object_id: media_players_active
       visible: false
