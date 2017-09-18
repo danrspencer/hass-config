@@ -10,7 +10,7 @@
     data_template: >
       object_id: media_players_active
       visible: true
-      entities: {{ trigger.to_state.state }}
+      entities: '{{ trigger.to_state.state }}'
   - service_template: >
       {% if trigger.to_state.state == '' %}
         group.set
