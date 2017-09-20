@@ -3,3 +3,6 @@
 secrets.yaml
 
 backup
+
+homebridge/accessories
+homebridge/persist

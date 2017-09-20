@@ -3,9 +3,11 @@ switch.hyperion:
 
 switch.living_room_light_tree:
   icon: mdi:tree
+  homebridge_visible: true
 
 switch.living_room_tv:
   icon: mdi:television
+  homebridge_visible: true
 
 switch.playstation_4:
   icon: mdi:gamepad-variant
@@ -30,3 +32,9 @@ group.all_automations:
 
 group.all_scripts:
   hidden: false
+
+climate.house:
+  homebridge_visible: true
+
+climate.kitchen:
+  homebridge_visible: true
