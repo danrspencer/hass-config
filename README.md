@@ -19,7 +19,7 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 
 ## <a name="workflow"></a>Workflow / Build Pipeline
 
-My config is validated using [Travis CI](https://travis-ci.org/danrspencer/hass-config) after each push using the latest version of Home Assistant. HA uses a [sensor](https://github.com/danrspencer/hass-config/blob/master/sensor/misc.yaml) to monitor the Travis build state and sends me notifications of the outcome for each build.
+My config is validated by [Travis CI](https://travis-ci.org/danrspencer/hass-config) using the latest version of Home Assistant after each push. HA uses a [sensor](https://github.com/danrspencer/hass-config/blob/master/sensor/misc.yaml) to monitor the Travis build state and sends me notifications of the outcome for each build.
 
 ![Notification Example](https://github.com/danrspencer/hass-config/blob/master/documentation/images/build-notifications.jpeg)
 
