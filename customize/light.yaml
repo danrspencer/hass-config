@@ -1,0 +1,8 @@
+light.living_room:
+  icon: mdi:lightbulb-outline
+
+light.kitchen:
+  icon: mdi:lightbulb-outline
+
+light.hallways:
+  icon: mdi:lightbulb-outline

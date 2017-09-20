@@ -1,0 +1,32 @@
+media_player.playstation_4:
+  homebridge_visible: true
+
+media_player.top_floor:
+  homebridge_visible: true
+
+media_player.den:
+  homebridge_visible: true
+
+media_player.bedroom:
+  homebridge_visible: true
+
+media_player.dressing_room:
+  homebridge_visible: true
+
+media_player.living_room:
+  homebridge_visible: true
+
+media_player.ground_floor:
+  homebridge_visible: true
+
+media_player.hear_go:
+  homebridge_visible: true
+
+media_player.kitchen:
+  homebridge_visible: true
+
+media_player.everything:
+  homebridge_visible: true
+
+media_player.everything_but_tv:
+  homebridge_visible: true

@@ -1,0 +1,17 @@
+sensor.living_room_temperature:
+  homebridge_visible: true
+
+sensor.entrance_hall_temperature:
+  homebridge_visible: true
+
+sensor.house_thermostat_humidity:
+  homebridge_visible: true
+
+sensor.kitchen_light:
+  homebridge_visible: true
+
+sensor.entrance_hall_light:
+  homebridge_visible: true
+
+sensor.living_room_light:
+  homebridge_visible: true
