@@ -12,5 +12,10 @@
 
 - platform: command_line
   name: Destiny 2 Subclass Element
-  command: /config/bash_scripts/destiny2_subclass.sh
+  command: '/config/bash_scripts/destiny2_subclass.sh /config/secrets.yaml'
   scan_interval: 30
+
+- platform: command_line
+  name: Python Version
+  command: 'python --version'
+  scan_interval: 60
