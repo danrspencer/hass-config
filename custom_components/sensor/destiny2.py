@@ -78,6 +78,8 @@ class Destiny2Sensor(Entity):
 
     def __init__(self, name, membershipType, destinyMembershipId, apiKey):
         """Initialize the sensor."""
+        _LOGGER.info('Initialize Destiny2 sensor: ' + name)
+        
         self._state = 'Unknown'
 
         self._name = name
