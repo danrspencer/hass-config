@@ -28,9 +28,6 @@ ARC = [STORMCALLER, ARCSTRIDER, STRIKER]
 VOID = [VOIDWALKER, NIGHTSTALKER, SENTINEL]
 SOLAR = [DAWNBLADE, GUNSLINGER, SUNBREAKER]
 
-MIN_TIME_BETWEEN_SCANS = datetime.timedelta(seconds=30)
-MIN_TIME_BETWEEN_FORCED_SCANS = datetime.timedelta(seconds=30)
-
 DEFAULT_NAME = 'Destiny2'
 CONF_MEMBERSHIP_TYPE = 'membership_type'
 CONF_DESTINY_MEMBERSHIP_ID = 'destiny_membership_id'
@@ -97,7 +94,7 @@ class Destiny2Sensor(Entity):
         """Return the state of the sensor."""
         return self._state
 
-    @Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
+    @Throttle(datetime.timedelta(seconds=30))
     def update(self):
         """Fetch new state data for the sensor.
 
