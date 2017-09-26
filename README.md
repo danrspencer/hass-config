@@ -82,7 +82,7 @@ Finding your `membership_type` and `destiny_membership_id` can be done by naviga
 
 To get your API key you need to sign up at [Bungie's Application Portal](https://www.bungie.net/en/Application) and create an application.
 
-Unfortunately the sensor isn't quite as responsive as I'd like to the (extremely reasonable) rate limiting imposed by the Bungie API. The sensor should refresh roughly every 30 seconds.
+Unfortunately the sensor isn't quite as responsive as I'd like due to the (extremely reasonable) rate limiting imposed by the Bungie API. The sensor should refresh roughly every 30 seconds.
 
 ---
 
