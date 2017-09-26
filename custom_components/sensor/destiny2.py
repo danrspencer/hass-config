@@ -76,15 +76,15 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 class Destiny2Sensor(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, name, membershipType, destinyMembershipId, apiKey):
+    def __init__(self, name, membership_type, destiny_membership_id, api_key):
         """Initialize the sensor."""
         _LOGGER.info('Initialize Destiny2 sensor: ' + name)
-        
+
         self._state = 'Unknown'
 
         self._name = name
-        self._membership_type = membershipType
-        self._destiny_membership_id = destinyMembershipId
+        self._membership_type = membership_type
+        self._destiny_membership_id = destiny_membership_id
         self._api_key = api_key
 
     @property
