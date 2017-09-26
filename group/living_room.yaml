@@ -20,6 +20,7 @@ living_room_lights:
   entities:
   - light.living_room
   - light.living_room_lamp
+  - light.living_room_candle
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
@@ -33,6 +34,7 @@ living_room_switches:
   - switch.hyperion
   - light.living_room
   - light.living_room_lamp
+  - light.living_room_candle
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3

@@ -27,20 +27,16 @@
       group_name: Den
       scene_name: >
         {% if states.media_player.playstation_4.attributes.source == 'Destiny 2' %}
-          {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
-            D2 Arc
-          {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
-            D2 Void
-          {% else %}
-            D2 Solar
-          {% endif %}
+          D2 {{ states.sensor.destiny2.state }}
+        {% elif states.media_player.playstation_4.attributes.source == 'EVE' %}
+          PS4 VR
         {% else %}
           PS4 Default
         {% endif %}
 
 - alias: Den Lamp Destiny 2 Sync
   trigger:
-  - entity_id: sensor.destiny_2_subclass_element
+  - entity_id: sensor.destiny2
     platform: state
   condition:
     condition: template
@@ -51,10 +47,4 @@
     data_template:
       group_name: Den
       scene_name: >
-        {% if states.sensor.destiny_2_subclass_element.state == 'Arc' %}
-          D2 Arc
-        {% elif states.sensor.destiny_2_subclass_element.state == 'Void' %}
-          D2 Void
-        {% else %}
-          D2 Solar
-        {% endif %}
+        D2 {{ states.sensor.destiny2.state }}
