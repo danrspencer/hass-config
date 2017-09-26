@@ -15,7 +15,7 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 - Dynamic Group For Active Media Players
 - Audio Greeters
 - Nest Synced Generic Thermostat
-- Destiny 2 Integration
+- [Destiny 2 Integration](#destiny-2)
 
 ## <a name="workflow"></a>Workflow / Build Pipeline
 
@@ -55,3 +55,37 @@ The `Day Phase Sensor` is one of the lynch pins of my HA setup. It uses a combin
 ## <a name="lighting-automations"></a>Lighting Automations (Philips Hue)
 
 The `Day Phase Sensor` allows me to keep my lighting automations very simple. For rooms with motion sensors I generally have three basic automations:
+
+...
+
+## <a name="destiny-2"></a>Destiny 2 Integration
+
+I've implemented a [custom Destiny 2 sensor component](https://github.com/danrspencer/hass-config/blob/master/custom_components/sensor/destiny2.py) to monitor the subclass of my current / most recently played character in Destiny 2.
+
+```yaml
+- platform: destiny2
+  membership_type: 2
+  destiny_membership_id: 4611686018428481758
+  api_key: !secret destiny2_api_key
+```
+
+Finding your `membership_type` and `destiny_membership_id` can be done by navigating to your profile on the Bungie website then clicking on the platform you're interested in (e.g. `PlayStation Network`).Your `membership_type` will the first number after `profile` in the url and your `destiny_membership_id` is the second number.
+
+```
+e.g.
+
+My profile is [https://www.bungie.net/en/Profile/**2**/**4611686018428481758**/Atraignis](https://www.bungie.net/en/Profile/2/4611686018428481758/Atraignis)
+
+So my details are:
+
+  membership_type: 2
+  destiny_membership_id: 4611686018428481758
+```
+
+To get your API key you need to sign up at [Bungie's Application Portal](https://www.bungie.net/en/Application) and create an application.
+
+---
+
+This sensor, combined with the PS4 integration, allows me to do some [nice automations](https://github.com/danrspencer/hass-config/blob/master/automation/den/ps4.yaml) setting the lights in my games room to colors corresponding to my current subclass. It adds a bit of immersion and helps to stop me forgetting what subclass I'm currently running!
+
+*There's potential for loads of extra automations with this component, especially if I can get OAuth working with it.*
