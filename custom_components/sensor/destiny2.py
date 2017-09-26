@@ -1,5 +1,6 @@
-import requests
 import datetime
+import logging
+import requests
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
