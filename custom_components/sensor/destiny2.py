@@ -1,6 +1,7 @@
 import datetime
 import logging
 import requests
+import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers import config_validation as cv
