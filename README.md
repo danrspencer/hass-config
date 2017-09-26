@@ -82,6 +82,8 @@ Finding your `membership_type` and `destiny_membership_id` can be done by naviga
 
 To get your API key you need to sign up at [Bungie's Application Portal](https://www.bungie.net/en/Application) and create an application.
 
+Unfortunately the sensor isn't quite as responsive as I'd like to the (extremely reasonable) rate limiting imposed by the Bungie API. The sensor should refresh roughly every 30 seconds.
+
 ---
 
 This sensor, combined with the PS4 integration, allows me to do some [nice automations](https://github.com/danrspencer/hass-config/blob/master/automation/den/ps4.yaml) setting the lights in my games room to colors corresponding to my current subclass. It adds a bit of immersion and helps to stop me forgetting what subclass I'm currently running!
