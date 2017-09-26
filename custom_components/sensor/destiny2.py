@@ -110,6 +110,9 @@ class Destiny2Sensor(Entity):
             url = "https://www.bungie.net/Platform/Destiny2/" + self._membership_type + "/Profile/" + self._destiny_membership_id + "/?components=200,205"
             headers = {'X-API-Key': self._api_key}
 
+            _LOGGER.info('Requesting to: ' + url)
+            _LOGGER.info('With headers: ' + headers)
+
             response = requests.get(url, headers=headers)
 
             characters = response.json()['Response']['characters']['data']
@@ -122,4 +125,5 @@ class Destiny2Sensor(Entity):
 
             self._state = get_current_element(most_recent_char_equip)
         except:
-            self._state = 'Unknown'
+            _LOGGER.error('Unexpected error: ' + sys.exc_info()[0])
+            self._state = 'Error'
