@@ -74,7 +74,7 @@ Finding your `membership_type` and `destiny_membership_id` can be done by naviga
 ```
 e.g.
 
-My profile is [https://www.bungie.net/en/Profile/**2**/**4611686018428481758**/Atraignis](https://www.bungie.net/en/Profile/2/4611686018428481758/Atraignis)
+My profile is https://www.bungie.net/en/Profile/**2**/**4611686018428481758**/Atraignis
 
 So my details are:
 
