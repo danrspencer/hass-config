@@ -94,7 +94,7 @@ class Destiny2Sensor(Entity):
         """Return the state of the sensor."""
         return self._state
 
-    @Throttle(datetime.timedelta(seconds=30))
+    @Throttle(datetime.timedelta(seconds=15), datetime.timedelta(seconds=1))
     def update(self):
         """Fetch new state data for the sensor.
 
