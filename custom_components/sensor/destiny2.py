@@ -1,7 +1,5 @@
 import requests
-
-from datetime import timedelta
-from dateutil.parser import parse
+import datetime
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
@@ -23,8 +21,8 @@ ARC = [STORMCALLER, ARCSTRIDER, STRIKER]
 VOID = [VOIDWALKER, NIGHTSTALKER, SENTINEL]
 SOLAR = [DAWNBLADE, GUNSLINGER, SUNBREAKER]
 
-MIN_TIME_BETWEEN_SCANS = timedelta(seconds=30)
-MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=30)
+MIN_TIME_BETWEEN_SCANS = datetime.timedelta(seconds=30)
+MIN_TIME_BETWEEN_FORCED_SCANS = datetime.timedelta(seconds=30)
 
 DEFAULT_NAME = 'Destiny 2'
 CONF_MEMBERSHIP_TYPE = 'membership_type'
@@ -46,7 +44,8 @@ def dict_to_list(dict):
     return list
 
 def get_date_last_played(record):
-    return parse(record['dateLastPlayed']).strftime('%s')
+    date_last_played = datetime.datetime.strptime(record['dateLastPlayed'], "%Y-%m-%dT%H:%M:%SZ")
+    return date_last_played.strftime('%s')
 
 def get_current_element(equipment):
     for item in equipment['items']:

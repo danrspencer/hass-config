@@ -2,7 +2,7 @@
 
 import requests
 
-from dateutil.parser import parse
+import datetime
 
 STORMCALLER = 1751782730
 VOIDWALKER = 3887892656
@@ -20,6 +20,8 @@ ARC = [STORMCALLER, ARCSTRIDER, STRIKER]
 VOID = [VOIDWALKER, NIGHTSTALKER, SENTINEL]
 SOLAR = [DAWNBLADE, GUNSLINGER, SUNBREAKER]
 
+MIN_TIME_BETWEEN_SCANS = datetime.timedelta(seconds=30)
+
 def dictToList(dict):
     list = []
     for key, value in dict.items():
@@ -27,7 +29,10 @@ def dictToList(dict):
     return list
 
 def getDateLastPlayed(record):
-    return parse(record['dateLastPlayed']).strftime('%s')
+    date_last_played = datetime.datetime.strptime(record['dateLastPlayed'], "%Y-%m-%dT%H:%M:%SZ")
+    print('here')
+    print(date_last_played)
+    return date_last_played.strftime('%s')
 
 def getCurrentElement(equipment):
     for item in equipment['items']:
@@ -39,22 +44,25 @@ def getCurrentElement(equipment):
             return 'Solar'
     return 'Unknown'
 
-try:
-    url = "https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018428481758/?components=200,205"
-    headers = {'X-API-Key': '03e0f76e26b04e2285ed57304bf8cf16'}
+# try:
+url = "https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018428481758/?components=200,205"
+headers = {'X-API-Key': '03e0f76e26b04e2285ed57304bf8cf16'}
 
-    response = requests.get(url, headers=headers)
+response = requests.get(url, headers=headers)
+print('here')
+characters = response.json()['Response']['characters']['data']
+equipment = response.json()['Response']['characterEquipment']['data']
 
-    characters = response.json()['Response']['characters']['data']
-    equipment = response.json()['Response']['characterEquipment']['data']
+print('here')
+getDateLastPlayed(dictToList(characters)[0])
 
-    sortedCharsList = sorted(dictToList(characters), key=getDateLastPlayed, reverse=True)
-    mostRecentCharId = sortedCharsList[0]['characterId']
+sortedCharsList = sorted(dictToList(characters), key=getDateLastPlayed, reverse=True)
+mostRecentCharId = sortedCharsList[0]['characterId']
 
-    mostRecentCharEquip = equipment[mostRecentCharId]
+mostRecentCharEquip = equipment[mostRecentCharId]
 
-    currentElement = getCurrentElement(mostRecentCharEquip)
+currentElement = getCurrentElement(mostRecentCharEquip)
 
-    print(currentElement)
-except:
-    print('Unknown')
+print(currentElement)
+# except:
+    # print('Unknown')
