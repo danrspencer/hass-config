@@ -21,7 +21,6 @@
   scan_interval: 60
 
 - platform: destiny2
-  name: D2 Subclass
   membership_type: 2
   destiny_membership_id: 4611686018428481758
   api_key: !secret destiny2_api_key

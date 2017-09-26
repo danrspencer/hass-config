@@ -26,6 +26,7 @@ SOLAR = [DAWNBLADE, GUNSLINGER, SUNBREAKER]
 MIN_TIME_BETWEEN_SCANS = timedelta(seconds=30)
 MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=30)
 
+DEFAULT_NAME = 'Destiny 2'
 CONF_MEMBERSHIP_TYPE = 'membership_type'
 CONF_DESTINY_MEMBERSHIP_ID = 'destiny_membership_id'
 
@@ -34,7 +35,8 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_MEMBERSHIP_TYPE): cv.string,
     vol.Required(CONF_DESTINY_MEMBERSHIP_ID): cv.string,
-    vol.Required(CONF_API_KEY): cv.string
+    vol.Required(CONF_API_KEY): cv.string,
+    vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string
 })
 
 def dict_to_list(dict):
