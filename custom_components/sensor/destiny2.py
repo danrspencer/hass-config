@@ -100,7 +100,7 @@ class Destiny2Sensor(Entity):
         """Return the unit of measurement."""
         return ''
 
-    @util.Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
+    @Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
     def update(self):
         """Fetch new state data for the sensor.
 
