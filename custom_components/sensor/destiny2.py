@@ -31,7 +31,7 @@ SOLAR = [DAWNBLADE, GUNSLINGER, SUNBREAKER]
 MIN_TIME_BETWEEN_SCANS = datetime.timedelta(seconds=30)
 MIN_TIME_BETWEEN_FORCED_SCANS = datetime.timedelta(seconds=30)
 
-DEFAULT_NAME = 'Destiny 2'
+DEFAULT_NAME = 'Destiny2'
 CONF_MEMBERSHIP_TYPE = 'membership_type'
 CONF_DESTINY_MEMBERSHIP_ID = 'destiny_membership_id'
 
@@ -97,11 +97,6 @@ class Destiny2Sensor(Entity):
         """Return the state of the sensor."""
         return self._state
 
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return ''
-
     @Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
     def update(self):
         """Fetch new state data for the sensor.
@@ -113,9 +108,11 @@ class Destiny2Sensor(Entity):
             headers = {'X-API-Key': self._api_key}
 
             _LOGGER.info('Requesting to: ' + url)
-            _LOGGER.info('With headers: ' + headers)
+            _LOGGER.info('API Key: ' + self._api_key)
 
             response = requests.get(url, headers=headers)
+
+            _LOGGER.info('Got response from Destiny2 api...')
 
             characters = response.json()['Response']['characters']['data']
             equipment = response.json()['Response']['characterEquipment']['data']
