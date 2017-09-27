@@ -1,4 +1,4 @@
-IP=			***REMOVED***.duckdns.org
+IP=			hassio.local
 USER=		root
 
 update-config:
