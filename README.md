@@ -29,7 +29,7 @@ After a successful build I use the [Makefile](https://github.com/danrspencer/has
 
 ## <a name="day-phase-sensor"></a>Day Phase Sensor
 
-The `Day Phase Sensor` is one of the lynch pins of my HA setup. It uses a combination of time and sun position to decide if the it's currently `Morning`, `Day`, `Evening` or `Night`. This allows me to easily keep automations that rely on the time of day easily in sync and removes a lot of duplication.
+The `Day Phase Sensor` is one of the lynch pins of my HA setup. It uses a combination of time and sun position to decide if the it's currently `Morning`, `Day`, `Evening` or `Night`. This allows me to easily keep automations that rely on the time of day in sync and removes a lot of duplication.
 
 ```yaml
 - platform: template
