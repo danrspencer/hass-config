@@ -1,10 +1,3 @@
-speakers_activity:
-  name: Speaker Activity
-  icon: mdi:speaker-wireless
-  entities:
-  - sensor.music_listened_to_this_week
-  # - sensor.music_listened_to_last_week
-
 speakers_everything:
   name: Speakers
   icon: mdi:speaker-wireless
