@@ -34,7 +34,8 @@ updater:
 
 history: !include history.yaml
 recorder:
-  purge_days: 14
+  purge_interval: 1
+  purge_keep_days: 14
 
 tts:
   platform: amazon_polly
