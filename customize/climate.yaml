@@ -5,7 +5,6 @@ climate.house:
 climate.kitchen:
   homebridge_visible: true
 
-
 switch.hyperion:
   icon: mdi:camcorder-box
 
@@ -40,12 +39,6 @@ group.all_automations:
 
 group.all_scripts:
   hidden: false
-
-sensor.living_room_temperature:
-  homebridge_visible: true
-
-sensor.entrance_hall_temperature:
-  homebridge_visible: true
 
 sensor.house_thermostat_humidity:
   homebridge_visible: true

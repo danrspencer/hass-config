@@ -71,7 +71,6 @@ media:
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.speakers_activity
   - group.speakers_everything
   - group.speakers_ground_floor
   - group.speakers_middle_floor
@@ -87,8 +86,6 @@ house:
   - group.smoke_detector
   - group.network
   - group.phones
-  - group.house_activity_this_week
-  - group.house_activity_last_week
 
 outside:
   name: Outside
