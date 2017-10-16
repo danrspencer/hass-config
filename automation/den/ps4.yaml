@@ -28,7 +28,9 @@
       scene_name: >
         {% if states.media_player.playstation_4.attributes.source == 'Destiny 2' %}
           D2 {{ states.sensor.destiny2.state }}
-        {% elif states.media_player.playstation_4.attributes.source == 'EVE' %}
+        {% elif 'vr' in (states.media_player.playstation_4.attributes.source | lower)
+             or states.media_player.playstation_4.attributes.source in
+                ["Eve", "Star Trek™", "Farpoint", "Thumper"] %}
           PS4 VR
         {% else %}
           PS4 Default
