@@ -3,18 +3,13 @@
   - entity_id: sensor.media_players_active
     platform: state
   action:
-  - service_template: >
-      {% if trigger.to_state.state != '' %}
-        group.set
-      {% endif %}
+  - service: group.set
     data_template:
       object_id: media_players_active
-      visible: true
-      entities: '{{ trigger.to_state.state }}'
-  - service_template: >
-      {% if trigger.to_state.state == '' %}
-        group.set
-      {% endif %}
-    data:
-      object_id: media_players_active
-      visible: false
+      visible: '{{ trigger.to_state.state != '' }}'
+      entities: >
+        {% if trigger.to_state.state != '' %}
+          {{ trigger.to_state.state }}
+        {% else %}
+          {{ states.group.media_players_active.entity_id }}
+        {% endif %}
