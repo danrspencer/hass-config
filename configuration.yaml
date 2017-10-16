@@ -27,12 +27,13 @@ conversation:
 discovery:
 frontend:
 ios:
-logbook:
 sun:
 updater:
   include_used_components: true
 
-history: !include history.yaml
+# history: !include history.yaml
+history:
+logbook:
 recorder:
   purge_interval: 1
   purge_keep_days: 14
