@@ -2,7 +2,7 @@ IP=			hassio.local
 USER=		root
 
 update-config: update-secrets
-	ssh ${USER}@${IP} "cd /config && git reset --hard origin/master && hassio homeassistant restart"
+	ssh ${USER}@${IP} "cd /config && git reset --hard origin/master && git pull && hassio homeassistant restart"
 
 update-secrets:
 	scp -rp secrets.yaml ${USER}@${IP}:/config/secrets.yaml
