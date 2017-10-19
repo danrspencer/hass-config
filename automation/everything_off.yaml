@@ -7,3 +7,6 @@
   action:
   - service: scene.turn_on
     entity_id: scene.everything_off
+  - service: notify.ios_dphone
+    data:
+      message: 'Turning everything off!'
