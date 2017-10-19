@@ -3,3 +3,8 @@
     steam_playing:
       value_template: '{{ states.sensor.steam_76561197972831800.attributes.Game != "None" }}'
       friendly_name: 'Steam - Playing'
+    house_thermostat_active:
+      value_template: >
+        {{ (states.sensor.house_thermostat_temperature.state | int) < (states.sensor.house_thermostat_target.state | int)
+        and (states.sensor.house_thermostat_operation_mode.state == "heat")
+        }}

@@ -1,3 +1,8 @@
+# A backup heater in the kitchen.
+#
+# - Syncs it's temperature to just below the house target temperature
+# - Only enabled when motion in the kitchen and the main heating isn't on
+
 - alias: Kitchen Heater Sync
   trigger:
   - platform: homeassistant
@@ -8,9 +13,9 @@
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
-      temperature: '{{ (states.sensor.house_thermostat_target.state | int) - 2 }}'
+      temperature: '{{ (states.sensor.house_thermostat_target.state | int) - 1 }}'
 
-- alias: Kitchen Heater Off
+- alias: Kitchen Heater Disable
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
@@ -19,17 +24,24 @@
       hours: 0
       minutes: 15
       seconds: 0
+  - entity_id: binary_sensor.house_thermostat_active
+    platform: state
+    to: 'on'
   action:
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
     data:
       operation_mode: 'off'
 
-- alias: Kitchen Heater Auto On
+- alias: Kitchen Heater Enable
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
     to: 'on'
+  condition:
+    condition: state
+    entity_id: binary_sensor.house_thermostat_active
+    state: 'off'
   action:
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
