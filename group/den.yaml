@@ -4,5 +4,4 @@ den_switches:
   entities:
   - switch.playstation_4
   - light.den
-  - light.den_lamp_1
-  - light.den_lamp_2
+  - light.den_lamp

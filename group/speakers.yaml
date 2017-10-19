@@ -2,28 +2,29 @@ speakers_everything:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
-  - media_player.everything
-  - media_player.everything_but_tv
+  - media_player.every_speaker
+  - media_player.every_speaker_but_tv
 
 speakers_ground_floor:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
-  - media_player.ground_floor
-  - media_player.hear_go
-  - media_player.kitchen
+  - media_player.kitchen_speakers
+  - media_player.kitchen_speaker
+  - media_player.portable_speaker
 
 speakers_middle_floor:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
-  - media_player.living_room
+  - media_player.living_room_speakers
 
 speakers_top_floor:
   name: Speakers
   icon: mdi:speaker-wireless
   entities:
-  - media_player.top_floor
-  - media_player.den
-  - media_player.bedroom
-  - media_player.dressing_room
+  - media_player.top_floor_speakers
+  - media_player.den_speakers
+  - media_player.bedroom_speakers
+  - media_player.bedroom_google_home
+  - media_player.dressing_room_speakers
