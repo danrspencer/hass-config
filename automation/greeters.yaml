@@ -5,11 +5,11 @@
     to: 'on'
   action:
   - service: media_player.volume_set
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       volume_level: 0.9
   - service: tts.amazon_polly_say
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       message: >
         Welcome home!
@@ -17,7 +17,7 @@
     entity_id: automation.greeter_welcome_home
   - delay: 00:00:30
   - service: media_player.volume_set
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       volume_level: 0.3
 
@@ -50,11 +50,11 @@
     before: '09:00:00'
   action:
   - service: media_player.volume_set
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       volume_level: 0.8
   - service: tts.amazon_polly_say
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       message: >
         Good Morning!
@@ -62,7 +62,7 @@
     entity_id: automation.greeter_good_morning
   - delay: 00:00:30
   - service: media_player.volume_set
-    entity_id: media_player.hear_go
+    entity_id: media_player.portable_speaker
     data:
       volume_level: 0.3
 
