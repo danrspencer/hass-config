@@ -12,8 +12,10 @@
 
 - alias: Dressing Room Lights Update
   trigger:
-  - entity_id: sensor.day_phase
-    platform: state
+  - platform: time
+    hours: 0
+    minutes: 0
+    seconds: '/30'
   condition:
     condition: state
     entity_id: light.dressing_room

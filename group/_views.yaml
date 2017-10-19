@@ -47,6 +47,7 @@ top_floor:
   - light.den
   - light.bedroom
   - light.dressing_room
+  - media_player.top_floor_speakers
   - media_player.bedroom_speakers
   - media_player.den_speakers
   - media_player.dressing_room_speakers
