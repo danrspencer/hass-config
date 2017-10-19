@@ -1,4 +1,4 @@
-- alias: Kitchen Heater Sync At Startup
+- alias: Kitchen Heater Sync
   trigger:
   - platform: homeassistant
     event: start
@@ -8,7 +8,7 @@
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
-      temperature: '{{ states.sensor.house_thermostat_target.state }}'
+      temperature: '{{ (states.sensor.house_thermostat_target.state | int) - 2 }}'
 
 - alias: Kitchen Heater Off
   trigger:
