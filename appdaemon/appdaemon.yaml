@@ -5,6 +5,7 @@ AppDaemon:
   app_dir: /config/appdaemon/apps
 HASS:
   ha_url: http://homeassistant:8123
+  ha_key: !secret hass_password
 HADashboard:
   dash_url: http://127.0.0.1:5050
   dash_dir: /config/appdaemon/dashboards
