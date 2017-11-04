@@ -1,2 +1,0 @@
-hyperion_effect_none: '/config/bash_scripts/hyperion/on.sh'
-hyperion_set_effect: '/config/bash_scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'

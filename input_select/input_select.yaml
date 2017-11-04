@@ -1,33 +1,3 @@
-hyperion_effect:
-  name: TV Ambilight Effect
-  icon: mdi:camcorder-box
-  options:
-  - "None"
-  - "Knight rider"
-  - "Full color mood blobs"
-  - "Rainbow mood"
-  - "Blue mood blobs"
-  - "Cold mood blobs"
-  - "Green mood blobs"
-  - "Red mood blobs"
-  - "Warm mood blobs"
-  - "Rainbow swirl fast"
-  - "Snake"
-  - "Strobe blue"
-  - "Strobe Raspbmc"
-  - "Strobe white"
-  - "Cinema dim lights"
-  - "Cinema brighten lights"
-  - "Police Lights Single"
-  - "Police Lights Solid"
-  - "Random"
-  - "Running dots"
-  - "System Shutdown"
-  - "Sparks Color"
-  - "Sparks"
-  - "Color traces"
-  initial: "None"
-
 living_room_tv:
   name: Living Room TV
   icon: mdi:television

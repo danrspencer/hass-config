@@ -1,0 +1,81 @@
+hyperion:
+  automation:
+  - alias: Hyperion No Effect
+    trigger:
+    - platform: state
+      entity_id: input_select.hyperion_effect
+      to: "None"
+    action:
+      service: shell_command.hyperion_effect_none
+
+  - alias: Hyperion Set Effect
+    trigger:
+    - platform: state
+      entity_id: input_select.hyperion_effect
+    condition:
+      condition: template
+      value_template: '{{ states.input_select.hyperion_effect.state != "None" }}'
+    action:
+      service: shell_command.hyperion_set_effect
+
+  - alias: Hyperion Auto On
+    trigger:
+    - platform: state
+      entity_id: sensor.living_room_tv
+      from: "PowerOff"
+    action:
+    - service: switch.turn_on
+      entity_id: switch.hyperion
+
+  - alias: Hyperion Auto Off
+    trigger:
+    - platform: state
+      entity_id: sensor.living_room_tv
+      to: "PowerOff"
+    action:
+    - service: switch.turn_off
+      entity_id: switch.hyperion
+
+  input_select:
+    hyperion_effect:
+      name: TV Ambilight Effect
+      icon: mdi:camcorder-box
+      options:
+      - "None"
+      - "Knight rider"
+      - "Full color mood blobs"
+      - "Rainbow mood"
+      - "Blue mood blobs"
+      - "Cold mood blobs"
+      - "Green mood blobs"
+      - "Red mood blobs"
+      - "Warm mood blobs"
+      - "Rainbow swirl fast"
+      - "Snake"
+      - "Strobe blue"
+      - "Strobe Raspbmc"
+      - "Strobe white"
+      - "Cinema dim lights"
+      - "Cinema brighten lights"
+      - "Police Lights Single"
+      - "Police Lights Solid"
+      - "Random"
+      - "Running dots"
+      - "System Shutdown"
+      - "Sparks Color"
+      - "Sparks"
+      - "Color traces"
+      initial: "None"
+
+  switch:
+  - platform: command_line
+    switches:
+      hyperion:
+        friendly_name: TV Ambilight
+        command_on: 'echo  '{ "command": "clearall"}' | nc 192.168.0.27 19444'
+        command_off: 'echo  '{ "color": [0,0,0], "command": "color", "priority": 0 }' | nc 192.168.0.27 19444'
+        command_state: 'echo '{"command": "serverinfo"}' | nc -i 3 192.168.0.27 19444 | grep -vq '{"priority":0}''
+
+  shell_command:
+    hyperion_effect_none: 'echo  '{ "command": "clearall"}' | nc 192.168.0.27 19444'
+    hyperion_set_effect: 'echo "{\"effect\": {\"name\": \"{{ states.input_select.hyperion_effect.state }}\"}, \"command\": \"effect\", \"priority\": 100 }" | nc 192.168.0.27 19444'
