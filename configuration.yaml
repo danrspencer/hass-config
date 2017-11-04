@@ -5,7 +5,9 @@ homeassistant:
   elevation: 150
   unit_system: metric
   time_zone: Europe/London
+  
   customize: !include_dir_merge_named customize
+  packages: !include_dir_merge_named packages
 
 http:
   api_password: !secret hass_password
@@ -55,7 +57,6 @@ input_select: !include_dir_merge_named input_select
 light: !include_dir_merge_list light
 media_player: !include_dir_merge_list media_player
 nest: !include nest.yaml
-packages: !include_dir_merge_named packages
 remote: !include_dir_merge_list remote
 scene: !include_dir_merge_list scene
 script: !include_dir_merge_named script
