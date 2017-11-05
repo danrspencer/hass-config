@@ -11,7 +11,7 @@
 
 - alias: Kitchen Motion Reset Timer
   trigger:
-  - entity_id: light.kitchen_light
+  - entity_id: light.kitchen
     platform: state
     from: 'on'
     to: 'off'
