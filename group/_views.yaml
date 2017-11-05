@@ -37,6 +37,7 @@ kitchen:
   - media_player.kitchen_speaker
   - media_player.portable_speaker
   - scene.relaxed_cooking
+  - timer.kitchen_motion
 
 top_floor:
   name: Top Floor

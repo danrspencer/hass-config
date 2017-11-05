@@ -5,7 +5,7 @@ homeassistant:
   elevation: 150
   unit_system: metric
   time_zone: Europe/London
-  
+
   customize: !include_dir_merge_named customize
   packages: !include_dir_merge_named packages
 
@@ -61,6 +61,7 @@ remote: !include_dir_merge_list remote
 scene: !include_dir_merge_list scene
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensor
-shell_command: !include_dir_merge_named shell_command
+# shell_command: !include_dir_merge_named shell_command
 switch: !include_dir_merge_list switch
+timer: !include_dir_merge_named timer
 weather: !include_dir_merge_list weather
