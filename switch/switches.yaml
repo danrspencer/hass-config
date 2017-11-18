@@ -25,7 +25,7 @@
     dressing_room_light:
       friendly_name: Dressing Room Light
       value_template: '{{ is_state("light.dressing_room", "on") }}'
-      entitiy_id: light.dressing_room
+      entity_id: light.dressing_room
       turn_on:
         service: light.hue_activate_scene
         data_template:
