@@ -15,12 +15,10 @@ http:
   trusted_networks:
   - 127.0.0.1
   - 192.168.0.0/24
-  # ssl_certificate: /ssl/fullchain.pem
-  # ssl_key: /ssl/privkey.pem
-#
-# upnp:
-#   unit: GBytes
-#   external_port: 80
+
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_token
 
 # Enablers
 browser:
