@@ -13,8 +13,6 @@
         service: remote.turn_off
         entity_id: remote.living_room_tv
 
-- platform: template
-  switches:
     playstation_4:
       friendly_name: PlayStation 4
       value_template: '{{ states.media_player.playstation_4.state != "off" }}'
@@ -25,6 +23,19 @@
       turn_off:
         service: media_player.turn_off
         entity_id: media_player.playstation_4
+
+    dressing_room_light:
+      friendly_name: Dressing Room Light
+      value_template: '{{ is_state('light.dressing_room', 'on') }}'
+      entitiy_id: light.dressing_room
+      turn_on:
+        service: light.hue_activate_scene
+        data_template:
+          group_name: Dressing Room
+          scene_name: '{{ states.sensor.day_phase.state }}'
+      turn_off:
+        service: light.turn_off
+        entity_id: light.dressing_room
 
 - platform: tplink
   name: Living Room Light Tree
