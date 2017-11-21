@@ -2,10 +2,21 @@
   trigger:
   - entity_id: binary_sensor.kitchen_motion
     platform: state
+    from: 'on'
+    to: 'off'
+  action:
+  - service: timer.start
+    data:
+      entity_id: timer.kitchen_motion
+
+- alias: Kitchen Motion Pause Timer
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    platform: state
     from: 'off'
     to: 'on'
   action:
-  - service: timer.start
+  - service: timer.pause
     data:
       entity_id: timer.kitchen_motion
 
