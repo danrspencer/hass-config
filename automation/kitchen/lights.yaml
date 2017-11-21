@@ -1,46 +1,13 @@
-- alias: Kitchen Motion Start Timer
+- alias: Kitchen Lights Off
   trigger:
   - entity_id: binary_sensor.kitchen_motion
-    platform: state
-    from: 'on'
-    to: 'off'
-  action:
-  - service: timer.start
-    data:
-      entity_id: timer.kitchen_motion
-
-- alias: Kitchen Motion Pause Timer
-  trigger:
-  - entity_id: binary_sensor.kitchen_motion
-    platform: state
-    from: 'off'
-    to: 'on'
-  action:
-  - service: timer.pause
-    data:
-      entity_id: timer.kitchen_motion
-
-- alias: Kitchen Motion Reset Timer
-  trigger:
-  - entity_id: light.kitchen
     platform: state
     from: 'on'
     to: 'off'
     for:
       hours: 0
-      minutes: 0
-      seconds: 30
-  action:
-  - service: timer.cancel
-    data:
-      entity_id: timer.kitchen_motion
-
-- alias: Kitchen Lights Off
-  trigger:
-  - entity_id: timer.kitchen_motion
-    platform: state
-    from: 'active'
-    to: 'idle'
+      minutes: 15
+      seconds: 0
   action:
   - service: light.turn_off
     entity_id: light.kitchen
@@ -49,10 +16,14 @@
 
 - alias: Kitchen Lights On
   trigger:
-  - entity_id: timer.kitchen_motion
+  - entity_id: binary_sensor.kitchen_motion
     platform: state
-    from: 'idle'
-    to: 'active'
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: light.kitchen
+    state: 'off'
   action:
   - service: light.hue_activate_scene
     data_template:
