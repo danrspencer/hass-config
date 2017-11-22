@@ -1,0 +1,22 @@
+# playstation4:
+#   switch:
+#   - platform: template
+#     switches:
+#       playstation_4:
+#         friendly_name: PlayStation 4
+#         value_template: '{{ states.media_player.playstation_4.state != "off" }}'
+#         entity_id: media_player.playstation_4
+#         turn_on:
+#           service:  media_player.turn_on
+#           entity_id: media_player.playstation_4
+#         turn_off:
+#           service: media_player.turn_off
+#           entity_id: media_player.playstation_4
+#
+#   media_player:
+#   - platform: ps4
+#     host: http://localhost:3131
+#     ps4_ip: 192.168.0.72
+#     name: "PlayStation 4"
+#     local_store: games
+#
