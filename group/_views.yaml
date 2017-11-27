@@ -75,10 +75,11 @@ lights:
   - sensor.entrance_hall_light
   - group.lights_living_room
   - group.lights_kitchen
-  - group.lights_den
   - group.lights_bedroom
-  - group.lights_dressing_room
   - group.lights_hallway
+  - group.lights_den
+  - group.lights_dressing_room
+  - group.lights_guest_bedroom
 
 media:
   name: Speakers

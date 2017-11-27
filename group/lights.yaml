@@ -12,6 +12,8 @@ lights_kitchen:
   - light.kitchen_spot_6
   - light.kitchen_lamp_1
   - light.kitchen_lamp_2
+  - light.kitchen_hob_1
+  - light.kitchen_hob_2
 
 lights_living_room:
   name: Living Room
@@ -34,13 +36,21 @@ lights_bedroom:
   name: Bedroom
   icon: mdi:hotel
   entities:
-  - light.bedroom_lamp
+  - light.bedroom
+  - light.bedroom_lamp_1
+  - light.bedroom_lamp_2
 
 lights_dressing_room:
   name: Dressing Room
   icon: mdi:tshirt-crew
   entities:
   - light.dressing_room_lamp
+
+lights_guest_bedroom:
+  name: Guest Bedroom
+  icon: mdi:sleep
+  entities:
+  - light.guest_bedroom_lamp
 
 lights_hallway:
   name: Hallways
