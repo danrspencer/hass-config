@@ -24,7 +24,6 @@ house_other:
   - sensor.living_room_light
   - binary_sensor.living_room_motion
 
-
 network:
   name: Network
   entities:
