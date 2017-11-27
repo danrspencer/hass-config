@@ -31,11 +31,9 @@ sun:
 updater:
   include_used_components: true
 
-history: !include history.yaml
+recorder: !include recorder.yaml
+history:
 logbook:
-recorder:
-  purge_interval: 1
-  purge_keep_days: 14
 
 tts:
   platform: amazon_polly
