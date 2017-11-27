@@ -20,7 +20,6 @@ duckdns:
   domain: !secret duckdns_domain
   access_token: !secret duckdns_token
 
-# Enablers
 browser:
 config:
 conversation:
@@ -43,6 +42,15 @@ tts:
   region_name: eu-west-1
   text_type: text
   voice: Brian
+
+google_assistant:
+  project_id: hass-8c6c1
+  client_id: [long URL safe random string]
+  access_token: [a different long URL safe random string]
+  agent_user_id: [a string to identify user]
+  api_key: [an API Key generated for the Google Actions project]
+  exposed_domains:
+  - switch
 
 # Includes
 automation: !include_dir_merge_list automation
