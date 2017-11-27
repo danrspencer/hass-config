@@ -26,6 +26,7 @@ config:
 conversation:
 discovery:
 frontend:
+  javascript_version: latest
 ios:
 sun:
 updater:
