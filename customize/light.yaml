@@ -6,3 +6,6 @@ light.kitchen:
 
 light.hallways:
   icon: mdi:lightbulb-outline
+
+light.bedroom:
+  icon: mdi:lightbulb-outline
