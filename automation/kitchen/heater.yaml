@@ -39,9 +39,16 @@
     platform: state
     to: 'on'
   condition:
-    condition: state
-    entity_id: binary_sensor.house_thermostat_active
-    state: 'off'
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.house_thermostat_active
+        state: 'off'
+      - condition: template
+        value_template: |
+          {{ (states.climate.kitchen.attributes.temperature - 4)
+           > (states.climate.kitchen.attributes.current_temperature)
+          }}
   action:
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
