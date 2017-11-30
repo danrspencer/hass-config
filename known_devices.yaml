@@ -1,9 +1,8 @@
-
 dphone:
   hide_if_away: false
   icon:
   mac:
-  name: dphone
+  name: Dan
   picture:
   track: true
   vendor:
@@ -12,7 +11,7 @@ laurens_iphone:
   hide_if_away: false
   icon:
   mac:
-  name: laurens iphone
+  name: Lauren
   picture:
   track: true
   vendor:
