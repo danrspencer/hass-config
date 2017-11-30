@@ -9,7 +9,7 @@ homeassistant:
   customize: !include_dir_merge_named customize
   packages: !include_dir_merge_named packages
 
-zones:
+zone:
   - name: Home
     latitude: !secret zone_home_lat
     longitude: !secret zone_home_long
