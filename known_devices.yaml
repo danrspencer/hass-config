@@ -1,17 +1,17 @@
 dphone:
   hide_if_away: false
   icon:
-  mac:
+  mac: !secret dphone_mac
   name: Dan
-  picture:
+  picture: !secret dan_profile
   track: true
   vendor:
 
 laurens_iphone:
   hide_if_away: false
   icon:
-  mac:
+  mac: !secret laurens_iphone_mac
   name: Lauren
-  picture:
+  picture: !secret lauren_profile
   track: true
   vendor:
