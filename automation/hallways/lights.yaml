@@ -4,6 +4,9 @@
     platform: state
     from: 'off'
     to: 'on'
+  - entity_id: group.all_devices
+    platform: state
+    to: 'home'
   condition:
     condition: state
     entity_id: light.hallways
