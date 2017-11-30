@@ -27,6 +27,7 @@ discovery:
 frontend:
   javascript_version: latest
 ios:
+map:
 sun:
 updater:
   include_used_components: true
