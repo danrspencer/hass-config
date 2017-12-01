@@ -17,7 +17,7 @@
         {% else %}
             Night
         {% endif %}
-    icon_template: >
+      icon_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
             mdi:weather-sunset-up
