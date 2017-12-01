@@ -10,19 +10,22 @@ homeassistant:
   packages: !include_dir_merge_named packages
 
 zone:
-  - name: Home
+  - zone:
+    name: Home
     latitude: !secret zone_home_lat
     longitude: !secret zone_home_long
     radius: 250
 
-  - name: Trinity McQueen
-    latitude: !secret zone_trinity_mcqueen_lat
-    longitude: !secret zone_trinity_mcqueen_long
+  - zone 2:
+    name: Work
+    latitude: !secret zone_l_work_lat
+    longitude: !secret zone_l_work_long
     icon: mdi:briefcase
 
-  - name: Anaplan
-    latitude: !secret zone_anaplan_lat
-    longitude: !secret zone_anaplan_long
+  - zone 3:
+    name: Work
+    latitude: !secret zone_d_work_lat
+    longitude: !secret zone_d_work_long
     icon: mdi:briefcase
 
 http:
