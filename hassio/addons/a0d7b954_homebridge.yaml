@@ -1,0 +1,11 @@
+name: Homebridge
+options:
+  avahi_domainname: local
+  avahi_hostname: ''
+  avahi_interfaces: ''
+  enable_ipv6: true
+  init_commands: []
+  log_level: info
+  packages: []
+  plugins: []
+url: https://github.com/hassio-addons/addon-homebridge

@@ -1,0 +1,6 @@
+name: SSH server
+options:
+  authorized_keys:
+  - !secret ssh_pub_key
+  password: ''
+url: https://home-assistant.io/addons/ssh/

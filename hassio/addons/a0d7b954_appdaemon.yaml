@@ -1,0 +1,5 @@
+name: AppDaemon
+options:
+  commtype: websockets
+  log_level: info
+url: https://github.com/hassio-addons/addon-appdaemon

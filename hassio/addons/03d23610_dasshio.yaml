@@ -1,0 +1,19 @@
+name: Dasshio
+options:
+  buttons:
+  - address: 18:74:2E:B4:CC:1A
+    body: '{"entity_id": "switch.bedroom_light"}'
+    headers: '{}'
+    name: Bedroom (Barbatia)
+    url: http://homeassistant:8123/api/services/switch/toggle
+  - address: 18:74:2E:DC:C5:AA
+    body: '{}'
+    headers: '{}'
+    name: Kitchen (Listerine)
+    url: http://homeassistant:8123/api/services/script/relaxed_cooking
+  - address: 18:74:2E:02:6C:A4
+    body: '{"entity_id": "switch.dressing_room_light"}'
+    headers: '{}'
+    name: Dressing Room (Dettol)
+    url: http://homeassistant:8123/api/services/switch/toggle
+url: https://github.com/danimtb/dasshio

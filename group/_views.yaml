@@ -30,6 +30,7 @@ kitchen:
   entities:
   - binary_sensor.kitchen_motion
   - sensor.kitchen_light
+  - sensor.kitchen_temperature
   - group.lights_kitchen
   - group.kitchen_climate
   - media_player.kitchen_speakers
