@@ -5,7 +5,7 @@
       value_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=6).replace(minute=15).replace(second=0) %}
-            Early
+            Early Morning
         {% elif now() > now().replace(hour=6).replace(minute=15).replace(second=0) and
             now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
             Morning
