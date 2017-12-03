@@ -9,8 +9,3 @@
   api_key: !secret steam_key
   accounts:
     - 76561197972831800
-
-- platform: destiny2
-  membership_type: 2
-  destiny_membership_id: 4611686018428481758
-  api_key: !secret destiny2_api_key

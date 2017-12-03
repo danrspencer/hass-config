@@ -60,7 +60,6 @@ den:
   icon: mdi:gamepad-variant
   view: yes
   entities:
-  - sensor.destiny2
   - group.den_switches
   - light.top_floor_landing
   - media_player.playstation_4
