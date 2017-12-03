@@ -1,8 +1,0 @@
-name: PS4WakerBridge
-options:
-  devices:
-  - auth_type: C
-    client_type: i
-    credentials: your credentials
-  port: 3030
-url: https://github.com/vkorn/hassio-addons/tree/master/ps4waker
