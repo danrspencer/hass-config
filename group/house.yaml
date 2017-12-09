@@ -13,6 +13,7 @@ house_climate_control:
   entities:
   - climate.house
   - climate.kitchen
+  - group.package_heating_on_at
 
 house_other:
   name: House Other
