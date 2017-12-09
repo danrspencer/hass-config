@@ -1,19 +1,12 @@
 heating:
-  group:
-    package_heating_on_at:
-      name: Heating On At
-      entities:
-      - input_datetime.heating_on_athouse
-      - input_boolean.heating_on_at
-
   input_datetime:
-    heating_on_at:
+    heating_timer:
       name: Turn Heating On At
       has_date: true
       has_time: true
 
   input_boolean:
-    heating_on_at:
+    heating_timer:
       name: Turn Heating On At
       initial: off
       icon: mdi:car
