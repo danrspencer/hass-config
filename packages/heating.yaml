@@ -39,5 +39,8 @@ heating:
         entity_id: climate.house
         data:
           operation_mode: 'heat'
+      - service: notify.ios_dphone
+        data:
+          message: 'Turning on the heating!'
       
 
