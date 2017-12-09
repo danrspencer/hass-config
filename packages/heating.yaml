@@ -4,11 +4,13 @@ heating:
       name: Heating On At
       has_time: true
       has_date: false
+      icon: mdi:timelapse
 
   input_boolean:
     heating_timer:
       name: Heating On At
       initial: off
+      icon: mdi:timelapse
 
   automation:
     - alias: Heating Timer On
