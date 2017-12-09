@@ -1,12 +1,40 @@
 heating:
   input_datetime:
     heating_timer:
-      name: Turn Heating On At
-      has_date: true
+      name: Heating On At
       has_time: true
 
   input_boolean:
     heating_timer:
-      name: Turn Heating On At
+      name: Heating On At
       initial: off
-      icon: mdi:car
+
+  automation:
+    - alias: Heating Timer On
+      trigger:
+      - platform: state
+        entity_id: input_datetime.heating_timer
+      action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.heating_timer
+
+    - alias: Heater Timer Trigger
+      trigger:
+      - platform: template
+        value_template: |
+          {{ as_timestamp(states.input_datetime.heating_timer.state) <
+             as_timestamp(now()) 
+          }}
+      condition:
+        condition: state
+        entity_id: input_boolean.heating_timer
+        state: 'on'
+      action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.heating_timer
+      - service: climate.set_operation_mode
+        entity_id: climate.house
+        data:
+          operation_mode: 'heat'
+      
+
