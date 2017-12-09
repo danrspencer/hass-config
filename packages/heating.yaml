@@ -3,6 +3,7 @@ heating:
     heating_timer:
       name: Heating On At
       has_time: true
+      has_date: false
 
   input_boolean:
     heating_timer:
