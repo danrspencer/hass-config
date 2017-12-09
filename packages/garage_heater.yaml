@@ -4,6 +4,7 @@ garage_heating:
       name: Heating On At
       has_time: true
       has_date: false
+      initial: 00:00
       icon: mdi:timelapse
 
   input_boolean:
