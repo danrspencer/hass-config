@@ -10,6 +10,7 @@ default_view:
   - group.meta_switches
   - group.house_climate_control
   - group.media_players_active
+  - group.garage
 
 garage:
   name: Garage
