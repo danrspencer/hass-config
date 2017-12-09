@@ -41,6 +41,6 @@ heating:
           operation_mode: 'heat'
       - service: notify.ios_dphone
         data:
-          message: 'Turning on the heating!'
+          message: 'Turning on the heating via timer!'
       
 

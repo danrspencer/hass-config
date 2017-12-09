@@ -11,6 +11,14 @@ default_view:
   - group.house_climate_control
   - group.media_players_active
 
+garage:
+  name: Garage
+  icon: mdi:garage
+  entities:
+  - switch.garage_heater
+  - input_datetime.garage_heating_timer
+  - input_boolean.garage_heating_timer
+
 living_room:
   name: Living Room
   icon: mdi:sofa
