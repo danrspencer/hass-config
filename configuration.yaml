@@ -49,6 +49,8 @@ browser:
 config:
 conversation:
 discovery:
+  ignore:
+  - google_cast
 frontend:
   javascript_version: latest
 ios:

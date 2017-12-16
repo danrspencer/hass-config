@@ -22,6 +22,6 @@
 
 - platform: command_line
   name: log_db_file_size
-  command: "du -m /home/homeassistant/.homeassistant/home-assistant_v2.db | cut -f1"
+  command: "du -m /config/home-assistant_v2.db | cut -f1"
   unit_of_measurement: 'MB'
   value_template: '{{ value | int - 1 }}'
