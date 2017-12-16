@@ -1,21 +1,27 @@
-- platform: systemmonitor
-  resources:
-    - type: disk_use_percent
-      arg: /
-    - type: memory_use_percent
-    - type: swap_use_percent
-    - type: processor_use
-    - type: since_last_boot
-    - type: load_15m
-    - type: network_in
-      arg: wlan0
-    - type: network_out
-      arg: wlan0
+# - platform: systemmonitor
+#   resources:
+#     - type: disk_use_percent
+#       arg: /
+#     - type: memory_use_percent
+#     - type: swap_use_percent
+#     - type: processor_use
+#     - type: since_last_boot
+#     - type: load_15m
+#     - type: network_in
+#       arg: wlan0
+#     - type: network_out
+#       arg: wlan0
+
+# - platform: command_line
+#   name: CPU Temp
+#   command: "cat /sys/class/thermal/thermal_zone0/temp"
+#   unit_of_measurement: "°C"
+#   value_template: '{{ value | multiply(0.001) }}'
+
+# - platform: cpuspeed
 
 - platform: command_line
-  name: CPU Temp
-  command: "cat /sys/class/thermal/thermal_zone0/temp"
-  unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) }}'
-
-- platform: cpuspeed
+  name: log_db_file_size
+  command: "du -m /home/homeassistant/.homeassistant/home-assistant_v2.db | cut -f1"
+  unit_of_measurement: 'MB'
+  value_template: '{{ value | int - 1 }}'

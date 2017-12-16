@@ -1,0 +1,3 @@
+sensor.log_db_file_size:
+  friendly_name: Home Assistant Log Db
+  icon: mdi:database

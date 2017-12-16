@@ -1,9 +1,9 @@
-- platform: speedtest
-  minute:
-  - 0
-  monitored_conditions:
-  - upload
+# - platform: speedtest
+#   minute:
+#   - 0
+#   monitored_conditions:
+#   - upload
 
-- platform: fastdotcom
-  minute:
-  - 0
+# - platform: fastdotcom
+#   minute:
+#   - 0
