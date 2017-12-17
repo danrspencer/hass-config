@@ -20,5 +20,5 @@ options:
     body: '{"entity_id": "light.den"}'
     headers: '{}'
     name: Den (Simple Solution)
-    url: http://homeassistant:8123/api/services/lightswitch/toggle
+    url: http://homeassistant:8123/api/services/light/toggle
 url: https://github.com/danimtb/dasshio
