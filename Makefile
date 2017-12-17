@@ -8,7 +8,7 @@ update-secrets:
 	scp -rp secrets.yaml ${USER}@${IP}:/config/secrets.yaml
 
 update-hassio:
-	hassio/
+	hassio/update.py
 
 logs:
 	ssh ${USER}@${IP} "hassio homeassistant logs"

@@ -16,4 +16,9 @@ options:
     headers: '{}'
     name: Dressing Room (Dettol)
     url: http://homeassistant:8123/api/services/switch/toggle
+  - address: 18:74:2E:1C:CD:06
+    body: '{"entity_id": "light.den"}'
+    headers: '{}'
+    name: Den (Simple Solution)
+    url: http://homeassistant:8123/api/services/lightswitch/toggle
 url: https://github.com/danimtb/dasshio
