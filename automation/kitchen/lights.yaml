@@ -25,7 +25,7 @@
     entity_id: light.kitchen
     state: 'off'
   action:
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data_template:
       group_name: Kitchen
       scene_name: '{{ states.sensor.day_phase.state }}'
@@ -39,7 +39,7 @@
     entity_id: light.kitchen
     state: 'on'
   action:
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data_template:
       group_name: Kitchen
       scene_name: '{{ states.sensor.day_phase.state }}'

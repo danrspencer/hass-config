@@ -4,7 +4,7 @@
     platform: state
     to: 'on'
   action:
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data_template:
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'

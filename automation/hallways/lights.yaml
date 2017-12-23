@@ -12,7 +12,7 @@
     entity_id: light.hallways
     state: 'off'
   action:
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data_template:
       group_name: Hallways
       scene_name: '{{ states.sensor.day_phase.state }}'
@@ -26,7 +26,7 @@
     entity_id: light.hallways
     state: 'on'
   action:
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data_template:
       group_name: Hallways
       scene_name: '{{ states.sensor.day_phase.state }}'

@@ -11,7 +11,7 @@ relaxed_cooking:
     data:
       profile: relax
       brightness_pct: 25
-  - service: light.hue_activate_scene
+  - service: hue.hue_activate_scene
     data:
       group_name: 'Kitchen'
       scene_name: 'Relaxed cooking'
