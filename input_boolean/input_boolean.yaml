@@ -1,0 +1,5 @@
+input_boolean:
+  holiday_mode:
+    name: Holiday Mode!
+    initial: off
+    icon: mdi:human-handsup

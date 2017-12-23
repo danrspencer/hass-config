@@ -6,6 +6,7 @@ default_view:
   - sensor.day_phase
   - sun.sun
   - sensor.weather_symbol
+  - input_boolean.holiday_mode
   - scene.everything_off
   - group.meta_switches
   - group.house_climate_control
