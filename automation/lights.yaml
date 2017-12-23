@@ -1,10 +1,40 @@
 - alias: Dressing Room Lights Update
   trigger:
-  - entity_id: light.dressing_room
-    platform: state
+  - platform: state
+    entity_id: light.dressing_room
     to: 'on'
   action:
   - service: hue.hue_activate_scene
     data_template:
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'
+
+- alias: Porch Light Auto On
+  trigger:
+  - platform: sun
+    event: sunset
+  action:
+  - service: light.turn_on
+    entity_id: light.porch
+
+- alias: Porch Light Auto Off
+  trigger:
+  - platform: sun
+    event: sunrise
+  action:
+  - service: light.turn_off
+    entity_id: light.porch
+
+- alias: Porch Light Keep On
+  trigger:
+  - platform: state
+    entity_id: light.porch
+    to: 'off'
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: light.turn_on
+    entity_id: light.porch
+  
