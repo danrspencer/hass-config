@@ -6,12 +6,17 @@ default_view:
   - sensor.day_phase
   - sun.sun
   - sensor.weather_symbol
-  - input_boolean.holiday_mode
-  - scene.everything_off
+  - group.controls
   - group.meta_switches
   - group.house_climate_control
   - group.media_players_active
   - group.garage
+
+controls:
+  name: Controls
+  entities:
+  - input_boolean.holiday_mode
+  - scene.everything_off
 
 garage:
   name: Garage
