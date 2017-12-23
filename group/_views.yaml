@@ -12,12 +12,6 @@ default_view:
   - group.media_players_active
   - group.garage
 
-controls:
-  name: Controls
-  entities:
-  - input_boolean.holiday_mode
-  - scene.everything_off
-
 garage:
   name: Garage
   icon: mdi:garage

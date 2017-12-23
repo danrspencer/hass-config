@@ -2,11 +2,12 @@ purge_interval: 1
 purge_keep_days: 2
 include:
   domains:
-  - sensor
-  - switch
-  - light
-  - sun
   - climate
+  - input_boolean
+  - light
+  - sensor
+  - sun
+  - switch
   entities:
   - media_player.playstation_4
 exclude:
