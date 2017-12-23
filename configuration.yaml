@@ -46,6 +46,7 @@ duckdns:
   access_token: !secret duckdns_token
 
 browser:
+cloud:
 config:
 conversation:
 discovery:
