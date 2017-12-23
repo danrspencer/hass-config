@@ -77,7 +77,7 @@ binary_sensor: !include_dir_merge_list binary_sensor
 climate: !include_dir_merge_list climate
 group: !include_dir_merge_named group
 # input_select: !include_dir_merge_named input_select
-# input_boolean: !include_dir_merge_named input_boolean
+input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list light
 media_player: !include_dir_merge_list media_player
 nest: !include nest.yaml
