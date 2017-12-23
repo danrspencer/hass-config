@@ -38,6 +38,3 @@
             # Night
             mdi:sleep
         {% endif %}
-    living_room_tv:
-      friendly_name: 'Living Room TV'
-      value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'

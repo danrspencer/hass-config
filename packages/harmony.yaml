@@ -1,4 +1,9 @@
 harmony:
+  remote:
+  - platform: harmony
+    name: Living Room TV
+    scan_interval: 5
+
   input_select:
     living_room_tv:
       name: Living Room TV
@@ -26,6 +31,12 @@ harmony:
         turn_off:
           service: remote.turn_off
           entity_id: remote.living_room_tv
+  sensor:
+  - platform: template
+    sensors:
+      living_room_tv:
+          friendly_name: 'Living Room TV'
+          value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
 
   automation:
   - alias: Harmony Change Activity

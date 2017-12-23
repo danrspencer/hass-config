@@ -82,7 +82,7 @@ input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list light
 media_player: !include_dir_merge_list media_player
 nest: !include nest.yaml
-remote: !include_dir_merge_list remote
+# remote: !include_dir_merge_list remote
 scene: !include_dir_merge_list scene
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensor
