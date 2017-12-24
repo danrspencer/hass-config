@@ -35,10 +35,8 @@ garage_heating:
       action:
       - service: input_boolean.turn_off
         entity_id: input_boolean.garage_heating_timer
-      - service: climate.set_operation_mode
-        entity_id: climate.house
-        data:
-          operation_mode: 'heat'
+      - service: switch.turn_on
+        entity_id: switch.garage_heater
       - service: notify.ios_dphone
         data:
           message: 'Turning on the garage heater via timer!'
