@@ -91,6 +91,7 @@ lights:
   - group.lights_den
   - group.lights_dressing_room
   - group.lights_guest_bedroom
+  - group.lights_porch
 
 media:
   name: Speakers

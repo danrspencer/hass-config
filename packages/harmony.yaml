@@ -31,12 +31,13 @@ harmony:
         turn_off:
           service: remote.turn_off
           entity_id: remote.living_room_tv
+          
   sensor:
   - platform: template
     sensors:
       living_room_tv:
-          friendly_name: 'Living Room TV'
-          value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
+        friendly_name: 'Living Room TV'
+        value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
 
   automation:
   - alias: Harmony Change Activity

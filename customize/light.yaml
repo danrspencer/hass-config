@@ -9,3 +9,9 @@ light.hallways:
 
 light.bedroom:
   icon: mdi:lightbulb-outline
+
+light.porch:
+  icon: mdi:lightbulb-outline
+
+light.guest_bedroom:
+  icon: icon: mdi:lightbulb-outline
