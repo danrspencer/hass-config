@@ -15,3 +15,6 @@ switch.playstation_4:
 
 switch.kitchen_heater:
   icon: mdi:radiator
+
+switch.garage_heater:
+  icon: mdi:radiator

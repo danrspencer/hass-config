@@ -3,3 +3,4 @@ climate.house:
 
 climate.kitchen:
   homebridge_visible: true
+
