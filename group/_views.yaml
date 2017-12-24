@@ -17,8 +17,8 @@ garage:
   icon: mdi:garage
   entities:
   - switch.garage_heater
-  - input_datetime.garage_heating_timer
   - input_boolean.garage_heating_timer
+  - input_datetime.garage_heating_timer
 
 living_room:
   name: Living Room

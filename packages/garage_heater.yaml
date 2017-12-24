@@ -4,7 +4,6 @@ garage_heating:
       name: Heating On At
       has_time: true
       has_date: true
-      initial: 00:00
       icon: mdi:timelapse
 
   input_boolean:
@@ -14,19 +13,19 @@ garage_heating:
       icon: mdi:timelapse
 
   automation:
-    - alias: Garage Heating Timer On
+    - alias: Garage Heater Timer On
       trigger:
       - platform: state
-        entity_id: input_datetime.heating_timer
+        entity_id: input_datetime.garage_heating_timer
       action:
       - service: input_boolean.turn_on
-        entity_id: input_boolean.heating_timer
+        entity_id: input_boolean.garage_heating_timer
 
     - alias: Garage Heater Timer Trigger
       trigger:
       - platform: template
         value_template: |
-          {{ as_timestamp(states.input_datetime.heating_timer.state) <
+          {{ as_timestamp(states.input_datetime.garage_heating_timer.state) <
              as_timestamp(now()) 
           }}
       condition:

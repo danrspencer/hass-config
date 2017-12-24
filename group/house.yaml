@@ -15,8 +15,6 @@ house_climate_control:
   entities:
   - climate.house
   - climate.kitchen
-  - input_datetime.heating_timer
-  - input_boolean.heating_timer
 
 house_other:
   name: House Other
