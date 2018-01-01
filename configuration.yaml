@@ -67,6 +67,7 @@ recorder:
   include:
     domains:
     - automation
+    - binary_sensor
     - climate
     - input_boolean
     - light
