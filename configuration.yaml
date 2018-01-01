@@ -66,6 +66,7 @@ recorder:
   purge_keep_days: 2
   include:
     domains:
+    - automation
     - climate
     - input_boolean
     - light
