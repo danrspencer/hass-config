@@ -60,6 +60,7 @@ sun:
 updater:
   include_used_components: true
 
+# History
 recorder:
   purge_interval: 1
   purge_keep_days: 2
@@ -79,11 +80,13 @@ recorder:
 history:
 logbook:
   exclude:
-  - sensor.log_db_file_size
-  - sensor.cpu_temp
-  - sensor.average_load_15m
-  - sensor.since_last_boot
+    entities:
+    - sensor.log_db_file_size
+    - sensor.cpu_temp
+    - sensor.average_load_15m
+    - sensor.since_last_boot
 
+# Text To Speech
 tts:
   platform: amazon_polly
   aws_access_key_id: !secret aws_access_key_id

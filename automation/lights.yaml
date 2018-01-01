@@ -21,7 +21,7 @@
   trigger:
   - platform: state
     entity_id: sun.sun
-    state: above_horizon
+    state: 'above_horizon'
   action:
   - service: light.turn_off
     entity_id: light.porch
