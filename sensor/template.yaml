@@ -8,7 +8,7 @@
             now().isoweekday() <= 5 and 
             states.input_boolean.holiday_mode.state == 'off' %}
             Morning
-        {% elif states.sun.sun.state == "above_horizon" or 
+        {% elif states.sun.sun.state == "above_horizon" or
             now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
             Day

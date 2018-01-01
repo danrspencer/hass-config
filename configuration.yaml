@@ -60,9 +60,29 @@ sun:
 updater:
   include_used_components: true
 
-recorder: !include recorder.yaml
+recorder:
+  purge_interval: 1
+  purge_keep_days: 2
+  include:
+    domains:
+    - climate
+    - input_boolean
+    - light
+    - sensor
+    - sun
+    - switch
+    entities:
+    - media_player.playstation_4
+  exclude:
+    entities:
+    - sensor.date
 history:
 logbook:
+  exclude:
+  - sensor.log_db_file_size
+  - sensor.cpu_temp
+  - sensor.average_load_15m
+  - sensor.since_last_boot
 
 tts:
   platform: amazon_polly
