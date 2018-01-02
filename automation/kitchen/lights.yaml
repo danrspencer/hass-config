@@ -6,7 +6,7 @@
     to: 'off'
     for:
       hours: 0
-      minutes: 15
+      minutes: 5
       seconds: 0
   action:
   - service: light.turn_off
