@@ -2,4 +2,4 @@ name: AppDaemon
 options:
   commtype: websockets
   log_level: info
-url: https://github.com/hassio-addons/addon-appdaemon
+url: https://community.home-assistant.io/t/community-hass-io-add-on-appdaemon/33823?u=frenck

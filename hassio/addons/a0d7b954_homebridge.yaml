@@ -8,4 +8,4 @@ options:
   log_level: info
   packages: []
   plugins: []
-url: https://github.com/hassio-addons/addon-homebridge
+url: https://community.home-assistant.io/t/community-hass-io-add-on-homebridge/33803?u=frenck

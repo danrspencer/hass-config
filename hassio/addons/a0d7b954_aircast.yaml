@@ -1,0 +1,8 @@
+name: AirCast
+options:
+  address: ''
+  drift: false
+  latency_http: 0
+  latency_rtp: 0
+  log_level: info
+url: https://community.home-assistant.io/t/community-hass-io-add-on-aircast/36742?u=frenck
