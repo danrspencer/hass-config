@@ -4,34 +4,34 @@
       friendly_name: 'Day Phase'
       value_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=9).replace(minute=0).replace(second=0) and 
+            now() < now().replace(hour=7).replace(minute=0).replace(second=0) and 
             now().isoweekday() <= 5 and 
             states.input_boolean.holiday_mode.state == 'off' %}
             Morning
         {% elif states.sun.sun.state == "above_horizon" or
             now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
+            now() < now().replace(hour=7).replace(minute=0).replace(second=0) %}
             Day
         {% elif now() < now().replace(hour=21).replace(minute=45).replace(second=0) and
-            now() > now().replace(hour=9).replace(minute=0).replace(second=0) %}
+            now() > now().replace(hour=7).replace(minute=0).replace(second=0) %}
             Evening
         {% else %}
             Night
         {% endif %}
       icon_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=9).replace(minute=0).replace(second=0) and 
+            now() < now().replace(hour=7).replace(minute=0).replace(second=0) and 
             now().isoweekday() <= 5 and 
             states.input_boolean.holiday_mode.state == 'off' %}
             # Morning
             mdi:weather-sunset-up
         {% elif states.sun.sun.state == "above_horizon" or 
             now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=9).replace(minute=0).replace(second=0) %}
+            now() < now().replace(hour=7).replace(minute=0).replace(second=0) %}
             # Day
             mdi:weather-sunny
         {% elif now() < now().replace(hour=21).replace(minute=45).replace(second=0) and
-            now() > now().replace(hour=9).replace(minute=0).replace(second=0) %}
+            now() > now().replace(hour=7).replace(minute=0).replace(second=0) %}
             # Evening
             mdi:weather-night
         {% else %}
