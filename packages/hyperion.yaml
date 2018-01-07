@@ -72,11 +72,15 @@ hyperion:
     switches:
       hyperion:
         friendly_name: TV Ambilight
-        command_on: 'echo "{ \"command\": \"clearall\"}" | nc 192.168.0.27 19444'
-        command_off: 'echo "{ \"color\": [0,0,0], \"command\": \"color\", \"priority\": 0 }" | nc 192.168.0.27 19444'
-        command_state: 'echo "{ \"command\": \"serverinfo\" }" | nc -i 3 192.168.0.27 19444 | grep -vq "{\"priority\":0}"'
+        command_on: >
+          echo "{ \"command\": \"clearall\"}" | nc 192.168.0.27 19444
+        command_off: >
+          echo "{ \"color\": [0,0,0], \"command\": \"color\", \"priority\": 0 }" | nc 192.168.0.27 19444
+        command_state: >
+          echo "{ \"command\": \"serverinfo\" }" | nc -i 3 192.168.0.27 19444 | grep -vq "{\"priority\":0}"
 
   shell_command:
-    hyperion_effect_none: 'echo "{ \"command\": \"clearall\"}" | nc 192.168.0.27 19444'
+    hyperion_effect_none: >
+      echo "{ \"command\": \"clearall\"}" | nc 192.168.0.27 19444
     hyperion_set_effect: >
       echo "{ \"effect\": {\"name\": \"{{ states.input_select.hyperion_effect.state }}\"}, \"command\": \"effect\", \"priority\": 100 }" | nc 192.168.0.27 19444
