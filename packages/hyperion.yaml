@@ -72,15 +72,10 @@ hyperion:
     switches:
       hyperion:
         friendly_name: TV Ambilight
-        command_on: >
-          echo '{ "command": "clearall"}' | nc 192.168.0.27 19444
-        command_off: >
-          echo '{ "color": [0,0,0], "command": "color", "priority": 0 }' | nc 192.168.0.27 19444
-        command_state: >
-          echo '{ "command": "serverinfo" }' | nc -i 3 192.168.0.27 19444 | grep -vq "{\"priority\":0}"
+        command_on: '/config/bash_scripts/hyperion/on.sh'
+        command_off: '/config/bash_scripts/hyperion/off.sh'
+        command_state: '/config/bash_scripts/hyperion/status.sh'
 
   shell_command:
-    hyperion_effect_none: >
-      echo '{ "command": "clearall"}' | nc 192.168.0.27 19444
-    hyperion_set_effect: >
-      echo {{ states.input_select.hyperion_effect.state }} | xargs -I {} echo '{ "effect": {"name": "{}"}, "command": "effect", "priority": 100 }' | nc 192.168.0.27 19444
+    hyperion_effect_none: '/config/bash_scripts/hyperion/on.sh'
+    hyperion_set_effect: '/config/bash_scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
