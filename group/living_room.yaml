@@ -24,7 +24,7 @@ living_room_lights:
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
-  - switch.living_room_light_tree
+  - switch.living_room_tree
   - switch.living_room_buddha
 
 living_room_switches:
@@ -39,5 +39,5 @@ living_room_switches:
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
-  - switch.living_room_light_tree
+  - switch.living_room_tree
   - switch.living_room_buddha
