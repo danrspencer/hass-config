@@ -6,6 +6,10 @@ switch.living_room_light_tree:
   icon: mdi:tree
   homebridge_visible: true
 
+switch.buddha:
+  icon: mdi:flower
+  homebridge_visible: true
+
 switch.living_room_tv:
   icon: mdi:television
   homebridge_visible: true
