@@ -29,20 +29,20 @@ recorder:
   purge_interval: 1
   purge_keep_days: 14
   exclude:
-    domains:
-    - group
     entities:
     - sensor.date
-    - binary_sensor.kitchen_motion
-    - binary_sensor.living_room_motion
-    - binary_sensor.entrance_hall_motion
 history:
   include:
     domains:
     - light
 logbook:
   exclude:
+    domains:
+    - group
     entities:
+    - binary_sensor.kitchen_motion
+    - binary_sensor.living_room_motion
+    - binary_sensor.entrance_hall_motion
     - sensor.log_db_file_size
     - sensor.cpu_temp
     - sensor.average_load_15m

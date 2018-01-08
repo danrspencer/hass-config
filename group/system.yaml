@@ -12,7 +12,7 @@ system_pi_stats:
   - sensor.sent_eth0
   - sensor.since_last_boot
 
-sysmtem_links:
+system_links:
   name: Links
   entities:
   - weblink.sky_router
