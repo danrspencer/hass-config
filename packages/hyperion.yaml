@@ -63,7 +63,7 @@ hyperion:
       - "Sparks Color"
       - "Sparks"
       - "Color traces"
-      initial: "None"
+      initial: "Ambilight"
 
   switch:
   - platform: command_line
