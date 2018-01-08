@@ -33,8 +33,18 @@ recorder:
     - sensor.date
 history:
   include:
-    domains:
-    - light
+    entities:
+    - light.bedroom
+    - light.den
+    - light.dressing_room
+    - light.guest_bedroom
+    - light.hallways
+    - light.kitchen
+    - light.living_room
+    - light.porch
+    - sensor.average_load_1m
+    - sensor.average_load_5m
+    - sensor.average_load_15m
 logbook:
   exclude:
     domains:
