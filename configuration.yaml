@@ -33,6 +33,9 @@ recorder:
     - group
     entities:
     - sensor.date
+    - binary_sensor.kitchen_motion
+    - binary_sensor.living_room_motion
+    - binary_sensor.entrance_hall_motion
 history:
   include:
     domains:
