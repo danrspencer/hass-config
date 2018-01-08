@@ -11,3 +11,10 @@ system_pi_stats:
   - sensor.received_eth0
   - sensor.sent_eth0
   - sensor.since_last_boot
+
+sysmtem_links:
+  name: Links
+  entities:
+  - weblink.sky_router
+  - weblink.bt_wifi
+  - weblink.travis

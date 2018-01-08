@@ -122,5 +122,5 @@ system:
   - media_player.spotify
   - sensor.travis_build_status
   - group.system_pi_stats
-  - group.all_input_booleans
+  - group.system_links
   - group.all_automations
