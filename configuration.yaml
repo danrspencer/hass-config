@@ -47,12 +47,11 @@ logbook:
 
 # external links
 weblink:
-  router:
-    title: 'Sky Router'
+  entities:
+  - name: 'Sky Router'
     icon: mdi:ethernet
     url: 'http://192.168.0.1'
-  wifi:
-    title: 'BT WiFi'
+  - name: 'BT WiFi'
     icon: mdi:router-wireless
     url: 'http://mybtdevice.home'
 
