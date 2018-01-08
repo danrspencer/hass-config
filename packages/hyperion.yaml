@@ -1,22 +1,19 @@
 hyperion:
   automation:
-  - alias: Hyperion No Effect
+  - alias: Hyperion Set Mode
     trigger:
     - platform: state
       entity_id: input_select.hyperion_effect
       to: "None"
     action:
-      service: shell_command.hyperion_effect_none
-
-  - alias: Hyperion Set Effect
-    trigger:
-    - platform: state
-      entity_id: input_select.hyperion_effect
-    condition:
-      condition: template
-      value_template: '{{ states.input_select.hyperion_effect.state != "None" }}'
-    action:
-      service: shell_command.hyperion_set_effect
+      service_templat: >
+        {% if  states.input_select.hyperion_effect.state == "Off" %}
+          shell_command.hyperion_off
+        {% elif  states.input_select.hyperion_effect.state == "Ambilight" %}
+          shell_command.hyperion_on
+        {% else %}
+          shell_command.hyperion_set_effect
+        {% endif %}
 
   - alias: Hyperion Auto On
     trigger:
@@ -38,10 +35,11 @@ hyperion:
 
   input_select:
     hyperion_effect:
-      name: TV Ambilight Effect
+      name: Ambilight Mode
       icon: mdi:camcorder-box
       options:
-      - "None"
+      - "Off"
+      - "Ambilight"
       - "Knight rider"
       - "Full color mood blobs"
       - "Rainbow mood"
@@ -71,11 +69,12 @@ hyperion:
   - platform: command_line
     switches:
       hyperion:
-        friendly_name: TV Ambilight
+        friendly_name: Ambilight
         command_on: '/config/bash_scripts/hyperion/on.sh'
         command_off: '/config/bash_scripts/hyperion/off.sh'
         command_state: '/config/bash_scripts/hyperion/status.sh'
 
   shell_command:
-    hyperion_effect_none: '/config/bash_scripts/hyperion/on.sh'
+    hyperion_on: '/config/bash_scripts/hyperion/on.sh'
+    hyperion_off: '/config/bash_scripts/hyperion/off.sh'
     hyperion_set_effect: '/config/bash_scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'

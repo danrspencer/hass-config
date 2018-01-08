@@ -48,12 +48,15 @@ logbook:
 # external links
 weblink:
   entities:
-  - name: 'Sky Router'
+  - name: Sky Router
     icon: mdi:ethernet
-    url: 'http://192.168.0.1'
-  - name: 'BT WiFi'
+    url: http://192.168.0.1
+  - name: BT WiFi
     icon: mdi:router-wireless
-    url: 'http://mybtdevice.home'
+    url: http://mybtdevice.home
+  - name: Travis
+    icon: mdi:wrench
+    url: https://travis-ci.org/danrspencer/hass-config
 
 # Text To Speech
 tts:
