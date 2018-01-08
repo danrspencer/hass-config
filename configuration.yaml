@@ -45,15 +45,15 @@ logbook:
     - sensor.average_load_15m
     - sensor.since_last_boot
 
-# IFrames
-panel_iframe:
+# external links
+weblink:
   router:
-    title: 'Router'
-    icon: mdi:network
+    title: 'Sky Router'
+    icon: mdi:ethernet
     url: 'http://192.168.0.1'
   wifi:
-    title: 'WiFi'
-    icon: mdi:access-point-network
+    title: 'BT WiFi'
+    icon: mdi:router-wireless
     url: 'http://mybtdevice.home'
 
 # Text To Speech
