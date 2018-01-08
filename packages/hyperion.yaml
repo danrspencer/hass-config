@@ -6,7 +6,7 @@ hyperion:
       entity_id: input_select.hyperion_effect
       to: "None"
     action:
-      service_templat: >
+      service_template: >
         {% if  states.input_select.hyperion_effect.state == "Off" %}
           shell_command.hyperion_off
         {% elif  states.input_select.hyperion_effect.state == "Ambilight" %}
