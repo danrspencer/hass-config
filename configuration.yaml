@@ -9,6 +9,63 @@ homeassistant:
   customize: !include_dir_merge_named customize
   packages: !include_dir_merge_named packages
 
+# Enablers
+browser:
+cloud:
+config:
+conversation:
+discovery:
+frontend:
+  javascript_version: latest
+ios:
+map:
+sun:
+updater:
+  include_used_components: true
+
+# History
+recorder:
+  db_url: !secret db_connection
+  purge_interval: 1
+  purge_keep_days: 14
+  exclude:
+    domains:
+    - group
+    entities:
+    - sensor.date
+history:
+  include:
+    domains:
+    - light
+logbook:
+  exclude:
+    entities:
+    - sensor.log_db_file_size
+    - sensor.cpu_temp
+    - sensor.average_load_15m
+    - sensor.since_last_boot
+
+# IFrames
+panel_iframe:
+  router:
+    title: 'Router'
+    icon: mdi:network
+    url: 'http://192.168.0.1'
+  wifi:
+    title: 'WiFi'
+    icon: mdi:access-point-network
+    url: 'http://mybtdevice.home'
+
+# Text To Speech
+tts:
+  platform: amazon_polly
+  aws_access_key_id: !secret aws_access_key_id
+  aws_secret_access_key: !secret aws_secret_access_key
+  region_name: eu-west-1
+  text_type: text
+  voice: Brian
+
+# Device Tracking
 zone:
   - zone:
     name: Home
@@ -45,48 +102,7 @@ duckdns:
   domain: !secret duckdns_domain
   access_token: !secret duckdns_token
 
-browser:
-cloud:
-config:
-conversation:
-discovery:
-frontend:
-  javascript_version: latest
-ios:
-map:
-sun:
-updater:
-  include_used_components: true
-
-# History
-recorder:
-  db_url: !secret db_connection
-  purge_interval: 1
-  purge_keep_days: 2
-  exclude:
-    domains:
-    - group
-    entities:
-    - sensor.date
-history:
-logbook:
-  exclude:
-    entities:
-    - sensor.log_db_file_size
-    - sensor.cpu_temp
-    - sensor.average_load_15m
-    - sensor.since_last_boot
-
-# Text To Speech
-tts:
-  platform: amazon_polly
-  aws_access_key_id: !secret aws_access_key_id
-  aws_secret_access_key: !secret aws_secret_access_key
-  region_name: eu-west-1
-  text_type: text
-  voice: Brian
-
-# Includes
+# Components
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensor
 climate: !include_dir_merge_list climate
