@@ -55,7 +55,7 @@ weblink:
     icon: mdi:router-wireless
     url: http://mybtdevice.home
   - name: Travis
-    icon: mdi:wrench
+    icon: mdi:worker
     url: https://travis-ci.org/danrspencer/hass-config
 
 # Text To Speech
