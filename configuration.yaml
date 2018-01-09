@@ -18,6 +18,17 @@ discovery:
 frontend:
   javascript_version: latest
 ios:
+  push:
+    categories:
+    - name: Update 
+      identifier: update
+      actions:
+      - identifier: update_restart
+        title: 'Update & Restart'
+        activationMode: 'background'
+        authenticationRequired: yes
+        destructive: yes
+        behavior: 'default'
 map:
 sun:
 updater:

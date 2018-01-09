@@ -34,3 +34,6 @@
   - service: notify.ios_dphone
     data:
       message: 'Travis build status: {{ states.sensor.travis_build_status.state }}'
+      data:
+        push:
+          category: update  
