@@ -40,12 +40,7 @@ hyperion:
     - service: input_select.select_option
       data_template:
         entity_id: input_select.hyperion_effect
-        option: >
-          {% if states.switch.hyperion.state %}
-            "Ambilight"
-          {% else %}
-            "Off"
-          {% endif %}
+        option: "Off"
 
   input_select:
     hyperion_effect:
