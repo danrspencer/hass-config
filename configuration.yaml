@@ -31,20 +31,6 @@ recorder:
   exclude:
     entities:
     - sensor.date
-history:
-  include:
-    entities:
-    - light.bedroom
-    - light.den
-    - light.dressing_room
-    - light.guest_bedroom
-    - light.hallways
-    - light.kitchen
-    - light.living_room
-    - light.porch
-    - sensor.average_load_1m
-    - sensor.average_load_5m
-    - sensor.average_load_15m
 logbook:
   exclude:
     domains:
@@ -122,7 +108,6 @@ automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensor
 climate: !include_dir_merge_list climate
 group: !include_dir_merge_named group
-history_graph: !include_dir_merge_named history_graph
 input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list light
 media_player: !include_dir_merge_list media_player

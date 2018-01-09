@@ -121,6 +121,5 @@ system:
   entities:
   - media_player.spotify
   - group.system_pi_stats
-  - history_graph.load_average
   - group.system_links
   - group.all_automations

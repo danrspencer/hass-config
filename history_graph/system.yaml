@@ -1,6 +1,0 @@
-load_average:
-  name: Load Average
-  entities:
-  - sensor.average_load_1m
-  - sensor.average_load_5m
-  - sensor.average_load_15m
