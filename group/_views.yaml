@@ -120,7 +120,6 @@ system:
   view: yes
   entities:
   - media_player.spotify
-  - sensor.travis_build_status
   - group.system_pi_stats
   - group.system_links
   - group.all_automations

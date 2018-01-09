@@ -1,3 +1,12 @@
 sensor.log_db_file_size:
   friendly_name: Home Assistant Log Db
   icon: mdi:database
+
+sensor.average_load_1m:
+  unit_of_measurement: LoadAvg
+
+sensor.average_load_5m:
+  unit_of_measurement: LoadAvg
+
+sensor.average_load_15m:
+  unit_of_measurement: LoadAvg

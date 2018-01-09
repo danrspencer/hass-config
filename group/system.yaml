@@ -6,6 +6,8 @@ system_pi_stats:
   - sensor.cpu_use
   - sensor.ram_use
   - sensor.disk_used_
+  - sensor.average_load_1m
+  - sensor.average_load_5m
   - sensor.average_load_15m
   - sensor.received_eth0
   - sensor.sent_eth0
@@ -17,3 +19,4 @@ system_links:
   - weblink.sky_router
   - weblink.bt_wifi
   - weblink.travis
+  - sensor.travis_build_status
