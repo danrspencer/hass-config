@@ -42,9 +42,9 @@ hyperion:
         entity_id: input_select.hyperion_effect
         option: >
           {% if states.switch.hyperion.state %}
-            Ambilight
+            "Ambilight"
           {% else %}
-            Off
+            "Off"
           {% endif %}
 
   input_select:
