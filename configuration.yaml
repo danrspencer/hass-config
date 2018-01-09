@@ -31,6 +31,17 @@ recorder:
   exclude:
     entities:
     - sensor.date
+history:
+  include:
+    entities:
+    - light.bedroom
+    - light.den
+    - light.dressing_room
+    - light.guest_bedroom
+    - light.hallways
+    - light.kitchen
+    - light.living_room
+    - light.porch
 logbook:
   exclude:
     domains:

@@ -4,7 +4,6 @@ hyperion:
     trigger:
     - platform: state
       entity_id: input_select.hyperion_effect
-      to: "None"
     action:
       service_template: >
         {% if  states.input_select.hyperion_effect.state == "Off" %}
