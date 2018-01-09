@@ -39,7 +39,7 @@ hyperion:
     action:
     - service: input_select.select_option
       data_template:
-        entity_id: input_select.hyperiond_effect
+        entity_id: input_select.hyperion_effect
         option: >
           {% if states.switch.hyperion.state %}
             Ambilight
