@@ -7,5 +7,4 @@ script:
   - 'hass -c . --script check_config | tee check.output'
   - '! less check.output | grep -q ERROR'
 before_install:
-  - 'cd config'
   - 'mv secrets.yaml.sample secrets.yaml'

@@ -1,32 +1,37 @@
-IP=			hassio.local
-USER=		root
+REMOTE=root@hassio.local	
 
-update-config: update-secrets
-	ssh ${USER}@${IP} "cd /config && git reset --hard origin/master && git pull && hassio homeassistant restart"
+update-config:
+	ssh ${REMOTE} "cd /config && git reset --hard origin/master && git pull origin master && hassio homeassistant restart"
 
 update-secrets:
-	scp -rp secrets.yaml ${USER}@${IP}:/config/secrets.yaml
+	scp -rp ./config/secrets.yaml ${REMOTE}:/config/secrets.yaml
 
 update-hassio:
 	hassio/update.py
 
 logs:
-	ssh ${USER}@${IP} "hassio homeassistant logs"
+	ssh ${REMOTE} "hassio homeassistant logs"
 
 restart:
-	ssh ${USER}@${IP} "hassio homeassistant restart"
+	ssh ${REMOTE} "hassio homeassistant restart"
 
 secrets:
-	cp ./config/secrets.yaml.sample ./config/secrets.yaml
+	cp ./secrets.yaml.sample ./config/secrets.yaml
 
 sync-config:
-	scp -r ${USER}@${IP}:/config/*.yaml ./
+	scp -r ${REMOTE}:/config/*.yaml ./
 
 get-backup:
-	scp -rp ${USER}@${IP}:/backup/* ./backup/
+	scp -rp ${REMOTE}:/backup/* ./backup/
 
 put-backup:
-	scp -rp ./backup/* ${USER}@${IP}:/backup/
+	scp -rp ./backup/* ${REMOTE}:/backup/
+
+setup-config-git:
+	ssh ${REMOTE} "cd /config && " \
+										"git init &&" \
+										"git remote add origin -f https://github.com/danrspencer/hass-config.git &&" \
+										"git pull origin master"
 
 reset-nest:
-	ssh ${USER}@${IP} "sudo rm /home/homeassistant/.homeassistant/nest.con"
+	ssh ${REMOTE} "sudo rm /home/homeassistant/.homeassistant/nest.con"
