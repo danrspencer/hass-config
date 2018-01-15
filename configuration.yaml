@@ -6,8 +6,8 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/London
 
-  customize: !include_dir_merge_named customize
-  packages: !include_dir_merge_named packages
+  customize: !include_dir_merge_named configuration/customize
+  packages: !include_dir_merge_named configuration/packages
 
 # Enablers
 browser:
@@ -126,16 +126,16 @@ duckdns:
   access_token: !secret duckdns_token
 
 # Components
-automation: !include_dir_merge_list automation
-binary_sensor: !include_dir_merge_list binary_sensor
-climate: !include_dir_merge_list climate
-group: !include_dir_merge_named group
-input_boolean: !include_dir_merge_named input_boolean
-light: !include_dir_merge_list light
-media_player: !include_dir_merge_list media_player
-nest: !include nest.yaml
-scene: !include_dir_merge_list scene
-script: !include_dir_merge_named script
-sensor: !include_dir_merge_list sensor
-switch: !include_dir_merge_list switch
-weather: !include_dir_merge_list weather
+automation: !include_dir_merge_list configuration/automation
+binary_sensor: !include_dir_merge_list configuration/binary_sensor
+climate: !include_dir_merge_list configuration/climate
+group: !include_dir_merge_named configuration/group
+input_boolean: !include_dir_merge_named configuration/input_boolean
+light: !include_dir_merge_list configuration/light
+media_player: !include_dir_merge_list configuration/media_player
+nest: !include configuration/nest.yaml
+scene: !include_dir_merge_list configuration/scene
+script: !include_dir_merge_named configuration/script
+sensor: !include_dir_merge_list configuration/sensor
+switch: !include_dir_merge_list configuration/switch
+weather: !include_dir_merge_list configuration/weather

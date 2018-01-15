@@ -1,10 +1,10 @@
-REMOTE=root@hassio.local	
+REMOTE=root@hassio.local
 
-update-config:
+update-config: update-secrets
 	ssh ${REMOTE} "cd /config && git reset --hard origin/master && git pull origin master && hassio homeassistant restart"
 
 update-secrets:
-	scp -rp ./config/secrets.yaml ${REMOTE}:/config/secrets.yaml
+	scp -rp ./secrets.yaml ${REMOTE}:/config/secrets.yaml
 
 update-hassio:
 	hassio/update.py
