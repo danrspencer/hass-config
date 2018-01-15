@@ -1,24 +1,24 @@
 name: Dasshio
 options:
   buttons:
-  - address: 18:74:2E:B4:CC:1A
-    body: '{"entity_id": "switch.bedroom_light"}'
-    headers: '{}'
-    name: Bedroom (Barbatia)
-    url: http://homeassistant:8123/api/services/switch/toggle
-  - address: 18:74:2E:DC:C5:AA
-    body: '{}'
-    headers: '{}'
-    name: Kitchen (Listerine)
-    url: http://homeassistant:8123/api/services/script/relaxed_cooking
-  - address: 18:74:2E:02:6C:A4
-    body: '{"entity_id": "switch.dressing_room_light"}'
-    headers: '{}'
-    name: Dressing Room (Dettol)
-    url: http://homeassistant:8123/api/services/switch/toggle
-  - address: 18:74:2E:1C:CD:06
-    body: '{"entity_id": "light.den"}'
-    headers: '{}'
-    name: Den (Simple Solution)
-    url: http://homeassistant:8123/api/services/light/toggle
+  - name: Bedroom (Barbatia)
+    address: 18:74:2E:B4:CC:1A
+    domain: switch
+    service: toggle
+    service_data: '{"entity_id": "switch.bedroom_light"}'
+  - name: Kitchen (Listerine)
+    address: 18:74:2E:DC:C5:AA
+    domain: script
+    service: relaxed_cooking
+    service_data: '{}'
+  - name: Dressing Room (Dettol)
+    address: 18:74:2E:02:6C:A4
+    domain: switch
+    service: toggle
+    service_data: '{"entity_id": "switch.dressing_room_light"}'
+  - name: Den (Simple Solution)
+    address: 18:74:2E:1C:CD:06
+    domain: switch
+    service: toggle
+    service_data: '{"entity_id": "light.den"}'
 url: https://github.com/danimtb/dasshio
