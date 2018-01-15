@@ -4,8 +4,8 @@ python:
 install:
   - 'pip3 install homeassistant'
 script:
-  - cd config
   - 'hass -c . --script check_config | tee check.output'
   - '! less check.output | grep -q ERROR'
 before_install:
+  - 'cd config'
   - 'mv secrets.yaml.sample secrets.yaml'
