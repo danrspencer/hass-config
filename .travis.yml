@@ -3,8 +3,8 @@ python:
   - '3.4'
 install:
   - 'pip3 install homeassistant'
+  - 'mv secrets.yaml.sample secrets.yaml'
 script:
   - 'hass -c . --script check_config | tee check.output'
   - '! less check.output | grep -q ERROR'
-before_install:
-  - 'mv secrets.yaml.sample secrets.yaml'
+

@@ -35,3 +35,6 @@ setup-config-git:
 
 reset-nest:
 	ssh ${REMOTE} "sudo rm /home/homeassistant/.homeassistant/nest.con"
+
+update-to-version:
+	ssh ${REMOTE} "curl -d '{\"version\": \"${VERSION}\"}' http://hassio/homeassistant/update"

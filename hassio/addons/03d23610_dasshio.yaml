@@ -18,7 +18,7 @@ options:
     service_data: '{"entity_id": "switch.dressing_room_light"}'
   - name: Den (Simple Solution)
     address: 18:74:2E:1C:CD:06
-    domain: switch
+    domain: light
     service: toggle
     service_data: '{"entity_id": "light.den"}'
 url: https://github.com/danimtb/dasshio
