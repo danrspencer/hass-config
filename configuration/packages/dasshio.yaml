@@ -4,7 +4,7 @@ dasshio:
     name: Dasshio State
     resource: http://hassio.local:8123/api/hassio/addons/03d23610_dasshio/info
     method: GET
-    value_template: '{{ value_json["result"] }}'
+    # value_template: '{{ value_json["result"] }}'
 
   rest_command:
     dasshio_restart:
