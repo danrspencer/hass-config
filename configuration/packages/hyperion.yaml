@@ -79,11 +79,11 @@ hyperion:
     switches:
       hyperion:
         friendly_name: Ambilight
-        command_on: '/config/bash_scripts/hyperion/on.sh'
-        command_off: '/config/bash_scripts/hyperion/off.sh'
-        command_state: '/config/bash_scripts/hyperion/status.sh'
+        command_on: '/config/scripts/hyperion/on.sh'
+        command_off: '/config/scripts/hyperion/off.sh'
+        command_state: '/config/scripts/hyperion/status.sh'
 
   shell_command:
-    hyperion_on: '/config/bash_scripts/hyperion/on.sh'
-    hyperion_off: '/config/bash_scripts/hyperion/off.sh'
-    hyperion_set_effect: '/config/bash_scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
+    hyperion_on: '/config/scripts/hyperion/on.sh'
+    hyperion_off: '/config/scripts/hyperion/off.sh'
+    hyperion_set_effect: '/config/scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'

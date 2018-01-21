@@ -1,0 +1,7 @@
+dasshio:
+  binary_sensor:
+  - platform: rest
+    name: Dasshio Running
+    resource: http://hassio.local:8123/api/hassio/addons/03d23610_dasshio/info
+    method: GET
+    value_template: '{{ value_json["data"]["state"] === "started" }}'
