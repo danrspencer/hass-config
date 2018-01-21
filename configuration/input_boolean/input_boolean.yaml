@@ -2,3 +2,13 @@ holiday_mode:
   name: Holiday Mode!
   initial: off
   icon: mdi:human-handsup
+
+kitchen_lights:
+  name: Kitchen Lights
+  initial: on
+  icon: traffic-light
+
+living_room_lights:
+  name: Living Room Lights
+  initial: on
+  icon: traffic-light

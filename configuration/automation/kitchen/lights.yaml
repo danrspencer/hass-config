@@ -13,6 +13,8 @@
     entity_id: light.kitchen
     data:
       transition: 15
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.kitchen_lights
 
 - alias: Kitchen Lights On
   trigger:
@@ -22,13 +24,15 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: light.kitchen
+    entity_id: input_boolean.kitchen_lights
     state: 'off'
   action:
   - service: hue.hue_activate_scene
     data_template:
       group_name: Kitchen
       scene_name: '{{ states.sensor.day_phase.state }}'
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.kitchen_lights
 
 - alias: Kitchen Lights Update
   trigger:
@@ -43,3 +47,12 @@
     data_template:
       group_name: Kitchen
       scene_name: '{{ states.sensor.day_phase.state }}'
+
+- alias: Kitchen Lights Sync Boolean
+  trigger:
+  - entity_id: light.kitchen
+    platform: state
+    to: 'off'
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.kitchen_lights
+  

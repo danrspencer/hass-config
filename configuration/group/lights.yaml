@@ -2,6 +2,7 @@ lights_kitchen:
   name: Kitchen
   icon: mdi:food-variant
   entities:
+  - input_boolean.kitchen_lights
   - light.kitchen
   - light.kitchen_lightstrip
   - light.kitchen_spot_1
