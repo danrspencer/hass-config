@@ -6,9 +6,9 @@ holiday_mode:
 kitchen_lights:
   name: Kitchen Lights
   initial: on
-  icon: traffic-light
+  icon: mdi:traffic-light
 
 living_room_lights:
   name: Living Room Lights
   initial: on
-  icon: traffic-light
+  icon: mdi:traffic-light
