@@ -1,7 +1,26 @@
 dasshio:
   sensor:
   - platform: rest
-    name: Dasshio Running
+    name: Dasshio State
     resource: http://hassio.local:8123/api/hassio/addons/03d23610_dasshio/info
     method: GET
-    value_template: '{{ value_json["data"]["state"] }}'
+    value_template: '{{ value_json["result"] }}'
+
+  rest_command:
+    dasshio_restart:
+      url: http://hassio.local:8123/api/hassio/addons/03d23610_dasshio/info
+      method: POST
+      payload: '{}'
+
+  # automation:
+  # - alias: Dasshio Restart
+  #   trigger:
+  #   - platform: state
+  #     entity_id: sensor.dasshio_state
+  #   action:
+  #   - service: rest_command.
+  #     entity_id: 
+  #     data_template:
+  #       entity_id: remote.living_room_tv
+  #       activity: '{{ states.input_select.living_room_tv.state }}'
+    
