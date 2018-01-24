@@ -26,7 +26,7 @@ ios:
       - identifier: 'UPDATE_RESTART'
         title: 'Update & Restart'
         activationMode: 'background'
-        authenticationRequired: yes
+        authenticationRequired: no
         destructive: yes
         behavior: 'default'
 map:
