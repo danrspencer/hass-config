@@ -36,5 +36,6 @@
       message: 'Travis build status: {{ states.sensor.travis_build_status.state }}'
       data:
         push:
-          badge: 1
-          category: update  
+          category: 'update'
+        action_data:
+          my_custom_data: foo_bar
