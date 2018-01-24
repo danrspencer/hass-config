@@ -38,4 +38,4 @@
         push:
           category: 'update'
         action_data:
-          my_custom_data: foo_bar
+          my_custom_data: foo_bar1
