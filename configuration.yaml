@@ -21,9 +21,9 @@ ios:
   push:
     categories:
     - name: Update 
-      identifier: update
+      identifier: 'update'
       actions:
-      - identifier: update_restart
+      - identifier: 'UPDATE_RESTART'
         title: 'Update & Restart'
         activationMode: 'background'
         authenticationRequired: yes
