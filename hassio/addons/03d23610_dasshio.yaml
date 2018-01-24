@@ -1,24 +1,24 @@
 name: Dasshio
 options:
   buttons:
-  - name: Bedroom (Barbatia)
-    address: 18:74:2E:B4:CC:1A
+  - address: 18:74:2E:B4:CC:1A
     domain: switch
+    name: Bedroom (Barbatia)
     service: toggle
     service_data: '{"entity_id": "switch.bedroom_light"}'
-  - name: Kitchen (Listerine)
-    address: 18:74:2E:DC:C5:AA
+  - address: 18:74:2E:DC:C5:AA
     domain: script
+    name: Kitchen (Listerine)
     service: relaxed_cooking
     service_data: '{}'
-  - name: Dressing Room (Dettol)
-    address: 18:74:2E:02:6C:A4
+  - address: 18:74:2E:02:6C:A4
     domain: switch
+    name: Dressing Room (Dettol)
     service: toggle
     service_data: '{"entity_id": "switch.dressing_room_light"}'
-  - name: Den (Simple Solution)
-    address: 18:74:2E:1C:CD:06
+  - address: 18:74:2E:1C:CD:06
     domain: light
+    name: Den (Simple Solution)
     service: toggle
     service_data: '{"entity_id": "light.den"}'
 url: https://github.com/danimtb/dasshio
