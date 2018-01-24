@@ -20,8 +20,3 @@ system_links:
   - weblink.bt_wifi
   - weblink.travis
   - sensor.travis_build_status
-
-addons:
-  name: Addons
-  entities:
-  - binary_sensor.dasshio_running

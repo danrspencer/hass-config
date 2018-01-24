@@ -3,10 +3,33 @@
   - platform: state
     entity_id: light.dressing_room
     to: 'on'
+  - platform: state
+    entity_id: sensor.day_phase
+  condition:
+    condition: state
+    entity_id: light.dressing_room
+    state: 'on'
   action:
   - service: hue.hue_activate_scene
     data_template:
       group_name: Dressing Room
+      scene_name: '{{ states.sensor.day_phase.state }}'
+
+- alias: Bedroom Lights Update
+  trigger:
+  - platform: state
+    entity_id: light.bedroom
+    to: 'on'
+  - platform: state
+    entity_id: sensor.day_phase
+  condition:
+    condition: state
+    entity_id: light.bedroom
+    state: 'on'
+  action:
+  - service: hue.hue_activate_scene
+    data_template:
+      group_name: Bedroom
       scene_name: '{{ states.sensor.day_phase.state }}'
 
 - alias: Porch Light Auto On
