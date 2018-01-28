@@ -33,3 +33,15 @@
   value_template: '{{ value_json.state.temperature | float / 100 }}'
   unit_of_measurement: °C
   name: 'Entrance Hall Temperature'
+
+- platform: rest
+  resource: !secret hue_top_floor_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Top Floor Light'
+
+- platform: rest
+  resource: !secret hue_top_floor_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Top Floor Temperature'

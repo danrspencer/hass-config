@@ -15,3 +15,9 @@
   value_template: '{{ value_json.state.presence }}'
   scan_interval: 1
   name: 'Entrance Hall Motion'
+
+- platform: rest
+  resource: !secret hue_top_floor_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Top Floor Motion'
