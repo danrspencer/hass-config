@@ -63,3 +63,8 @@
         switch.turn_on
       {% endif %}
     entity_id: switch.living_room_tree
+  - service_template: >
+      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
+        switch.turn_on
+      {% endif %}
+    entity_id: switch.living_room_buddha

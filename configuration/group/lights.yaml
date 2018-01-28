@@ -19,6 +19,7 @@ lights_kitchen:
 lights_living_room:
   name: Living Room
   entities:
+  - input_boolean.living_room_lights
   - light.living_room
   - light.living_room_lamp
   - light.living_room_spot_1
@@ -28,27 +29,18 @@ lights_living_room:
   - switch.living_room_buddha
   - switch.hyperion
 
-lights_den:
+lights_top_floor:
   name: Den
-  icon: mdi:gamepad-variant
   entities:
-  - light.den
-  - light.den_lamp
-
-lights_bedroom:
-  name: Bedroom
-  icon: mdi:hotel
-  entities:
+  - input_boolean.top_floor_lights_auto
   - light.bedroom
   - light.bedroom_lamp_1
   - light.bedroom_lamp_2
-
-lights_dressing_room:
-  name: Dressing Room
-  icon: mdi:tshirt-crew
-  entities:
+  - light.den
+  - light.den_lamp
   - light.dressing_room
   - light.dressing_room_lamp
+  - light.top_floor_landing
 
 lights_guest_bedroom:
   name: Guest Bedroom

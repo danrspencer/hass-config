@@ -12,3 +12,8 @@ living_room_lights:
   name: Living Room Lights
   initial: on
   icon: mdi:traffic-light
+
+top_floor_lights_auto:
+  name: Top Floor Lights Auto
+  initial: on
+  icon: mdi:traffic-light
