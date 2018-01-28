@@ -85,6 +85,7 @@ lights:
   view: yes
   entities:
   - sensor.lights_on
+  - sensor.rooms_on
   - sensor.kitchen_light
   - sensor.living_room_light
   - sensor.entrance_hall_light

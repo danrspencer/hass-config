@@ -44,8 +44,20 @@
             {% for state in states if ('light' in state.entity_id 
                         and state.domain in ['light','switch']
                         and state.state == 'on' 
-                        and not state.attributes.is_hue_group) -%}
+                        and state.attributes.is_hue_group) -%}
                 {% if loop.first -%}
                     {{ loop.length }}
                 {%- endif %}
             {%- endfor %}
+    roomss_on:
+        friendly_name: 'Rooms On'
+        value_template: >
+            {% for state in states if ('light' in state.entity_id 
+                        and state.domain in ['light','switch']
+                        and state.state == 'on' 
+                        and state.attributes.is_hue_group) -%}
+                {% if loop.first -%}
+                    {{ loop.length }}
+                {%- endif %}
+            {%- endfor %}
+
