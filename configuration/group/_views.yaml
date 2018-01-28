@@ -116,6 +116,7 @@ house:
   - group.smoke_detector
   - group.network
   - group.phones
+  - weather.dark_sky
 
 system:
   name: Other
