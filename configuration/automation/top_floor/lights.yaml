@@ -1,12 +1,8 @@
 - alias: Top Floor Lights Auto On
   trigger:
   - platform: state
-    entity_id: light.hallways
+    entity_id: binary_sensor.entrance_hall_motion
     to: 'on'
-    for:
-      hours: 0
-      minutes: 5
-      seconds: 0
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.top_floor_lights_auto
