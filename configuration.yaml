@@ -37,9 +37,9 @@ updater:
 # History
 influxdb:
   host: !secret influx_host
-  port: 20000
+  port: 8086
   username: !secret influx_user
-  password: !secret influx_pass
+  password: !secret influx_passgit stat
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
