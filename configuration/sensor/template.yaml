@@ -38,3 +38,14 @@
             # Night
             mdi:sleep
         {% endif %}
+    lights_on:
+        friendly_name: 'Lights On'
+        value_template: >
+            {% for state in states if ('light' in state.entity_id 
+                        and state.domain in ['light','switch']
+                        and state.state == 'on' 
+                        and not state.attributes.is_hue_group) -%}
+                {% if loop.first -%}
+                    {{ loop.length }}
+                {%- endif %}
+            {%- endfor %}
