@@ -94,9 +94,7 @@ lights:
   - group.lights_kitchen
   - group.lights_bedroom
   - group.lights_hallway
-  - group.lights_den
-  - group.lights_dressing_room
-  - group.lights_guest_bedroom
+  - group.lights_top_floor
   - group.lights_porch
 
 media:
