@@ -17,7 +17,7 @@
     entity_id: sensor.day_phase
     to: 'morning'
   action:
-  - service: input_boolean.turn_on
+  - service: input_boolean.turn_off
     entity_id: input_boolean.top_floor_lights_auto
 
 - alias: Top Floor Lights Off
