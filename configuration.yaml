@@ -88,6 +88,11 @@ weblink:
   - name: Travis
     icon: mdi:worker
     url: https://travis-ci.org/danrspencer/hass-config
+panel_iframe:
+  grafana:
+    title: Grafana
+    url: 'https://hass5bill.grafana.net'
+    icon: mdi:trending-up
 
 # Text To Speech
 tts:
