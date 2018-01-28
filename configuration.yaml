@@ -35,6 +35,12 @@ updater:
   include_used_components: true
 
 # History
+influxdb:
+  host: !secret 
+  port: 20000
+  database: DB_TO_STORE_EVENTS
+  username: MY_USERNAME
+  password: MY_PASSWORD
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
