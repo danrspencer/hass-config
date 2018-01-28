@@ -18,6 +18,27 @@
       group_name: Hallways
       scene_name: '{{ states.sensor.day_phase.state }}'
 
+- alias: Hallways Lights On From Top Floor
+  trigger:
+  - entity_id: binary_sensor.top_floor_motion
+    platform: state
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: light.hallways
+      state: 'off'
+    - conditions: state
+      entity_id: input_boolean.top_floor_lights_auto
+      state: 'off'
+  action:
+  - service: hue.hue_activate_scene
+    data_template:
+      group_name: Hallways
+      scene_name: '{{ states.sensor.day_phase.state }}'
+
 - alias: Hallways Lights Update
   trigger:
   - entity_id: sensor.day_phase

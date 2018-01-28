@@ -1,4 +1,4 @@
-- alias: Top Floor Lights Auto
+- alias: Top Floor Lights Auto On
   trigger:
   - platform: state
     entity_id: light.hallways
@@ -7,16 +7,17 @@
       hours: 0
       minutes: 5
       seconds: 0
-  - platform: state
-    entity_id: light.hallways
-    to: 'off'
   action:
-  - service_template: >
-      {% if states.light.hallways.state == 'on' %}
-        input_boolean.turn_on
-      {% else %}
-        input_boolean.turn_off
-      {% endif %}
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.top_floor_lights_auto
+
+- alias: Top Floor Lights Auto off
+  trigger:
+  - platform: state
+    entity_id: sensor.day_phase
+    to: 'morning'
+  action:
+  - service: input_boolean.turn_on
     entity_id: input_boolean.top_floor_lights_auto
 
 - alias: Top Floor Lights Off
