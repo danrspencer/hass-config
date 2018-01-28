@@ -36,11 +36,10 @@ updater:
 
 # History
 influxdb:
-  host: !secret 
+  host: !secret influx_host
   port: 20000
-  database: DB_TO_STORE_EVENTS
-  username: MY_USERNAME
-  password: MY_PASSWORD
+  username: !secret influx_user
+  password: !secret influx_pass
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
