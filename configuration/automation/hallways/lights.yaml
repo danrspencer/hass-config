@@ -30,7 +30,7 @@
     - condition: state
       entity_id: light.hallways
       state: 'off'
-    - conditions: state
+    - condition: state
       entity_id: input_boolean.top_floor_lights_auto
       state: 'off'
   action:
