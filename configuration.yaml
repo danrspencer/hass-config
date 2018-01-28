@@ -40,6 +40,11 @@ influxdb:
   port: 8086
   username: !secret influx_user
   password: !secret influx_pass
+  exclude:
+    entities:
+    - sensor.date
+    domains:
+    - automation
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
