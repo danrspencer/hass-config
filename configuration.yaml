@@ -39,7 +39,7 @@ influxdb:
   host: !secret influx_host
   port: 8086
   username: !secret influx_user
-  password: !secret influx_passgit stat
+  password: !secret influx_pass
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
