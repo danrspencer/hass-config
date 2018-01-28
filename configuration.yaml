@@ -43,8 +43,6 @@ influxdb:
   exclude:
     entities:
     - sensor.date
-    domains:
-    - automation
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
@@ -91,7 +89,7 @@ weblink:
 panel_iframe:
   grafana:
     title: Grafana
-    url: 'https://hass5bill.grafana.net'
+    url: 'https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m'
     icon: mdi:trending-up
 
 # Text To Speech
