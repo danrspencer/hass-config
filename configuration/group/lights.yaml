@@ -41,6 +41,10 @@ lights_top_floor:
   - light.dressing_room
   - light.dressing_room_lamp
   - light.top_floor_landing
+  - light.bathroom
+  - light.bathroom_lamp
+  - light.ensuite
+  - light.ensuite_lamp
 
 lights_guest_bedroom:
   name: Guest Bedroom
