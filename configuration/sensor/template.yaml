@@ -44,7 +44,7 @@
             {% for state in states if ('light' in state.entity_id 
                         and state.domain in ['light','switch']
                         and state.state == 'on' 
-                        and state.attributes.is_hue_group) -%}
+                        and not state.attributes.is_hue_group) -%}
                 {% if loop.first -%}
                     {{ loop.length }}
                 {%- endif %}
