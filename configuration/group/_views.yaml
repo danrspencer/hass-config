@@ -87,7 +87,7 @@ lights:
   entities:
   - sensor.lights_on
   - sensor.rooms_on
-  - sensor.total_birghtness
+  - sensor.total_brightness
   - sensor.kitchen_light
   - sensor.living_room_light
   - sensor.entrance_hall_light

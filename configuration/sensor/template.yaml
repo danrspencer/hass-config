@@ -54,7 +54,7 @@
                 | selectattr('attributes.is_hue_group')
                 | list | count
             }}
-    total_birghtness:
+    total_brightness:
         friendly_name: 'Total Brightness'
         value_template: >
             {{ states.light
