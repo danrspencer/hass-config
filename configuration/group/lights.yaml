@@ -29,22 +29,38 @@ lights_living_room:
   - switch.living_room_buddha
   - switch.hyperion
 
-lights_top_floor:
-  name: Den
+lights_top_floor_landing:  
+  name: Top Floor Landing
   entities:
   - input_boolean.top_floor_lights_auto
+  - light.top_floor_landing
+
+lights_bedroom:
+  name: Bedroom
+  entities:
   - light.bedroom
   - light.bedroom_lamp_1
   - light.bedroom_lamp_2
-  - light.den
-  - light.den_lamp
-  - light.dressing_room
-  - light.dressing_room_lamp
-  - light.top_floor_landing
+
+lights_bathrooms:
+  name: Bathrooms
+  entities:
   - light.bathroom
   - light.bathroom_lamp
   - light.ensuite
   - light.ensuite_lamp
+
+lights_dressing_room:
+  name: Dressing Room
+  entities:
+  - light.dressing_room
+  - light.dressing_room_lamp
+
+lights_den:
+  name: Den
+  entities:
+  - light.den
+  - light.den_lamp
 
 lights_guest_bedroom:
   name: Guest Bedroom
