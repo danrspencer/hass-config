@@ -32,15 +32,15 @@ hyperion:
     - service: switch.turn_off
       entity_id: switch.hyperion
 
-  - alias: Hyperion Sync Input
-    trigger:
-    - platform: state
-      entity_id: switch.hyperion
-    action:
-    - service: input_select.select_option
-      data_template:
-        entity_id: input_select.hyperion_effect
-        option: "Off"
+  # - alias: Hyperion Sync Input
+  #   trigger:
+  #   - platform: state
+  #     entity_id: switch.hyperion
+  #   action:
+  #   - service: input_select.select_option
+  #     data_template:
+  #       entity_id: input_select.hyperion_effect
+  #       option: "Off"
 
   input_select:
     hyperion_effect:
