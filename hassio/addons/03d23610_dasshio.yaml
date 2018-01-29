@@ -15,7 +15,7 @@ options:
     domain: switch
     name: Dressing Room (Dettol)
     service: toggle
-    service_data: '{"entity_id": "switch.ensuite_light"}'
+    service_data: '{"entity_id": "switch.dressing_room_light"}'
   - address: 18:74:2E:1C:CD:06
     domain: light
     name: Den (Simple Solution)
