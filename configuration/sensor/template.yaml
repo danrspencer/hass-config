@@ -54,3 +54,11 @@
                 | selectattr('attributes.is_hue_group')
                 | list | count
             }}
+    total_birghtness:
+        friendly_name: 'Total Brightness'
+        value_template: >
+            {{ states.light
+                | selectattr('state', 'eq', 'on')
+                | rejectattr('attributes.is_hue_group')
+                | sum(attribute='attributes.brightness')
+            }}
