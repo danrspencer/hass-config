@@ -25,6 +25,8 @@ house_other:
   - binary_sensor.entrance_hall_motion
   - sensor.living_room_light
   - binary_sensor.living_room_motion
+  - sensor.top_floor_light
+  - binary_sensor.top_floor_motion
 
 controls:
   name: Controls
