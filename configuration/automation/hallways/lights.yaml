@@ -1,3 +1,19 @@
+- alias: Hallways Lights Off
+  trigger:
+  - entity_id: binary_sensor.house_motion
+    platform: state
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  action:
+  - service: light.turn_off
+    entity_id: light.hallways
+    data:
+      transition: 15
+
 - alias: Hallways Lights On
   trigger:
   - entity_id: binary_sensor.entrance_hall_motion
