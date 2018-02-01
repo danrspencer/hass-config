@@ -29,9 +29,9 @@ put-backup:
 
 setup-config-git:
 	ssh ${REMOTE} "cd /config && " \
-										"git init &&" \
-										"git remote add origin -f https://github.com/danrspencer/hass-config.git &&" \
-										"git pull origin master"
+		"git init &&" \
+		"git remote add origin -f https://github.com/danrspencer/hass-config.git &&" \
+		"git pull origin master"
 
 reset-nest:
 	ssh ${REMOTE} "sudo rm /home/homeassistant/.homeassistant/nest.con"

@@ -19,6 +19,7 @@ house_climate_control:
 house_other:
   name: House Other
   entities:
+  - binary_sensor.house_motion
   - sensor.kitchen_light
   - binary_sensor.kitchen_motion
   - sensor.entrance_hall_light

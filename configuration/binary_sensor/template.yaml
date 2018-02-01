@@ -1,7 +1,10 @@
 - platform: template
   sensors:
-    house_thermostat_active:
+    house_motion:
       value_template: >
-        {{ (states.sensor.house_thermostat_temperature.state | int) < (states.sensor.house_thermostat_target.state | int)
-        and (states.sensor.house_thermostat_operation_mode.state == "heat")
+        {{ 
+          states.binary_sensor.entrance_hall_motion.state == 'on' or
+          states.binary_sensor.kitchen_motion.state == 'on' or
+          states.binary_sensor.living_room_motion.state == 'on' or
+          states.binary_sensor.top_floor_motion.state == 'on' 
         }}
