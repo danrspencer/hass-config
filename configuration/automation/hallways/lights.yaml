@@ -20,10 +20,6 @@
     platform: state
     from: 'off'
     to: 'on'
-  - entity_id: binary_sensor.top_floor_motion
-    platform: state
-    from: 'off'
-    to: 'on'
   condition:
     condition: state
     entity_id: light.hallways
