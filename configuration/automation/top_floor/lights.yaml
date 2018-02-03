@@ -29,16 +29,10 @@
   action:
   - service: light.turn_off
     entity_id: light.top_floor_landing
-    data:
-      transition: 15
   - service: light.turn_off
     entity_id: light.bathroom
-    data:
-      transition: 15
   - service: light.turn_off
     entity_id: light.dressing_room
-    data:
-      transition: 15
 
 - alias: Top Floor Landing Lights On
   trigger:
