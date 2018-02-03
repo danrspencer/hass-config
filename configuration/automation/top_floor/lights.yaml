@@ -79,7 +79,7 @@
       entity_id: input_boolean.top_floor_lights_auto
       state: 'on'
     - condition: template
-      value_template: '{{ states.sensor.day_phase.state != "Night" }}'
+      value_template: '{{ states.sensor.day_phase.state == "Day" and states.sensor.day_phase.state != "Night" }}'
   action:
   - service: hue.hue_activate_scene
     data_template:
