@@ -11,7 +11,7 @@
   trigger:
   - platform: state
     entity_id: sensor.day_phase
-    to: 'Morning'
+    from: 'Night'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.top_floor_lights_auto
