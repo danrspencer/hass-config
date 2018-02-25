@@ -1,4 +1,5 @@
 default_view:
+  name: Home
   view: yes
   entities:
   - device_tracker.dphone
@@ -125,7 +126,7 @@ house:
   - weather.dark_sky
 
 system:
-  name: Other
+  name: System
   icon: mdi:developer-board
   view: yes
   entities:
