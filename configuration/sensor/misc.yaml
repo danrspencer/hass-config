@@ -1,3 +1,5 @@
+- platform: ring
+
 - platform: rest
   resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
   headers:

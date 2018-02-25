@@ -30,6 +30,9 @@ ios:
         destructive: yes
         behavior: 'default'
 map:
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
 sun:
 updater:
   include_used_components: true
