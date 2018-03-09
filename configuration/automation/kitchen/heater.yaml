@@ -13,7 +13,7 @@
     service: climate.set_temperature
     entity_id: climate.kitchen
     data_template:
-      temperature: '{{ (states.sensor.house_thermostat_target.state | int) - 1 }}'
+      temperature: '{{ states.sensor.house_thermostat_target.state }}'
 
 - alias: Kitchen Heater Disable
   trigger:
