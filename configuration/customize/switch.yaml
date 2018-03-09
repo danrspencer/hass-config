@@ -2,12 +2,8 @@ switch.hyperion:
   icon: mdi:camcorder-box
   homebridge_visible: true
 
-switch.living_room_tree:
-  icon: mdi:tree
-  homebridge_visible: true
-
-switch.living_room_buddha:
-  icon: mdi:flower
+switch.living_room_fairy_lights:
+  icon: mdi:alarm-light
   homebridge_visible: true
 
 switch.living_room_tv:

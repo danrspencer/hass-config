@@ -25,8 +25,7 @@ lights_living_room:
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
-  - switch.living_room_tree
-  - switch.living_room_buddha
+  - switch.living_room_fairy_lights
   - switch.hyperion
 
 lights_top_floor_landing:  
@@ -37,6 +36,7 @@ lights_top_floor_landing:
 
 lights_bedroom:
   name: Bedroom
+  icon: mdi:hotel
   entities:
   - light.bedroom
   - light.bedroom_lamp_1
@@ -52,6 +52,7 @@ lights_bathrooms:
 
 lights_dressing_room:
   name: Dressing Room
+  icon: mdi:tshirt-crew
   entities:
   - light.dressing_room
   - light.dressing_room_lamp

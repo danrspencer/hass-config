@@ -14,9 +14,7 @@
     data:
       transition: 15
   - service: switch.turn_off
-    entity_id: switch.living_room_tree
-  - service: switch.turn_off
-    entity_id: switch.living_room_buddha
+    entity_id: switch.living_room_fairy_lights
 
 - alias: Living Room Lights On
   trigger:
@@ -37,13 +35,7 @@
       {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
         switch.turn_on
       {% endif %}
-    entity_id: switch.living_room_tree
-  - service_template: >
-      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
-        switch.turn_on
-      {% endif %}
-    entity_id: switch.living_room_buddha
-
+    entity_id: switch.living_room_fairy_lights
 
 - alias: Living Room Lights Update
   trigger:
@@ -62,9 +54,4 @@
       {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
         switch.turn_on
       {% endif %}
-    entity_id: switch.living_room_tree
-  - service_template: >
-      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
-        switch.turn_on
-      {% endif %}
-    entity_id: switch.living_room_buddha
+    entity_id: switch.living_room_fairy_lights

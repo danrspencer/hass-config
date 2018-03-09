@@ -1,9 +1,9 @@
 - platform: tplink
-  name: Living Room Tree
+  name: Kitchen Heater
   host: 192.168.0.42
 
 - platform: tplink
-  name: Living Room Buddha
+  name: Living Room Fairy Lights
   host: 192.168.0.48
 
 - platform: tplink
