@@ -24,9 +24,6 @@
       hours: 0
       minutes: 5
       seconds: 0
-  - entity_id: binary_sensor.house_thermostat_active
-    platform: state
-    to: 'on'
   action:
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
@@ -38,17 +35,6 @@
   - entity_id: binary_sensor.kitchen_motion
     platform: state
     to: 'on'
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.house_thermostat_active
-        state: 'off'
-      - condition: template
-        value_template: |
-          {{ (states.climate.kitchen.attributes.temperature - 4)
-           > (states.climate.kitchen.attributes.current_temperature)
-          }}
   action:
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
