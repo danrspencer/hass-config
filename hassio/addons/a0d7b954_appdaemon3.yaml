@@ -1,0 +1,6 @@
+name: AppDaemon3
+options:
+  log_level: info
+  python_packages: []
+  system_packages: []
+url: https://community.home-assistant.io/t/community-hass-io-add-on-appdaemon3/41261?u=frenck
