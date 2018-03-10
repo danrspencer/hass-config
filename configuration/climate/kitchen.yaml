@@ -6,4 +6,4 @@
   max_temp: 20
   target_temp: 12
   tolerance: 0
-  operation_mode: off
+  initial_operation_mode: "off"

@@ -39,4 +39,4 @@
   - service: climate.set_operation_mode
     entity_id: climate.kitchen
     data:
-      operation_mode: 'auto'
+      operation_mode: 'heat'

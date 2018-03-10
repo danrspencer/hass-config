@@ -1,6 +1,7 @@
 - platform: template
   sensors:
     house_motion:
+      friendly_name: 'House Motion'
       value_template: >
         {{ 
           states.binary_sensor.entrance_hall_motion.state == 'on' or
