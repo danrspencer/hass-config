@@ -29,21 +29,13 @@ house_other:
   - sensor.top_floor_light
   - binary_sensor.top_floor_motion
 
-controls:
+house_controls:
   name: Controls
   entities:
   - input_boolean.holiday_mode
   - scene.everything_off
 
-network:
-  name: Network
-  entities:
-  - sensor.fastcom_download
-  - sensor.speedtest_download
-  - sensor.speedtest_upload
-  - sensor.speedtest_ping
-
-smoke_detector:
+house_smoke_detector:
   name: Smoke Detector
   entities:
   - binary_sensor.ground_floor_nest_protect_online
@@ -51,7 +43,7 @@ smoke_detector:
   - sensor.ground_floor_nest_protect_smoke_status
   - sensor.ground_floor_nest_protect_battery_health
 
-phones:
+house_phones:
   name: Phones
   entities:
   - sensor.dphone_battery_level
@@ -60,3 +52,11 @@ phones:
   - sensor.laurens_iphone_battery_level
   - sensor.laurens_iphone_battery_state
   - device_tracker.laurens_iphone
+
+house_ring:
+  name: Ring
+  entities:
+  - binary_sensor.ring_back_door_motion
+  - sensor.ring_back_door_battery
+  - sensor.ring_back_door_last_motion
+

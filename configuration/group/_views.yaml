@@ -7,7 +7,7 @@ default_view:
   - sensor.day_phase
   - sun.sun
   - sensor.weather_symbol
-  - group.controls
+  - group.house_controls
   - group.meta_switches
   - group.house_climate_control
   - group.media_players_active
@@ -120,9 +120,9 @@ house:
   entities:
   - group.house_climate
   - group.house_other
-  - group.smoke_detector
-  - group.network
-  - group.phones
+  - group.house_smoke_detector
+  - group.house_phones
+  - group.house_ring
   - weather.dark_sky
 
 system:

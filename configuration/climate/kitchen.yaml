@@ -3,7 +3,7 @@
   heater: switch.kitchen_heater
   target_sensor: sensor.kitchen_temperature
   min_temp: 10
-  max_temp: 20
+  max_temp: 25
   target_temp: 12
   tolerance: 0
   initial_operation_mode: "off"
