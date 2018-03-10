@@ -7,7 +7,7 @@ light.den:
 light.dressing_room:
   icon: mdi:lightbulb-outline
 
-light.guest_bedroom:
+light.guest_room:
   icon: mdi:lightbulb-outline
 
 light.hallways:

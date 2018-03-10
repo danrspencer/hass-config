@@ -63,12 +63,12 @@ lights_den:
   - light.den
   - light.den_lamp
 
-lights_guest_bedroom:
-  name: Guest Bedroom
+lights_guest_room:
+  name: Guest Room
   icon: mdi:sleep
   entities:
-  - light.guest_bedroom
-  - light.guest_bedroom_lamp
+  - light.guest_room
+  - light.guest_room_lamp
 
 lights_hallway:
   name: Hallways
