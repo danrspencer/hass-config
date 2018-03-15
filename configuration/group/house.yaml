@@ -4,6 +4,7 @@ house_climate:
   - binary_sensor.house_thermostat_online
   - climate.house
   - climate.kitchen
+  - switch.garage_heater
   - input_datetime.heating_timer
   - input_boolean.heating_timer
   - sensor.living_room_temperature
@@ -15,6 +16,7 @@ house_climate_control:
   entities:
   - climate.house
   - climate.kitchen
+  - switch.garage_heater
 
 house_other:
   name: House Other
