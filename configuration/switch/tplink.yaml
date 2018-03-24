@@ -9,3 +9,7 @@
 - platform: tplink
   name: Garage Heater
   host: 192.168.0.66
+
+- platform: tplink
+  name: Hair Straighteners
+  host: 192.168.0.56
