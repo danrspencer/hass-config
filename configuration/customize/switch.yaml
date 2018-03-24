@@ -20,4 +20,4 @@ switch.garage_heater:
   icon: mdi:radiator
 
 switch.hair_straighteners:
-  icon: mdi:fire-truck
+  icon: mdi:fire
