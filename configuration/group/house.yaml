@@ -62,4 +62,3 @@ house_ring:
   - binary_sensor.ring_back_door_motion
   - sensor.ring_back_door_battery
   - sensor.ring_back_door_last_motion
-
