@@ -17,7 +17,7 @@
   - service: hue.hue_activate_scene
     data:
       group_name: 'Living Room'
-      scene_name: 'Full Power'
+      scene_name: 'Concentrate'
   - delay: '00:05:00'
   - service: light.turn_off
     entity_id: light.living_room
@@ -41,7 +41,7 @@
     - service: hue.hue_activate_scene
       data:
         group_name: 'Hallways'
-        scene_name: 'Full Power'
+        scene_name: 'Concentrate'
     - delay: '00:05:00'
     - service: light.turn_off
       entity_id: light.hallways
@@ -65,7 +65,7 @@
   - service: hue.hue_activate_scene
     data:
       group_name: 'Kitchen'
-      scene_name: 'Full Power'
+      scene_name: 'Concentrate'
   - delay: '00:05:00'
   - service: light.turn_off
     entity_id: light.kitchen
