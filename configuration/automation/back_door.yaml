@@ -10,7 +10,7 @@
       entity_id: input_boolean.living_room
       state: 'off'
     - condition: state
-      entity_id: states.sensor.day_phase
+      entity_id: sensor.day_phase
       state: 'night'
   action:
   - delay: '00:00:30'
@@ -34,7 +34,7 @@
         entity_id: input_boolean.hallways
         state: 'off'
       - condition: state
-        entity_id: states.sensor.day_phase
+        entity_id: sensor.day_phase
         state: 'night'
     action:
     - delay: '00:00:40'
