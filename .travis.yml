@@ -6,5 +6,5 @@ install:
   - 'mv secrets.yaml.sample secrets.yaml'
 script:
   - 'hass -c . --script check_config | tee check.output'
-  - '! less check.output | grep -q ERROR'
+  - '! less check.output | grep -q "Failed config"'
 
