@@ -1,72 +1,72 @@
-- alias: Back Door Motion Living Room
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.ring_back_door_motion
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: input_boolean.living_room
-      state: 'off'
-    - condition: state
-      entity_id: states.sensor.day_phase
-      state: 'night'
-  action:
-  - delay: '00:00:30'
-  - service: hue.hue_activate_scene
-    data:
-      group_name: 'Living Room'
-      scene_name: 'Concentrate'
-  - delay: '00:05:00'
-  - service: light.turn_off
-    entity_id: light.living_room
+# - alias: Back Door Motion Living Room
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.ring_back_door_motion
+#     to: 'on'
+#   condition:
+#     condition: and
+#     conditions:
+#     - condition: state
+#       entity_id: input_boolean.living_room
+#       state: 'off'
+#     - condition: state
+#       entity_id: states.sensor.day_phase
+#       state: 'night'
+#   action:
+#   - delay: '00:00:30'
+#   - service: hue.hue_activate_scene
+#     data:
+#       group_name: 'Living Room'
+#       scene_name: 'Concentrate'
+#   - delay: '00:05:00'
+#   - service: light.turn_off
+#     entity_id: light.living_room
   
-  - alias: Back Door Motion Hall Ways
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.ring_back_door_motion
-      to: 'on'
-    condition:
-      condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.hallways
-        state: 'off'
-      - condition: state
-        entity_id: states.sensor.day_phase
-        state: 'night'
-    action:
-    - delay: '00:00:40'
-    - service: hue.hue_activate_scene
-      data:
-        group_name: 'Hallways'
-        scene_name: 'Concentrate'
-    - delay: '00:05:00'
-    - service: light.turn_off
-      entity_id: light.hallways
+#   - alias: Back Door Motion Hall Ways
+#     trigger:
+#     - platform: state
+#       entity_id: binary_sensor.ring_back_door_motion
+#       to: 'on'
+#     condition:
+#       condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.hallways
+#         state: 'off'
+#       - condition: state
+#         entity_id: states.sensor.day_phase
+#         state: 'night'
+#     action:
+#     - delay: '00:00:40'
+#     - service: hue.hue_activate_scene
+#       data:
+#         group_name: 'Hallways'
+#         scene_name: 'Concentrate'
+#     - delay: '00:05:00'
+#     - service: light.turn_off
+#       entity_id: light.hallways
 
-- alias: Back Door Motion Hall Ways
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.ring_back_door_motion
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: input_boolean.kitchen
-      state: 'off'
-    - condition: state
-      entity_id: states.sensor.day_phase
-      state: 'night'
-  action:
-  - delay: '00:00:50'
-  - service: hue.hue_activate_scene
-    data:
-      group_name: 'Kitchen'
-      scene_name: 'Concentrate'
-  - delay: '00:05:00'
-  - service: light.turn_off
-    entity_id: light.kitchen
+# - alias: Back Door Motion Hall Ways
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.ring_back_door_motion
+#     to: 'on'
+#   condition:
+#     condition: and
+#     conditions:
+#     - condition: state
+#       entity_id: input_boolean.kitchen
+#       state: 'off'
+#     - condition: state
+#       entity_id: states.sensor.day_phase
+#       state: 'night'
+#   action:
+#   - delay: '00:00:50'
+#   - service: hue.hue_activate_scene
+#     data:
+#       group_name: 'Kitchen'
+#       scene_name: 'Concentrate'
+#   - delay: '00:05:00'
+#   - service: light.turn_off
+#     entity_id: light.kitchen
   
