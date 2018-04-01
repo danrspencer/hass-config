@@ -80,28 +80,28 @@
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-- alias: Den Lights On
-  trigger:
-  - entity_id: binary_sensor.top_floor_motion
-    platform: state
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.den
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.top_floor_lights_auto
-      state: 'on'
-    - condition: template
-      value_template: '{{ states.sensor.day_phase.state != "Night" }}'
-  action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Den
-      scene_name: '{{ states.sensor.day_phase.state }}'
+# - alias: Den Lights On
+#   trigger:
+#   - entity_id: binary_sensor.top_floor_motion
+#     platform: state
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     condition: and
+#     conditions:
+#     - condition: state
+#       entity_id: light.den
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.top_floor_lights_auto
+#       state: 'on'
+#     - condition: template
+#       value_template: '{{ states.sensor.day_phase.state != "Night" }}'
+#   action:
+#   - service: hue.hue_activate_scene
+#     data_template:
+#       group_name: Den
+#       scene_name: '{{ states.sensor.day_phase.state }}'
 
 - alias: Bathroom Lights On
   trigger:
@@ -158,22 +158,22 @@
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-- alias: Den Lights Update
-  trigger:
-  - platform: state
-    entity_id: light.den
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
-  condition:
-    condition: state
-    entity_id: light.den
-    state: 'on'
-  action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Den
-      scene_name: '{{ states.sensor.day_phase.state }}'
+# - alias: Den Lights Update
+#   trigger:
+#   - platform: state
+#     entity_id: light.den
+#     to: 'on'
+#   - platform: state
+#     entity_id: sensor.day_phase
+#   condition:
+#     condition: state
+#     entity_id: light.den
+#     state: 'on'
+#   action:
+#   - service: hue.hue_activate_scene
+#     data_template:
+#       group_name: Den
+#       scene_name: '{{ states.sensor.day_phase.state }}'
 
 - alias: Bedroom Lights Update
   trigger:
