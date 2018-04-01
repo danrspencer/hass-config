@@ -77,7 +77,7 @@
       group_name: Top Floor Landing
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-Dressing Room
+# Dressing Room
 - alias: Dressing Room Lights On
   trigger:
   - entity_id: binary_sensor.top_floor_motion
@@ -118,7 +118,7 @@ Dressing Room
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-Den
+# Den
 - alias: Den Lights On
   trigger:
   - entity_id: binary_sensor.top_floor_motion
@@ -159,7 +159,7 @@ Den
       group_name: Den
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-Bathrooms
+# Bathrooms
 - alias: Bathroom Lights On
   trigger:
   - entity_id: binary_sensor.top_floor_motion
