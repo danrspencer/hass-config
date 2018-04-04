@@ -29,8 +29,6 @@
     entity_id: input_boolean.living_room_lights
     state: 'off'
   action:
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.living_room_lights
   - service: hue.hue_activate_scene
     data_template:
       group_name: Living Room
@@ -40,6 +38,8 @@
         switch.turn_on
       {% endif %}
     entity_id: switch.living_room_fairy_lights
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.living_room_lights
 
 - alias: Living Room Lights Update
   trigger:
