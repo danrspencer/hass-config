@@ -35,7 +35,8 @@ ring:
   password: !secret ring_password
 hue:
   bridges:
-    - allow_unreachable: false
+    - host: 192.168.0.2
+      allow_unreachable: false
       allow_hue_groups: true
 sun:
 updater:
