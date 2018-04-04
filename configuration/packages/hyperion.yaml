@@ -8,7 +8,7 @@ hyperion:
       service_template: >
         {% if  states.input_select.hyperion_effect.state == "Off" %}
           shell_command.hyperion_off
-        {% elif  states.input_select.hyperion_effect.state == "Ambilight" %}
+        {% elif states.input_select.hyperion_effect.state == "Ambilight" %}
           shell_command.hyperion_on
         {% else %}
           shell_command.hyperion_set_effect
