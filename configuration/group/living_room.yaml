@@ -2,16 +2,9 @@ living_room_activities:
   name: Living Room
   icon: mdi:sofa
   entities:
-  - group.living_room_tv
-  - group.living_room_lights
-
-living_room_tv:
-  name: TV
-  icon: mdi:television
-  entities:
   - switch.living_room_tv
   - sensor.living_room_tv
-  
+  - group.living_room_lights
 
 living_room_lights:
   name: Lights
