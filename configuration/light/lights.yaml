@@ -1,2 +1,2 @@
-- platform: hyperion
-  host: 192.168.0.27
+# - platform: hyperion
+#   host: 192.168.0.27
