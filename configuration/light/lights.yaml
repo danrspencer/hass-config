@@ -1,6 +1,2 @@
-- platform: hue
-  allow_unreachable: false
-  allow_hue_groups: true
-
 - platform: hyperion
   host: 192.168.0.27

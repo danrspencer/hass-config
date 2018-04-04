@@ -33,6 +33,10 @@ map:
 ring:
   username: !secret ring_username
   password: !secret ring_password
+hue:
+  bridges:
+    - allow_unreachable: false
+      allow_hue_groups: true
 sun:
 updater:
   include_used_components: true
