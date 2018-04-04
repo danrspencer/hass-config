@@ -4,18 +4,6 @@ harmony:
     name: Living Room TV
     scan_interval: 5
 
-  input_select:
-    living_room_tv:
-      name: Living Room TV
-      icon: mdi:television
-      options:
-        - Watch TV
-        - Watch Apple TV
-        - Watch Shield TV
-        - Watch Smart TV
-        - Listen to Music
-      initial: Watch TV
-
   switch:
   - platform: template
     switches:
@@ -25,9 +13,7 @@ harmony:
         entity_id: sensor.living_room_tv
         turn_on:
           service:  remote.turn_on
-          data_template:
-            entity_id: remote.living_room_tv
-            activity: '{{ states.input_select.living_room_tv.state }}'
+          entity_id: remote.living_room_tv
         turn_off:
           service: remote.turn_off
           entity_id: remote.living_room_tv
@@ -40,29 +26,6 @@ harmony:
         value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
 
   automation:
-  - alias: Harmony Change Activity
-    trigger:
-    - platform: state
-      entity_id: input_select.living_room_tv
-    action:
-    - service: remote.turn_on
-      data_template:
-        entity_id: remote.living_room_tv
-        activity: '{{ states.input_select.living_room_tv.state }}'
-
-  - alias: Harmony Update Activity Select
-    trigger:
-    - platform: state
-      entity_id: sensor.living_room_tv
-    condition:
-      condition: template
-      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" and states.sensor.living_room_tv.state != "None" }}'
-    action:
-    - service: input_select.select_option
-      data_template:
-        entity_id: input_select.living_room_tv
-        option: '{{ states.sensor.living_room_tv.state }}'
-
   - alias: Harmony Auto Off
     trigger:
     - entity_id: binary_sensor.living_room_motion

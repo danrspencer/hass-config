@@ -1,54 +1,33 @@
 hyperion:
   automation:
-  - alias: Hyperion Set Mode
+  - alias: Hyperion Update
     trigger:
     - platform: state
+      entity_id: sensor.living_room_tv
+    - platform: state
       entity_id: input_select.hyperion_effect
+    - platform: state
+      entity_id: sensor.day_phase
     action:
-      service_template: >
-        {% if  states.input_select.hyperion_effect.state == "Off" %}
-          shell_command.hyperion_off
-        {% elif states.input_select.hyperion_effect.state == "Ambilight" %}
+    - service_template: >
+      {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
+        {% if states.sensor.living_room_tv.state != "PowerOff" %}
           shell_command.hyperion_on
+        {% elif states.input_select.hyperion_effect.state == "Off" %}
+          shell_command.hyperion_off
         {% else %}
           shell_command.hyperion_set_effect
         {% endif %}
-
-  - alias: Hyperion Auto On
-    trigger:
-    - platform: state
-      entity_id: sensor.living_room_tv
-      from: "PowerOff"
-    action:
-    - service: switch.turn_on
-      entity_id: switch.hyperion
-
-  - alias: Hyperion Auto Off
-    trigger:
-    - platform: state
-      entity_id: sensor.living_room_tv
-      to: "PowerOff"
-    action:
-    - service: switch.turn_off
-      entity_id: switch.hyperion
-
-  # - alias: Hyperion Sync Input
-  #   trigger:
-  #   - platform: state
-  #     entity_id: switch.hyperion
-  #   action:
-  #   - service: input_select.select_option
-  #     data_template:
-  #       entity_id: input_select.hyperion_effect
-  #       option: "Off"
+      {% else %}
+        shell_command.hyperion_off
+      {% endif %}
 
   input_select:
     hyperion_effect:
-      name: Ambilight Mode
+      name: Ambilight Standby Mode
       icon: mdi:camcorder-box
       options:
       - "Off"
-      - "Ambilight"
       - "Knight rider"
       - "Full color mood blobs"
       - "Rainbow mood"
@@ -72,7 +51,7 @@ hyperion:
       - "Sparks Color"
       - "Sparks"
       - "Color traces"
-      initial: "Ambilight"
+      initial: "Full color mood blobs"
 
   switch:
   - platform: command_line

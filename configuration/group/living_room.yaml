@@ -13,7 +13,7 @@ living_room_tv:
   - input_select.living_room_tv
   - switch.hyperion
   - light.hyperion
-  - input_select.hyperion_effect
+  - input_select.hyperion_standby_effect
 
 living_room_lights:
   name: Lights
