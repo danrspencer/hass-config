@@ -12,6 +12,7 @@ living_room_tv:
   - switch.living_room_tv
   - input_select.living_room_tv
   - switch.hyperion
+  - light.hyperion
   - input_select.hyperion_effect
 
 living_room_lights:
@@ -32,6 +33,7 @@ living_room_switches:
   entities:
   - switch.living_room_tv
   - switch.hyperion
+  - light.hyperion
   - light.living_room
   - light.living_room_lamp
   - light.living_room_candle

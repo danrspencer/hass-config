@@ -26,6 +26,7 @@ lights_living_room:
   - light.living_room_spot_2
   - light.living_room_spot_3
   - switch.living_room_fairy_lights
+  - light.hyperion
   - switch.hyperion
 
 lights_top_floor_landing:  
