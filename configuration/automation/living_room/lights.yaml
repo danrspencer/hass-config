@@ -9,6 +9,8 @@
       minutes: 15
       seconds: 0
   action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.living_room_lights
   - service: light.turn_off
     entity_id: light.living_room
     data:
@@ -24,15 +26,17 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: light.living_room
+    entity_id: input_boolean.living_room_lights
     state: 'off'
   action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.living_room_lights
   - service: hue.hue_activate_scene
     data_template:
       group_name: Living Room
       scene_name: '{{ states.sensor.day_phase.state }}'
   - service_template: >
-      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
+      {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
         switch.turn_on
       {% endif %}
     entity_id: switch.living_room_fairy_lights
@@ -43,7 +47,7 @@
     platform: state
   condition:
     condition: state
-    entity_id: light.living_room
+    entity_id: input_boolean.living_room_lights
     state: 'on'
   action:
   - service: hue.hue_activate_scene
@@ -51,7 +55,7 @@
       group_name: Living Room
       scene_name: '{{ states.sensor.day_phase.state }}'
   - service_template: >
-      {% if states.sensor.day_phase.state == 'Evening' or states.sensor.day_phase.state == 'Night' %}
+      {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
         switch.turn_on
       {% endif %}
     entity_id: switch.living_room_fairy_lights

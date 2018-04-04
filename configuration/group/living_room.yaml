@@ -13,12 +13,13 @@ living_room_tv:
   - input_select.living_room_tv
   - switch.hyperion
   - light.hyperion
-  - input_select.hyperion_standby_effect
+  - input_select.hyperion_effect
 
 living_room_lights:
   name: Lights
   icon: mdi:lightbulb
   entities:
+  - input_boolean.living_room_lights
   - light.living_room
   - light.living_room_lamp
   - light.living_room_candle

@@ -1,6 +1,6 @@
 hyperion:
   automation:
-  - alias: Hyperion Update
+  - alias: Hyperion Sync
     trigger:
     - platform: state
       entity_id: sensor.living_room_tv
@@ -8,50 +8,52 @@ hyperion:
       entity_id: input_select.hyperion_effect
     - platform: state
       entity_id: sensor.day_phase
+    - platform: state
+      entity_id: input_boolean.living_room_lights
     action:
     - service_template: >
-      {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
-        {% if states.sensor.living_room_tv.state != "PowerOff" %}
-          shell_command.hyperion_on
-        {% elif states.input_select.hyperion_effect.state == "Off" %}
-          shell_command.hyperion_off
+        {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
+          {% if states.sensor.living_room_tv.state != "PowerOff" %}
+            shell_command.hyperion_on
+          {% elif input_boolean.living_room_lights != 'off' %}
+            shell_command.hyperion_set_standby
+          {% else %}
+            shell_command.hyperion_off
+          {% endif %}
         {% else %}
-          shell_command.hyperion_set_effect
+          shell_command.hyperion_off
         {% endif %}
-      {% else %}
-        shell_command.hyperion_off
-      {% endif %}
 
-  input_select:
-    hyperion_effect:
-      name: Ambilight Standby Mode
-      icon: mdi:camcorder-box
-      options:
-      - "Off"
-      - "Knight rider"
-      - "Full color mood blobs"
-      - "Rainbow mood"
-      - "Blue mood blobs"
-      - "Cold mood blobs"
-      - "Green mood blobs"
-      - "Red mood blobs"
-      - "Warm mood blobs"
-      - "Rainbow swirl fast"
-      - "Snake"
-      - "Strobe blue"
-      - "Strobe Raspbmc"
-      - "Strobe white"
-      - "Cinema dim lights"
-      - "Cinema brighten lights"
-      - "Police Lights Single"
-      - "Police Lights Solid"
-      - "Random"
-      - "Running dots"
-      - "System Shutdown"
-      - "Sparks Color"
-      - "Sparks"
-      - "Color traces"
-      initial: "Full color mood blobs"
+  # input_select:
+  #   hyperion_effect:
+  #     name: Ambilight Mode
+  #     icon: mdi:camcorder-box
+  #     options:
+  #     - "Ambilight"
+  #     - "Knight rider"
+  #     - "Full color mood blobs"
+  #     - "Rainbow mood"
+  #     - "Blue mood blobs"
+  #     - "Cold mood blobs"
+  #     - "Green mood blobs"
+  #     - "Red mood blobs"
+  #     - "Warm mood blobs"
+  #     - "Rainbow swirl fast"
+  #     - "Snake"
+  #     - "Strobe blue"
+  #     - "Strobe Raspbmc"
+  #     - "Strobe white"
+  #     - "Cinema dim lights"
+  #     - "Cinema brighten lights"
+  #     - "Police Lights Single"
+  #     - "Police Lights Solid"
+  #     - "Random"
+  #     - "Running dots"
+  #     - "System Shutdown"
+  #     - "Sparks Color"
+  #     - "Sparks"
+  #     - "Color traces"
+  #     initial: "Ambilight"
 
   switch:
   - platform: command_line
@@ -65,4 +67,5 @@ hyperion:
   shell_command:
     hyperion_on: '/config/scripts/hyperion/on.sh'
     hyperion_off: '/config/scripts/hyperion/off.sh'
+    hyperion_set_standby: '/config/scripts/hyperion/effects.sh "Full color mood blobs"'
     hyperion_set_effect: '/config/scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
