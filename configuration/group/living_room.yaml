@@ -10,10 +10,8 @@ living_room_tv:
   icon: mdi:television
   entities:
   - switch.living_room_tv
-  - input_select.living_room_tv
-  - switch.hyperion
-  - light.hyperion
-  - input_select.hyperion_effect
+  - sensor.living_room_tv
+  
 
 living_room_lights:
   name: Lights
@@ -26,6 +24,7 @@ living_room_lights:
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
+  - switch.hyperion
   - switch.living_room_fairy_lights
 
 living_room_switches:
