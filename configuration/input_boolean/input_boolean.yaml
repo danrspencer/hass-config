@@ -5,12 +5,12 @@ holiday_mode:
 
 kitchen_lights:
   name: Kitchen Lights
-  initial: on
+  initial: off
   icon: mdi:traffic-light
 
 living_room_lights:
   name: Living Room Lights
-  initial: on
+  initial: off
   icon: mdi:traffic-light
 
 top_floor_lights_auto:
