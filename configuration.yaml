@@ -7,7 +7,7 @@ homeassistant:
   time_zone: Europe/London
 
   customize: !include_dir_merge_named configuration/customize
-  packages: !include_dir_merge_named configuration/packages
+  packages: !include_dir_merge_named configuration/package
 
 # Enablers
 browser:

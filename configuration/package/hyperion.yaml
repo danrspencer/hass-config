@@ -5,8 +5,6 @@ hyperion:
     - platform: state
       entity_id: sensor.living_room_tv
     - platform: state
-      entity_id: input_select.hyperion_effect
-    - platform: state
       entity_id: sensor.day_phase
     - platform: state
       entity_id: input_boolean.living_room_lights
@@ -23,37 +21,6 @@ hyperion:
         {% else %}
           shell_command.hyperion_off
         {% endif %}
-
-  # input_select:
-  #   hyperion_effect:
-  #     name: Ambilight Mode
-  #     icon: mdi:camcorder-box
-  #     options:
-  #     - "Ambilight"
-  #     - "Knight rider"
-  #     - "Full color mood blobs"
-  #     - "Rainbow mood"
-  #     - "Blue mood blobs"
-  #     - "Cold mood blobs"
-  #     - "Green mood blobs"
-  #     - "Red mood blobs"
-  #     - "Warm mood blobs"
-  #     - "Rainbow swirl fast"
-  #     - "Snake"
-  #     - "Strobe blue"
-  #     - "Strobe Raspbmc"
-  #     - "Strobe white"
-  #     - "Cinema dim lights"
-  #     - "Cinema brighten lights"
-  #     - "Police Lights Single"
-  #     - "Police Lights Solid"
-  #     - "Random"
-  #     - "Running dots"
-  #     - "System Shutdown"
-  #     - "Sparks Color"
-  #     - "Sparks"
-  #     - "Color traces"
-  #     initial: "Ambilight"
 
   switch:
   - platform: command_line
