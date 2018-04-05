@@ -16,7 +16,7 @@ hyperion:
           {% if states.sensor.living_room_tv.state != "PowerOff" %}
             shell_command.hyperion_on
           {% elif states.input_boolean.living_room_lights.state != 'off' %}
-            shell_command.hyperion_set_standby
+            shell_command.hyperion_standby
           {% else %}
             shell_command.hyperion_off
           {% endif %}
@@ -67,5 +67,5 @@ hyperion:
   shell_command:
     hyperion_on: '/config/scripts/hyperion/on.sh'
     hyperion_off: '/config/scripts/hyperion/off.sh'
-    hyperion_set_standby: '/config/scripts/hyperion/effects.sh "Full color mood blobs"'
-    hyperion_set_effect: '/config/scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
+    hyperion_standby: '/config/scripts/hyperion/effects.sh "Full color mood blobs"'
+    hyperion_effect: '/config/scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
