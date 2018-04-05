@@ -38,7 +38,7 @@ harmony:
         seconds: 0
     condition:
       condition: template
-      value_template: {{ states.sensor.living_room_tv.state != "PowerOff" }}
+      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
     action:
     - service: tts.amazon_polly_say
       data_template:
@@ -57,7 +57,7 @@ harmony:
         seconds: 0
     condition:
       condition: template
-      value_template: {{ states.sensor.living_room_tv.state != "PowerOff" }}
+      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
     action:
     - service: remote.turn_off
       entity_id: remote.living_room_tv
