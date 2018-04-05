@@ -26,7 +26,7 @@ harmony:
         value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
 
   automation:
-- alias: Harmony Auto Off Warn
+  - alias: Harmony Auto Off Warn
     trigger:
     - entity_id: binary_sensor.living_room_motion
       platform: state
@@ -42,7 +42,6 @@ harmony:
         entity_id: media_player.living_room_mini
         message: 'TV will automatically power off in 2 minutes due to lack of motion. Please flail arms wildly to keep the TV on.'
       
-
   - alias: Harmony Auto Off
     trigger:
     - entity_id: binary_sensor.living_room_motion
