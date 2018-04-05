@@ -14,7 +14,7 @@ hyperion:
     - service_template: >
         {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
           {% if states.sensor.living_room_tv.state != "PowerOff" %}
-            shell_command.hyperion_on
+            shell_command.hyperion_ambilight
           {% elif states.input_boolean.living_room_lights.state != 'off' %}
             shell_command.hyperion_standby
           {% else %}
@@ -65,7 +65,7 @@ hyperion:
         command_state: '/config/scripts/hyperion/status.sh'
 
   shell_command:
-    hyperion_on: '/config/scripts/hyperion/on.sh'
     hyperion_off: '/config/scripts/hyperion/off.sh'
+    hyperion_ambilight: '/config/scripts/hyperion/on.sh'
     hyperion_standby: '/config/scripts/hyperion/effects.sh "Full color mood blobs"'
     hyperion_effect: '/config/scripts/hyperion/effects.sh "{{ states.input_select.hyperion_effect.state }}"'
