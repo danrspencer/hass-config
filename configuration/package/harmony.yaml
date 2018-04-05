@@ -17,7 +17,7 @@ harmony:
         turn_off:
           service: remote.turn_off
           entity_id: remote.living_room_tv
-          
+            
   sensor:
   - platform: template
     sensors:

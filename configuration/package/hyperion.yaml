@@ -10,14 +10,11 @@ hyperion:
       entity_id: input_boolean.living_room_lights
     action:
     - service_template: >
-        {% if states.sensor.day_phase.state in ['Evening', 'Night'] %}
-          {% if states.sensor.living_room_tv.state != "PowerOff" %}
-            shell_command.hyperion_ambilight
-          {% elif states.input_boolean.living_room_lights.state != 'off' %}
-            shell_command.hyperion_standby
-          {% else %}
-            shell_command.hyperion_off
-          {% endif %}
+        {% if states.sensor.living_room_tv.state != "PowerOff" %}
+          shell_command.hyperion_ambilight
+        {% elif states.input_boolean.living_room_lights.state != 'off' 
+            and states.sensor.day_phase.state in ['Evening', 'Night'] %}
+          shell_command.hyperion_standby
         {% else %}
           shell_command.hyperion_off
         {% endif %}
