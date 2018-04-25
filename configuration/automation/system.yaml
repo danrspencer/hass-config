@@ -4,8 +4,9 @@
     event: start
   action:
   - service: notify.ios_dphone
-    data:
-      message: 'Home Assistant back online!'
+    data_template:
+      message: >
+        Home Assistant back online! {{ "\uD83E\uDD29" }}
   - delay:
       minutes: 1
   - service: switch.turn_off
@@ -17,8 +18,9 @@
     event: shutdown
   action:
   - service: notify.ios_dphone
-    data:
-      message: 'Home Assistant is going down!'
+    data_template:
+      message: >
+        Home Assistant is going down! {{ "\uD83D\uDE34" }}
 
 - alias: System Update notifications
   trigger:
