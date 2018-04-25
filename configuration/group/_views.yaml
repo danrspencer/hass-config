@@ -124,4 +124,5 @@ system:
   - media_player.spotify
   - group.system_pi_stats
   - group.system_links
+  - group.system_build
   - group.all_automations

@@ -18,17 +18,6 @@ discovery:
 frontend:
   javascript_version: latest
 ios:
-  push:
-    categories:
-    - name: Update 
-      identifier: 'update'
-      actions:
-      - identifier: 'UPDATE_RESTART'
-        title: 'Update & Restart'
-        activationMode: 'background'
-        authenticationRequired: no
-        destructive: yes
-        behavior: 'default'
 map:
 ring:
   username: !secret ring_username
