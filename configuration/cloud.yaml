@@ -1,0 +1,9 @@
+google_actions:
+  filter:
+    include_entities:
+      - switch.hyperion
+  entity_config:
+    switch.hyperion:
+      name: Ambilights
+      aliases:
+        - hyperion

@@ -8,7 +8,7 @@
       message: >
         Home Assistant back online! {{ "\uD83E\uDD29" }}
   - delay:
-      minutes: 1
+      seconds: 30
   - service: switch.turn_off
     entity_id: switch.git_pull
 
