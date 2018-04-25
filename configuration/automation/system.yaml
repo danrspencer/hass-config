@@ -30,10 +30,11 @@
   - platform: state
     entity_id: sensor.travis_build_status
     from: 'started'
+    to: 'failed'
   action:
   - service: notify.ios_dphone
     data:
-      message: 'Travis build status: {{ states.sensor.travis_build_status.state }}'
+      message: 'Build failed! 🤬 😱'
 
 - alias: System Travis Build Passed
   trigger:
@@ -42,6 +43,10 @@
     from: 'started'
     to: 'passed'
   action:
+  - service: notify.ios_dphone
+    data:
+      message: 'Build passed! 👍 🤩'
+  - delay: 10
   - service: switch.turn_on
     entity_id: switch.git_pull
   
