@@ -1,0 +1,18 @@
+movie_mode:
+  - service: hue.hue_activate_scene
+    data:
+      group_name: 'Living Room'
+      scene_name: 'Movie'
+  - service: switch.turn_off
+    entity_id: switch.living_room_fairy_lights
+  - service: light.turn_on
+    entity_id:
+    - light.first_floor_landing
+    data:
+      brightness_pct: 10
+  - service: remote.send_command
+    entity_id: remote.living_room_tv
+    data:
+      device: 46140541
+      command: 'SFMovie'
+
