@@ -1,7 +1,7 @@
 - alias: Everything Off
   trigger:
-  - entity_id: binary_sensor.house_motion
-    platform: state
+  - platform: state
+    entity_id: binary_sensor.house_motion
     from: 'on'
     to: 'off'
     for:
