@@ -6,11 +6,6 @@
     service: notify.ios_dphone
     data:
       message: 'Home Assistant back online!'
-      data:
-        push:
-          category: 'update'
-        action_data:
-          my_custom_data: foo_bar1
 
 - alias: System Shutdown Notification
   trigger:
@@ -48,6 +43,5 @@
     to: 'passed'
   action:
   - service: switch.turn_on
-    data:
-      entity_id: switch.git_pull
+    entity_id: switch.git_pull
   
