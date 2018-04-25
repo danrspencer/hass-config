@@ -21,6 +21,7 @@ system_links:
 
 system_build:
   name: Build
+  entities:
   - weblink.travis
   - sensor.travis_build_status
   - switch.git_pull

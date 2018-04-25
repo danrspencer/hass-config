@@ -16,14 +16,14 @@
     data:
       message: 'Home Assistant is going down!'
 
-# - alias: System Update notifications
-#   trigger:
-#     - platform: state
-#       entity_id: updater.updater
-#   action:
-#     service: notify.ios_dphone
-#     data:
-#       message: 'There is a new Home Assistant release available.'
+- alias: System Update notifications
+  trigger:
+    - platform: state
+      entity_id: updater.updater
+  action:
+    service: notify.ios_dphone
+    data:
+      message: 'There is a new Home Assistant release available.'
 
 - alias: System Travis Build Status
   trigger:
@@ -43,5 +43,5 @@
     to: 'passed'
   action:
   - service: switch.turn_on
-    entity_id: switch.git_pull
+      entity_id: switch.git_pull
   
