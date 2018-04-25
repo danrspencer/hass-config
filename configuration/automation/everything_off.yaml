@@ -2,8 +2,7 @@
   trigger:
   - platform: state
     entity_id: binary_sensor.house_motion
-    from: 'on'
-    to: 'off'
+    to: 'on'
     for:
       hours: 1
       minutes: 0
