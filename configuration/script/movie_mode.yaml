@@ -1,4 +1,5 @@
 movie_mode:
+  sequence:
   - service: hue.hue_activate_scene
     data:
       group_name: 'Living Room'
@@ -6,8 +7,7 @@ movie_mode:
   - service: switch.turn_off
     entity_id: switch.living_room_fairy_lights
   - service: light.turn_on
-    entity_id:
-    - light.first_floor_landing
+    entity_id: light.first_floor_landing
     data:
       brightness_pct: 10
   - service: remote.send_command
