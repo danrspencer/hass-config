@@ -3,6 +3,7 @@ google_actions:
     include_entities:
       - switch.hyperion
       - script.cinema_mode
+      - climate.kitchen
   entity_config:
     switch.hyperion:
       name: Ambilights
