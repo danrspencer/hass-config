@@ -1,4 +1,4 @@
-movie_mode:
+cinema_mode:
   sequence:
   - service: hue.hue_activate_scene
     data:

@@ -2,8 +2,11 @@ google_actions:
   filter:
     include_entities:
       - switch.hyperion
+      - script.cinema_mode
   entity_config:
     switch.hyperion:
       name: Ambilights
       aliases:
-        - hyperion
+        - Hyperion
+    script.cinema_mode:
+      name: Cinema Mode
