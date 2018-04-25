@@ -3,11 +3,13 @@
     platform: homeassistant
     event: start
   action:
-  - service: switch.turn_off
-    entity_id: switch.git_pull
   - service: notify.ios_dphone
     data:
       message: 'Home Assistant back online!'
+  - delay:
+      minutes: 1
+  - service: switch.turn_off
+    entity_id: switch.git_pull
 
 - alias: System Shutdown Notification
   trigger:
