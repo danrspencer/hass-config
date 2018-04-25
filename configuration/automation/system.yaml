@@ -3,7 +3,9 @@
     platform: homeassistant
     event: start
   action:
-    service: notify.ios_dphone
+  - service: switch.turn_off
+    entity_id: switch.git_pull
+  - service: notify.ios_dphone
     data:
       message: 'Home Assistant back online!'
 
@@ -12,7 +14,7 @@
     platform: homeassistant
     event: shutdown
   action:
-    service: notify.ios_dphone
+  - service: notify.ios_dphone
     data:
       message: 'Home Assistant is going down!'
 
@@ -21,7 +23,7 @@
     - platform: state
       entity_id: updater.updater
   action:
-    service: notify.ios_dphone
+  - service: notify.ios_dphone
     data:
       message: 'There is a new Home Assistant release available.'
 
