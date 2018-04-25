@@ -37,7 +37,7 @@
   - service: notify.ios_dphone
     data_template:
       message: >
-        Build failed! {{ "\uD83E\uDD2C" }}
+        Travis build failed! {{ "\uD83E\uDD2C" }}
 
 - alias: System Travis Build Passed
   trigger:
@@ -49,7 +49,7 @@
   - service: notify.ios_dphone
     data_template:
       message: >
-        Build passed! {{ "\uD83D\uDC4D" }}
+        Travis build passed! {{ "\uD83D\uDC4D" }}
       
   - service: switch.turn_on
     entity_id: switch.git_pull
