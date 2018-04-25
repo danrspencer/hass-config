@@ -34,7 +34,7 @@
   action:
   - service: notify.ios_dphone
     data:
-      message: 'Build failed! 🤬 😱'
+      message: 'Build failed! :('
 
 - alias: System Travis Build Passed
   trigger:
@@ -45,7 +45,7 @@
   action:
   - service: notify.ios_dphone
     data:
-      message: 'Build passed! 👍 🤩'
+      message: 'Build passed! :D'
   - delay: 10
   - service: switch.turn_on
     entity_id: switch.git_pull
