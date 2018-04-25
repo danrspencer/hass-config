@@ -6,5 +6,7 @@ install:
   - 'pip3 install homeassistant'
 script:
   - 'mv secrets.yaml.sample secrets.yaml'
+  - 'touch /ssh/fullchain.pem'
+  - 'touch /ssh/privkey.pem'
   - 'hass -c . --script check_config | tee check.output'
   - '! less check.output | grep -q "Failed config"'
