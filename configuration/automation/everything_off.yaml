@@ -1,9 +1,13 @@
-- alias: Everything Off On Nest Away
+- alias: Everything Off
   trigger:
-  - entity_id: climate.house
+  - entity_id: binary_sensor.house_motion
     platform: state
-    from: 'heat'
-    to: 'eco'
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
   action:
   - service: scene.turn_on
     entity_id: scene.everything_off
