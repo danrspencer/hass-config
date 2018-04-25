@@ -47,4 +47,6 @@
     from: 'started'
     to: 'passed'
   action:
+  - service: switch.turn_on
+    entity_id: switch.git_pull
   

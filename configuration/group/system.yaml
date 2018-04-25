@@ -14,12 +14,13 @@ system_pi_stats:
   - sensor.since_last_boot
 
 system_links:
-  name: System
+  name: Links
   entities:
   - weblink.sky_router
   - weblink.bt_wifi
 
 system_build:
+  name: Build
   - weblink.travis
   - sensor.travis_build_status
-  - switch.git_update
+  - switch.git_pull
