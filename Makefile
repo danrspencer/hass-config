@@ -9,6 +9,9 @@ update-secrets:
 update-hassio:
 	hassio/update.py
 
+backup-hassio:
+	hassio/backup.py
+
 logs:
 	ssh ${REMOTE} "hassio homeassistant logs"
 

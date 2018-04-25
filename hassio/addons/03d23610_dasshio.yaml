@@ -26,5 +26,5 @@ options:
     name: Ensuite (Duracell)
     service: toggle
     service_data: '{"entity_id": "switch.ensuite_light"}'
-  timeout: 10
+  timeout: 5
 url: https://github.com/danimtb/dasshio

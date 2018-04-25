@@ -1,0 +1,8 @@
+name: Home Assistant Control Panel
+options:
+  certfile: fullchain.pem
+  ipv6: false
+  keyfile: privkey.pem
+  log_level: info
+  ssl: false
+url: https://community.home-assistant.io/t/community-hass-io-add-on-home-assistant-control-panel/49634?u=frenck

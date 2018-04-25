@@ -1,0 +1,4 @@
+name: Google Assistant Webserver
+options:
+  client_secrets: google_assistant.json
+url: https://github.com/AndBobsYourUncle/hassio-addons/

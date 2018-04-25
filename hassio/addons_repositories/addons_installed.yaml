@@ -1,5 +1,8 @@
-- a0d7b954_aircast
 - core_ssh
 - a0d7b954_homebridge
-- 03d23610_dasshio
+- a0d7b954_pi-hole
 - a0d7b954_appdaemon3
+- 03d23610_dasshio
+- core_git_pull
+- a0d7b954_control-panel
+- fe49a976_google_assistant_webserver
