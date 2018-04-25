@@ -122,7 +122,7 @@ zone:
 http:
   api_password: !secret hass_password
   base_url: !secret hass_base_url
-  ssl_certificate: ! ssl_certificate
+  ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   trusted_networks:
   - 127.0.0.1
