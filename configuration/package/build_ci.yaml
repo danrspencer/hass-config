@@ -1,0 +1,72 @@
+build_ci:
+  automation:
+  - alias: System Startup Notification
+    trigger:
+    - platform: homeassistant
+      event: start
+    action:
+    - service: notify.ios_dphone
+      data_template:
+        message: >
+          Home Assistant back online! {{ "\uD83E\uDD29" }}
+    - delay:
+        seconds: 30
+    - service: switch.turn_off
+      entity_id: switch.git_pull
+
+  - alias: System Shutdown Notification
+    trigger:
+    - platform: homeassistant
+      event: shutdown
+    action:
+    - service: notify.ios_dphone
+      data_template:
+        message: >
+          Home Assistant is going down! {{ "\uD83D\uDE34" }}
+
+  - alias: System Travis Build Status
+    trigger:
+    - platform: state
+      entity_id: sensor.travis_build_status
+      from: 'started'
+      to: 'failed'
+    action:
+    - service: notify.ios_dphone
+      data_template:
+        message: >
+          Travis build failed! {{ "\uD83E\uDD2C" }}
+
+  - alias: System Travis Build Passed
+    trigger:
+    - platform: state
+      entity_id: sensor.travis_build_status
+      from: 'started'
+      to: 'passed'
+    action:
+    - service: notify.ios_dphone
+      data_template:
+        message: >
+          Travis build passed! {{ "\uD83D\uDC4D" }}
+    - service: switch.turn_on
+      entity_id: switch.git_pull
+
+  sensor:
+  - platform: rest
+    resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
+    headers:
+      Accept: application/vnd.travis-ci.2+json
+    value_template: '{{ value_json.builds[0].state }}'
+    name: 'Travis Build Status'
+
+  switch:
+  - platform: command_line
+    switches:
+      git_pull:
+        command_on: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/start"
+        command_off: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/stop"
+        command_state: "/usr/bin/curl -X GET http://hassio/homeassistant/api/hassio/addons/core_git_pull/info | grep started"
+        friendly_name: Git Pull
+      
+
+
+  

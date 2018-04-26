@@ -1,9 +1,0 @@
-- platform: command_line
-  switches:
-    git_pull:
-      command_on: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/start"
-      command_off: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/stop"
-      command_state: "/usr/bin/curl -X GET http://hassio/homeassistant/api/hassio/addons/core_git_pull/info | grep started"
-      friendly_name: Git Pull
-    
-
