@@ -95,14 +95,11 @@ lights:
   - group.lights_porch
 
 media:
-  name: Speakers
+  name: Media
   icon: mdi:speaker-wireless
   view: yes
   entities:
-  - group.speakers_everything
-  - group.speakers_ground_floor
-  - group.speakers_middle_floor
-  - group.speakers_top_floor
+  - group.media
 
 house:
   name: House
@@ -121,7 +118,6 @@ system:
   icon: mdi:developer-board
   view: yes
   entities:
-  - media_player.spotify
   - group.system_pi_stats
   - group.system_links
   - group.system_build
