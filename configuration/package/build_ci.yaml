@@ -35,6 +35,8 @@ build_ci:
       data_template:
         message: >
           Travis build failed! {{ "\uD83E\uDD2C" }}
+        data:
+          url: https://travis-ci.org/danrspencer/hass-config
 
   - alias: System Travis Build Passed
     trigger:
@@ -47,6 +49,8 @@ build_ci:
       data_template:
         message: >
           Travis build passed! {{ "\uD83D\uDC4D" }}
+        data:
+          url: https://travis-ci.org/danrspencer/hass-config
     - service: switch.turn_on
       entity_id: switch.git_pull
 
