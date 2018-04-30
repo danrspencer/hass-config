@@ -3,6 +3,11 @@ holiday_mode:
   initial: off
   icon: mdi:human-handsup
 
+replay_mode:
+  name: Replay Mode
+  initial: off
+  icon: mdi:loop
+
 kitchen_lights:
   name: Kitchen Lights
   initial: off
