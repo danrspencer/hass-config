@@ -15,5 +15,39 @@ replay:
       {{ 
         as_timestamp(
           now().replace(hour=0).replace(minute=0).replace(second=0) 
-        ) - (now().weekday() * 86400) + 1
+        ) - (now().weekday() * 86400) + 30
+      }}
+  - platform: history_stats
+    name: 'Living Room Motion Replay'
+    entity_id: binary_sensor.living_room_motion
+    state: 'on'
+    type: count
+    start: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - now().weekday() * 86400
+      }}
+    end: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - (now().weekday() * 86400) + 30
+      }}
+  - platform: history_stats
+    name: 'Top Floor Motion Replay'
+    entity_id: binary_sensor.top_floor_motion
+    state: 'on'
+    type: count
+    start: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - now().weekday() * 86400
+      }}
+    end: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - (now().weekday() * 86400) + 30
       }}
