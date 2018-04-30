@@ -1,0 +1,19 @@
+replay:
+  sensor:
+  - platform: history_stats
+    name: 'Entrance Hall Motion Replay'
+    entity_id: binary_sensor.entrance_hall_motion
+    state: 'on'
+    type: count
+    start: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - now().weekday() * 86400
+      }}
+    end: >
+      {{ 
+        as_timestamp(
+          now().replace(hour=0).replace(minute=0).replace(second=0) 
+        ) - (now().weekday() * 86400) + 1
+      }}
