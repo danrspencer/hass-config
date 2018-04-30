@@ -1,7 +1,32 @@
 replay:
+  # automation:
+  # - alias: Back Door Motion Living Room
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.ring_back_door_motion
+  #     to: 'on'
+  #   condition:
+  #     condition: and
+  #     conditions:
+  #     - condition: state
+  #       entity_id: input_boolean.living_room
+  #       state: 'off'
+  #     - condition: state
+  #       entity_id: sensor.day_phase
+  #       state: 'night'
+  #   action:
+  #   - delay: '00:00:30'
+  #   - service: hue.hue_activate_scene
+  #     data:
+  #       group_name: 'Living Room'
+  #       scene_name: 'Concentrate'
+  #   - delay: '00:05:00'
+  #   - service: light.turn_off
+  #     entity_id: light.living_room
+      
   sensor:
   - platform: history_stats
-    name: 'Entrance Hall Motion Replay'
+    name: 'Replay Entrance Hall Motion'
     entity_id: binary_sensor.entrance_hall_motion
     state: 'on'
     type: count
@@ -18,7 +43,7 @@ replay:
         ) - (now().weekday() * 86400) + 30
       }}
   - platform: history_stats
-    name: 'Living Room Motion Replay'
+    name: 'Replay Living Room Motion'
     entity_id: binary_sensor.living_room_motion
     state: 'on'
     type: count
@@ -35,7 +60,7 @@ replay:
         ) - (now().weekday() * 86400) + 30
       }}
   - platform: history_stats
-    name: 'Top Floor Motion Replay'
+    name: 'Replay Top Floor Motion'
     entity_id: binary_sensor.top_floor_motion
     state: 'on'
     type: count
