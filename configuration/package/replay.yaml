@@ -1,31 +1,10 @@
 replay:
-  # automation:
-  # - alias: Back Door Motion Living Room
-  #   trigger:
-  #   - platform: state
-  #     entity_id: binary_sensor.ring_back_door_motion
-  #     to: 'on'
-  #   condition:
-  #     condition: and
-  #     conditions:
-  #     - condition: state
-  #       entity_id: input_boolean.living_room
-  #       state: 'off'
-  #     - condition: state
-  #       entity_id: sensor.day_phase
-  #       state: 'night'
-  #   action:
-  #   - delay: '00:00:30'
-  #   - service: hue.hue_activate_scene
-  #     data:
-  #       group_name: 'Living Room'
-  #       scene_name: 'Concentrate'
-  #   - delay: '00:05:00'
-  #   - service: light.turn_off
-  #     entity_id: light.living_room
-
-  
-      
+  input_boolean:
+    replay_mode:
+      name: Replay Mode
+      initial: off
+      icon: mdi:loop
+            
   sensor:
   - platform: history_stats
     name: 'Replay Entrance Hall Motion'

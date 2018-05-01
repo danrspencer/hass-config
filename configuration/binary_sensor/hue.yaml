@@ -2,22 +2,22 @@
   resource: !secret hue_kitchen_motion
   value_template: '{{ value_json.state.presence }}'
   scan_interval: 1
-  name: 'Kitchen Motion'
+  name: 'Kitchen Motion Real'
 
 - platform: rest
   resource: !secret hue_living_room_motion
   value_template: '{{ value_json.state.presence }}'
   scan_interval: 1
-  name: 'Living Room Motion'
+  name: 'Living Room Motion Real'
 
 - platform: rest
   resource: !secret hue_entrance_hall_motion
   value_template: '{{ value_json.state.presence }}'
   scan_interval: 1
-  name: 'Entrance Hall Motion'
+  name: 'Entrance Hall Motion Real'
 
 - platform: rest
   resource: !secret hue_top_floor_motion
   value_template: '{{ value_json.state.presence }}'
   scan_interval: 1
-  name: 'Top Floor Motion'
+  name: 'Top Floor Motion Real'
