@@ -65,8 +65,8 @@ history:
     - binary_sensor.top_floor_motion
     - sensor.replay_kitchen
     - sensor.replay_living_room
-    - sensor.replay_entrance_hall
-    - sensor.replay_top_floor
+    - sensor.replay_hallways
+    - sensor.replay_top_floor_landing
     - sensor.replay_ensuite
 logbook:
   exclude:
