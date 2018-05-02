@@ -63,10 +63,10 @@ history:
     - binary_sensor.living_room_motion
     - binary_sensor.entrance_hall_motion
     - binary_sensor.top_floor_motion
-    - sensor.relay_kitchen_motion
-    - sensor.relay_living_room_motion
-    - sensor.relay_entrance_hall_motion
-    - sensor.relay_top_floor_motion
+    - sensor.replay_kitchen_motion
+    - sensor.replay_living_room_motion
+    - sensor.replay_entrance_hall_motion
+    - sensor.replay_top_floor_motion
 logbook:
   exclude:
     domains:
