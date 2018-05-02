@@ -5,10 +5,31 @@ replay:
       initial: off
       icon: mdi:loop
 
+  automation:
+  - alias: Replay Ensuite Light
+    trigger:
+    - platform: state
+      entity_id: sensor.replay_ensuite
+    condition:
+      condition: template
+      value_template: > 
+        {{ states.input_boolean.replay_mode.state == 'on' 
+            and states.sensor.day_phase.state in ['Evening', 'Night'] 
+        }}
+    action:
+    - service_template: >
+        {% if states.sensor.replay_ensuite.state > 0 %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %} 
+      data:
+        entity_id:  switch.ensuite_light
+
   sensor:
   - platform: history_stats
-    name: 'Replay Entrance Hall Motion'
-    entity_id: binary_sensor.entrance_hall_motion
+    name: 'Replay Entrance Hall'
+    entity_id: light.entrance_hall
     state: 'on'
     type: count
     start: >
@@ -16,8 +37,8 @@ replay:
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
   - platform: history_stats
-    name: 'Replay Living Room Motion'
-    entity_id: binary_sensor.living_room_motion
+    name: 'Replay Living Room'
+    entity_id: light.living_room
     state: 'on'
     type: count
     start: >
@@ -25,8 +46,8 @@ replay:
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
   - platform: history_stats
-    name: 'Replay Top Floor Motion'
-    entity_id: binary_sensor.top_floor_motion
+    name: 'Replay Top Floor'
+    entity_id: light.top_floor
     state: 'on'
     type: count
     start: >
@@ -34,8 +55,17 @@ replay:
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
   - platform: history_stats
-    name: 'Replay Kitchen Motion'
-    entity_id: binary_sensor.kitchen_motion
+    name: 'Replay Kitchen'
+    entity_id: light.kitchen
+    state: 'on'
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    end: >
+      {{ as_timestamp(now()) - (7*86400) + 30 }}
+  - platform: history_stats
+    name: 'Replay Ensuite'
+    entity_id: light.ensuite
     state: 'on'
     type: count
     start: >
