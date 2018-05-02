@@ -59,6 +59,10 @@ history:
     - light.kitchen
     - light.living_room
     - light.porch
+    - binary_sensor.kitchen_motion
+    - binary_sensor.living_room_motion
+    - binary_sensor.entrance_hall_motion
+    - binary_sensor.top_floor_motion
 logbook:
   exclude:
     domains:
@@ -67,6 +71,7 @@ logbook:
     - binary_sensor.kitchen_motion
     - binary_sensor.living_room_motion
     - binary_sensor.entrance_hall_motion
+    - binary_sensor.top_floor_motion
     - sensor.log_db_file_size
     - sensor.cpu_temp
     - sensor.average_load_15m
