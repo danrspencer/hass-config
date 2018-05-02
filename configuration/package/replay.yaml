@@ -33,3 +33,12 @@ replay:
       {{ as_timestamp(now()) - (7*86400) }}
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
+  - platform: history_stats
+    name: 'Replay Kitchen Motion'
+    entity_id: binary_sensor.kitchen_motion
+    state: 'on'
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    end: >
+      {{ as_timestamp(now()) - (7*86400) + 30 }}
