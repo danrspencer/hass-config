@@ -32,15 +32,15 @@ updater:
   include_used_components: true
 
 # History
-influxdb:
-  host: !secret influx_host
-  port: 8086
-  username: !secret influx_user
-  password: !secret influx_pass
-  default_measurement: state
-  exclude:
-    entities:
-    - sensor.date
+# influxdb:
+#   host: !secret influx_host
+#   port: 8086
+#   username: !secret influx_user
+#   password: !secret influx_pass
+#   default_measurement: state
+#   exclude:
+#     entities:
+#     - sensor.date
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
