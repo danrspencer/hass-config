@@ -26,6 +26,26 @@ replay:
       data:
         entity_id:  switch.ensuite_light
 
+  - alias: Replay Ensuite Light
+    trigger:
+    - platform: state
+      entity_id: sensor.replay_ensuite
+    condition:
+      condition: template
+      value_template: > 
+        {{ states.input_boolean.replay_mode.state == 'on' 
+            and states.sensor.day_phase.state in ['Evening', 'Night'] 
+        }}
+    action:
+    - service_template: >
+        {% if states.sensor.replay_ensuite.state > 0 %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %} 
+      data:
+        entity_id:  switch.ensuite_light
+
   sensor:
   - platform: history_stats
     name: 'Replay Hallways'
