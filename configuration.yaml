@@ -81,6 +81,9 @@ logbook:
     - sensor.cpu_temp
     - sensor.average_load_15m
     - sensor.since_last_boot
+logger:
+  logs:
+    homeassistant.components.hue: debug
 
 # external links
 weblink:
