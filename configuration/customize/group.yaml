@@ -3,6 +3,3 @@ group.all_automations:
 
 group.all_scripts:
   hidden: false
-
-group.media:
-  hidden: false

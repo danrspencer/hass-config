@@ -24,9 +24,7 @@ active_media_players:
         friendly_name: 'Active Media Players'
         value_template: >
           {{ states.media_player
-            | rejectattr('state', 'equalto', 'off')
-            | rejectattr('state', 'equalto', 'idle')
-            | rejectattr('entity_id', 'equalto', 'media_player.spotify')
+            | selectattr('state', 'equalto', 'playing')
             | map(attribute ='entity_id')
             | join(', ')
           }}

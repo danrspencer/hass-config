@@ -40,4 +40,4 @@ reset-nest:
 	ssh ${REMOTE} "sudo rm /home/homeassistant/.homeassistant/nest.con"
 
 update-to-version:
-	ssh ${REMOTE} "curl -d '{\"version\": \"${VERSION}\"}' http://hassio/homeassistant/update"
+	ssh ${REMOTE} "curl -H \"X-HASSIO-KEY: $$HASSIO_TOKEN\" -d '{\"version\": \"${VERSION}\"}' http://hassio/homeassistant/update"
