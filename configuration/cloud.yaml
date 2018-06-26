@@ -1,7 +1,5 @@
 google_actions:
   filter:
-    include_domains:
-      - light
     include_entities:
       - switch.hyperion
       - switch.garage_heater
