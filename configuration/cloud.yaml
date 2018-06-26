@@ -6,7 +6,7 @@ google_actions:
       - switch.hyperion
       - switch.garage_heater
       - switch.living_room_fairy_lights
-      - switch.living_room_tv	
+      - switch.living_room_tv
       - script.cinema_mode
       - climate.kitchen
     exclude_entities:
