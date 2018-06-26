@@ -1,9 +1,17 @@
 google_actions:
   filter:
+    include_domains:
+      - light
     include_entities:
       - switch.hyperion
+      - switch.garage_heater
+      - switch.living_room_fairy_lights
+      - switch.living_room_tv	
       - script.cinema_mode
       - climate.kitchen
+    exclude_entities:
+      - light.porch_light
+      - light.porch
   entity_config:
     switch.hyperion:
       name: Ambilights
