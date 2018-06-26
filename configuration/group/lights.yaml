@@ -22,12 +22,13 @@ lights_living_room:
   - input_boolean.living_room_lights
   - light.living_room
   - light.living_room_lamp
+  - light.living_room_candle
   - light.living_room_spot_1
   - light.living_room_spot_2
   - light.living_room_spot_3
   - switch.living_room_fairy_lights
-  - light.hyperion
   - switch.hyperion
+  - switch.living_room_fairy_lights
 
 lights_top_floor_landing:  
   name: Top Floor Landing
