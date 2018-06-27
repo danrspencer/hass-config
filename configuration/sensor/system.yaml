@@ -1,17 +1,18 @@
 - platform: systemmonitor
   resources:
-    - type: disk_use_percent
-      arg: /
-    - type: memory_use_percent
-    - type: swap_use_percent
-    - type: since_last_boot
+    - type: processor_use
     - type: load_1m
     - type: load_5m
     - type: load_15m
+    - type: memory_use_percent
+    - type: disk_use_percent
+      arg: /
+    - type: swap_use_percent
     - type: network_in
       arg: wlan0
     - type: network_out
       arg: wlan0
+    - type: since_last_boot
 
 - platform: command_line
   name: CPU Temp

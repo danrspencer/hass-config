@@ -1,0 +1,28 @@
+include:
+  entities:
+  - light.bedroom
+  - light.den
+  - light.dressing_room
+  - light.guest_room
+  - light.hallways
+  - light.kitchen
+  - light.living_room
+  - light.porch
+  - binary_sensor.kitchen_motion
+  - binary_sensor.living_room_motion
+  - binary_sensor.entrance_hall_motion
+  - binary_sensor.top_floor_motion
+  - sensor.replay_kitchen
+  - sensor.replay_living_room
+  - sensor.replay_hallways
+  - sensor.replay_top_floor_landing
+  - sensor.replay_ensuite
+  - sensor.processor_use
+  - sensor.load_1m
+  - sensor.load_5m
+  - sensor.load_15m
+  - sensor.memory_use_percent
+  - sensor.disk_use_percent_
+  - sensor.swap_use_percent
+  - sensor.network_in_wlan0
+  - sensor.network_out_wlan0

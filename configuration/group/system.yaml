@@ -1,17 +1,15 @@
 system_pi_stats:
   name: Pi Stats
   entities:
-  - sensor.log_db_file_size
-  - sensor.cpu_temp
-  - sensor.cpu_use
-  - sensor.ram_use
-  - sensor.disk_used_
-  - sensor.average_load_1m
-  - sensor.average_load_5m
-  - sensor.average_load_15m
-  - sensor.received_eth0
-  - sensor.sent_eth0
-  - sensor.since_last_boot
+  - sensor.processor_use
+  - sensor.load_1m
+  - sensor.load_5m
+  - sensor.load_15m
+  - sensor.memory_use_percent
+  - sensor.disk_use_percent_
+  - sensor.swap_use_percent
+  - sensor.network_in_wlan0
+  - sensor.network_out_wlan0
 
 system_links:
   name: Links

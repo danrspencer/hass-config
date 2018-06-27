@@ -48,26 +48,8 @@ recorder:
   exclude:
     entities:
     - sensor.date
-history:
-  include:
-    entities:
-    - light.bedroom
-    - light.den
-    - light.dressing_room
-    - light.guest_room
-    - light.hallways
-    - light.kitchen
-    - light.living_room
-    - light.porch
-    - binary_sensor.kitchen_motion
-    - binary_sensor.living_room_motion
-    - binary_sensor.entrance_hall_motion
-    - binary_sensor.top_floor_motion
-    - sensor.replay_kitchen
-    - sensor.replay_living_room
-    - sensor.replay_hallways
-    - sensor.replay_top_floor_landing
-    - sensor.replay_ensuite
+history: !include configuration/history.yaml
+  
 logbook:
   exclude:
     domains:
