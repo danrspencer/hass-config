@@ -116,6 +116,9 @@ zone:
 
 http:
   api_password: !secret hass_password
+  cors_allowed_origins:
+    - https://hassio.local:7080
+    - !secret hass_cp_base_url
   base_url: !secret hass_base_url
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
