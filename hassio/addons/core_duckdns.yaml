@@ -1,0 +1,11 @@
+name: Duck DNS
+options:
+  domains:
+  - !secret duckdns_domain
+  lets_encrypt:
+    accept_terms: true
+    certfile: fullchain.pem
+    keyfile: privkey.pem
+  seconds: 300
+  token: !secret duckdns_token
+url: https://home-assistant.io/addons/duckdns/

@@ -1,8 +1,10 @@
-- core_ssh
-- a0d7b954_homebridge
-- a0d7b954_pi-hole
-- a0d7b954_appdaemon3
-- 03d23610_dasshio
-- core_git_pull
-- a0d7b954_control-panel
 - fe49a976_google_assistant_webserver
+- 03d23610_dasshio
+- a0d7b954_appdaemon3
+- core_mariadb
+- a0d7b954_pi-hole
+- a0d7b954_control-panel
+- a0d7b954_influxdb
+- core_git_pull
+- core_ssh
+- core_duckdns

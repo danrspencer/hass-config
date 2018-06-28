@@ -8,7 +8,7 @@ import os, re, sys
 
 path = os.path.abspath(os.path.dirname(sys.argv[0]))
 
-hass_url = sys.argv[1] if len(sys.argv) > 1 else 'http://hassio.local:8123'
+hass_url = sys.argv[1] if len(sys.argv) > 1 else 'https://hass5bill.duckdns.org:8123'
 secrets_path = sys.argv[2] if len(sys.argv) > 2 else '../secrets.yaml'
 
 def main():

@@ -1,4 +1,4 @@
-name: AppDaemon3
+name: AppDaemon
 options:
   log_level: info
   python_packages: []
