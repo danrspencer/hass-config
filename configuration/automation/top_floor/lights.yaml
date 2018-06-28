@@ -56,7 +56,7 @@
       value_template: '{{ states.sensor.day_phase.state != "Night" }}'
     - condition: numeric_state
       entity_id: binary_sensor.top_floor_motion
-      below: '10000'
+      below: '13000'
   action:
   - service: hue.hue_activate_scene
     data_template:
@@ -100,7 +100,7 @@
       value_template: '{{ states.sensor.day_phase.state != "Night" }}'
     - condition: numeric_state
       entity_id: binary_sensor.top_floor_motion
-      below: '10000'
+      below: '13000'
   action:
   - service: hue.hue_activate_scene
     data_template:
