@@ -1,6 +1,7 @@
 system_pi_stats:
   name: Pi Stats
   entities:
+  - sensor.cpu_temp
   - sensor.processor_use
   - sensor.load_1m
   - sensor.load_5m

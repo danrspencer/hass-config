@@ -37,8 +37,8 @@ kitchen:
   - group.lights_kitchen
   - group.kitchen_climate
   - media_player.kitchen
-  - media_player.kitchen_speaker_l
-  - media_player.kitchen_speaker_r
+  - media_player.kitchen_speaker
+  - media_player.portable_speaker
   - scene.relaxed_cooking
   - timer.kitchen_motion
 
@@ -58,7 +58,8 @@ top_floor:
   - media_player.top_floor_speakers
   - media_player.bedroom_speakers
   - media_player.den_speakers
-  - media_player.portable_speaker
+  - media_player.dressing_room_speaker
+
 
 den:
   name: Den
@@ -93,13 +94,6 @@ lights:
   - group.lights_den
   - group.lights_bathrooms
   - group.lights_porch
-
-media:
-  name: Media
-  icon: mdi:speaker-wireless
-  view: yes
-  entities:
-  - group.media
 
 house:
   name: House

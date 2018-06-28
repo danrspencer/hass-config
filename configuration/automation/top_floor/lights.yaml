@@ -3,10 +3,6 @@
   - platform: state
     entity_id: binary_sensor.entrance_hall_motion
     to: 'on'
-  condition:
-  - condition: numeric_state
-    entity_id: binary_sensor.top_floor_motion
-    below: '10000'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.top_floor_lights_auto
@@ -58,6 +54,9 @@
       state: 'on'
     - condition: template
       value_template: '{{ states.sensor.day_phase.state != "Night" }}'
+    - condition: numeric_state
+      entity_id: binary_sensor.top_floor_motion
+      below: '10000'
   action:
   - service: hue.hue_activate_scene
     data_template:

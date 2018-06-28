@@ -17,6 +17,7 @@ include:
   - sensor.replay_hallways
   - sensor.replay_top_floor_landing
   - sensor.replay_ensuite
+  - sensor.cpu_temp
   - sensor.processor_use
   - sensor.load_1m
   - sensor.load_5m
