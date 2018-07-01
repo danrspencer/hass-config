@@ -13,6 +13,20 @@ cp_climate:
   - sensor.kitchen_heater_on_today
   - sensor.kitchen_heater_on_this_week
 
+cp_lights:
+  name: Lights
+  entities:
+  - light.top_floor_landing
+  - light.hallways
+  - group.lights_kitchen
+  - group.lights_living_room
+  - light.bedroom
+  - light.bathroom
+  - light.ensuite
+  - light.dressing_room
+  - light.guest_room
+  - light.porch
+
 cp_motion:
   name: Motion
   entities:
