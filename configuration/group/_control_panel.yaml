@@ -1,0 +1,24 @@
+cp_climate:
+  name: Climate
+  entities:
+  - sensor.house_thermostat_temperature
+  - sensor.kitchen_temperature
+  - sensor.living_room_temperature
+  - sensor.top_floor_temperature
+  - sensor.entrance_hall_temperature
+  - sensor.house_thermostat_humidity
+  - binary_sensor.house_thermostat_online
+  - switch.garage_heater
+  - switch.kitchen_heater
+  - sensor.kitchen_heater_on_today
+  - sensor.kitchen_heater_on_this_week
+
+cp_motion:
+  name: Motion
+  entities:
+  - binary_sensor.house_motion
+  - binary_sensor.kitchen_motion
+  - binary_sensor.entrance_hall_motion
+  - binary_sensor.living_room_motion
+  - binary_sensor.top_floor_motion
+  - binary_sensor.ring_back_door_motion

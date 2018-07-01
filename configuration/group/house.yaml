@@ -9,7 +9,9 @@ house_climate:
   - input_boolean.heating_timer
   - sensor.living_room_temperature
   - sensor.entrance_hall_temperature
+  - sensor.top_floor_temperature
   - sensor.house_thermostat_humidity
+  
 
 house_climate_control:
   name: House Climate
