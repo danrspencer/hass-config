@@ -1,5 +1,5 @@
 cp_climate:
-  name: Climate
+  name: House Climate
   entities:
   - sensor.house_thermostat_temperature
   - sensor.kitchen_temperature
@@ -7,6 +7,11 @@ cp_climate:
   - sensor.top_floor_temperature
   - sensor.entrance_hall_temperature
   - sensor.house_thermostat_humidity
+  
+
+cp_heating:
+  name: Heating
+  entities:
   - binary_sensor.house_thermostat_online
   - switch.garage_heater
   - switch.kitchen_heater
@@ -18,8 +23,8 @@ cp_lights:
   entities:
   - light.top_floor_landing
   - light.hallways
-  - group.lights_kitchen
-  - group.lights_living_room
+  - light.kitchen
+  - light.living_room
   - light.bedroom
   - light.bathroom
   - light.ensuite
