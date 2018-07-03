@@ -11,7 +11,7 @@
   trigger:
   - platform: state
     entity_id: sensor.day_phase
-    from: 'Night'
+    to: 'Night'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.top_floor_lights_auto
@@ -52,8 +52,6 @@
     - condition: state
       entity_id: input_boolean.top_floor_lights_auto
       state: 'on'
-    - condition: template
-      value_template: '{{ states.sensor.day_phase.state != "Night" }}'
     - condition: numeric_state
       entity_id: binary_sensor.top_floor_motion
       below: '13000'
