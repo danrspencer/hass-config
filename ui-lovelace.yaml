@@ -1,8 +1,14 @@
 name: Home
 views:
+- type: entities
+  title: Kitchen
+  entities:
+  - light.kitchen_lamp_1
+
 - type: entity-filter
-  title: Kitchen Lights
   filter:
   - entity_id: '*kitchen*'
     domain: light
+  card_config:
+    title: Kitchen Lights
 
