@@ -4,9 +4,15 @@ views:
   cards:
   - type: entity-filter
     filter:
-    - entity_id: '*kitchen_*'
+    - entity_id: '*kitchen*'
       domain: light
     card_config:
-      title: Kitchen Lights
-    card: glance
-
+      title: Lights
+- name: Living Room
+  cards:
+  - type: entity-filter
+    filter:
+    - entity_id: '*living_room*'
+      domain: light
+    card_config:
+      title: Lights
