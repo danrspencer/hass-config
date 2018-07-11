@@ -6,10 +6,10 @@ replay:
       icon: mdi:loop
 
   automation:
-  - alias: Replay Ensuite Light
+  - alias: Replay Hallway Lights
     trigger:
     - platform: state
-      entity_id: sensor.replay_ensuite
+      entity_id: sensor.replay_hallways
     condition:
       condition: template
       value_template: > 
@@ -18,13 +18,13 @@ replay:
         }}
     action:
     - service_template: >
-        {% if states.sensor.replay_ensuite.state > 0 %}
+        {% if states.sensor.replay_hallways.state > 0 %}
           switch.turn_on
         {% else %}
           switch.turn_off
         {% endif %} 
       data:
-        entity_id:  switch.ensuite_light
+        entity_id:  switch.hallways_light
 
   - alias: Replay Ensuite Light
     trigger:
@@ -56,6 +56,7 @@ replay:
       {{ as_timestamp(now()) - (7*86400) }}
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
+
   - platform: history_stats
     name: 'Replay Living Room'
     entity_id: light.living_room
@@ -65,6 +66,7 @@ replay:
       {{ as_timestamp(now()) - (7*86400) }}
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
+
   - platform: history_stats
     name: 'Replay Top Floor Landing'
     entity_id: light.top_floor_landing
@@ -74,6 +76,7 @@ replay:
       {{ as_timestamp(now()) - (7*86400) }}
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
+
   - platform: history_stats
     name: 'Replay Kitchen'
     entity_id: light.kitchen
@@ -83,6 +86,7 @@ replay:
       {{ as_timestamp(now()) - (7*86400) }}
     end: >
       {{ as_timestamp(now()) - (7*86400) + 30 }}
+      
   - platform: history_stats
     name: 'Replay Ensuite'
     entity_id: light.ensuite

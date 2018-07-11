@@ -44,7 +44,6 @@
   trigger:
   - entity_id: binary_sensor.top_floor_motion
     platform: state
-    from: 'off'
     to: 'on'
   condition:
     condition: and
@@ -56,8 +55,8 @@
       entity_id: input_boolean.top_floor_lights_auto
       state: 'on'
     - condition: numeric_state
-      entity_id: binary_sensor.top_floor_motion
-      below: '13000'
+      entity_id: sensor.top_floor_light
+      below: '10000'
   action:
   - service: hue.hue_activate_scene
     data_template:
@@ -98,8 +97,8 @@
       entity_id: input_boolean.top_floor_lights_auto
       state: 'on'
     - condition: numeric_state
-      entity_id: binary_sensor.top_floor_motion
-      below: '13000'
+      entity_id: sensor.top_floor_light
+      below: '10000'
   action:
   - service: hue.hue_activate_scene
     data_template:

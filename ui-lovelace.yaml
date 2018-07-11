@@ -8,6 +8,7 @@ views:
       domain: light
     card_config:
       title: Lights
+      
 - name: Living Room
   cards:
   - type: entity-filter
