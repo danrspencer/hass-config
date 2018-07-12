@@ -17,7 +17,7 @@ options:
     service: toggle
     service_data: '{"entity_id": "switch.dressing_room_light"}'
   - address: 18:74:2E:1C:CD:06
-    domain: light
+    domain: switch
     name: Ensuite (Simple Solution)
     service: toggle
     service_data: '{"entity_id": "switch.ensuite_light"}'
