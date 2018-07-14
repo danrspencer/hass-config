@@ -91,7 +91,7 @@ lights:
   - group.lights_hallway
   - group.lights_top_floor_landing
   - group.lights_dressing_room
-  - group.lights_den
+  - group.lights_toilet
   - group.lights_bathrooms
   - group.lights_porch
 

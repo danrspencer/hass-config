@@ -59,11 +59,11 @@ lights_dressing_room:
   - light.dressing_room
   - light.dressing_room_lamp
 
-lights_den:
-  name: Den
+lights_toilet:
+  name: Toilet
   entities:
-  - light.den
-  - light.den_lamp
+  - light.toilet
+  - light.toilet_lamp
 
 lights_guest_room:
   name: Guest Room
