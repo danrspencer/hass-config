@@ -14,7 +14,7 @@
   trigger:
   - platform: state
     entity_id: sensor.day_phase
-    to: 'Night'
+    to: 'Morning'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.top_floor_lights_auto
@@ -171,14 +171,9 @@
     from: 'off'
     to: 'on'
   condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.bathroom
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.top_floor_lights_auto
-      state: 'on'
+    condition: state
+    entity_id: light.bathroom
+    state: 'off'
   action:
   - service: hue.hue_activate_scene
     data_template:
