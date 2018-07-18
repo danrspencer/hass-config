@@ -35,12 +35,15 @@ updater:
 influxdb:
   host: !secret influx_host
   port: 8086
+  database: homeassistant
   username: !secret influx_user
   password: !secret influx_pass
+  max_retries: 3
   default_measurement: state
   exclude:
     entities:
     - sensor.date
+
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
