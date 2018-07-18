@@ -36,7 +36,6 @@ house_other:
 house_controls:
   name: Controls
   entities:
-  - input_boolean.holiday_mode
   - input_boolean.replay_mode
   - switch.hair_straighteners
   - scene.everything_off

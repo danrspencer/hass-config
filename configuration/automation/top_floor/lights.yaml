@@ -122,7 +122,7 @@
       group_name: Dressing Room
       scene_name: '{{ states.sensor.day_phase.state }}'
 
-# Bathrooms
+# Bathroom
 - alias: Bathroom Lights On
   trigger:
   - entity_id: binary_sensor.top_floor_motion
@@ -160,6 +160,7 @@
       group_name: Bedroom
       scene_name: '{{ states.sensor.day_phase.state }}'
 
+# Ensuite
 - alias: Ensuite Lights Update
   trigger:
   - platform: state
