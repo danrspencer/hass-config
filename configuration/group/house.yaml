@@ -62,8 +62,8 @@ house_ring:
   name: Ring
   entities:
   - binary_sensor.ring_front_door_motion
-  - sensor.ring_front_door_battery
   - sensor.ring_front_door_last_motion
+  - sensor.ring_front_door_last_ding
   - binary_sensor.ring_back_door_motion
   - sensor.ring_back_door_battery
   - sensor.ring_back_door_last_motion
