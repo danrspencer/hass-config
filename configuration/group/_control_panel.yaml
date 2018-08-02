@@ -40,4 +40,5 @@ cp_motion:
   - binary_sensor.entrance_hall_motion
   - binary_sensor.living_room_motion
   - binary_sensor.top_floor_motion
+  - binary_Sensor.ring_front_door_motion
   - binary_sensor.ring_back_door_motion
