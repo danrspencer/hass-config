@@ -4,24 +4,25 @@
       friendly_name: 'House Motion'
       value_template: >
         {{ 
-          states.binary_sensor.entrance_hall_motion.state == 'on' or
-          states.binary_sensor.kitchen_motion.state == 'on' or
-          states.binary_sensor.living_room_motion.state == 'on' or
-          states.binary_sensor.top_floor_motion.state == 'on' 
+          states.sensor.entrance_hall_motion_sensor.state == 'on' or
+          states.sensor.kitchen_motion_sensor.state == 'on' or
+          states.sensor.living_room_motion_sensor.state == 'on' or
+          states.sensor.top_floor_motion_sensor.state == 'on' 
         }}
 
-- platform: template
-  value_template: '{{ states.sensor.kitchen_motion_sensor.state == 'on' }}'
-  name: 'Kitchen Motion'
+    kitchen_motion:
+      friendly_name: 'Kitchen Motion'
+      value_template: '{{ states.sensor.kitchen_motion_sensor.state == 'on' }}'
 
-- platform: rest
-  value_template: '{{ states.sensor.living_room_motion_sensor.state == 'on' }}'
-  name: 'Living Room Motion'
-
-- platform: rest
-  value_template: '{{ states.sensor.entrance_hall_motion_sensor.state == 'on' }}'
-  name: 'Entrance Hall Motion'
-
-- platform: rest
-  value_template: '{{ states.sensor.top_floor_motion_sensor.state == 'on' }}'
-  name: 'Top Floor Motion'
+    living_room_motion:
+      friendly_name: 'Living Room Motion'
+      value_template: '{{ states.sensor.living_room_motion_sensor.state == 'on' }}'
+      
+    entrance_hall_motion:
+      friendly_name: 'Entrance Hall Motion'
+      value_template: '{{ states.sensor.entrance_hall_motion_sensor.state == 'on' }}'
+      
+    top_floor_motion:
+      friendly_name: 'Top Floor Motion'
+      value_template: '{{ states.sensor.top_floor_motion_sensor.state == 'on' }}'
+      
