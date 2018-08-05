@@ -56,7 +56,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.top_floor_light
-      below: '12000'
+      below: '15000'
   action:
   - service: hue.hue_activate_scene
     data_template:
@@ -98,7 +98,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.top_floor_light
-      below: '12000'
+      below: '15000'
   action:
   - service: hue.hue_activate_scene
     data_template:
