@@ -9,20 +9,24 @@
           states.sensor.living_room_motion_sensor.state == 'on' or
           states.sensor.top_floor_motion_sensor.state == 'on' 
         }}
-
+    
     kitchen_motion:
       friendly_name: 'Kitchen Motion'
-      value_template: '{{ states.sensor.kitchen_motion_sensor.state == 'on' }}'
-
+      value_template: >
+        {{ states.sensor.kitchen_motion_sensor.state == 'on' }}
+    
     living_room_motion:
       friendly_name: 'Living Room Motion'
-      value_template: '{{ states.sensor.living_room_motion_sensor.state == 'on' }}'
-      
+      value_template: >
+        {{ states.sensor.living_room_motion_sensor.state == 'on' }}
+    
     entrance_hall_motion:
       friendly_name: 'Entrance Hall Motion'
-      value_template: '{{ states.sensor.entrance_hall_motion_sensor.state == 'on' }}'
-      
+      value_template: >
+        {{ states.sensor.entrance_hall_motion_sensor.state == 'on' }}
+    
     top_floor_motion:
       friendly_name: 'Top Floor Motion'
-      value_template: '{{ states.sensor.top_floor_motion_sensor.state == 'on' }}'
+      value_template: >
+        {{ states.sensor.top_floor_motion_sensor.state == 'on' }}
       
