@@ -84,7 +84,9 @@ lights:
   - sensor.kitchen_light
   - sensor.living_room_light
   - sensor.entrance_hall_light
+  - sensor.toilet_light
   - sensor.top_floor_light
+  - sensor.bathroom_light
   - group.lights_living_room
   - group.lights_kitchen
   - group.lights_bedroom

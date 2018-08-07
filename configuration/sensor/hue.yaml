@@ -43,3 +43,23 @@
       friendly_name: 'Top Floor Temperature'
       unit_of_measurement: °C
       value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.temperature }}'
+
+    bathroom_light:
+      friendly_name: 'Bathroom Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.lx }}'
+
+    bathroom_temperature:
+      friendly_name: 'Bathroom Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.temperature }}'
+
+    toilet_light:
+      friendly_name: 'Toilet Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.toilet_motion_sensor.attributes.lx }}'
+
+    toilet_temperature:
+      friendly_name: 'Toilet Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.toilet_motion_sensor.attributes.temperature }}'

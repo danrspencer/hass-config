@@ -29,4 +29,14 @@
       friendly_name: 'Top Floor Motion'
       value_template: >
         {{ states.sensor.top_floor_motion_sensor.state == 'on' }}
+
+    bathroom_motion:
+      friendly_name: 'Bathroom Motion'
+      value_template: >
+        {{ states.sensor.bathroom_motion_sensor.state == 'on' }}
+
+    toilet_motion:
+      friendly_name: 'Toilet Motion'
+      value_template: >
+        {{ states.sensor.toilet_motion_sensor.state == 'on' }}
       

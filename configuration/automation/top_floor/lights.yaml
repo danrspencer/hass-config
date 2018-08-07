@@ -33,8 +33,6 @@
   - service: light.turn_off
     entity_id: light.top_floor_landing
   - service: light.turn_off
-    entity_id: light.bathroom
-  - service: light.turn_off
     entity_id: light.dressing_room
   - service: light.turn_off
     entity_id: light.den
@@ -125,9 +123,8 @@
 # Bathroom
 - alias: Bathroom Lights On
   trigger:
-  - entity_id: binary_sensor.top_floor_motion
+  - entity_id: binary_sensor.bathroom_motion
     platform: state
-    from: 'off'
     to: 'on'
   condition:
     condition: state
@@ -139,6 +136,20 @@
       group_name: Bathroom
       scene_name: '{{ states.sensor.day_phase.state }}'
 
+- alias: Bathroom Lights Off
+  trigger:
+  - entity_id: binary_sensor.bathroom_motion
+    platform: state
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  action:
+  - service: light.turn_off
+    entity_id: light.bathroom
+
+# Bedroom
 - alias: Bedroom Lights Update
   trigger:
   - platform: state
@@ -147,13 +158,9 @@
   - platform: state
     entity_id: sensor.day_phase
   condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: light.bedroom
-      state: 'on'
-    - condition: template
-      value_template: '{{ states.sensor.day_phase.state != "Night" }}'
+    condition: state
+    entity_id: light.bedroom
+    state: 'on'
   action:
   - service: hue.hue_activate_scene
     data_template:

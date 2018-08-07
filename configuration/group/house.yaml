@@ -9,7 +9,9 @@ house_climate:
   - input_boolean.heating_timer
   - sensor.living_room_temperature
   - sensor.entrance_hall_temperature
+  - sensor.toilet_temperature
   - sensor.top_floor_temperature
+  - sensor.bathroom_temperature
   - sensor.house_thermostat_humidity
   
 
@@ -32,6 +34,10 @@ house_other:
   - binary_sensor.living_room_motion
   - sensor.top_floor_light
   - binary_sensor.top_floor_motion
+  - sensor.bathroom_light
+  - binary_sensor.bathroom_motion
+  - sensor.toilet_light
+  - binary_sensor.toilet_motion
 
 house_controls:
   name: Controls
