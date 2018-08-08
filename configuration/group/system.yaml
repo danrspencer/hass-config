@@ -17,6 +17,10 @@ system_links:
   entities:
   - weblink.sky_router
   - weblink.bt_wifi
+  - weblink.node_red
+  - weblink.pi_hole
+  - weblink.travis
+  - weblink.grafana
 
 system_build:
   name: Build

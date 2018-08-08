@@ -82,11 +82,19 @@ weblink:
   - name: Travis
     icon: mdi:worker
     url: https://travis-ci.org/danrspencer/hass-config
+  - name: Node Red
+    icon: mdi:sitemap
+    url: 'https://hass5bill.duckdns.org:1880/'
+  - name: Pi Hole
+    icon: mdi:block
+  - name: Grafana
+    icon: mdi:trending-up
+    url: 'https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m'
 panel_iframe:
   node_red:
     title: Node Red
-    url: 'https://hass5bill.duckdns.org:1880/'
     icon: mdi:sitemap
+    url: 'https://hass5bill.duckdns.org:1880/'
   grafana:
     title: Grafana
     url: 'https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m'
