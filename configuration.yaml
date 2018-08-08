@@ -83,6 +83,14 @@ weblink:
     icon: mdi:worker
     url: https://travis-ci.org/danrspencer/hass-config
 panel_iframe:
+  router:
+    title: Sky Router
+    url: http://192.168.0.1
+    icon: mdi:ethernet
+  bt_wifi:
+    title: BT WiFi
+    url: http://mybtdevice.home
+    icon: mdi:router-wireless
   node_red:
     title: Node Red
     url: 'https://hass5bill.duckdns.org:1880/'
