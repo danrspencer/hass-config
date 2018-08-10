@@ -1,0 +1,52 @@
+garage_heating:
+  input_datetime:
+    garage_heating_timer:
+      name: Heating On At
+      has_time: true
+      has_date: true
+      icon: mdi:timelapse
+
+  input_boolean:
+    garage_heating_timer:
+      name: Heating On At
+      initial: off
+      icon: mdi:timelapse
+
+  automation:
+    - alias: Garage Heater Timer On
+      trigger:
+      - platform: state
+        entity_id: input_datetime.garage_heating_timer
+      action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.garage_heating_timer
+
+    - alias: Garage Heater Timer Trigger
+      trigger:
+      - platform: template
+        value_template: |
+          {{ as_timestamp(states.input_datetime.garage_heating_timer.state) <
+             as_timestamp(now()) 
+          }}
+      condition:
+        condition: state
+        entity_id: input_boolean.garage_heating_timer
+        state: 'on'
+      action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.garage_heating_timer
+      - service: switch.turn_on
+        entity_id: switch.garage_heater
+
+    - alias: Garage Heater Auto Off
+      trigger:
+      - entity_id: switch.garage_heater
+        platform: state
+        to: 'on'
+        for:
+          hours: 1
+          minutes: 0
+          seconds: 0
+      action:
+      - service: switch.turn_off
+        entity_id: switch.garage_heater

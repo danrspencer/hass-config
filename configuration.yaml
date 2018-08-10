@@ -10,15 +10,15 @@ homeassistant:
   packages: !include_dir_merge_named configuration/package
 
 # Enablers
-? browser
+browser:
 cloud: !include configuration/cloud.yaml
-? config
-? conversation
-? discovery
+config:
+conversation:
+discovery:
 frontend:
   javascript_version: latest
-? ios
-? map
+ios:
+map:
 ring:
   username: !secret ring_username
   password: !secret ring_password
@@ -27,7 +27,7 @@ hue:
     - host: 192.168.0.2
       allow_unreachable: false
       allow_hue_groups: true
-? sun
+sun:
 updater:
   include_used_components: true
 
@@ -42,30 +42,30 @@ influxdb:
   default_measurement: state
   exclude:
     entities:
-      - sensor.date
+    - sensor.date
 
 recorder:
-  # db_url: !secret db_connection
+  db_url: !secret db_connection
   purge_interval: 1
   purge_keep_days: 14
   exclude:
     entities:
-      - sensor.date
+    - sensor.date
 history: !include configuration/history.yaml
-
+  
 logbook:
   exclude:
     domains:
-      - group
+    - group
     entities:
-      - binary_sensor.kitchen_motion
-      - binary_sensor.living_room_motion
-      - binary_sensor.entrance_hall_motion
-      - binary_sensor.top_floor_motion
-      - sensor.log_db_file_size
-      - sensor.cpu_temp
-      - sensor.average_load_15m
-      - sensor.since_last_boot
+    - binary_sensor.kitchen_motion
+    - binary_sensor.living_room_motion
+    - binary_sensor.entrance_hall_motion
+    - binary_sensor.top_floor_motion
+    - sensor.log_db_file_size
+    - sensor.cpu_temp
+    - sensor.average_load_15m
+    - sensor.since_last_boot
 logger:
   logs:
     homeassistant.components.hue: debug
@@ -73,25 +73,24 @@ logger:
 # external links
 weblink:
   entities:
-    - name: Sky Router
-      icon: mdi:ethernet
-      url: http://192.168.0.1
-    - name: BT WiFi
-      icon: mdi:router-wireless
-      url: http://mybtdevice.home
-    - name: Travis
-      icon: mdi:worker
-      url: https://travis-ci.org/danrspencer/hass-config
-    - name: Node Red
-      icon: mdi:sitemap
-      url: https://hass5bill.duckdns.org:1880/
-    - name: Pi Hole
-      icon: mdi:block-helper
-      url: http://hassio.local
-    - name: Grafana
-      icon: mdi:trending-up
-      url:
-        https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
+  - name: Sky Router
+    icon: mdi:ethernet
+    url: http://192.168.0.1
+  - name: BT WiFi
+    icon: mdi:router-wireless
+    url: http://mybtdevice.home
+  - name: Travis
+    icon: mdi:worker
+    url: https://travis-ci.org/danrspencer/hass-config
+  - name: Node Red
+    icon: mdi:sitemap
+    url: https://hass5bill.duckdns.org:1880/
+  - name: Pi Hole
+    icon: mdi:block
+    url: http://hassio.local
+  - name: Grafana
+    icon: mdi:trending-up
+    url: https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
 panel_iframe:
   node_red:
     title: Node Red
@@ -99,8 +98,7 @@ panel_iframe:
     url: https://hass5bill.duckdns.org:1880/
   grafana:
     title: Grafana
-    url:
-      https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
+    url: https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
     icon: mdi:trending-up
 
 # Text To Speech
@@ -114,19 +112,19 @@ tts:
 
 # Device Tracking
 zone:
-  - ? zone
+  - zone:
     name: Home
     latitude: !secret zone_home_lat
     longitude: !secret zone_home_long
     radius: 250
 
-  - ? zone 2
+  - zone 2:
     name: Work
     latitude: !secret zone_l_work_lat
     longitude: !secret zone_l_work_long
     icon: mdi:briefcase
 
-  - ? zone 3
+  - zone 3:
     name: Work
     latitude: !secret zone_d_work_lat
     longitude: !secret zone_d_work_long
@@ -141,8 +139,8 @@ http:
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   trusted_networks:
-    - 127.0.0.1
-    - 192.168.0.0/24
+  - 127.0.0.1
+  - 192.168.0.0/24
 
 device_tracker:
   - platform: nmap_tracker
