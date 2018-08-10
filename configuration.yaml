@@ -86,7 +86,7 @@ weblink:
     icon: mdi:sitemap
     url: https://hass5bill.duckdns.org:1880/
   - name: Pi Hole
-    icon: mdi:block
+    icon: mdi:block-helper
     url: http://hassio.local
   - name: Grafana
     icon: mdi:trending-up
