@@ -1,6 +1,6 @@
-# - platform: hue
-#   ip_address: 192.168.0.2
-#   token: !secret hue_token
+- platform: hue
+  ip_address: 192.168.0.2
+  token: !secret hue_token
 
 - platform: template
   sensors:
