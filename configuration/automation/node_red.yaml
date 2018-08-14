@@ -6,7 +6,8 @@
       minutes: 2
   action:
   - service: hassio.addon_restart
-    addon: a0d7b954_nodered
+    data:
+      addon: a0d7b954_nodered
   - service: notify.ios_dphone
     data:
       message: 'Node-RED has flatlined, restarting...'
