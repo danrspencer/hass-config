@@ -1,14 +1,11 @@
 switch.hyperion:
   icon: mdi:camcorder-box
-  homebridge_visible: true
 
 switch.living_room_fairy_lights:
   icon: mdi:alarm-light
-  homebridge_visible: true
 
 switch.living_room_tv:
   icon: mdi:television
-  homebridge_visible: true
 
 switch.playstation_4:
   icon: mdi:gamepad-variant

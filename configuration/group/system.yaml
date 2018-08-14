@@ -20,7 +20,6 @@ system_links:
   - weblink.node_red
   - weblink.pi_hole
   - weblink.travis
-  - weblink.grafana
 
 system_build:
   name: Build

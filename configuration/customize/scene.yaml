@@ -1,3 +1,2 @@
 scene.everything_off:
   icon: mdi:power-plug-off
-  homebridge_visible: true

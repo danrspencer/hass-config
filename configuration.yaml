@@ -32,18 +32,6 @@ updater:
   include_used_components: true
 
 # History
-influxdb:
-  host: !secret influx_host
-  port: 8086
-  database: homeassistant
-  username: !secret influx_user
-  password: !secret influx_pass
-  max_retries: 3
-  default_measurement: state
-  exclude:
-    entities:
-    - sensor.date
-
 recorder:
   db_url: !secret db_connection
   purge_interval: 1
@@ -88,18 +76,11 @@ weblink:
   - name: Pi Hole
     icon: mdi:block-helper
     url: http://hassio.local
-  - name: Grafana
-    icon: mdi:trending-up
-    url: https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
 panel_iframe:
   node_red:
     title: Node Red
     icon: mdi:sitemap
     url: https://hass5bill.duckdns.org:1880/
-  grafana:
-    title: Grafana
-    url: https://hass5bill.grafana.net/dashboard/db/hassio?orgId=1&from=now%2Fd&to=now&kiosk=true&refresh=1m
-    icon: mdi:trending-up
 
 # Text To Speech
 tts:

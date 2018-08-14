@@ -1,6 +1,0 @@
-climate.house:
-  homebridge_visible: true
-
-climate.kitchen:
-  homebridge_visible: true
-
