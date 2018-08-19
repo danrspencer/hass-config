@@ -2,8 +2,14 @@
   trigger:
   - platform: state
     entity_id: input_boolean.node_red_heartbeat
+    to: off
     for:
-      minutes: 2
+      minutes: 5
+  - platform: state
+    entity_id: input_boolean.node_red_heartbeat
+    to: on
+    for:
+      minutes: 5
   action:
   - service: hassio.addon_restart
     data:
