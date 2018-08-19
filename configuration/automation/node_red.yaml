@@ -2,12 +2,12 @@
   trigger:
   - platform: state
     entity_id: input_boolean.node_red_heartbeat
-    to: off
+    to: 'off'
     for:
       minutes: 5
   - platform: state
     entity_id: input_boolean.node_red_heartbeat
-    to: on
+    to: 'on'
     for:
       minutes: 5
   action:
