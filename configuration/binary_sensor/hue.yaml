@@ -4,10 +4,10 @@
       friendly_name: 'House Motion'
       value_template: >
         {{ 
-          states.sensor.entrance_hall_motion_sensor.state == 'on' or
-          states.sensor.kitchen_motion_sensor.state == 'on' or
-          states.sensor.living_room_motion_sensor.state == 'on' or
-          states.sensor.top_floor_motion_sensor.state == 'on'
+          states.sensor.entrance_hall_motion.state == 'on' or
+          states.sensor.kitchen_motion.state == 'on' or
+          states.sensor.living_room_motion.state == 'on' or
+          states.sensor.top_floor_motion.state == 'on'
         }}
     
 - platform: rest

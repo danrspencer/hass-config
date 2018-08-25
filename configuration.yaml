@@ -115,9 +115,10 @@ http:
   api_password: !secret hass_password
   cors_allowed_origins:
     - https://hassio.local:7080
+
   base_url: !secret hass_base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
   trusted_networks:
   - 127.0.0.1
   - 192.168.0.0/24
