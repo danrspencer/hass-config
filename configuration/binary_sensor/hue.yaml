@@ -7,36 +7,41 @@
           states.sensor.entrance_hall_motion_sensor.state == 'on' or
           states.sensor.kitchen_motion_sensor.state == 'on' or
           states.sensor.living_room_motion_sensor.state == 'on' or
-          states.sensor.top_floor_motion_sensor.state == 'on' 
+          states.sensor.top_floor_motion_sensor.state == 'on'
         }}
     
-    kitchen_motion:
-      friendly_name: 'Kitchen Motion'
-      value_template: >
-        {{ states.sensor.kitchen_motion_sensor.state == 'on' }}
-    
-    living_room_motion:
-      friendly_name: 'Living Room Motion'
-      value_template: >
-        {{ states.sensor.living_room_motion_sensor.state == 'on' }}
-    
-    entrance_hall_motion:
-      friendly_name: 'Entrance Hall Motion'
-      value_template: >
-        {{ states.sensor.entrance_hall_motion_sensor.state == 'on' }}
-    
-    top_floor_motion:
-      friendly_name: 'Top Floor Motion'
-      value_template: >
-        {{ states.sensor.top_floor_motion_sensor.state == 'on' }}
+- platform: rest
+  resource: !secret hue_kitchen_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Kitchen Motion'
 
-    bathroom_motion:
-      friendly_name: 'Bathroom Motion'
-      value_template: >
-        {{ states.sensor.bathroom_motion_sensor.state == 'on' }}
+- platform: rest
+  resource: !secret hue_living_room_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Living Room Motion'
 
-    toilet_motion:
-      friendly_name: 'Toilet Motion'
-      value_template: >
-        {{ states.sensor.toilet_motion_sensor.state == 'on' }}
-      
+- platform: rest
+  resource: !secret hue_entrance_hall_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Entrance Hall Motion'
+
+- platform: rest
+  resource: !secret hue_top_floor_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Top Floor Motion'
+
+- platform: rest
+  resource: !secret hue_toilet_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Toilet Motion'
+
+- platform: rest
+  resource: !secret hue_bathroom_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Bathroom Motion'
