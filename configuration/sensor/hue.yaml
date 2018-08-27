@@ -1,65 +1,65 @@
-- platform: hue
-  ip_address: 192.168.0.2
-  token: !secret hue_token
+# - platform: hue
+#   ip_address: 192.168.0.2
+#   token: !secret hue_token
 
-- platform: template
-  sensors:
-    kitchen_light:
-      friendly_name: 'Kitchen Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.lx }}'
+# - platform: template
+#   sensors:
+#     kitchen_light:
+#       friendly_name: 'Kitchen Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.lx }}'
 
-    kitchen_temperature:
-      friendly_name: 'Kitchen Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.temperature }}'
+#     kitchen_temperature:
+#       friendly_name: 'Kitchen Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.temperature }}'
 
-    living_room_light:
-      friendly_name: 'Living Room Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.living_room_motion_sensor.attributes.lx }}'
+#     living_room_light:
+#       friendly_name: 'Living Room Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.living_room_motion_sensor.attributes.lx }}'
 
-    living_room_temperature:
-      friendly_name: 'Living Room Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.living_room_motion_sensor.attributes.temperature }}'
+#     living_room_temperature:
+#       friendly_name: 'Living Room Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.living_room_motion_sensor.attributes.temperature }}'
 
-    entrance_hall_light:
-      friendly_name: 'Entrance Hall Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.lx }}'
+#     entrance_hall_light:
+#       friendly_name: 'Entrance Hall Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.lx }}'
 
-    entrance_hall_temperature:
-      friendly_name: 'Entrance Hall Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.temperature }}'
+#     entrance_hall_temperature:
+#       friendly_name: 'Entrance Hall Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.temperature }}'
 
-    top_floor_light:
-      friendly_name: 'Top Floor Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.lx }}'
+#     top_floor_light:
+#       friendly_name: 'Top Floor Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.lx }}'
 
-    top_floor_temperature:
-      friendly_name: 'Top Floor Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.temperature }}'
+#     top_floor_temperature:
+#       friendly_name: 'Top Floor Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.temperature }}'
 
-    bathroom_light:
-      friendly_name: 'Bathroom Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.lx }}'
+#     bathroom_light:
+#       friendly_name: 'Bathroom Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.lx }}'
 
-    bathroom_temperature:
-      friendly_name: 'Bathroom Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.temperature }}'
+#     bathroom_temperature:
+#       friendly_name: 'Bathroom Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.bathroom_motion_sensor.attributes.temperature }}'
 
-    toilet_light:
-      friendly_name: 'Toilet Light'
-      unit_of_measurement: Lux
-      value_template: '{{ states.sensor.toilet_motion_sensor.attributes.lx }}'
+#     toilet_light:
+#       friendly_name: 'Toilet Light'
+#       unit_of_measurement: Lux
+#       value_template: '{{ states.sensor.toilet_motion_sensor.attributes.lx }}'
 
-    toilet_temperature:
-      friendly_name: 'Toilet Temperature'
-      unit_of_measurement: °C
-      value_template: '{{ states.sensor.toilet_motion_sensor.attributes.temperature }}'
+#     toilet_temperature:
+#       friendly_name: 'Toilet Temperature'
+#       unit_of_measurement: °C
+#       value_template: '{{ states.sensor.toilet_motion_sensor.attributes.temperature }}'
