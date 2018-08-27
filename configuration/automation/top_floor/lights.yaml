@@ -149,6 +149,23 @@
   - service: light.turn_off
     entity_id: light.bathroom
 
+- alias: Bathroom Lights Update
+  trigger:
+  - platform: state
+    entity_id: light.bathroom
+    to: 'on'
+  - platform: state
+    entity_id: sensor.day_phase
+  condition:
+    condition: state
+    entity_id: light.bathroom
+    state: 'on'
+  action:
+  - service: hue.hue_activate_scene
+    data_template:
+      group_name: Bathroom
+      scene_name: '{{ states.sensor.day_phase.state }}'
+
 # Bedroom
 - alias: Bedroom Lights Update
   trigger:
