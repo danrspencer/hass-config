@@ -4,10 +4,17 @@
       friendly_name: 'House Motion'
       value_template: >
         {{ 
+<<<<<<< HEAD
+          states.binary_sensor.entrance_hall_motion.state == 'on' or
+          states.binary_sensor.kitchen_motion.state == 'on' or
+          states.binary_sensor.living_room_motion.state == 'on' or
+          states.binary_sensor.top_floor_motion.state == 'on'
+=======
           states.sensor.entrance_hall_motion_sensor.state == 'on' or
           states.sensor.kitchen_motion_sensor.state == 'on' or
           states.sensor.living_room_motion_sensor.state == 'on' or
           states.sensor.top_floor_motion_sensor.state == 'on' 
+>>>>>>> parent of 0e4f7c9... Reverted back to DIY Hue motion sensors
         }}
     
     kitchen_motion:
