@@ -46,6 +46,7 @@ logbook:
     domains:
     - group
     entities:
+    - input_boolean.node_red_heartbeat
     - binary_sensor.kitchen_motion
     - binary_sensor.living_room_motion
     - binary_sensor.entrance_hall_motion
