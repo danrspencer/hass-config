@@ -139,6 +139,7 @@ device_tracker:
 automation: !include_dir_merge_list configuration/automation
 binary_sensor: !include_dir_merge_list configuration/binary_sensor
 climate: !include_dir_merge_list configuration/climate
+dyson: !include configuration/dyson.yaml
 group: !include_dir_merge_named configuration/group
 input_boolean: !include_dir_merge_named configuration/input_boolean
 light: !include_dir_merge_list configuration/light
