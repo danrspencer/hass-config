@@ -10,38 +10,38 @@
           states.binary_sensor.top_floor_motion.state == 'on'
         }}
     
-# - platform: rest
-#   resource: !secret hue_kitchen_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 1
-#   name: 'Kitchen Motion'
+- platform: rest
+  resource: !secret hue_kitchen_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Kitchen Motion'
 
-# - platform: rest
-#   resource: !secret hue_living_room_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 1
-#   name: 'Living Room Motion'
+- platform: rest
+  resource: !secret hue_living_room_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Living Room Motion'
 
-# - platform: rest
-#   resource: !secret hue_entrance_hall_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 2
-#   name: 'Entrance Hall Motion'
+- platform: rest
+  resource: !secret hue_entrance_hall_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 2
+  name: 'Entrance Hall Motion'
 
-# - platform: rest
-#   resource: !secret hue_top_floor_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 3
-#   name: 'Top Floor Motion'
+- platform: rest
+  resource: !secret hue_top_floor_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 3
+  name: 'Top Floor Motion'
 
-# - platform: rest
-#   resource: !secret hue_toilet_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 1
-#   name: 'Toilet Motion'
+- platform: rest
+  resource: !secret hue_toilet_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Toilet Motion'
 
-# - platform: rest
-#   resource: !secret hue_bathroom_motion
-#   value_template: '{{ value_json.state.presence }}'
-#   scan_interval: 1
-#   name: 'Bathroom Motion'
+- platform: rest
+  resource: !secret hue_bathroom_motion
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 1
+  name: 'Bathroom Motion'

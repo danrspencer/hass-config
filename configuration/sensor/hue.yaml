@@ -1,95 +1,89 @@
-# Hue
-sensor:
-- platform: hue
-  ip_address: 192.168.0.2
-  token: !secret hue_token
+# Kitchen
+- platform: rest
+  resource: !secret hue_kitchen_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Kitchen Light'
+  scan_interval: 60
 
-# # Kitchen
-# - platform: rest
-#   resource: !secret hue_kitchen_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Kitchen Light'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_kitchen_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Kitchen Temperature'
+  scan_interval: 60
 
-# - platform: rest
-#   resource: !secret hue_kitchen_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Kitchen Temperature'
-#   scan_interval: 60
+# Living Room
+- platform: rest
+  resource: !secret hue_living_room_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Living Room Light'
+  scan_interval: 60
 
-# # Living Room
-# - platform: rest
-#   resource: !secret hue_living_room_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Living Room Light'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_living_room_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Living Room Temperature'
+  scan_interval: 60
 
-# - platform: rest
-#   resource: !secret hue_living_room_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Living Room Temperature'
-#   scan_interval: 60
+# Entrance Hall
+- platform: rest
+  resource: !secret hue_entrance_hall_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Entrance Hall Light'
+  scan_interval: 60
 
-# # Entrance Hall
-# - platform: rest
-#   resource: !secret hue_entrance_hall_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Entrance Hall Light'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_entrance_hall_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Entrance Hall Temperature'
+  scan_interval: 60
 
-# - platform: rest
-#   resource: !secret hue_entrance_hall_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Entrance Hall Temperature'
-#   scan_interval: 60
+# Top Floor
+- platform: rest
+  resource: !secret hue_top_floor_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Top Floor Light'
+  scan_interval: 60
 
-# # Top Floor
-# - platform: rest
-#   resource: !secret hue_top_floor_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Top Floor Light'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_top_floor_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Top Floor Temperature'
+  scan_interval: 60
 
-# - platform: rest
-#   resource: !secret hue_top_floor_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Top Floor Temperature'
-#   scan_interval: 60
+# Toilet
+- platform: rest
+  resource: !secret hue_toilet_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Toilet Light'
+  scan_interval: 60
 
-# # Toilet
-# - platform: rest
-#   resource: !secret hue_toilet_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Toilet Light'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_toilet_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Toilet Temperature'
+  scan_interval: 60
 
-# - platform: rest
-#   resource: !secret hue_toilet_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Toilet Temperature'
-#   scan_interval: 60
+# Bathroom
+- platform: rest
+  resource: !secret hue_bathroom_light
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: Lux
+  name: 'Bathroom Light'
+  scan_interval: 60
 
-# # Bathroom
-# - platform: rest
-#   resource: !secret hue_bathroom_light
-#   value_template: '{{ value_json.state.lightlevel }}'
-#   unit_of_measurement: Lux
-#   name: 'Bathroom Light'
-#   scan_interval: 60
-
-# - platform: rest
-#   resource: !secret hue_bathroom_temperature
-#   value_template: '{{ value_json.state.temperature | float / 100 }}'
-#   unit_of_measurement: °C
-#   name: 'Bathroom Temperature'
-#   scan_interval: 60
+- platform: rest
+  resource: !secret hue_bathroom_temperature
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: °C
+  name: 'Bathroom Temperature'
+  scan_interval: 60
