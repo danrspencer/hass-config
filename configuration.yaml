@@ -33,14 +33,12 @@ updater:
 
 # History
 recorder:
-  db_url: !secret db_connection
   purge_interval: 1
   purge_keep_days: 14
   exclude:
     entities:
     - sensor.date
 history: !include configuration/history.yaml
-  
 logbook:
   exclude:
     domains:
