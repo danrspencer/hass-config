@@ -1,6 +1,5 @@
 - platform: template
   switches:
-
     dressing_room_light:
       friendly_name: Dressing Room Light
       value_template: '{{ is_state("light.dressing_room", "on") }}'

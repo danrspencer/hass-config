@@ -11,8 +11,9 @@ build_ci:
           Home Assistant back online! {{ "\uD83E\uDD29" }}
     - delay:
         seconds: 30
-    - service: switch.turn_off
-      entity_id: switch.git_pull
+    - service: hassio.addon_stop
+      data:
+        addon: core_git_pull
 
   - alias: System Shutdown Notification
     trigger:
@@ -51,8 +52,9 @@ build_ci:
           Travis build passed! {{ "\uD83D\uDC4D" }}
         data:
           url: https://travis-ci.org/danrspencer/hass-config
-    - service: switch.turn_on
-      entity_id: switch.git_pull
+    - service: hassio.addon_start
+      data:
+        addon: core_git_pull
 
   sensor:
   - platform: rest
@@ -61,16 +63,6 @@ build_ci:
       Accept: application/vnd.travis-ci.2+json
     value_template: '{{ value_json.builds[0].state }}'
     name: 'Travis Build Status'
-
-  switch:
-  - platform: command_line
-    switches:
-      git_pull:
-        command_on: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/start"
-        command_off: "/usr/bin/curl -X POST http:///hassio/homeassistant/api/hassio/addons/core_git_pull/stop"
-        command_state: "/usr/bin/curl -X GET http://hassio/homeassistant/api/hassio/addons/core_git_pull/info | grep started"
-        friendly_name: Git Pull
-      
 
 
   
