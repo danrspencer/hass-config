@@ -80,11 +80,6 @@ weblink:
   - name: Pi Hole
     icon: mdi:block-helper
     url: http://hassio.local
-panel_iframe:
-  node_red:
-    title: Node Red
-    icon: mdi:sitemap
-    url: https://hass5bill.duckdns.org:1880/
 
 # Text To Speech
 tts:
