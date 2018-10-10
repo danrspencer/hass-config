@@ -1,0 +1,425 @@
+[
+    {
+        "id": "da409f68.5a74d",
+        "type": "subflow",
+        "name": "Gather",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": []
+            }
+        ],
+        "out": [
+            {
+                "x": 160,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "da409f68.5a74d",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "icon": "node-red/switch.png"
+    },
+    {
+        "id": "4eea289e.b77d38",
+        "type": "tab",
+        "label": "Outside",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "58e7d660.772e68",
+        "type": "server-state-changed",
+        "z": "4eea289e.b77d38",
+        "name": "Back Door Motion",
+        "server": "81491f2d.c6cf8",
+        "entityidfilter": "binary_sensor.ring_back_door_motion",
+        "entityidfiltertype": "substring",
+        "haltifstate": "",
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "c248097f.e54e48"
+            ]
+        ]
+    },
+    {
+        "id": "c248097f.e54e48",
+        "type": "api-current-state",
+        "z": "4eea289e.b77d38",
+        "name": "Sun Below Horizon?",
+        "server": "81491f2d.c6cf8",
+        "halt_if": "above_horizon",
+        "override_topic": true,
+        "override_payload": true,
+        "entity_id": "sun.sun",
+        "x": 360,
+        "y": 400,
+        "wires": [
+            [
+                "9d7961cd.82349",
+                "f82465b8.e60af8",
+                "5dde6542.5da31c"
+            ]
+        ]
+    },
+    {
+        "id": "9d7961cd.82349",
+        "type": "api-current-state",
+        "z": "4eea289e.b77d38",
+        "name": "Living Room Off?",
+        "server": "81491f2d.c6cf8",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "entity_id": "light.living_room",
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "2f660ace.788996"
+            ]
+        ]
+    },
+    {
+        "id": "2f660ace.788996",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Living Room On",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "hue",
+        "service": "hue_activate_scene",
+        "data": "{ \"group_name\": \"Living Room\" , \"scene_name\": \"Morning\" }",
+        "mergecontext": "",
+        "x": 800,
+        "y": 400,
+        "wires": [
+            [
+                "78d012a8.05a2ac"
+            ]
+        ]
+    },
+    {
+        "id": "f82465b8.e60af8",
+        "type": "api-current-state",
+        "z": "4eea289e.b77d38",
+        "name": "Hallways Off?",
+        "server": "81491f2d.c6cf8",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "entity_id": "light.hallways",
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "63c70a27.693954"
+            ]
+        ]
+    },
+    {
+        "id": "63c70a27.693954",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Hallways On",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "hue",
+        "service": "hue_activate_scene",
+        "data": "{ \"group_name\": \"Hallways\" , \"scene_name\": \"Morning\" }",
+        "mergecontext": "",
+        "x": 790,
+        "y": 460,
+        "wires": [
+            [
+                "135aacff.bf6673"
+            ]
+        ]
+    },
+    {
+        "id": "5dde6542.5da31c",
+        "type": "api-current-state",
+        "z": "4eea289e.b77d38",
+        "name": "Kitchen Off?",
+        "server": "81491f2d.c6cf8",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "entity_id": "light.kitchen",
+        "x": 570,
+        "y": 520,
+        "wires": [
+            [
+                "7e510d8b.65a974"
+            ]
+        ]
+    },
+    {
+        "id": "7e510d8b.65a974",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Kitchen On",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "hue",
+        "service": "hue_activate_scene",
+        "data": "{ \"group_name\": \"Kitchen\" , \"scene_name\": \"Morning\" }",
+        "mergecontext": "",
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "443e3979.456c58"
+            ]
+        ]
+    },
+    {
+        "id": "78d012a8.05a2ac",
+        "type": "stoptimer",
+        "z": "4eea289e.b77d38",
+        "duration": "5",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 1000,
+        "y": 400,
+        "wires": [
+            [
+                "3990aa11.7019d6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "135aacff.bf6673",
+        "type": "stoptimer",
+        "z": "4eea289e.b77d38",
+        "duration": "5",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 1000,
+        "y": 460,
+        "wires": [
+            [
+                "26b4a984.9f54b6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "443e3979.456c58",
+        "type": "stoptimer",
+        "z": "4eea289e.b77d38",
+        "duration": "5",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 1000,
+        "y": 520,
+        "wires": [
+            [
+                "6b31b858.fd8f88"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3990aa11.7019d6",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Living Room Off",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "light",
+        "service": "turn_off",
+        "data": "{ \"entity_id\": \"light.living_room\" }",
+        "mergecontext": "",
+        "x": 1200,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26b4a984.9f54b6",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Hallways Off",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "light",
+        "service": "turn_off",
+        "data": "{ \"entity_id\": \"light.hallways\" }",
+        "mergecontext": "",
+        "x": 1190,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b31b858.fd8f88",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Kitchen Off",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "light",
+        "service": "turn_off",
+        "data": "{ \"entity_id\": \"light.kitchen\" }",
+        "mergecontext": "",
+        "x": 1190,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c15c42eb.b3e5a",
+        "type": "comment",
+        "z": "4eea289e.b77d38",
+        "name": "Backdoor Presence Simulation",
+        "info": "",
+        "x": 170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "94dab676.4ad188",
+        "type": "server-state-changed",
+        "z": "4eea289e.b77d38",
+        "name": "Front Door Motion",
+        "server": "81491f2d.c6cf8",
+        "entityidfilter": "binary_sensor.ring_front_door_motion",
+        "entityidfiltertype": "substring",
+        "haltifstate": "",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "a9d06255.e3748"
+            ]
+        ]
+    },
+    {
+        "id": "3b04cf72.00a2d",
+        "type": "stoptimer",
+        "z": "4eea289e.b77d38",
+        "duration": "3",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 500,
+        "y": 160,
+        "wires": [
+            [
+                "952c9b22.6293c8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "952c9b22.6293c8",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Porch Off",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "light",
+        "service": "turn_off",
+        "data": "{ \"entity_id\": \"light.porch\" }",
+        "mergecontext": "",
+        "x": 720,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f78c0048.bbc4d",
+        "type": "api-call-service",
+        "z": "4eea289e.b77d38",
+        "name": "Porch On",
+        "server": "81491f2d.c6cf8",
+        "service_domain": "light",
+        "service": "turn_on",
+        "data": "{ \"entity_id\": \"light.porch\" }",
+        "mergecontext": "",
+        "x": 720,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "788ca90.c97de58",
+        "type": "api-current-state",
+        "z": "4eea289e.b77d38",
+        "name": "Sun Below Horizon?",
+        "server": "81491f2d.c6cf8",
+        "halt_if": "above_horizon",
+        "override_topic": true,
+        "override_payload": true,
+        "entity_id": "sun.sun",
+        "x": 520,
+        "y": 80,
+        "wires": [
+            [
+                "f78c0048.bbc4d"
+            ]
+        ]
+    },
+    {
+        "id": "14e9f40b.b9869c",
+        "type": "comment",
+        "z": "4eea289e.b77d38",
+        "name": "Porch Light",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4193b62b.d94838",
+        "type": "server-state-changed",
+        "z": "4eea289e.b77d38",
+        "name": "Entrance Hall Motion",
+        "server": "81491f2d.c6cf8",
+        "entityidfilter": "binary_sensor.entrance_hall_motion",
+        "entityidfiltertype": "substring",
+        "haltifstate": "",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "a9d06255.e3748"
+            ]
+        ]
+    },
+    {
+        "id": "a9d06255.e3748",
+        "type": "subflow:da409f68.5a74d",
+        "z": "4eea289e.b77d38",
+        "name": "",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "3b04cf72.00a2d",
+                "788ca90.c97de58"
+            ]
+        ]
+    },
+    {
+        "id": "81491f2d.c6cf8",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant"
+    }
+]
