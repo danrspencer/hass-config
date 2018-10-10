@@ -7,13 +7,18 @@ google_actions:
       - switch.living_room_tv
       - script.cinema_mode
       - climate.kitchen
-    exclude_entities:
-      - light.porch_light
-      - light.porch
+      - fan.bedroom
   entity_config:
     switch.hyperion:
       name: Ambilights
+      room: Living Room
       aliases:
         - Hyperion
     script.cinema_mode:
       name: Cinema Mode
+      room: Living Room
+    fan.bedroom:
+      room: Bedroom
+      aliases:
+        - Dyson
+
