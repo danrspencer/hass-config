@@ -12,6 +12,9 @@ include:
   - binary_sensor.living_room_motion
   - binary_sensor.entrance_hall_motion
   - binary_sensor.top_floor_motion
+  - sensor.lights_on
+  - sensor.rooms_on
+  - sensor.total_brightness
   - sensor.replay_kitchen
   - sensor.replay_living_room
   - sensor.replay_hallways
