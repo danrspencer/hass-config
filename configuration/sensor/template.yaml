@@ -19,7 +19,7 @@
         {% endif %}
     lights_on:
         friendly_name: 'Lights On'
-        unit_of_measure: 'count'
+        unit_of_measurement: 'count'
         value_template: >
             {{ states.light
                 | selectattr('state', 'eq', 'on')
@@ -28,7 +28,7 @@
             }}
     rooms_on:
         friendly_name: 'Rooms On'
-        unit_of_measure: 'count'
+        unit_of_measurement: 'count'
         value_template: >
             {{ states.light
                 | selectattr('state', 'eq', 'on')
@@ -37,7 +37,7 @@
             }}
     total_brightness:
         friendly_name: 'Total Brightness'
-        unit_of_measure: '%'
+        unit_of_measurement: 'brightness %'
         value_template: >
             {{ states.light
                 | selectattr('state', 'eq', 'on')
