@@ -19,28 +19,21 @@
         {% endif %}
     lights_on:
         friendly_name: 'Lights On'
-        unit_of_measurement: 'count'
+        unit_of_measurement: 'Count'
         value_template: >
             {{ states.light
                 | selectattr('state', 'eq', 'on')
                 | rejectattr('attributes.is_hue_group')
-                | list | count
+                | list 
+                | count
             }}
     rooms_on:
         friendly_name: 'Rooms On'
-        unit_of_measurement: 'count'
+        unit_of_measurement: 'Count'
         value_template: >
             {{ states.light
                 | selectattr('state', 'eq', 'on')
                 | selectattr('attributes.is_hue_group')
-                | list | count
-            }}
-    total_brightness:
-        friendly_name: 'Total Brightness'
-        unit_of_measurement: 'brightness %'
-        value_template: >
-            {{ states.light
-                | selectattr('state', 'eq', 'on')
-                | rejectattr('attributes.is_hue_group')
-                | sum(attribute='attributes.brightness')
+                | list 
+                | count
             }}
