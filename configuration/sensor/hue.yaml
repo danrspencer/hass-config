@@ -1,77 +1,45 @@
-# Kitchen
-- platform: rest
-  resource: !secret hue_kitchen_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Kitchen Light'
+- platform: hue
+  ip_address: 192.168.0.2
+  token: !secret hue_token
 
-- platform: rest
-  resource: !secret hue_kitchen_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Kitchen Temperature'
+- platform: template
+  sensors:
+    kitchen_light:
+      friendly_name: 'Kitchen Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.lx }}'
 
-# Living Room
-- platform: rest
-  resource: !secret hue_living_room_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Living Room Light'
+    kitchen_temperature:
+      friendly_name: 'Kitchen Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.temperature }}'
 
-- platform: rest
-  resource: !secret hue_living_room_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Living Room Temperature'
+    living_room_light:
+      friendly_name: 'Living Room Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.living_room_motion_sensor.attributes.lx }}'
 
-# Entrance Hall
-- platform: rest
-  resource: !secret hue_entrance_hall_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Entrance Hall Light'
+    living_room_temperature:
+      friendly_name: 'Living Room Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.living_room_motion_sensor.attributes.temperature }}'
 
-- platform: rest
-  resource: !secret hue_entrance_hall_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Entrance Hall Temperature'
+    entrance_hall_light:
+      friendly_name: 'Entrance Hall Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.lx }}'
 
-# Top Floor
-- platform: rest
-  resource: !secret hue_top_floor_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Top Floor Light'
+    entrance_hall_temperature:
+      friendly_name: 'Entrance Hall Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.entrance_hall_motion_sensor.attributes.temperature }}'
 
-- platform: rest
-  resource: !secret hue_top_floor_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Top Floor Temperature'
+    top_floor_light:
+      friendly_name: 'Top Floor Light'
+      unit_of_measurement: Lux
+      value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.lx }}'
 
-# Toilet
-- platform: rest
-  resource: !secret hue_toilet_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Toilet Light'
-
-- platform: rest
-  resource: !secret hue_toilet_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Toilet Temperature'
-
-# Bathroom
-- platform: rest
-  resource: !secret hue_bathroom_light
-  value_template: '{{ value_json.state.lightlevel }}'
-  unit_of_measurement: Lux
-  name: 'Bathroom Light'
-
-- platform: rest
-  resource: !secret hue_bathroom_temperature
-  value_template: '{{ value_json.state.temperature | float / 100 }}'
-  unit_of_measurement: °C
-  name: 'Bathroom Temperature'
+    top_floor_temperature:
+      friendly_name: 'Top Floor Temperature'
+      unit_of_measurement: °C
+      value_template: '{{ states.sensor.top_floor_motion_sensor.attributes.temperature }}'
