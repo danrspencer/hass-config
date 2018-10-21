@@ -20,7 +20,6 @@ house_climate_control:
     - climate.house
     - climate.kitchen
     - switch.garage_heater
-    - input_boolean.night_mode
 
 house_other:
   name: House Other
@@ -43,6 +42,7 @@ house_controls:
   name: Controls
   entities:
     - input_boolean.replay_mode
+    - input_boolean.night_mode
     - switch.hair_straighteners
     - scene.everything_off
 

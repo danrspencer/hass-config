@@ -1,204 +1,162 @@
 - alias: Top Floor Lights Auto On
   trigger:
-  - platform: state
-    entity_id: binary_sensor.entrance_hall_motion
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_hall_motion
+      to: "on"
   condition:
     condition: template
     value_template: '{{ states.sensor.day_phase.state != "Night" }}'
   action:
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.top_floor_lights_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.top_floor_lights_auto
 
 - alias: Top Floor Lights Auto off
   trigger:
-  - platform: state
-    entity_id: sensor.day_phase
-    to: 'Night'
+    - platform: state
+      entity_id: sensor.day_phase
+      to: "Night"
   action:
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.top_floor_lights_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.top_floor_lights_auto
 
 - alias: Top Floor Lights Off
   trigger:
-  - entity_id: binary_sensor.top_floor_motion
-    platform: state
-    from: 'on'
-    to: 'off'
-    for:
-      hours: 0
-      minutes: 15
-      seconds: 0
+    - entity_id: binary_sensor.top_floor_motion
+      platform: state
+      from: "on"
+      to: "off"
+      for:
+        hours: 0
+        minutes: 15
+        seconds: 0
   action:
-  - service: light.turn_off
-    entity_id: light.top_floor_landing
-  - service: light.turn_off
-    entity_id: light.dressing_room
-  - service: light.turn_off
-    entity_id: light.den
-
-# Top Floor Landing
-- alias: Top Floor Landing Lights On
-  trigger:
-  - entity_id: binary_sensor.top_floor_motion
-    platform: state
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-    - condition: state
+    - service: light.turn_off
       entity_id: light.top_floor_landing
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.top_floor_lights_auto
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.top_floor_light
-      below: '15000'
-  action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Top Floor Landing
-      scene_name: '{{ states.sensor.day_phase.state }}'
-
-- alias: Top Floor Landing Lights Update
-  trigger:
-  - platform: state
-    entity_id: light.top_floor_landing
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
-  condition:
-    condition: state
-    entity_id: light.top_floor_landing
-    state: 'on'
-  action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Top Floor Landing
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: light.turn_off
+      entity_id: light.dressing_room
+    - service: light.turn_off
+      entity_id: light.den
 
 # Dressing Room
 - alias: Dressing Room Lights On
   trigger:
-  - entity_id: binary_sensor.top_floor_motion
-    platform: state
-    from: 'off'
-    to: 'on'
+    - entity_id: binary_sensor.top_floor_motion
+      platform: state
+      from: "off"
+      to: "on"
   condition:
     condition: and
     conditions:
-    - condition: state
-      entity_id: light.dressing_room
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.top_floor_lights_auto
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.top_floor_light
-      below: '15000'
+      - condition: state
+        entity_id: light.dressing_room
+        state: "off"
+      - condition: state
+        entity_id: input_boolean.top_floor_lights_auto
+        state: "on"
+      - condition: numeric_state
+        entity_id: sensor.top_floor_light
+        below: "15000"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Dressing Room
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Dressing Room
+        scene_name: "{{ states.sensor.day_phase.state }}"
 
 - alias: Dressing Room Lights Update
   trigger:
-  - platform: state
-    entity_id: light.dressing_room
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
+    - platform: state
+      entity_id: light.dressing_room
+      to: "on"
+    - platform: state
+      entity_id: sensor.day_phase
   condition:
     condition: state
     entity_id: light.dressing_room
-    state: 'on'
+    state: "on"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Dressing Room
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Dressing Room
+        scene_name: "{{ states.sensor.day_phase.state }}"
 
 # Bathroom
 - alias: Bathroom Lights On
   trigger:
-  - entity_id: binary_sensor.bathroom_motion
-    platform: state
-    to: 'on'
+    - entity_id: binary_sensor.bathroom_motion
+      platform: state
+      to: "on"
   condition:
     condition: state
     entity_id: light.bathroom
-    state: 'off'
+    state: "off"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Bathroom
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Bathroom
+        scene_name: "{{ states.sensor.day_phase.state }}"
 
 - alias: Bathroom Lights Off
   trigger:
-  - entity_id: binary_sensor.bathroom_motion
-    platform: state
-    to: 'off'
-    for:
-      hours: 0
-      minutes: 3
-      seconds: 0
+    - entity_id: binary_sensor.bathroom_motion
+      platform: state
+      to: "off"
+      for:
+        hours: 0
+        minutes: 3
+        seconds: 0
   action:
-  - service: light.turn_off
-    entity_id: light.bathroom
+    - service: light.turn_off
+      entity_id: light.bathroom
 
 - alias: Bathroom Lights Update
   trigger:
-  - platform: state
-    entity_id: light.bathroom
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
+    - platform: state
+      entity_id: light.bathroom
+      to: "on"
+    - platform: state
+      entity_id: sensor.day_phase
   condition:
     condition: state
     entity_id: light.bathroom
-    state: 'on'
+    state: "on"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Bathroom
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Bathroom
+        scene_name: "{{ states.sensor.day_phase.state }}"
 
 # Bedroom
 - alias: Bedroom Lights Update
   trigger:
-  - platform: state
-    entity_id: light.bedroom
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
+    - platform: state
+      entity_id: light.bedroom
+      to: "on"
+    - platform: state
+      entity_id: sensor.day_phase
   condition:
     condition: state
     entity_id: light.bedroom
-    state: 'on'
+    state: "on"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Bedroom
-      scene_name: '{{ states.sensor.day_phase.state }}'
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Bedroom
+        scene_name: "{{ states.sensor.day_phase.state }}"
 
 # Ensuite
 - alias: Ensuite Lights Update
   trigger:
-  - platform: state
-    entity_id: light.ensuite
-    to: 'on'
-  - platform: state
-    entity_id: sensor.day_phase
+    - platform: state
+      entity_id: light.ensuite
+      to: "on"
+    - platform: state
+      entity_id: sensor.day_phase
   condition:
     condition: state
     entity_id: light.ensuite
-    state: 'on'
+    state: "on"
   action:
-  - service: hue.hue_activate_scene
-    data_template:
-      group_name: Ensuite
-      scene_name: '{{ states.sensor.day_phase.state }}'
-
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Ensuite
+        scene_name: "{{ states.sensor.day_phase.state }}"
