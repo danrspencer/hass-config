@@ -1,71 +1,43 @@
 build_ci:
   automation:
-  - alias: System Startup Notification
-    trigger:
-    - platform: homeassistant
-      event: start
-    action:
-    - service: notify.ios_dphone
-      data_template:
-        message: >
-          Home Assistant back online! {{ "\uD83E\uDD29" }}
-    - delay:
-        seconds: 30
-    - service: hassio.addon_stop
-      data:
-        addon: core_git_pull
+    - alias: System Travis Build Status
+      trigger:
+        - platform: state
+          entity_id: sensor.travis_build_status
+          from: "started"
+          to: "failed"
+      action:
+        - service: notify.ios_dphone
+          data_template:
+            message: >
+              Travis build failed! {{ "\uD83E\uDD2C" }}
+            data:
+              url: https://travis-ci.org/danrspencer/hass-config
 
-  - alias: System Shutdown Notification
-    trigger:
-    - platform: homeassistant
-      event: shutdown
-    action:
-    - service: notify.ios_dphone
-      data_template:
-        message: >
-          Home Assistant is going down! {{ "\uD83D\uDE34" }}
-
-  - alias: System Travis Build Status
-    trigger:
-    - platform: state
-      entity_id: sensor.travis_build_status
-      from: 'started'
-      to: 'failed'
-    action:
-    - service: notify.ios_dphone
-      data_template:
-        message: >
-          Travis build failed! {{ "\uD83E\uDD2C" }}
-        data:
-          url: https://travis-ci.org/danrspencer/hass-config
-
-  - alias: System Travis Build Passed
-    trigger:
-    - platform: state
-      entity_id: sensor.travis_build_status
-      from: 'started'
-      to: 'passed'
-    action:
-    - service: notify.ios_dphone
-      data_template:
-        message: >
-          Travis build passed! {{ "\uD83D\uDC4D" }}
-        data:
-          url: https://travis-ci.org/danrspencer/hass-config
-    - service: hassio.addon_start
-      data:
-        addon: core_git_pull
+    - alias: System Travis Build Passed
+      trigger:
+        - platform: state
+          entity_id: sensor.travis_build_status
+          from: "started"
+          to: "passed"
+      action:
+        - service: notify.ios_dphone
+          data_template:
+            message: >
+              Travis build passed! {{ "\uD83D\uDC4D" }}
+            data:
+              url: https://travis-ci.org/danrspencer/hass-config
+        - service: hassio.addon_start
+          data:
+            addon: core_git_pull
 
   sensor:
-  - platform: rest
-    resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
-    headers:
-      Accept: application/vnd.travis-ci.2+json
-    value_template: '{{ value_json.builds[0].state }}'
-    name: 'Travis Build Status'
+    - platform: rest
+      resource: https://api.travis-ci.org/repos/danrspencer/hass-config/builds
+      headers:
+        Accept: application/vnd.travis-ci.2+json
+      value_template: "{{ value_json.builds[0].state }}"
+      name: "Travis Build Status"
+    # - platform: travisci
+    #   api_key:
 
-  # - platform: travisci
-  #   api_key: 
-
-
-  
