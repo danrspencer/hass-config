@@ -10,7 +10,7 @@ living_room_lights:
 
 night_mode:
   name: Night Mode
-  initial: on
+  initial: off
   icon: mdi:power-sleep
 
 cinema_mode:
