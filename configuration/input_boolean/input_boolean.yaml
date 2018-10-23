@@ -1,12 +1,12 @@
-kitchen_lights:
-  name: Kitchen Lights
-  initial: off
-  icon: mdi:traffic-light
-
 living_room_lights:
   name: Living Room Lights
   initial: off
   icon: mdi:traffic-light
+
+away_mode:
+  name: Away Mode
+  initial: off
+  icon: mdi:exit-run
 
 night_mode:
   name: Night Mode
