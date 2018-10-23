@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    occupied:
+      friendly_name: "Occupied"
+      value_template: >
+        {{ 
+          states.device_tracker.dphone.state == "home" and
+          states.device_tracker.laurens_iphone.state == "home" and
+          states.binary_sensor.house_motion
+        }}
