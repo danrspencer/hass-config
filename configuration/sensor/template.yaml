@@ -1,10 +1,10 @@
 - platform: template
   sensors:
     day_phase:
-      friendly_name: 'Day Phase'
+      friendly_name: "Day Phase"
       value_template: >
         {% if now() > now().replace(hour=5).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=8).replace(minute=0).replace(second=0) and 
+            now() < now().replace(hour=7).replace(minute=0).replace(second=0) and 
             now().isoweekday() <= 5 %}
             Morning
         {% elif states.sun.sun.state == "above_horizon" or
@@ -18,22 +18,22 @@
             Night
         {% endif %}
     lights_on:
-        friendly_name: 'Lights On'
-        unit_of_measurement: 'Count'
-        value_template: >
-            {{ states.light
-                | selectattr('state', 'eq', 'on')
-                | rejectattr('attributes.is_hue_group')
-                | list 
-                | count
-            }}
+      friendly_name: "Lights On"
+      unit_of_measurement: "Count"
+      value_template: >
+        {{ states.light
+            | selectattr('state', 'eq', 'on')
+            | rejectattr('attributes.is_hue_group')
+            | list 
+            | count
+        }}
     rooms_on:
-        friendly_name: 'Rooms On'
-        unit_of_measurement: 'Count'
-        value_template: >
-            {{ states.light
-                | selectattr('state', 'eq', 'on')
-                | selectattr('attributes.is_hue_group')
-                | list 
-                | count
-            }}
+      friendly_name: "Rooms On"
+      unit_of_measurement: "Count"
+      value_template: >
+        {{ states.light
+            | selectattr('state', 'eq', 'on')
+            | selectattr('attributes.is_hue_group')
+            | list 
+            | count
+        }}
