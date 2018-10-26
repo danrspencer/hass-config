@@ -4,7 +4,7 @@
       friendly_name: "Occupied"
       value_template: >
         {{ 
-          states.device_tracker.dphone.state == "home" and
-          states.device_tracker.laurens_iphone.state == "home" and
+          states.device_tracker.dphone.state == "home" or
+          states.device_tracker.laurens_iphone.state == "home" or
           states.binary_sensor.house_motion
         }}
