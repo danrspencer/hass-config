@@ -18,11 +18,6 @@ cinema_mode:
   initial: off
   icon: mdi:video-vintage
 
-top_floor_lights_auto:
-  name: Top Floor Lights Auto
-  initial: on
-  icon: mdi:traffic-light
-
 node_red_heartbeat:
   name: Node Red Heartbeat
   initial: off
