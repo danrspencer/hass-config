@@ -12,9 +12,6 @@
     - service: hassio.addon_stop
       data:
         addon: core_git_pull
-    - service: hassio.addon_restart
-      data:
-        addon: a0d7b954_nodered
 
 - alias: System Shutdown Notification
   trigger:
