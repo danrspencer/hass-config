@@ -5,12 +5,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: >
-    {% if states.input_boolean.away_mode.state == on %}
-      30
-    {% else %}
-      0
-    {% endif %}
+  duration: 30
 
 - platform: history_stats
   name: "Replay Living Room"
@@ -19,12 +14,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: >
-    {% if states.input_boolean.away_mode.state == on %}
-      30
-    {% else %}
-      0
-    {% endif %}
+  duration: 30
 
 - platform: history_stats
   name: "Replay Dressing Room"
@@ -33,12 +23,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: >
-    {% if states.input_boolean.away_mode.state == on %}
-      30
-    {% else %}
-      0
-    {% endif %}
+  duration: 30
 
 - platform: history_stats
   name: "Replay Ensuite"
@@ -47,12 +32,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: >
-    {% if states.input_boolean.away_mode.state == on %}
-      30
-    {% else %}
-      0
-    {% endif %}
+  duration: 30
 
 - platform: history_stats
   name: "Replay Bedroom"
@@ -61,9 +41,4 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: >
-    {% if states.input_boolean.away_mode.state == on %}
-      30
-    {% else %}
-      0
-    {% endif %}
+  duration: 30
