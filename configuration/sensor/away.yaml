@@ -5,7 +5,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: 30
+  duration: 00:00:30
 
 - platform: history_stats
   name: "Replay Living Room"
@@ -14,7 +14,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: 30
+  duration: 00:00:30
 
 - platform: history_stats
   name: "Replay Dressing Room"
@@ -23,7 +23,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: 30
+  duration: 00:00:30
 
 - platform: history_stats
   name: "Replay Ensuite"
@@ -32,7 +32,7 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: 30
+  duration: 00:00:30
 
 - platform: history_stats
   name: "Replay Bedroom"
@@ -41,4 +41,4 @@
   type: count
   start: >
     {{ as_timestamp(now()) - (7*86400) }}
-  duration: 30
+  duration: 00:00:30
