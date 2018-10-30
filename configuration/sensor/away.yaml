@@ -1,0 +1,69 @@
+- platform: history_stats
+  name: "Replay Hallways"
+  entity_id: light.hallways
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: >
+    {% if states.input_boolean.away_mode.state == on %}
+      30
+    {% else %}
+      0
+    {% endif %}
+
+- platform: history_stats
+  name: "Replay Living Room"
+  entity_id: light.living_room
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: >
+    {% if states.input_boolean.away_mode.state == on %}
+      30
+    {% else %}
+      0
+    {% endif %}
+
+- platform: history_stats
+  name: "Replay Dressing Room"
+  entity_id: light.dressing_room
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: >
+    {% if states.input_boolean.away_mode.state == on %}
+      30
+    {% else %}
+      0
+    {% endif %}
+
+- platform: history_stats
+  name: "Replay Ensuite"
+  entity_id: light.ensuite
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: >
+    {% if states.input_boolean.away_mode.state == on %}
+      30
+    {% else %}
+      0
+    {% endif %}
+
+- platform: history_stats
+  name: "Replay Bedroom"
+  entity_id: light.bedroom
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: >
+    {% if states.input_boolean.away_mode.state == on %}
+      30
+    {% else %}
+      0
+    {% endif %}
