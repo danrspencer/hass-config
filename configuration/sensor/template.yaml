@@ -7,7 +7,7 @@
             now() < now().replace(hour=8).replace(minute=0).replace(second=0) and 
             now().isoweekday() <= 5 %}
             Morning
-        {% elif states.sun.sun.state == "above_horizon" and
+        {% elif states.sun.sun.state == "above_horizon" or
             now() > now().replace(hour=8).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=19).replace(minute=0).replace(second=0) %}
             Day
