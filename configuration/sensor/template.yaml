@@ -12,7 +12,7 @@
             now() < now().replace(hour=19).replace(minute=0).replace(second=0) %}
             Day
         {% elif now() < now().replace(hour=21).replace(minute=30).replace(second=0) and
-            now() > now().replace(hour=5).replace(minute=0).replace(second=0) %}
+            now() > now().replace(hour=3).replace(minute=0).replace(second=0) %}
             Evening
         {% else %}
             Night
