@@ -5,14 +5,20 @@
       value_template: >
         {% if now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
             now() < now().replace(hour=8).replace(minute=0).replace(second=0) and 
-            now().isoweekday() <= 5 %}
+            now().isoweekday() <= 5 
+        %}
             Morning
-        {% elif states.sun.sun.state == "above_horizon" or
-            now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
-            now() < now().replace(hour=19).replace(minute=0).replace(second=0) %}
+        {% elif states.sun.sun.state == "above_horizon" 
+            or  now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
+                now() < now().replace(hour=19).replace(minute=0).replace(second=0) and
+                now().isoweekday() <= 5
+            or  now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
+                now() < now().replace(hour=16).replace(minute=0).replace(second=0) and
+        %}
             Day
         {% elif now() < now().replace(hour=21).replace(minute=30).replace(second=0) and
-            now() > now().replace(hour=3).replace(minute=0).replace(second=0) %}
+            now() > now().replace(hour=3).replace(minute=0).replace(second=0) 
+        %}
             Evening
         {% else %}
             Night
