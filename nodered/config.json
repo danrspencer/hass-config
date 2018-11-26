@@ -1,2409 +1,884 @@
 [
   {
-    "id": "3bd8c115.3e42ae",
-    "type": "tab",
-    "label": "Kitchen",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "4f666315.2afffc",
-    "type": "tab",
-    "label": "Hallway",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "4ca21be4.5fec94",
-    "type": "tab",
-    "label": "Top Floor",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "4eea289e.b77d38",
-    "type": "tab",
-    "label": "Outside",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "ef1c2144.74e1",
-    "type": "tab",
-    "label": "Guest Bedroom",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "4fa84657.e0f118",
-    "type": "tab",
-    "label": "Media",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "7afe1c1c.fc2824",
-    "type": "tab",
-    "label": "Misc",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "ce7797ed.a4f218",
-    "type": "tab",
-    "label": "System",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "64b187a2.412488",
-    "type": "subflow",
-    "name": "Day Phase Scene",
-    "info": "",
-    "category": "",
-    "in": [
-      {
-        "x": 40,
-        "y": 40,
-        "wires": [
+      "id": "64b187a2.412488",
+      "type": "subflow",
+      "name": "Day Phase Scene",
+      "info": "",
+      "category": "",
+      "in": [
           {
-            "id": "ef67cec8.7a5cb"
+              "x": 40,
+              "y": 40,
+              "wires": [
+                  {
+                      "id": "ef67cec8.7a5cb"
+                  }
+              ]
           }
-        ]
-      }
-    ],
-    "out": [
-      {
-        "x": 620,
-        "y": 40,
-        "wires": [
+      ],
+      "out": [
           {
-            "id": "25dea565.5bff4a",
-            "port": 0
+              "x": 620,
+              "y": 40,
+              "wires": [
+                  {
+                      "id": "25dea565.5bff4a",
+                      "port": 0
+                  }
+              ]
           }
-        ]
-      }
-    ],
-    "icon": "node-red-node-suncalc/sun.png"
+      ],
+      "icon": "node-red-node-suncalc/sun.png"
   },
   {
-    "id": "f9bc0030.d8095",
-    "type": "subflow",
-    "name": "Day? / Night?",
-    "info": "",
-    "category": "",
-    "in": [
-      {
-        "x": 100,
-        "y": 60,
-        "wires": [
+      "id": "25dea565.5bff4a",
+      "type": "function",
+      "z": "64b187a2.412488",
+      "name": "Hue Scene",
+      "func": "const capitalize = part => part.charAt(0).toUpperCase() + part.slice(1)\n\nconst group = msg.room.split(\"_\")\n                .map(capitalize)\n                .join(\" \")\n                    \nconst dayPhase = msg.payload\n\nmsg.payload = { \n    data: {\n        group_name: group,\n        scene_name: dayPhase\n    }\n};\n\nreturn msg;",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 490,
+      "y": 40,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "ef67cec8.7a5cb",
+      "type": "function",
+      "z": "64b187a2.412488",
+      "name": ".room",
+      "func": "if (msg.room) return msg;\n\nif (msg.topic) {\n    msg.debug = \"topic\"\n    msg.room = msg.topic.split(\".\")[1]\n}\n\nif (msg.info) {\n    msg.debug = \"info\"\n    msg.room = msg.info.name\n}\n\nreturn msg;",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 150,
+      "y": 40,
+      "wires": [
+          [
+              "8af4a119.b8eae"
+          ]
+      ]
+  },
+  {
+      "id": "8af4a119.b8eae",
+      "type": "api-current-state",
+      "z": "64b187a2.412488",
+      "name": "Day Phase",
+      "server": "81491f2d.c6cf8",
+      "halt_if": "",
+      "override_topic": true,
+      "override_payload": true,
+      "entity_id": "sensor.day_phase",
+      "x": 310,
+      "y": 40,
+      "wires": [
+          [
+              "25dea565.5bff4a"
+          ]
+      ]
+  },
+  {
+      "id": "f9bc0030.d8095",
+      "type": "subflow",
+      "name": "Day? / Night?",
+      "info": "",
+      "category": "",
+      "in": [
           {
-            "id": "7ddd8620.c4c8c8"
+              "x": 100,
+              "y": 60,
+              "wires": [
+                  {
+                      "id": "7ddd8620.c4c8c8"
+                  }
+              ]
           }
-        ]
-      }
-    ],
-    "out": [
-      {
-        "x": 520,
-        "y": 40,
-        "wires": [
+      ],
+      "out": [
           {
-            "id": "6761a43b.0b4d9c",
-            "port": 0
-          }
-        ]
-      },
-      {
-        "x": 520,
-        "y": 80,
-        "wires": [
+              "x": 520,
+              "y": 40,
+              "wires": [
+                  {
+                      "id": "6761a43b.0b4d9c",
+                      "port": 0
+                  }
+              ]
+          },
           {
-            "id": "6761a43b.0b4d9c",
-            "port": 1
+              "x": 520,
+              "y": 80,
+              "wires": [
+                  {
+                      "id": "6761a43b.0b4d9c",
+                      "port": 1
+                  }
+              ]
           }
-        ]
-      }
-    ],
-    "icon": "node-red-contrib-sunevents/white_golden_sun.png"
+      ],
+      "icon": "node-red-contrib-sunevents/white_golden_sun.png"
   },
   {
-    "id": "da409f68.5a74d",
-    "type": "subflow",
-    "name": "Gather",
-    "info": "",
-    "category": "",
-    "in": [
-      {
-        "x": 50,
-        "y": 30,
-        "wires": []
-      }
-    ],
-    "out": [
-      {
-        "x": 160,
-        "y": 30,
-        "wires": [
+      "id": "7ddd8620.c4c8c8",
+      "type": "api-current-state",
+      "z": "f9bc0030.d8095",
+      "name": "Day Phase",
+      "server": "81491f2d.c6cf8",
+      "halt_if": "",
+      "override_topic": true,
+      "override_payload": true,
+      "entity_id": "sensor.day_phase",
+      "x": 230,
+      "y": 60,
+      "wires": [
+          [
+              "6761a43b.0b4d9c"
+          ]
+      ]
+  },
+  {
+      "id": "6761a43b.0b4d9c",
+      "type": "switch",
+      "z": "f9bc0030.d8095",
+      "name": "Day / Night",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
           {
-            "id": "da409f68.5a74d",
-            "port": 0
+              "t": "regex",
+              "v": "morning|day",
+              "vt": "str",
+              "case": true
+          },
+          {
+              "t": "regex",
+              "v": "evening|night",
+              "vt": "str",
+              "case": true
           }
-        ]
-      }
-    ],
-    "icon": "node-red/switch.png"
-  },
-  {
-    "id": "81491f2d.c6cf8",
-    "type": "server",
-    "z": "",
-    "name": "Home Assistant"
-  },
-  {
-    "id": "25dea565.5bff4a",
-    "type": "function",
-    "z": "64b187a2.412488",
-    "name": "Hue Scene",
-    "func": "const capitalize = part => part.charAt(0).toUpperCase() + part.slice(1)\n\nconst group = msg.room.split(\"_\")\n                .map(capitalize)\n                .join(\" \")\n                    \nconst dayPhase = msg.payload\n\nmsg.payload = { \n    data: {\n        group_name: group,\n        scene_name: dayPhase\n    }\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 490,
-    "y": 40,
-    "wires": [[]]
-  },
-  {
-    "id": "ef67cec8.7a5cb",
-    "type": "function",
-    "z": "64b187a2.412488",
-    "name": ".room",
-    "func": "if (msg.room) return msg;\n\nif (msg.topic) {\n    msg.debug = \"topic\"\n    msg.room = msg.topic.split(\".\")[1]\n}\n\nif (msg.info) {\n    msg.debug = \"info\"\n    msg.room = msg.info.name\n}\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 150,
-    "y": 40,
-    "wires": [["8af4a119.b8eae"]]
-  },
-  {
-    "id": "7322f8aa.7e2258",
-    "type": "server-state-changed",
-    "z": "7afe1c1c.fc2824",
-    "name": "Garage Heater On?",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "switch.garage_heater",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "x": 130,
-    "y": 100,
-    "wires": [["6574190c.028038"]]
-  },
-  {
-    "id": "6574190c.028038",
-    "type": "stoptimer",
-    "z": "7afe1c1c.fc2824",
-    "duration": "1",
-    "units": "Hour",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 330,
-    "y": 100,
-    "wires": [["21a48853.592398"], []]
-  },
-  {
-    "id": "21a48853.592398",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Garage Heater Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "switch",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"switch.garage_heater\" }",
-    "mergecontext": "",
-    "x": 530,
-    "y": 100,
-    "wires": [[]]
-  },
-  {
-    "id": "c54dac9e.5f58",
-    "type": "comment",
-    "z": "7afe1c1c.fc2824",
-    "name": "Garage Heater",
-    "info": "",
-    "x": 120,
-    "y": 60,
-    "wires": []
-  },
-  {
-    "id": "7ddd8620.c4c8c8",
-    "type": "api-current-state",
-    "z": "f9bc0030.d8095",
-    "name": "Day Phase",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "sensor.day_phase",
-    "x": 230,
-    "y": 60,
-    "wires": [["6761a43b.0b4d9c"]]
-  },
-  {
-    "id": "6761a43b.0b4d9c",
-    "type": "switch",
-    "z": "f9bc0030.d8095",
-    "name": "Day / Night",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "regex",
-        "v": "morning|day",
-        "vt": "str",
-        "case": true
-      },
-      {
-        "t": "regex",
-        "v": "evening|night",
-        "vt": "str",
-        "case": true
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 2,
-    "x": 390,
-    "y": 60,
-    "wires": [[], []]
-  },
-  {
-    "id": "c248097f.e54e48",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Sun Below Horizon?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "above_horizon",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "sun.sun",
-    "x": 180,
-    "y": 600,
-    "wires": [["9d7961cd.82349", "f82465b8.e60af8", "5dde6542.5da31c"]]
-  },
-  {
-    "id": "9d7961cd.82349",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Living Room Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.living_room",
-    "x": 470,
-    "y": 540,
-    "wires": [["2f660ace.788996"]]
-  },
-  {
-    "id": "2f660ace.788996",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Living Room On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{ \"group_name\": \"Living Room\" , \"scene_name\": \"Morning\" }",
-    "mergecontext": "",
-    "x": 680,
-    "y": 540,
-    "wires": [["78d012a8.05a2ac"]]
-  },
-  {
-    "id": "f82465b8.e60af8",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Hallways Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.hallways",
-    "x": 460,
-    "y": 600,
-    "wires": [["63c70a27.693954"]]
-  },
-  {
-    "id": "63c70a27.693954",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Hallways On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{ \"group_name\": \"Hallways\" , \"scene_name\": \"Morning\" }",
-    "mergecontext": "",
-    "x": 670,
-    "y": 600,
-    "wires": [["135aacff.bf6673"]]
-  },
-  {
-    "id": "5dde6542.5da31c",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Kitchen Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.kitchen",
-    "x": 450,
-    "y": 660,
-    "wires": [["f37e0d3e.a9c39"]]
-  },
-  {
-    "id": "7e510d8b.65a974",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Kitchen On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{ \"group_name\": \"Kitchen\" , \"scene_name\": \"Morning\" }",
-    "mergecontext": "",
-    "x": 810,
-    "y": 660,
-    "wires": [["443e3979.456c58"]]
-  },
-  {
-    "id": "78d012a8.05a2ac",
-    "type": "stoptimer",
-    "z": "4eea289e.b77d38",
-    "duration": "5",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 880,
-    "y": 540,
-    "wires": [["3990aa11.7019d6"], []]
-  },
-  {
-    "id": "135aacff.bf6673",
-    "type": "stoptimer",
-    "z": "4eea289e.b77d38",
-    "duration": "5",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 880,
-    "y": 600,
-    "wires": [["26b4a984.9f54b6"], []]
-  },
-  {
-    "id": "443e3979.456c58",
-    "type": "stoptimer",
-    "z": "4eea289e.b77d38",
-    "duration": "5",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 1000,
-    "y": 660,
-    "wires": [["6b31b858.fd8f88"], []]
-  },
-  {
-    "id": "3990aa11.7019d6",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Living Room Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.living_room\" }",
-    "mergecontext": "",
-    "x": 1080,
-    "y": 540,
-    "wires": [[]]
-  },
-  {
-    "id": "26b4a984.9f54b6",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Hallways Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.hallways\" }",
-    "mergecontext": "",
-    "x": 1070,
-    "y": 600,
-    "wires": [[]]
-  },
-  {
-    "id": "6b31b858.fd8f88",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Kitchen Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.kitchen\" }",
-    "mergecontext": "",
-    "x": 1090,
-    "y": 720,
-    "wires": [[]]
-  },
-  {
-    "id": "939029b2.61b348",
-    "type": "stoptimer",
-    "z": "4f666315.2afffc",
-    "duration": "3",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 300,
-    "y": 480,
-    "wires": [["2ae3a33e.50fc0c"], []]
-  },
-  {
-    "id": "bbba00c.5ad6b",
-    "type": "subflow:64b187a2.412488",
-    "z": "4f666315.2afffc",
-    "name": "",
-    "x": 450,
-    "y": 400,
-    "wires": [["4ca5072a.f12838"]]
-  },
-  {
-    "id": "ba6f5623.ce14c8",
-    "type": "comment",
-    "z": "4f666315.2afffc",
-    "name": "Downstairs Toilet Light",
-    "info": "",
-    "x": 140,
-    "y": 360,
-    "wires": []
-  },
-  {
-    "id": "49608464.369ebc",
-    "type": "server-state-changed",
-    "z": "7afe1c1c.fc2824",
-    "name": "Hair Straigtheners On?",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "switch.hair_straighteners",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 140,
-    "y": 260,
-    "wires": [["784c3e2e.96c62"]]
-  },
-  {
-    "id": "784c3e2e.96c62",
-    "type": "stoptimer",
-    "z": "7afe1c1c.fc2824",
-    "duration": "30",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 360,
-    "y": 260,
-    "wires": [["c71a0cde.d1585"], []]
-  },
-  {
-    "id": "180aa258.bfe74e",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Turn Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "switch",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"switch.hair_straighteners\" }",
-    "mergecontext": "",
-    "x": 700,
-    "y": 220,
-    "wires": [[]]
-  },
-  {
-    "id": "c71a0cde.d1585",
-    "type": "api-current-state",
-    "z": "7afe1c1c.fc2824",
-    "name": "Still On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "switch.hair_straighteners",
-    "x": 540,
-    "y": 260,
-    "wires": [["180aa258.bfe74e"]]
-  },
-  {
-    "id": "85904b1c.fb2328",
-    "type": "comment",
-    "z": "7afe1c1c.fc2824",
-    "name": "Hair Straighteners",
-    "info": "",
-    "x": 130,
-    "y": 220,
-    "wires": []
-  },
-  {
-    "id": "7e1c0c79.81bd44",
-    "type": "function",
-    "z": "4f666315.2afffc",
-    "name": "Toilet",
-    "func": "msg.room = \"Toilet\"\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 270,
-    "y": 400,
-    "wires": [["bbba00c.5ad6b"]]
-  },
-  {
-    "id": "8af4a119.b8eae",
-    "type": "api-current-state",
-    "z": "64b187a2.412488",
-    "name": "Day Phase",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "sensor.day_phase",
-    "x": 310,
-    "y": 40,
-    "wires": [["25dea565.5bff4a"]]
-  },
-  {
-    "id": "d87201e6.801af",
-    "type": "api-call-service",
-    "z": "4f666315.2afffc",
-    "name": "Toilet Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.toilet\" }",
-    "mergecontext": "",
-    "x": 660,
-    "y": 480,
-    "wires": [[]]
-  },
-  {
-    "id": "9fc84fc3.06e5d",
-    "type": "api-call-service",
-    "z": "4fa84657.e0f118",
-    "name": "Set Volume",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "media_player",
-    "service": "volume_set",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 970,
-    "y": 120,
-    "wires": [[]]
-  },
-  {
-    "id": "d6db129f.ed542",
-    "type": "server-state-changed",
-    "z": "4f666315.2afffc",
-    "name": "Toilet Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.toilet_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 110,
-    "y": 440,
-    "wires": [["7e1c0c79.81bd44", "939029b2.61b348"]]
-  },
-  {
-    "id": "112b46ab.9fdec9",
-    "type": "server-state-changed",
-    "z": "3bd8c115.3e42ae",
-    "name": "Kitchen Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.kitchen_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 120,
-    "y": 140,
-    "wires": [["7069af01.aaddd"]]
-  },
-  {
-    "id": "5edcd883.b5d838",
-    "type": "stoptimer",
-    "z": "3bd8c115.3e42ae",
-    "duration": "15",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 460,
-    "y": 220,
-    "wires": [["b39a361a.a91488"], []]
-  },
-  {
-    "id": "727c21a2.3d277",
-    "type": "subflow:64b187a2.412488",
-    "z": "3bd8c115.3e42ae",
-    "name": "",
-    "x": 650,
-    "y": 140,
-    "wires": [["e41d1ac1.1a79c8"]]
-  },
-  {
-    "id": "77562f5a.39f14",
-    "type": "api-call-service",
-    "z": "3bd8c115.3e42ae",
-    "name": "Lights Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.kitchen\" }",
-    "mergecontext": "",
-    "x": 840,
-    "y": 220,
-    "wires": [[]]
-  },
-  {
-    "id": "5824fe27.8c96",
-    "type": "comment",
-    "z": "3bd8c115.3e42ae",
-    "name": "Lights",
-    "info": "",
-    "x": 90,
-    "y": 40,
-    "wires": []
-  },
-  {
-    "id": "80175bf1.269d38",
-    "type": "function",
-    "z": "4fa84657.e0f118",
-    "name": "Kitchen Speaker",
-    "func": "msg.payload.data.entity_id = \"media_player.kitchen_speaker\";\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 740,
-    "y": 60,
-    "wires": [["9fc84fc3.06e5d"]]
-  },
-  {
-    "id": "88923da2.5f176",
-    "type": "function",
-    "z": "4fa84657.e0f118",
-    "name": "Portable Speaker",
-    "func": "msg.payload.data.entity_id = \"media_player.portable_speaker\";\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 750,
-    "y": 120,
-    "wires": [["9fc84fc3.06e5d"]]
-  },
-  {
-    "id": "2ea5ce78.295732",
-    "type": "stoptimer",
-    "z": "4fa84657.e0f118",
-    "duration": "3",
-    "units": "Second",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 320,
-    "y": 120,
-    "wires": [["487a1389.0cf1ec"], []]
-  },
-  {
-    "id": "fc7fcb52.973eb8",
-    "type": "server-state-changed",
-    "z": "4fa84657.e0f118",
-    "name": "Kitchen Speakers",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "media_player.group_kitchen",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 120,
-    "wires": [["2ea5ce78.295732"]]
-  },
-  {
-    "id": "487a1389.0cf1ec",
-    "type": "function",
-    "z": "4fa84657.e0f118",
-    "name": "Target Volume",
-    "func": "const twoDp = num => Math.round(num * 100) / 100\n\nconst newVolume = twoDp(msg.data.new_state.attributes.volume_level)\nconst oldVolume = twoDp(msg.data.old_state.attributes.volume_level)\n\nconst speakers = 3\nconst newTarget = twoDp((newVolume * speakers) - (oldVolume * (speakers - 1)))\n\nif (flow.kitchen_speakers_target_volume != newVolume) {\n    flow.kitchen_speakers_target_volume = newTarget\n}\n\nmsg.payload = {\n    debug: {\n        oldVolume, newVolume\n    },\n    data: {\n        volume_level: flow.kitchen_speakers_target_volume\n    }\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 520,
-    "y": 120,
-    "wires": [["80175bf1.269d38", "88923da2.5f176", "90293c3b.e33a4"]]
-  },
-  {
-    "id": "51013541.8d8e4c",
-    "type": "comment",
-    "z": "4fa84657.e0f118",
-    "name": "Sync Kitchen Speakers",
-    "info": "",
-    "x": 140,
-    "y": 80,
-    "wires": []
-  },
-  {
-    "id": "c15c42eb.b3e5a",
-    "type": "comment",
-    "z": "4eea289e.b77d38",
-    "name": "Backdoor Presence Simulation",
-    "info": "",
-    "x": 170,
-    "y": 420,
-    "wires": []
-  },
-  {
-    "id": "94dab676.4ad188",
-    "type": "server-state-changed",
-    "z": "4eea289e.b77d38",
-    "name": "Front Door Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.ring_front_door_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 130,
-    "y": 80,
-    "wires": [["a9d06255.e3748"]]
-  },
-  {
-    "id": "3b04cf72.00a2d",
-    "type": "stoptimer",
-    "z": "4eea289e.b77d38",
-    "duration": "5",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 620,
-    "y": 180,
-    "wires": [["952c9b22.6293c8"], []]
-  },
-  {
-    "id": "952c9b22.6293c8",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Porch Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.porch\" }",
-    "mergecontext": "",
-    "x": 840,
-    "y": 180,
-    "wires": [[]]
-  },
-  {
-    "id": "f78c0048.bbc4d",
-    "type": "api-call-service",
-    "z": "4eea289e.b77d38",
-    "name": "Porch On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_on",
-    "data": "{ \"entity_id\": \"light.porch\" }",
-    "mergecontext": "",
-    "x": 840,
-    "y": 100,
-    "wires": [[]]
-  },
-  {
-    "id": "788ca90.c97de58",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Sun Below Horizon?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "above_horizon",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "sun.sun",
-    "x": 640,
-    "y": 100,
-    "wires": [["f78c0048.bbc4d"]]
-  },
-  {
-    "id": "14e9f40b.b9869c",
-    "type": "comment",
-    "z": "4eea289e.b77d38",
-    "name": "Porch Light",
-    "info": "",
-    "x": 110,
-    "y": 40,
-    "wires": []
-  },
-  {
-    "id": "4193b62b.d94838",
-    "type": "server-state-changed",
-    "z": "4eea289e.b77d38",
-    "name": "Entrance Hall Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.entrance_hall_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 140,
-    "y": 140,
-    "wires": [["a9d06255.e3748"]]
-  },
-  {
-    "id": "a9d06255.e3748",
-    "type": "subflow:da409f68.5a74d",
-    "z": "4eea289e.b77d38",
-    "name": "",
-    "x": 450,
-    "y": 140,
-    "wires": [["3b04cf72.00a2d", "788ca90.c97de58"]]
-  },
-  {
-    "id": "863e4a5b.97e1c8",
-    "type": "server-state-changed",
-    "z": "3bd8c115.3e42ae",
-    "name": "House Target Temperature",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.house_thermostat_target",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 150,
-    "y": 380,
-    "wires": [["168ab1a8.1438be"]]
-  },
-  {
-    "id": "43cce034.bc446",
-    "type": "api-call-service",
-    "z": "3bd8c115.3e42ae",
-    "name": "Set Kitchen Target Temperature",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "climate",
-    "service": "set_temperature",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 610,
-    "y": 380,
-    "wires": [[]]
-  },
-  {
-    "id": "12518cf5.ac02e3",
-    "type": "comment",
-    "z": "3bd8c115.3e42ae",
-    "name": "Heater Sync",
-    "info": "",
-    "x": 110,
-    "y": 340,
-    "wires": []
-  },
-  {
-    "id": "c411eed4.62bb8",
-    "type": "server-state-changed",
-    "z": "3bd8c115.3e42ae",
-    "name": "Kitchen Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.kitchen_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 120,
-    "y": 540,
-    "wires": [["1f2a794c.a93497", "6d207210.42d85c"]]
-  },
-  {
-    "id": "1f2a794c.a93497",
-    "type": "stoptimer",
-    "z": "3bd8c115.3e42ae",
-    "duration": "5",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 320,
-    "y": 580,
-    "wires": [["167466e5.f32d29"], []]
-  },
-  {
-    "id": "478ae580.a37bcc",
-    "type": "api-call-service",
-    "z": "3bd8c115.3e42ae",
-    "name": "Heater Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "climate",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"climate.kitchen\" }",
-    "mergecontext": "",
-    "x": 690,
-    "y": 580,
-    "wires": [[]]
-  },
-  {
-    "id": "168ab1a8.1438be",
-    "type": "function",
-    "z": "3bd8c115.3e42ae",
-    "name": "Temperature",
-    "func": "\nmsg.payload = { \n    data: {\n        entity_id: \"climate.kitchen\",\n        temperature: msg.payload\n    }\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 370,
-    "y": 380,
-    "wires": [["43cce034.bc446"]]
-  },
-  {
-    "id": "6d207210.42d85c",
-    "type": "api-call-service",
-    "z": "3bd8c115.3e42ae",
-    "name": "Heater On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "climate",
-    "service": "turn_on",
-    "data": "{ \"entity_id\": \"climate.kitchen\" }",
-    "mergecontext": "",
-    "x": 310,
-    "y": 500,
-    "wires": [[]]
-  },
-  {
-    "id": "80bf559b.148c48",
-    "type": "comment",
-    "z": "3bd8c115.3e42ae",
-    "name": "Heater On / Off",
-    "info": "",
-    "x": 120,
-    "y": 460,
-    "wires": []
-  },
-  {
-    "id": "e41d1ac1.1a79c8",
-    "type": "api-call-service",
-    "z": "3bd8c115.3e42ae",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 850,
-    "y": 140,
-    "wires": [[]]
-  },
-  {
-    "id": "4ca5072a.f12838",
-    "type": "api-call-service",
-    "z": "4f666315.2afffc",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 650,
-    "y": 400,
-    "wires": [[]]
-  },
-  {
-    "id": "39e5d222.c3ff0e",
-    "type": "api-current-state",
-    "z": "3bd8c115.3e42ae",
-    "name": "Lights Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.kitchen",
-    "x": 450,
-    "y": 140,
-    "wires": [["727c21a2.3d277"]]
-  },
-  {
-    "id": "e6293c9f.4332d",
-    "type": "inject",
-    "z": "3bd8c115.3e42ae",
-    "name": "Run at startup",
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "repeat": "",
-    "crontab": "",
-    "once": true,
-    "onceDelay": "5",
-    "x": 500,
-    "y": 640,
-    "wires": [["478ae580.a37bcc"]]
-  },
-  {
-    "id": "a4317b6a.9ffe28",
-    "type": "inject",
-    "z": "7afe1c1c.fc2824",
-    "name": "Run at startup",
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "repeat": "",
-    "crontab": "",
-    "once": true,
-    "onceDelay": "5",
-    "x": 320,
-    "y": 140,
-    "wires": [["21a48853.592398"]]
-  },
-  {
-    "id": "b39a361a.a91488",
-    "type": "api-current-state",
-    "z": "3bd8c115.3e42ae",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.kitchen_motion",
-    "x": 670,
-    "y": 220,
-    "wires": [["77562f5a.39f14"]]
-  },
-  {
-    "id": "2ae3a33e.50fc0c",
-    "type": "api-current-state",
-    "z": "4f666315.2afffc",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.toilet_motion",
-    "x": 490,
-    "y": 480,
-    "wires": [["d87201e6.801af"]]
-  },
-  {
-    "id": "167466e5.f32d29",
-    "type": "api-current-state",
-    "z": "3bd8c115.3e42ae",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.kitchen_motion",
-    "x": 510,
-    "y": 580,
-    "wires": [["478ae580.a37bcc"]]
-  },
-  {
-    "id": "2c901060.95f96",
-    "type": "server-state-changed",
-    "z": "4eea289e.b77d38",
-    "name": "Dan's Phone",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "device_tracker.dphone",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 110,
-    "y": 200,
-    "wires": [["db588c.ebbc3778"]]
-  },
-  {
-    "id": "a81a4472.d5e048",
-    "type": "server-state-changed",
-    "z": "4eea289e.b77d38",
-    "name": "Lauren's Phone",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "device_tracker.laurens_iphone",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 260,
-    "wires": [["db588c.ebbc3778"]]
-  },
-  {
-    "id": "db588c.ebbc3778",
-    "type": "switch",
-    "z": "4eea289e.b77d38",
-    "name": "Home?",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "eq",
-        "v": "home",
-        "vt": "str"
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 1,
-    "x": 300,
-    "y": 240,
-    "wires": [["a9d06255.e3748"]]
-  },
-  {
-    "id": "84dc56fe.709d28",
-    "type": "server-state-changed",
-    "z": "3bd8c115.3e42ae",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 130,
-    "y": 80,
-    "wires": [["e513fb69.acddf8"]]
-  },
-  {
-    "id": "134600fd.fb42c7",
-    "type": "server-state-changed",
-    "z": "4eea289e.b77d38",
-    "name": "Back Door Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.ring_back_door_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 130,
-    "y": 460,
-    "wires": [["c1af42f8.c1f0a"]]
-  },
-  {
-    "id": "c1af42f8.c1f0a",
-    "type": "switch",
-    "z": "4eea289e.b77d38",
-    "name": "On?",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "eq",
-        "v": "on",
-        "vt": "str"
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 1,
-    "x": 310,
-    "y": 460,
-    "wires": [["c248097f.e54e48"]]
-  },
-  {
-    "id": "babf9462.dac758",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Notify",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "notify",
-    "service": "notify",
-    "data": "{ \"message\": \"Hair Straighteners' socket has been on for 30 minutes, turning off \\uD83D\\uDD25\\uD83E\\uDD26\\u200D\\u2640\\uFE0F \" }",
-    "mergecontext": "",
-    "x": 690,
-    "y": 300,
-    "wires": [[]]
-  },
-  {
-    "id": "606fff3b.0a1ad",
-    "type": "api-call-service",
-    "z": "ce7797ed.a4f218",
-    "name": "Node Red Heartbeat",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "input_boolean",
-    "service": "toggle",
-    "data": "{ \"entity_id\": \"input_boolean.node_red_heartbeat\" }",
-    "mergecontext": "",
-    "x": 580,
-    "y": 160,
-    "wires": [[]]
-  },
-  {
-    "id": "85737416.e69e78",
-    "type": "inject",
-    "z": "ce7797ed.a4f218",
-    "name": "Start",
-    "topic": "",
-    "payload": "true",
-    "payloadType": "bool",
-    "repeat": "",
-    "crontab": "",
-    "once": true,
-    "onceDelay": "5",
-    "x": 170,
-    "y": 100,
-    "wires": [["b99bc072.bf14d", "e06b2a6.1a502d8"]]
-  },
-  {
-    "id": "82c11d0.0eec2e",
-    "type": "comment",
-    "z": "ce7797ed.a4f218",
-    "name": "Node Red Heartbeat",
-    "info": "",
-    "x": 130,
-    "y": 60,
-    "wires": []
-  },
-  {
-    "id": "b99bc072.bf14d",
-    "type": "stoptimer",
-    "z": "ce7797ed.a4f218",
-    "duration": "1",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 340,
-    "y": 160,
-    "wires": [["606fff3b.0a1ad"], []]
-  },
-  {
-    "id": "6a15c566.d46a9c",
-    "type": "server-state-changed",
-    "z": "ce7797ed.a4f218",
-    "name": "Node Red Heartbeat",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "input_boolean.node_red_heartbeat",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "x": 130,
-    "y": 160,
-    "wires": [["b99bc072.bf14d"]]
-  },
-  {
-    "id": "e06b2a6.1a502d8",
-    "type": "api-call-service",
-    "z": "ce7797ed.a4f218",
-    "name": "Notify Dan",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "notify",
-    "service": "ios_dphone",
-    "data": "{ \"message\": \"Node-RED coming online!\" }",
-    "mergecontext": "",
-    "x": 330,
-    "y": 100,
-    "wires": [[]]
-  },
-  {
-    "id": "f9756f2e.a1eef",
-    "type": "http request",
-    "z": "ce7797ed.a4f218",
-    "name": "Reboot Host",
-    "method": "GET",
-    "ret": "txt",
-    "url": "http://hassio/host/reboot",
-    "tls": "",
-    "x": 550,
-    "y": 500,
-    "wires": [["5c4d0604.b8e6a8"]]
-  },
-  {
-    "id": "51cf1b16.32ec54",
-    "type": "inject",
-    "z": "ce7797ed.a4f218",
-    "name": "HASSIO_TOKEN",
-    "topic": "",
-    "payload": "HASSIO_TOKEN",
-    "payloadType": "env",
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "x": 140,
-    "y": 500,
-    "wires": [["432de28f.85bc8c"]]
-  },
-  {
-    "id": "5c4d0604.b8e6a8",
-    "type": "debug",
-    "z": "ce7797ed.a4f218",
-    "name": "",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "true",
-    "x": 710,
-    "y": 500,
-    "wires": []
-  },
-  {
-    "id": "432de28f.85bc8c",
-    "type": "function",
-    "z": "ce7797ed.a4f218",
-    "name": "Set X-HASSIO-KEY",
-    "func": "\nmsg.headers = {};\nmsg.headers['X-HASSIO-KEY'] = msg.payload;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 350,
-    "y": 500,
-    "wires": [["f9756f2e.a1eef"]]
-  },
-  {
-    "id": "455c1235.9adf3c",
-    "type": "comment",
-    "z": "ce7797ed.a4f218",
-    "name": "Reboot Home Assistant",
-    "info": "",
-    "x": 140,
-    "y": 460,
-    "wires": []
-  },
-  {
-    "id": "7dd6770c.8abe98",
-    "type": "inject",
-    "z": "ce7797ed.a4f218",
-    "name": "Sunday @ 4am",
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "repeat": "",
-    "crontab": "00 04 * * 0",
-    "once": false,
-    "onceDelay": 0.1,
-    "x": 140,
-    "y": 300,
-    "wires": [["d9a7a486.993e78"]]
-  },
-  {
-    "id": "8c66ad9e.c438a",
-    "type": "api-call-service",
-    "z": "ce7797ed.a4f218",
-    "name": "Upload",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hassio",
-    "service": "addon_stdin",
-    "data": "{\"addon\":\"7be23ff5_dropbox_sync\",\"input\":{\"command\":\"upload\"}}",
-    "mergecontext": "",
-    "x": 680,
-    "y": 300,
-    "wires": [[]]
-  },
-  {
-    "id": "d9a7a486.993e78",
-    "type": "api-call-service",
-    "z": "ce7797ed.a4f218",
-    "name": "Snapshot",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hassio",
-    "service": "snapshot_full",
-    "data": "",
-    "mergecontext": "",
-    "x": 320,
-    "y": 300,
-    "wires": [["98a2fa83.f07098"]]
-  },
-  {
-    "id": "98a2fa83.f07098",
-    "type": "stoptimer",
-    "z": "ce7797ed.a4f218",
-    "duration": "10",
-    "units": "Minute",
-    "payloadtype": "bool",
-    "payloadval": "true",
-    "name": "",
-    "x": 500,
-    "y": 300,
-    "wires": [[], ["8c66ad9e.c438a"]]
-  },
-  {
-    "id": "2df45351.8259ec",
-    "type": "comment",
-    "z": "ce7797ed.a4f218",
-    "name": "Backup Hassio",
-    "info": "",
-    "x": 120,
-    "y": 260,
-    "wires": []
-  },
-  {
-    "id": "7e21b403.a5718c",
-    "type": "server-state-changed",
-    "z": "4f666315.2afffc",
-    "name": "House Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.house_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 110,
-    "y": 200,
-    "wires": [["ae9606df.f42f48", "b79c06d8.22fd38"]]
-  },
-  {
-    "id": "b79c06d8.22fd38",
-    "type": "stoptimer",
-    "z": "4f666315.2afffc",
-    "duration": "15",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 340,
-    "y": 240,
-    "wires": [["1f068612.682a3a"], []]
-  },
-  {
-    "id": "df7984d0.0255f8",
-    "type": "subflow:64b187a2.412488",
-    "z": "4f666315.2afffc",
-    "name": "",
-    "x": 530,
-    "y": 120,
-    "wires": [["855fda5b.ded118"]]
-  },
-  {
-    "id": "e445e789.1c29e8",
-    "type": "api-call-service",
-    "z": "4f666315.2afffc",
-    "name": "Lights Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.hallways\" }",
-    "mergecontext": "",
-    "x": 720,
-    "y": 240,
-    "wires": [[]]
-  },
-  {
-    "id": "b06b1d9f.443e4",
-    "type": "comment",
-    "z": "4f666315.2afffc",
-    "name": "Hallway Lights",
-    "info": "",
-    "x": 120,
-    "y": 40,
-    "wires": []
-  },
-  {
-    "id": "855fda5b.ded118",
-    "type": "api-call-service",
-    "z": "4f666315.2afffc",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 730,
-    "y": 120,
-    "wires": [[]]
-  },
-  {
-    "id": "ae9606df.f42f48",
-    "type": "api-current-state",
-    "z": "4f666315.2afffc",
-    "name": "Lights Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.hallways",
-    "x": 330,
-    "y": 160,
-    "wires": [["df7984d0.0255f8"]]
-  },
-  {
-    "id": "1f068612.682a3a",
-    "type": "api-current-state",
-    "z": "4f666315.2afffc",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.house_motion",
-    "x": 550,
-    "y": 240,
-    "wires": [["e445e789.1c29e8"]]
-  },
-  {
-    "id": "41c14e5c.35e53",
-    "type": "server-state-changed",
-    "z": "4f666315.2afffc",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 130,
-    "y": 80,
-    "wires": [["f3f749f5.e27648"]]
-  },
-  {
-    "id": "e513fb69.acddf8",
-    "type": "api-current-state",
-    "z": "3bd8c115.3e42ae",
-    "name": "Lights On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.kitchen",
-    "x": 450,
-    "y": 80,
-    "wires": [["727c21a2.3d277"]]
-  },
-  {
-    "id": "f3f749f5.e27648",
-    "type": "api-current-state",
-    "z": "4f666315.2afffc",
-    "name": "Lights On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.hallways",
-    "x": 330,
-    "y": 80,
-    "wires": [["df7984d0.0255f8"]]
-  },
-  {
-    "id": "5d7e6813.d0d8d8",
-    "type": "server-state-changed",
-    "z": "7afe1c1c.fc2824",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": true,
-    "x": 130,
-    "y": 440,
-    "wires": [["1cfccf54.68e3b1"]]
-  },
-  {
-    "id": "1cfccf54.68e3b1",
-    "type": "switch",
-    "z": "7afe1c1c.fc2824",
-    "name": "Is Night?",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "regex",
-        "v": "night",
-        "vt": "str",
-        "case": true
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 1,
-    "x": 340,
-    "y": 440,
-    "wires": [["a0a33c42.f5d4e"]]
-  },
-  {
-    "id": "c17a7c9f.8f4a",
-    "type": "comment",
-    "z": "7afe1c1c.fc2824",
-    "name": "Night Mode",
-    "info": "",
-    "x": 110,
-    "y": 400,
-    "wires": []
-  },
-  {
-    "id": "a0a33c42.f5d4e",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Turn On Night Mode",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "input_boolean",
-    "service": "turn_on",
-    "data": "{ \"entity_id\": \"input_boolean.night_mode\" }",
-    "mergecontext": "",
-    "x": 580,
-    "y": 440,
-    "wires": [[]]
-  },
-  {
-    "id": "7f82c27a.ce207c",
-    "type": "server-state-changed",
-    "z": "7afe1c1c.fc2824",
-    "name": "Entrance Hall Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.entrance_hall_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": true,
-    "x": 140,
-    "y": 500,
-    "wires": [["cc3d4a3a.c5a128"]]
-  },
-  {
-    "id": "cc3d4a3a.c5a128",
-    "type": "subflow:f9bc0030.d8095",
-    "z": "7afe1c1c.fc2824",
-    "name": "",
-    "x": 360,
-    "y": 500,
-    "wires": [["9e9038ba.c06698"], []]
-  },
-  {
-    "id": "9e9038ba.c06698",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Turn Off Night Mode",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "input_boolean",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"input_boolean.night_mode\" }",
-    "mergecontext": "",
-    "x": 580,
-    "y": 500,
-    "wires": [[]]
-  },
-  {
-    "id": "cdda64e1.43c958",
-    "type": "server-state-changed",
-    "z": "ef1c2144.74e1",
-    "name": "Overhead Lights",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light\\.guest_bedroom_[1|2]",
-    "entityidfiltertype": "regex",
-    "haltifstate": "Off",
-    "outputinitially": false,
-    "x": 200,
-    "y": 160,
-    "wires": [[]]
-  },
-  {
-    "id": "a5275459.f643e8",
-    "type": "function",
-    "z": "ef1c2144.74e1",
-    "name": "",
-    "func": "\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 380,
-    "y": 160,
-    "wires": [[]]
-  },
-  {
-    "id": "21d34294.d5f9de",
-    "type": "server-state-changed",
-    "z": "7afe1c1c.fc2824",
-    "name": "Occupied",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.occupied",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 100,
-    "y": 680,
-    "wires": [["c2a35053.275d2"]]
-  },
-  {
-    "id": "c2a35053.275d2",
-    "type": "switch",
-    "z": "7afe1c1c.fc2824",
-    "name": "On / Off",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "eq",
-        "v": "on",
-        "vt": "str"
-      },
-      {
-        "t": "eq",
-        "v": "off",
-        "vt": "str"
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 2,
-    "x": 260,
-    "y": 680,
-    "wires": [["1adbe8fb.80c517"], ["a0b9cacb.4b35a8"]]
-  },
-  {
-    "id": "1adbe8fb.80c517",
-    "type": "stoptimer",
-    "z": "7afe1c1c.fc2824",
-    "duration": "18",
-    "units": "Hour",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 440,
-    "y": 640,
-    "wires": [["604a446d.ea9b6c"], []]
-  },
-  {
-    "id": "604a446d.ea9b6c",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Away Mode - On",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "input_boolean",
-    "service": "turn_off",
-    "data": "{\"entity_id\":\"input_boolean.away_mode\"}",
-    "mergecontext": "",
-    "x": 650,
-    "y": 640,
-    "wires": [[]]
-  },
-  {
-    "id": "a0b9cacb.4b35a8",
-    "type": "api-call-service",
-    "z": "7afe1c1c.fc2824",
-    "name": "Away Mode - Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "input_boolean",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"input_boolean.away_mode\" }",
-    "mergecontext": "",
-    "x": 450,
-    "y": 720,
-    "wires": [[]]
-  },
-  {
-    "id": "33f03597.e6970a",
-    "type": "comment",
-    "z": "7afe1c1c.fc2824",
-    "name": "Away Mode",
-    "info": "",
-    "x": 110,
-    "y": 600,
-    "wires": []
-  },
-  {
-    "id": "5cf8867c.5c2388",
-    "type": "inject",
-    "z": "7afe1c1c.fc2824",
-    "name": "Run at startup",
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "repeat": "",
-    "crontab": "",
-    "once": true,
-    "onceDelay": "5",
-    "x": 520,
-    "y": 220,
-    "wires": [["180aa258.bfe74e"]]
-  },
-  {
-    "id": "fe248ee5.f3865",
-    "type": "server-state-changed",
-    "z": "3bd8c115.3e42ae",
-    "name": "Hallway Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.entrance_hall_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 220,
-    "wires": [["7069af01.aaddd"]]
-  },
-  {
-    "id": "7069af01.aaddd",
-    "type": "subflow:da409f68.5a74d",
-    "z": "3bd8c115.3e42ae",
-    "name": "",
-    "x": 290,
-    "y": 180,
-    "wires": [["39e5d222.c3ff0e", "5edcd883.b5d838"]]
-  },
-  {
-    "id": "90293c3b.e33a4",
-    "type": "function",
-    "z": "4fa84657.e0f118",
-    "name": "Kitchen Screen",
-    "func": "msg.payload.data.entity_id = \"media_player.kitchen_display\";\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 740,
-    "y": 180,
-    "wires": [["9fc84fc3.06e5d"]]
-  },
-  {
-    "id": "d628210a.73b2b",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Top Floor Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.top_floor_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 240,
-    "wires": [["b6355d4.19099a", "32e9fa0f.91c716"]]
-  },
-  {
-    "id": "32e9fa0f.91c716",
-    "type": "stoptimer",
-    "z": "4ca21be4.5fec94",
-    "duration": "15",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 340,
-    "y": 280,
-    "wires": [["d26743e.a4489c"], []]
-  },
-  {
-    "id": "9bf22487.ce2f38",
-    "type": "subflow:64b187a2.412488",
-    "z": "4ca21be4.5fec94",
-    "name": "",
-    "x": 730,
-    "y": 160,
-    "wires": [["e07b2de6.3a42a"]]
-  },
-  {
-    "id": "fcec50b5.8a6ad",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.top_floor_landing\" }",
-    "mergecontext": "",
-    "x": 700,
-    "y": 280,
-    "wires": [[]]
-  },
-  {
-    "id": "a807f77a.dba4a8",
-    "type": "comment",
-    "z": "4ca21be4.5fec94",
-    "name": "Top Floor Landing Lights",
-    "info": "",
-    "x": 150,
-    "y": 40,
-    "wires": []
-  },
-  {
-    "id": "e07b2de6.3a42a",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 930,
-    "y": 160,
-    "wires": [[]]
-  },
-  {
-    "id": "b6355d4.19099a",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.top_floor_landing",
-    "x": 330,
-    "y": 200,
-    "wires": [["93244dc5.301bc"]]
-  },
-  {
-    "id": "d26743e.a4489c",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.top_floor_motion",
-    "x": 530,
-    "y": 280,
-    "wires": [["fcec50b5.8a6ad"]]
-  },
-  {
-    "id": "ed52405c.05a6d",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 130,
-    "y": 120,
-    "wires": [["213cc683.78a59a"]]
-  },
-  {
-    "id": "213cc683.78a59a",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.top_floor_landing",
-    "x": 330,
-    "y": 120,
-    "wires": [["93244dc5.301bc"]]
-  },
-  {
-    "id": "93244dc5.301bc",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Night Mode Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": false,
-    "override_payload": false,
-    "entity_id": "input_boolean.night_mode",
-    "x": 520,
-    "y": 160,
-    "wires": [["9bf22487.ce2f38"]]
-  },
-  {
-    "id": "9c1b26.4226e4d8",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Top Floor Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.top_floor_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 560,
-    "wires": [["41eaee8f.91c56", "e02eabd.6952a58"]]
-  },
-  {
-    "id": "e02eabd.6952a58",
-    "type": "stoptimer",
-    "z": "4ca21be4.5fec94",
-    "duration": "15",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 340,
-    "y": 600,
-    "wires": [["e7fee676.bdcd18"], []]
-  },
-  {
-    "id": "185d47ad.42c028",
-    "type": "subflow:64b187a2.412488",
-    "z": "4ca21be4.5fec94",
-    "name": "",
-    "x": 730,
-    "y": 480,
-    "wires": [["992db8ad.13afc8"]]
-  },
-  {
-    "id": "361bcd57.f74992",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.dressing_room\" }",
-    "mergecontext": "",
-    "x": 700,
-    "y": 600,
-    "wires": [[]]
-  },
-  {
-    "id": "a2ab0132.a7928",
-    "type": "comment",
-    "z": "4ca21be4.5fec94",
-    "name": "Dressing Room Lights",
-    "info": "",
-    "x": 140,
-    "y": 360,
-    "wires": []
-  },
-  {
-    "id": "992db8ad.13afc8",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 930,
-    "y": 480,
-    "wires": [[]]
-  },
-  {
-    "id": "41eaee8f.91c56",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.dressing_room",
-    "x": 330,
-    "y": 520,
-    "wires": [["8df2ec6e.91e5b"]]
-  },
-  {
-    "id": "e7fee676.bdcd18",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.top_floor_motion",
-    "x": 530,
-    "y": 600,
-    "wires": [["361bcd57.f74992"]]
-  },
-  {
-    "id": "3369f549.bf22ca",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 130,
-    "y": 440,
-    "wires": [["89bbce81.c1318"]]
-  },
-  {
-    "id": "89bbce81.c1318",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.dressing_room",
-    "x": 330,
-    "y": 440,
-    "wires": [["8df2ec6e.91e5b"]]
-  },
-  {
-    "id": "8df2ec6e.91e5b",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Night Mode Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": false,
-    "override_payload": false,
-    "entity_id": "input_boolean.night_mode",
-    "x": 520,
-    "y": 480,
-    "wires": [["185d47ad.42c028"]]
-  },
-  {
-    "id": "ec9ff3cf.7eee",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Dressing Room On",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light.dressing_room",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 510,
-    "y": 380,
-    "wires": [["185d47ad.42c028"]]
-  },
-  {
-    "id": "b47d2325.2e3fa",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Landing Lights On",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light.top_floor_landing",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 510,
-    "y": 60,
-    "wires": [["9bf22487.ce2f38"]]
-  },
-  {
-    "id": "f4aade06.0f93c",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Bathroom Motion",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "binary_sensor.bathroom_motion",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 120,
-    "y": 900,
-    "wires": [["c65dfaea.3994b8", "b3b0658e.e8b608"]]
-  },
-  {
-    "id": "b3b0658e.e8b608",
-    "type": "stoptimer",
-    "z": "4ca21be4.5fec94",
-    "duration": "15",
-    "units": "Minute",
-    "payloadtype": "num",
-    "payloadval": "0",
-    "name": "",
-    "x": 340,
-    "y": 940,
-    "wires": [["52ecb921.fa1138"], []]
-  },
-  {
-    "id": "df6cdbb6.8ded98",
-    "type": "subflow:64b187a2.412488",
-    "z": "4ca21be4.5fec94",
-    "name": "",
-    "x": 570,
-    "y": 820,
-    "wires": [["e15425a1.fd1178"]]
-  },
-  {
-    "id": "5d92cc89.b354b4",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "light",
-    "service": "turn_off",
-    "data": "{ \"entity_id\": \"light.bathroom\" }",
-    "mergecontext": "",
-    "x": 700,
-    "y": 940,
-    "wires": [[]]
-  },
-  {
-    "id": "eb2f6f16.8510e",
-    "type": "comment",
-    "z": "4ca21be4.5fec94",
-    "name": "Bathroom Lights",
-    "info": "",
-    "x": 120,
-    "y": 700,
-    "wires": []
-  },
-  {
-    "id": "e15425a1.fd1178",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 770,
-    "y": 820,
-    "wires": [[]]
-  },
-  {
-    "id": "c65dfaea.3994b8",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.bathroom",
-    "x": 330,
-    "y": 860,
-    "wires": [["df6cdbb6.8ded98"]]
-  },
-  {
-    "id": "52ecb921.fa1138",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Motion Off?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "binary_sensor.top_floor_motion",
-    "x": 530,
-    "y": 940,
-    "wires": [["5d92cc89.b354b4"]]
-  },
-  {
-    "id": "c48cdc4d.6d59a",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Day Phase Changed",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "sensor.day_phase",
-    "entityidfiltertype": "substring",
-    "haltifstate": "",
-    "outputinitially": false,
-    "x": 130,
-    "y": 780,
-    "wires": [["7c0893d7.73246c"]]
-  },
-  {
-    "id": "7c0893d7.73246c",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Lights On?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "off",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "light.bathroom",
-    "x": 330,
-    "y": 780,
-    "wires": [["df6cdbb6.8ded98"]]
-  },
-  {
-    "id": "6d63d860.ebb638",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Bathroom On",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light.bathroom",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 330,
-    "y": 720,
-    "wires": [["df6cdbb6.8ded98"]]
-  },
-  {
-    "id": "66e73bbb.803434",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Bedroom Lights On",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light.bedroom",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 130,
-    "y": 1040,
-    "wires": [["27608cdc.cf2624"]]
-  },
-  {
-    "id": "5c079002.14ace",
-    "type": "comment",
-    "z": "4ca21be4.5fec94",
-    "name": "Bedroom Lights",
-    "info": "",
-    "x": 120,
-    "y": 1000,
-    "wires": []
-  },
-  {
-    "id": "3ac7c6c1.ae64ca",
-    "type": "subflow:64b187a2.412488",
-    "z": "4ca21be4.5fec94",
-    "name": "",
-    "x": 510,
-    "y": 1040,
-    "wires": [["d3ecaf6d.6e2c5"]]
-  },
-  {
-    "id": "d3ecaf6d.6e2c5",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 710,
-    "y": 1040,
-    "wires": [[]]
-  },
-  {
-    "id": "27608cdc.cf2624",
-    "type": "api-current-state",
-    "z": "4ca21be4.5fec94",
-    "name": "Is Night?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "Night",
-    "override_topic": false,
-    "override_payload": false,
-    "entity_id": "sensor.day_phase",
-    "x": 320,
-    "y": 1040,
-    "wires": [["3ac7c6c1.ae64ca"]]
-  },
-  {
-    "id": "f37e0d3e.a9c39",
-    "type": "api-current-state",
-    "z": "4eea289e.b77d38",
-    "name": "Away Mode?",
-    "server": "81491f2d.c6cf8",
-    "halt_if": "on",
-    "override_topic": true,
-    "override_payload": true,
-    "entity_id": "input_boolean.away_mode",
-    "x": 630,
-    "y": 660,
-    "wires": [["7e510d8b.65a974"]]
-  },
-  {
-    "id": "f2654858.3abdd8",
-    "type": "server-state-changed",
-    "z": "4ca21be4.5fec94",
-    "name": "Ensuite Lights On",
-    "server": "81491f2d.c6cf8",
-    "entityidfilter": "light.ensuite",
-    "entityidfiltertype": "substring",
-    "haltifstate": "off",
-    "outputinitially": false,
-    "x": 120,
-    "y": 1160,
-    "wires": [["8a7c490f.528d38"]]
-  },
-  {
-    "id": "fffe9a4f.648eb8",
-    "type": "comment",
-    "z": "4ca21be4.5fec94",
-    "name": "Ensuite Lights",
-    "info": "",
-    "x": 110,
-    "y": 1120,
-    "wires": []
-  },
-  {
-    "id": "8a7c490f.528d38",
-    "type": "subflow:64b187a2.412488",
-    "z": "4ca21be4.5fec94",
-    "name": "",
-    "x": 330,
-    "y": 1160,
-    "wires": [["c1db616d.d2b17"]]
-  },
-  {
-    "id": "c1db616d.d2b17",
-    "type": "api-call-service",
-    "z": "4ca21be4.5fec94",
-    "name": "Set Scene",
-    "server": "81491f2d.c6cf8",
-    "service_domain": "hue",
-    "service": "hue_activate_scene",
-    "data": "{}",
-    "mergecontext": "",
-    "x": 530,
-    "y": 1160,
-    "wires": [[]]
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 2,
+      "x": 390,
+      "y": 60,
+      "wires": [
+          [],
+          []
+      ]
+  },
+  {
+      "id": "7afe1c1c.fc2824",
+      "type": "tab",
+      "label": "Misc",
+      "disabled": false,
+      "info": ""
+  },
+  {
+      "id": "7322f8aa.7e2258",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Garage Heater On?",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "switch.garage_heater",
+      "entityidfiltertype": "substring",
+      "haltifstate": "off",
+      "x": 130,
+      "y": 100,
+      "wires": [
+          [
+              "6574190c.028038"
+          ]
+      ]
+  },
+  {
+      "id": "6574190c.028038",
+      "type": "stoptimer",
+      "z": "7afe1c1c.fc2824",
+      "duration": "1",
+      "units": "Hour",
+      "payloadtype": "num",
+      "payloadval": "0",
+      "name": "",
+      "x": 330,
+      "y": 100,
+      "wires": [
+          [
+              "21a48853.592398"
+          ],
+          []
+      ]
+  },
+  {
+      "id": "21a48853.592398",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Garage Heater Off",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "switch",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"switch.garage_heater\" }",
+      "mergecontext": "",
+      "x": 530,
+      "y": 100,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "c54dac9e.5f58",
+      "type": "comment",
+      "z": "7afe1c1c.fc2824",
+      "name": "Garage Heater",
+      "info": "",
+      "x": 120,
+      "y": 60,
+      "wires": []
+  },
+  {
+      "id": "49608464.369ebc",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Hair Straigtheners On?",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "switch.hair_straighteners",
+      "entityidfiltertype": "substring",
+      "haltifstate": "off",
+      "outputinitially": false,
+      "x": 140,
+      "y": 240,
+      "wires": [
+          [
+              "784c3e2e.96c62"
+          ]
+      ]
+  },
+  {
+      "id": "784c3e2e.96c62",
+      "type": "stoptimer",
+      "z": "7afe1c1c.fc2824",
+      "duration": "30",
+      "units": "Minute",
+      "payloadtype": "num",
+      "payloadval": "0",
+      "name": "",
+      "x": 360,
+      "y": 240,
+      "wires": [
+          [
+              "180aa258.bfe74e"
+          ],
+          []
+      ]
+  },
+  {
+      "id": "180aa258.bfe74e",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Turn Off",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "switch",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"switch.hair_straighteners\" }",
+      "mergecontext": "",
+      "x": 540,
+      "y": 240,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "85904b1c.fb2328",
+      "type": "comment",
+      "z": "7afe1c1c.fc2824",
+      "name": "Hair Straighteners",
+      "info": "",
+      "x": 130,
+      "y": 200,
+      "wires": []
+  },
+  {
+      "id": "a4317b6a.9ffe28",
+      "type": "inject",
+      "z": "7afe1c1c.fc2824",
+      "name": "Run at startup",
+      "topic": "",
+      "payload": "",
+      "payloadType": "date",
+      "repeat": "",
+      "crontab": "",
+      "once": true,
+      "onceDelay": "5",
+      "x": 320,
+      "y": 140,
+      "wires": [
+          [
+              "21a48853.592398"
+          ]
+      ]
+  },
+  {
+      "id": "5d7e6813.d0d8d8",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Day Phase Changed",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "sensor.day_phase",
+      "entityidfiltertype": "substring",
+      "haltifstate": "",
+      "outputinitially": true,
+      "x": 130,
+      "y": 380,
+      "wires": [
+          [
+              "1cfccf54.68e3b1"
+          ]
+      ]
+  },
+  {
+      "id": "1cfccf54.68e3b1",
+      "type": "switch",
+      "z": "7afe1c1c.fc2824",
+      "name": "Is Night?",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
+          {
+              "t": "regex",
+              "v": "night",
+              "vt": "str",
+              "case": true
+          }
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 1,
+      "x": 340,
+      "y": 380,
+      "wires": [
+          [
+              "a0a33c42.f5d4e"
+          ]
+      ]
+  },
+  {
+      "id": "c17a7c9f.8f4a",
+      "type": "comment",
+      "z": "7afe1c1c.fc2824",
+      "name": "Night Mode",
+      "info": "",
+      "x": 110,
+      "y": 340,
+      "wires": []
+  },
+  {
+      "id": "a0a33c42.f5d4e",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Turn On Night Mode",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "input_boolean",
+      "service": "turn_on",
+      "data": "{ \"entity_id\": \"input_boolean.night_mode\" }",
+      "mergecontext": "",
+      "x": 580,
+      "y": 380,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "7f82c27a.ce207c",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Entrance Hall Motion",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "binary_sensor.entrance_hall_motion",
+      "entityidfiltertype": "substring",
+      "haltifstate": "",
+      "outputinitially": true,
+      "x": 140,
+      "y": 440,
+      "wires": [
+          [
+              "cc3d4a3a.c5a128"
+          ]
+      ]
+  },
+  {
+      "id": "cc3d4a3a.c5a128",
+      "type": "subflow:f9bc0030.d8095",
+      "z": "7afe1c1c.fc2824",
+      "name": "",
+      "x": 360,
+      "y": 440,
+      "wires": [
+          [
+              "9e9038ba.c06698"
+          ],
+          []
+      ]
+  },
+  {
+      "id": "9e9038ba.c06698",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Turn Off Night Mode",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "input_boolean",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"input_boolean.night_mode\" }",
+      "mergecontext": "",
+      "x": 580,
+      "y": 440,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "21d34294.d5f9de",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Occupied",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "binary_sensor.occupied",
+      "entityidfiltertype": "substring",
+      "haltifstate": "",
+      "outputinitially": false,
+      "x": 100,
+      "y": 620,
+      "wires": [
+          [
+              "c2a35053.275d2"
+          ]
+      ]
+  },
+  {
+      "id": "c2a35053.275d2",
+      "type": "switch",
+      "z": "7afe1c1c.fc2824",
+      "name": "On / Off",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
+          {
+              "t": "eq",
+              "v": "on",
+              "vt": "str"
+          },
+          {
+              "t": "eq",
+              "v": "off",
+              "vt": "str"
+          }
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 2,
+      "x": 260,
+      "y": 620,
+      "wires": [
+          [
+              "a0b9cacb.4b35a8"
+          ],
+          [
+              "1adbe8fb.80c517",
+              "9087377b.c85888"
+          ]
+      ]
+  },
+  {
+      "id": "1adbe8fb.80c517",
+      "type": "stoptimer",
+      "z": "7afe1c1c.fc2824",
+      "duration": "18",
+      "units": "Hour",
+      "payloadtype": "num",
+      "payloadval": "0",
+      "name": "",
+      "x": 440,
+      "y": 640,
+      "wires": [
+          [
+              "d3a18a8a.743d28"
+          ],
+          []
+      ]
+  },
+  {
+      "id": "604a446d.ea9b6c",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Away Mode - On",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "input_boolean",
+      "service": "turn_on",
+      "data": "{\"entity_id\":\"input_boolean.away_mode\"}",
+      "mergecontext": "",
+      "x": 810,
+      "y": 600,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "a0b9cacb.4b35a8",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Away Mode - Off",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "input_boolean",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"input_boolean.away_mode\" }",
+      "mergecontext": "",
+      "x": 450,
+      "y": 580,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "33f03597.e6970a",
+      "type": "comment",
+      "z": "7afe1c1c.fc2824",
+      "name": "Away Mode",
+      "info": "",
+      "x": 110,
+      "y": 540,
+      "wires": []
+  },
+  {
+      "id": "5cf8867c.5c2388",
+      "type": "inject",
+      "z": "7afe1c1c.fc2824",
+      "name": "Run at startup",
+      "topic": "",
+      "payload": "",
+      "payloadType": "date",
+      "repeat": "",
+      "crontab": "",
+      "once": true,
+      "onceDelay": "5",
+      "x": 360,
+      "y": 280,
+      "wires": [
+          [
+              "180aa258.bfe74e"
+          ]
+      ]
+  },
+  {
+      "id": "c0728bf3.a299d8",
+      "type": "api-current-state",
+      "z": "7afe1c1c.fc2824",
+      "name": "Away Mode On?",
+      "server": "81491f2d.c6cf8",
+      "halt_if": "off",
+      "override_topic": false,
+      "override_payload": false,
+      "entity_id": "input_boolean.away_mode",
+      "x": 330,
+      "y": 860,
+      "wires": [
+          [
+              "3c4fe02d.17d2"
+          ]
+      ]
+  },
+  {
+      "id": "7dba9baa.868134",
+      "type": "subflow:64b187a2.412488",
+      "z": "7afe1c1c.fc2824",
+      "name": "",
+      "x": 730,
+      "y": 940,
+      "wires": [
+          [
+              "5a8874ac.8347bc"
+          ]
+      ]
+  },
+  {
+      "id": "5a8874ac.8347bc",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Set Scene",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "hue",
+      "service": "hue_activate_scene",
+      "data": "{}",
+      "mergecontext": "",
+      "x": 930,
+      "y": 940,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "2ed809fa.2f2af6",
+      "type": "api-current-state",
+      "z": "7afe1c1c.fc2824",
+      "name": "Sun Below Horizon?",
+      "server": "81491f2d.c6cf8",
+      "halt_if": "above_horizon",
+      "override_topic": false,
+      "override_payload": false,
+      "entity_id": "sun.sun",
+      "x": 500,
+      "y": 940,
+      "wires": [
+          [
+              "7dba9baa.868134"
+          ]
+      ]
+  },
+  {
+      "id": "672282a3.2cfdfc",
+      "type": "switch",
+      "z": "7afe1c1c.fc2824",
+      "name": "On / Off",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
+          {
+              "t": "gte",
+              "v": "1",
+              "vt": "str"
+          },
+          {
+              "t": "else"
+          }
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 2,
+      "x": 300,
+      "y": 940,
+      "wires": [
+          [
+              "2ed809fa.2f2af6"
+          ],
+          [
+              "b23ec25d.6c35c"
+          ]
+      ]
+  },
+  {
+      "id": "b23ec25d.6c35c",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Turn Off",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "light",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"input_boolean.night_mode\" }",
+      "mergecontext": "",
+      "x": 460,
+      "y": 1000,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "3c4fe02d.17d2",
+      "type": "function",
+      "z": "7afe1c1c.fc2824",
+      "name": "Get Room",
+      "func": "const regex = /^sensor\\.replay_(.*)$/gm;\nconst match = regex.exec(msg.topic)\n\nmsg.room = match[1]\nmsg.payload = {\n    data: {\n        entity_id: `light.${msg.room}`\n    }\n}\n\nreturn msg;",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 530,
+      "y": 860,
+      "wires": [
+          [
+              "672282a3.2cfdfc"
+          ]
+      ]
+  },
+  {
+      "id": "43d9a765.8b9648",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Replay Sensors",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "sensor.replay_",
+      "entityidfiltertype": "substring",
+      "haltifstate": "",
+      "outputinitially": false,
+      "x": 120,
+      "y": 860,
+      "wires": [
+          [
+              "c0728bf3.a299d8"
+          ]
+      ]
+  },
+  {
+      "id": "ba6ad983.a18ea8",
+      "type": "comment",
+      "z": "7afe1c1c.fc2824",
+      "name": "Presence Simulation",
+      "info": "",
+      "x": 130,
+      "y": 820,
+      "wires": []
+  },
+  {
+      "id": "a9911fb9.e6243",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Notify Dan",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "notify",
+      "service": "ios_dphone",
+      "data": "{ \"message\": \"Away Mode activated!\" }",
+      "mergecontext": "",
+      "x": 790,
+      "y": 660,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "d3a18a8a.743d28",
+      "type": "switch",
+      "z": "7afe1c1c.fc2824",
+      "name": "On / Off",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
+          {
+              "t": "eq",
+              "v": "on",
+              "vt": "str"
+          },
+          {
+              "t": "eq",
+              "v": "off",
+              "vt": "str"
+          }
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 2,
+      "x": 620,
+      "y": 640,
+      "wires": [
+          [],
+          [
+              "604a446d.ea9b6c",
+              "a9911fb9.e6243"
+          ]
+      ]
+  },
+  {
+      "id": "e27c4c5f.872bb",
+      "type": "api-current-state",
+      "z": "7afe1c1c.fc2824",
+      "name": "Away Mode On?",
+      "server": "81491f2d.c6cf8",
+      "halt_if": "off",
+      "override_topic": false,
+      "override_payload": false,
+      "entity_id": "input_boolean.away_mode",
+      "x": 350,
+      "y": 1060,
+      "wires": [
+          [
+              "653e6b2f.931eb4"
+          ]
+      ]
+  },
+  {
+      "id": "990e1cac.d6a09",
+      "type": "server-state-changed",
+      "z": "7afe1c1c.fc2824",
+      "name": "Sun Above Horizon",
+      "server": "81491f2d.c6cf8",
+      "entityidfilter": "sensor.replay_",
+      "entityidfiltertype": "substring",
+      "haltifstate": "below_horizon",
+      "outputinitially": false,
+      "x": 130,
+      "y": 1060,
+      "wires": [
+          [
+              "e27c4c5f.872bb"
+          ]
+      ]
+  },
+  {
+      "id": "653e6b2f.931eb4",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Turn Off All Lights",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "group",
+      "service": "turn_off",
+      "data": "{ \"entity_id\": \"group.all_lights\" }",
+      "mergecontext": "",
+      "x": 570,
+      "y": 1060,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "f45a93b.1d9fd7",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Everything Off",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "scene",
+      "service": "turn_on",
+      "data": "{ \"entity_id\": \"scene.everything_off\" }",
+      "mergecontext": "",
+      "x": 580,
+      "y": 700,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "9087377b.c85888",
+      "type": "stoptimer",
+      "z": "7afe1c1c.fc2824",
+      "duration": "30",
+      "units": "Minute",
+      "payloadtype": "num",
+      "payloadval": "0",
+      "name": "",
+      "x": 380,
+      "y": 700,
+      "wires": [
+          [
+              "f45a93b.1d9fd7",
+              "73b48259.d5d87c"
+          ],
+          []
+      ]
+  },
+  {
+      "id": "73b48259.d5d87c",
+      "type": "api-call-service",
+      "z": "7afe1c1c.fc2824",
+      "name": "Notify Dan",
+      "server": "81491f2d.c6cf8",
+      "service_domain": "notify",
+      "service": "ios_dphone",
+      "data": "{ \"message\": \"Turning everything off!\" }",
+      "mergecontext": "",
+      "x": 570,
+      "y": 760,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "81491f2d.c6cf8",
+      "type": "server",
+      "z": "",
+      "name": "Home Assistant"
   }
 ]
