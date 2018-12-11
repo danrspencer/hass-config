@@ -1,4 +1,18 @@
 modes:
+  name: Modes
   entities:
     - input_boolean.away_mode
     - input_boolean.night_mode
+  hours_to_show: 168
+
+climate:
+  name: Climate
+  entities:
+    - climate.house
+    - climate.kitchen
+    - switch.garage_heater
+
+lights:
+  entities:
+    - light.living_room
+    - light.kitchen

@@ -20,6 +20,7 @@ house_climate_control:
     - climate.house
     - climate.kitchen
     - switch.garage_heater
+    - history_graph.climate
 
 house_other:
   name: House Other

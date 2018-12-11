@@ -2,89 +2,88 @@ lights_kitchen:
   name: Kitchen
   icon: mdi:food-variant
   entities:
-  - input_boolean.kitchen_lights
-  - light.kitchen
-  - light.kitchen_lightstrip
-  - light.kitchen_spot_1
-  - light.kitchen_spot_2
-  - light.kitchen_spot_3
-  - light.kitchen_spot_4
-  - light.kitchen_spot_5
-  - light.kitchen_spot_6
-  - light.kitchen_lamp_1
-  - light.kitchen_lamp_2
-  - light.kitchen_hob_1
-  - light.kitchen_hob_2
+    - light.kitchen
+    - light.kitchen_lightstrip
+    - light.kitchen_spot_1
+    - light.kitchen_spot_2
+    - light.kitchen_spot_3
+    - light.kitchen_spot_4
+    - light.kitchen_spot_5
+    - light.kitchen_spot_6
+    - light.kitchen_lamp_1
+    - light.kitchen_lamp_2
+    - light.kitchen_hob_1
+    - light.kitchen_hob_2
 
 lights_living_room:
   name: Living Room
   entities:
-  - input_boolean.living_room_lights
-  - light.living_room
-  - light.living_room_lamp
-  - light.living_room_candle
-  - light.living_room_spot_1
-  - light.living_room_spot_2
-  - light.living_room_spot_3
-  - switch.living_room_fairy_lights
-  - switch.hyperion
-  - switch.living_room_fairy_lights
+    - input_boolean.living_room_lights
+    - light.living_room
+    - light.living_room_lamp
+    - light.living_room_candle
+    - light.living_room_spot_1
+    - light.living_room_spot_2
+    - light.living_room_spot_3
+    - switch.living_room_fairy_lights
+    - switch.hyperion
+    - switch.living_room_fairy_lights
 
-lights_top_floor_landing:  
+lights_top_floor_landing:
   name: Top Floor Landing
   entities:
-  - input_boolean.top_floor_lights_auto
-  - light.top_floor_landing
+    - input_boolean.top_floor_lights_auto
+    - light.top_floor_landing
 
 lights_bedroom:
   name: Bedroom
   icon: mdi:hotel
   entities:
-  - light.bedroom
-  - light.bedroom_lamp_1
-  - light.bedroom_lamp_2
+    - light.bedroom
+    - light.bedroom_lamp_1
+    - light.bedroom_lamp_2
 
 lights_bathrooms:
   name: Bathrooms
   entities:
-  - light.bathroom
-  - light.bathroom_lamp
-  - light.ensuite
-  - light.ensuite_lamp
+    - light.bathroom
+    - light.bathroom_lamp
+    - light.ensuite
+    - light.ensuite_lamp
 
 lights_dressing_room:
   name: Dressing Room
   icon: mdi:tshirt-crew
   entities:
-  - light.dressing_room
-  - light.dressing_room_lamp
+    - light.dressing_room
+    - light.dressing_room_lamp
 
 lights_toilet:
   name: Toilet
   entities:
-  - light.toilet
-  - light.toilet_lamp
+    - light.toilet
+    - light.toilet_lamp
 
 lights_guest_room:
   name: Guest Room
   icon: mdi:sleep
   entities:
-  - light.guest_room
-  - light.guest_room_lamp
+    - light.guest_room
+    - light.guest_room_lamp
 
 lights_hallway:
   name: Hallways
   icon: mdi:ceiling-light
   entities:
-  - light.hallways
-  - light.entrance_hall_1
-  - light.entrance_hall_2
-  - light.first_floor_landing
-  - light.top_floor_landing
+    - light.hallways
+    - light.entrance_hall_1
+    - light.entrance_hall_2
+    - light.first_floor_landing
+    - light.top_floor_landing
 
 lights_porch:
   name: Porch
   icon: mdi:door-closed
   entities:
-  - light.porch
-  - light.porch_light
+    - light.porch
+    - light.porch_light
