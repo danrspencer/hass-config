@@ -1,0 +1,4 @@
+modes:
+  entities:
+    - input_boolean.away_mode
+    - input_boolean.night_mode

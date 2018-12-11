@@ -41,7 +41,7 @@ house_other:
 house_controls:
   name: Controls
   entities:
-    - input_boolean.replay_mode
+    - history_graph.modes
     - input_boolean.away_mode
     - input_boolean.night_mode
     - switch.hair_straighteners

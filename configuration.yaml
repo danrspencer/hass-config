@@ -37,27 +37,27 @@ recorder:
   purge_keep_days: 14
   exclude:
     entities:
-    - sensor.date
+      - sensor.date
 history: !include configuration/history.yaml
 logbook:
   exclude:
     domains:
-    - group
+      - group
     entities:
-    - input_boolean.node_red_heartbeat
-    - binary_sensor.kitchen_motion
-    - binary_sensor.living_room_motion
-    - binary_sensor.entrance_hall_motion
-    - binary_sensor.top_floor_motion
-    - sensor.log_db_file_size
-    - sensor.cpu_temp
-    - sensor.average_load_15m
-    - sensor.since_last_boot
-    - sensor.replay_kitchen
-    - sensor.replay_living_room
-    - sensor.replay_hallways
-    - sensor.replay_top_floor_landing
-    - sensor.replay_ensuite
+      - input_boolean.node_red_heartbeat
+      - binary_sensor.kitchen_motion
+      - binary_sensor.living_room_motion
+      - binary_sensor.entrance_hall_motion
+      - binary_sensor.top_floor_motion
+      - sensor.log_db_file_size
+      - sensor.cpu_temp
+      - sensor.average_load_15m
+      - sensor.since_last_boot
+      - sensor.replay_kitchen
+      - sensor.replay_living_room
+      - sensor.replay_hallways
+      - sensor.replay_top_floor_landing
+      - sensor.replay_ensuite
 logger:
   logs:
     homeassistant.components.hue: debug
@@ -65,21 +65,21 @@ logger:
 # external links
 weblink:
   entities:
-  - name: Sky Router
-    icon: mdi:ethernet
-    url: http://192.168.0.1
-  - name: BT WiFi
-    icon: mdi:router-wireless
-    url: http://mybtdevice.home
-  - name: Travis
-    icon: mdi:worker
-    url: https://travis-ci.org/danrspencer/hass-config
-  - name: Node Red
-    icon: mdi:sitemap
-    url: https://hass5bill.duckdns.org:1880/
-  - name: Pi Hole
-    icon: mdi:block-helper
-    url: http://hassio.local
+    - name: Sky Router
+      icon: mdi:ethernet
+      url: http://192.168.0.1
+    - name: BT WiFi
+      icon: mdi:router-wireless
+      url: http://mybtdevice.home
+    - name: Travis
+      icon: mdi:worker
+      url: https://travis-ci.org/danrspencer/hass-config
+    - name: Node Red
+      icon: mdi:sitemap
+      url: https://hass5bill.duckdns.org:1880/
+    - name: Pi Hole
+      icon: mdi:block-helper
+      url: http://hassio.local
 
 # Text To Speech
 tts:
@@ -119,8 +119,8 @@ http:
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   trusted_networks:
-  - 127.0.0.1
-  - 192.168.0.0/24
+    - 127.0.0.1
+    - 192.168.0.0/24
 
 device_tracker:
   - platform: nmap_tracker
@@ -134,6 +134,7 @@ binary_sensor: !include_dir_merge_list configuration/binary_sensor
 climate: !include_dir_merge_list configuration/climate
 dyson: !include configuration/dyson.yaml
 group: !include_dir_merge_named configuration/group
+history_graph: !include_dir_merge_named configuration/history_graph
 input_boolean: !include_dir_merge_named configuration/input_boolean
 light: !include_dir_merge_list configuration/light
 media_player: !include_dir_merge_list configuration/media_player
