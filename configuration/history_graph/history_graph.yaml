@@ -1,7 +1,7 @@
 house:
   name: House
   entities:
-    - sensor.occupied
+    - binary_sensor.occupied
     - sensor.day_phase
     - input_boolean.away_mode
     - input_boolean.night_mode
