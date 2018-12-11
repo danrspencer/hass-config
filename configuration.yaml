@@ -38,7 +38,6 @@ recorder:
   exclude:
     entities:
       - sensor.date
-history: !include configuration/history.yaml
 logbook:
   exclude:
     domains:
