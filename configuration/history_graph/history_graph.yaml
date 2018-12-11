@@ -1,6 +1,7 @@
-modes:
-  name: Modes
+house:
+  name: House
   entities:
+    - sensor.occupied
     - input_boolean.away_mode
     - input_boolean.night_mode
   hours_to_show: 168
