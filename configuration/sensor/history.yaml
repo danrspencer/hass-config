@@ -2,7 +2,7 @@
 - platform: history_stats
   name: Kitchen Heater On Last Week
   entity_id: switch.kitchen_heater
-  state: 'on'
+  state: "on"
   start: >
     {{ as_timestamp(
         now().replace(hour=0).replace(minute=0).replace(second=0)
@@ -17,18 +17,26 @@
 - platform: history_stats
   name: Kitchen Heater On This Week
   entity_id: switch.kitchen_heater
-  state: 'on'
+  state: "on"
   start: >
     {{ as_timestamp(
         now().replace(hour=0).replace(minute=0).replace(second=0)
       ) - now().weekday() * 86400
     }}
-  end: '{{ now() }}'
+  end: "{{ now() }}"
 
 - platform: history_stats
   name: Kitchen Heater On Today
   entity_id: switch.kitchen_heater
-  state: 'on'
+  state: "on"
   start: >
     {{ now().replace(hour=0).replace(minute=0).replace(second=0) }}
-  end: '{{ now() }}'
+  end: "{{ now() }}"
+
+- platform: history_stats
+  name: Recent Motion
+  entity_id: binary_sensor.house_motion
+  state: "on"
+  end: "{{ now() }}"
+  duration:
+    minutes: 30
