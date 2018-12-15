@@ -12,12 +12,11 @@
       arg: wlan0
     - type: network_out
       arg: wlan0
-    - type: since_last_boot
 
 - platform: command_line
   name: CPU Temp
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) }}'
+  value_template: "{{ value | multiply(0.001) }}"
 
 - platform: cpuspeed
