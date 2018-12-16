@@ -5,7 +5,7 @@ house:
     - sensor.day_phase
     - input_boolean.away_mode
     - input_boolean.night_mode
-  hours_to_show: 168
+  hours_to_show: 24
 
 climate:
   name: Climate
@@ -13,8 +13,10 @@ climate:
     - climate.house
     - climate.kitchen
     - switch.garage_heater
+  hours_to_show: 24
 
 lights:
   entities:
     - light.living_room
     - light.kitchen
+  hours_to_show: 24
