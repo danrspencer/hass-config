@@ -57,9 +57,9 @@ logbook:
       - sensor.replay_hallways
       - sensor.replay_top_floor_landing
       - sensor.replay_ensuite
-logger:
-  logs:
-    homeassistant.components.hue: debug
+# logger:
+#   logs:
+#     homeassistant.components.hue: debug
 
 # external links
 weblink:

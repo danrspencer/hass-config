@@ -36,8 +36,8 @@
 - platform: history_stats
   name: Recent Motion
   entity_id: binary_sensor.house_motion
+  type: count
   state: "on"
   end: "{{ now() }}"
-  type: count
   duration:
     minutes: 30
