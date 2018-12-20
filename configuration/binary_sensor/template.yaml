@@ -6,5 +6,5 @@
         {{ 
           states.device_tracker.dphone.state == "home" or
           states.device_tracker.laurens_iphone.state == "home" or
-          states.sensor.recent_motion.state|float == 0
+          states.sensor.recent_motion.state|float > 0
         }}
