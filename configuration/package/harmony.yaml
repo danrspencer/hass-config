@@ -1,75 +1,73 @@
 harmony:
   remote:
-  - platform: harmony
-    name: Living Room TV
-    host: 192.168.0.5
-    scan_interval: 5
+    - platform: harmony
+      name: Living Room TV
 
   switch:
-  - platform: template
-    switches:
-      living_room_tv:
-        friendly_name: Living Room TV
-        value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
-        entity_id: sensor.living_room_tv
-        turn_on:
-          service:  remote.turn_on
-          entity_id: remote.living_room_tv
-        turn_off:
-          service: remote.turn_off
-          entity_id: remote.living_room_tv
-            
+    - platform: template
+      switches:
+        living_room_tv:
+          friendly_name: Living Room TV
+          value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
+          entity_id: sensor.living_room_tv
+          turn_on:
+            service: remote.turn_on
+            entity_id: remote.living_room_tv
+          turn_off:
+            service: remote.turn_off
+            entity_id: remote.living_room_tv
+
   sensor:
-  - platform: template
-    sensors:
-      living_room_tv:
-        friendly_name: 'Living Room TV'
-        value_template: '{{ states.remote.living_room_tv.attributes.current_activity }}'
+    - platform: template
+      sensors:
+        living_room_tv:
+          friendly_name: "Living Room TV"
+          value_template: "{{ states.remote.living_room_tv.attributes.current_activity }}"
 
   automation:
-  - alias: Harmony Auto Off Warn
-    trigger:
-    - entity_id: binary_sensor.living_room_motion
-      platform: state
-      from: 'on'
-      to: 'off'
-      for:
-        hours: 0
-        minutes: 28
-        seconds: 0
-    condition:
-      condition: template
-      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
-    action:
-    - service: tts.amazon_polly_say
-      data_template:
-        entity_id: media_player.living_room_mini
-        message: 'TV will automatically power off in 2 minutes due to lack of motion. Please flail arms wildly to keep the TV on.'
-      
-  - alias: Harmony Auto Off
-    trigger:
-    - entity_id: binary_sensor.living_room_motion
-      platform: state
-      from: 'on'
-      to: 'off'
-      for:
-        hours: 0
-        minutes: 30
-        seconds: 0
-    condition:
-      condition: template
-      value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
-    action:
-    - service: remote.turn_off
-      entity_id: remote.living_room_tv
+    - alias: Harmony Auto Off Warn
+      trigger:
+        - entity_id: binary_sensor.living_room_motion
+          platform: state
+          from: "on"
+          to: "off"
+          for:
+            hours: 0
+            minutes: 28
+            seconds: 0
+      condition:
+        condition: template
+        value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
+      action:
+        - service: tts.amazon_polly_say
+          data_template:
+            entity_id: media_player.living_room_mini
+            message: "TV will automatically power off in 2 minutes due to lack of motion. Please flail arms wildly to keep the TV on."
 
-  - alias: Harmony Auto Shield TV
-    trigger:
-    - entity_id: media_player.living_room_shield_tv
-      platform: state
-      to: 'playing'
-    action:
-    - service: remote.turn_on
-      data:
-        entity_id: remote.living_room_tv
-        activity: 'Watch Shield TV'
+    - alias: Harmony Auto Off
+      trigger:
+        - entity_id: binary_sensor.living_room_motion
+          platform: state
+          from: "on"
+          to: "off"
+          for:
+            hours: 0
+            minutes: 30
+            seconds: 0
+      condition:
+        condition: template
+        value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
+      action:
+        - service: remote.turn_off
+          entity_id: remote.living_room_tv
+
+    - alias: Harmony Auto Shield TV
+      trigger:
+        - entity_id: media_player.living_room_shield_tv
+          platform: state
+          to: "playing"
+      action:
+        - service: remote.turn_on
+          data:
+            entity_id: remote.living_room_tv
+            activity: "Watch Shield TV"
