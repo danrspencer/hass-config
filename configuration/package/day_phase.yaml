@@ -16,13 +16,13 @@ day_phase:
         day_phase:
           friendly_name: "Day Phase"
           value_template: >
-            {% if states.input_boolean.morning.state == "on" %}
+            {% if states.input_boolean.day_phase_morning.state == "on" %}
                 Morning
-            {% elif states.input_boolean.day.state == "on" %}
+            {% elif states.input_boolean.day_phase_day.state == "on" %}
                 Day
-            {% elif states.input_boolean.evening.state == "on" %}
+            {% elif states.input_boolean.day_phase_evening.state == "on" %}
                 Evening
-            {% elif states.input_boolean.night.state == "on" %}
+            {% elif states.input_boolean.day_phase_night.state == "on" %}
                 Night       
             {% else %}
                 {{ states.sensor.day_phase_real.state }}
