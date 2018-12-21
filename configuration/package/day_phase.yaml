@@ -2,6 +2,7 @@ day_phase:
   group:
     day_phase:
       name: Day Phase
+      control: hidden
       entities:
         - sensor.day_phase
         - input_boolean.holiday_mode
