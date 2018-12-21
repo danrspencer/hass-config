@@ -1,4 +1,15 @@
 day_phase:
+  group:
+    day_phase:
+      name: Day Phase
+      entities:
+        - sensor.day_phase
+        - sensor.day_phase_real
+        - input_boolean.day_phase_morning
+        - input_boolean.day_phase_day
+        - input_boolean.day_phase_evening
+        - input_boolean.day_phase_night
+
   sensor:
     - platform: template
       sensors:
@@ -41,24 +52,75 @@ day_phase:
             {% endif %}
 
   input_boolean:
-    morning:
+    day_phase_morning:
       name: Morning
       initial: off
       icon: mdi:weather-sunset-up
 
-    day:
+    day_phase_day:
       name: Day
       initial: off
       icon: mdi:weather-sunny
 
-    evening:
+    day_phase_evening:
       name: Evening
       initial: off
       icon: mdi:theme-light-dark
 
-    night:
+    day_phase_night:
       name: Night
       initial: off
       icon: mdi:weather-night
-  # automation:
-  #   - alias: Turn On Day
+
+  automation:
+    - alias: Day Phase Override Morning
+      trigger:
+        - entity_id: input_boolean.day_phase_morning
+          platform: state
+          to: "on"
+      action:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_day
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_evening
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_night
+
+    - alias: Day Phase Override Day
+      trigger:
+        - entity_id: input_boolean.day_phase_day
+          platform: state
+          to: "on"
+      action:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_morning
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_evening
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_night
+
+    - alias: Day Phase Override Evening
+      trigger:
+        - entity_id: input_boolean.day_phase_evening
+          platform: state
+          to: "on"
+      action:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_morning
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_day
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_night
+
+    - alias: Day Phase Override Night
+      trigger:
+        - entity_id: input_boolean.day_phase_night
+          platform: state
+          to: "on"
+      action:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_morning
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_day
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.day_phase_evening

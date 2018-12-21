@@ -49,14 +49,6 @@ house_controls:
     - switch.hair_straighteners
     - scene.everything_off
 
-house_day_phase_overrides:
-  name: Day Phase Overrides
-  entities:
-    - input_boolean.morning
-    - input_boolean.day
-    - input_boolean.evening
-    - input_boolean.night
-
 house_smoke_detector:
   name: Smoke Detector
   entities:
