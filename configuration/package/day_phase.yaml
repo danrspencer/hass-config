@@ -5,11 +5,11 @@ day_phase:
       control: hidden
       entities:
         - sensor.day_phase
-        - input_boolean.holiday_mode
         - input_boolean.day_phase_morning
         - input_boolean.day_phase_day
         - input_boolean.day_phase_evening
         - input_boolean.day_phase_night
+        - input_boolean.holiday_mode
         - sensor.day_phase_real
 
   sensor:
