@@ -1,42 +1,5 @@
 - platform: template
   sensors:
-    day_phase:
-      value_template: >
-        {% if states.input_boolean.morning.state == "on" %}
-            Morning
-        {% elif states.input_boolean.day.state == "on" %}
-            Day
-        {% elif states.input_boolean.evening.state == "on" %}
-            Evening
-        {% elif states.input_boolean.night.state == "on" %}
-            Night       
-        {% else %}
-            {{ states.sensor.day_phase_deal.state }}
-        {% endif %}
-    day_phase_real:
-      friendly_name: "Day Phase Real"
-      value_template: >
-        {% if   now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
-                now() < now().replace(hour=8).replace(minute=0).replace(second=0) and 
-                now().isoweekday() <= 5 
-        %}
-            Morning
-        {% elif states.sun.sun.state == "above_horizon" 
-            or  now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
-                now() < now().replace(hour=19).replace(minute=0).replace(second=0) and
-                now().isoweekday() <= 5 and 
-                states.input_boolean.holiday_mode.state == "off"
-            or  now() > now().replace(hour=6).replace(minute=0).replace(second=0) and
-                now() < now().replace(hour=16).replace(minute=0).replace(second=0)
-        %}
-            Day
-        {% elif now() < now().replace(hour=21).replace(minute=30).replace(second=0) and
-                now() > now().replace(hour=12).replace(minute=0).replace(second=0) 
-        %}
-            Evening
-        {% else %}
-            Night
-        {% endif %}
     lights_on:
       friendly_name: "Lights On"
       unit_of_measurement: "Count"
