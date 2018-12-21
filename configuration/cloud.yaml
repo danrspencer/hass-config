@@ -6,6 +6,7 @@ google_actions:
       - switch.living_room_fairy_lights
       - switch.living_room_tv
       - script.cinema_mode
+      - input_boolean.holiday_mode
       - climate.kitchen
       - fan.bedroom
   entity_config:
@@ -21,4 +22,3 @@ google_actions:
       room: Bedroom
       aliases:
         - Dyson
-

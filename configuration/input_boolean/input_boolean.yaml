@@ -13,6 +13,11 @@ night_mode:
   initial: off
   icon: mdi:power-sleep
 
+holiday_mode:
+  name: Holiday Mode
+  initial: off
+  icon: mdi:human-handsup
+
 cinema_mode:
   name: Cinema Mode
   initial: off
