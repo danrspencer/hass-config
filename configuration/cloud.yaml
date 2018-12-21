@@ -9,7 +9,6 @@ google_actions:
       - script.cinema_mode
 
       - input_boolean.holiday_mode
-
       - input_boolean.day_phase_morning
       - input_boolean.day_phase_day
       - input_boolean.day_phase_evening

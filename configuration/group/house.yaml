@@ -45,7 +45,6 @@ house_controls:
     - history_graph.house
     - input_boolean.away_mode
     - input_boolean.night_mode
-    - input_boolean.holiday_mode
     - switch.hair_straighteners
     - scene.everything_off
 

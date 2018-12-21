@@ -4,6 +4,7 @@ day_phase:
       name: Day Phase
       entities:
         - sensor.day_phase
+        - input_boolean.holiday_mode
         - input_boolean.day_phase_morning
         - input_boolean.day_phase_day
         - input_boolean.day_phase_evening
@@ -72,6 +73,11 @@ day_phase:
       name: Night
       initial: off
       icon: mdi:weather-night
+
+    holiday_mode:
+      name: Holiday Mode
+      initial: off
+      icon: mdi:human-handsup
 
   automation:
     - alias: Day Phase Override Morning
