@@ -9,6 +9,7 @@ default_view:
     - sun.sun
     - sensor.weather_symbol
     - group.house_controls
+    - group.house_day_phase_overrides
     - group.meta_switches
     - group.house_climate_control
     - group.media_players_active

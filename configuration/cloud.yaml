@@ -5,8 +5,15 @@ google_actions:
       - switch.garage_heater
       - switch.living_room_fairy_lights
       - switch.living_room_tv
+
       - script.cinema_mode
+
       - input_boolean.holiday_mode
+      - input_boolean.morning
+      - input_boolean.day
+      - input_boolean.evening
+      - input_boolean.night
+
       - climate.kitchen
       - fan.bedroom
   entity_config:
