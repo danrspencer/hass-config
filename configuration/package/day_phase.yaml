@@ -14,6 +14,7 @@ day_phase:
     - platform: template
       sensors:
         day_phase:
+          friendly_name: "Day Phase"
           value_template: >
             {% if states.input_boolean.morning.state == "on" %}
                 Morning
@@ -24,7 +25,7 @@ day_phase:
             {% elif states.input_boolean.night.state == "on" %}
                 Night       
             {% else %}
-                {{ states.sensor.day_phase_deal.state }}
+                {{ states.sensor.day_phase_real.state }}
             {% endif %}
         day_phase_real:
           friendly_name: "Day Phase Real"
