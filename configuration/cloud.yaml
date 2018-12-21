@@ -9,22 +9,26 @@ google_actions:
       - script.cinema_mode
 
       - input_boolean.holiday_mode
-      - input_boolean.morning
-      - input_boolean.day
-      - input_boolean.evening
-      - input_boolean.night
+
+      - input_boolean.day_phase_morning
+      - input_boolean.day_phase_day
+      - input_boolean.day_phase_evening
+      - input_boolean.day_phase_night
 
       - climate.kitchen
       - fan.bedroom
+
   entity_config:
     switch.hyperion:
       name: Ambilights
       room: Living Room
       aliases:
         - Hyperion
+
     script.cinema_mode:
       name: Cinema Mode
       room: Living Room
+
     fan.bedroom:
       room: Bedroom
       aliases:
