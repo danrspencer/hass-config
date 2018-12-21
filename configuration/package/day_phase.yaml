@@ -4,11 +4,11 @@ day_phase:
       name: Day Phase
       entities:
         - sensor.day_phase
-        - sensor.day_phase_real
         - input_boolean.day_phase_morning
         - input_boolean.day_phase_day
         - input_boolean.day_phase_evening
         - input_boolean.day_phase_night
+        - sensor.day_phase_real
 
   sensor:
     - platform: template
