@@ -5,39 +5,39 @@
     kitchen_light:
       friendly_name: "Kitchen Light"
       unit_of_measurement: Lux
-      value_template: "{{ states.sensor.kitchen_motion_sensor.attributes.light_level }}"
+      value_template: "{{ states.binary_sensor.kitchen_motion_sensor.attributes.light_level }}"
 
     kitchen_temperature:
       friendly_name: "Kitchen Temperature"
       unit_of_measurement: °C
-      value_template: "{{ states.sensor.kitchen_motion_sensor.attributes.temperature }}"
+      value_template: "{{ states.binary_sensor.kitchen_motion_sensor.attributes.temperature }}"
 
     living_room_light:
       friendly_name: "Living Room Light"
       unit_of_measurement: Lux
-      value_template: "{{ states.sensor.living_room_motion_sensor.attributes.light_level }}"
+      value_template: "{{ states.binary_sensor.living_room_motion_sensor.attributes.light_level }}"
 
     living_room_temperature:
       friendly_name: "Living Room Temperature"
       unit_of_measurement: °C
-      value_template: "{{ states.sensor.living_room_motion_sensor.attributes.temperature }}"
+      value_template: "{{ states.binary_sensor.living_room_motion_sensor.attributes.temperature }}"
 
     entrance_hall_light:
       friendly_name: "Entrance Hall Light"
       unit_of_measurement: Lux
-      value_template: "{{ states.sensor.entrance_hall_motion_sensor.attributes.light_level }}"
+      value_template: "{{ states.binary_sensor.entrance_hall_motion_sensor.attributes.light_level }}"
 
     entrance_hall_temperature:
       friendly_name: "Entrance Hall Temperature"
       unit_of_measurement: °C
-      value_template: "{{ states.sensor.entrance_hall_motion_sensor.attributes.temperature }}"
+      value_template: "{{ states.binary_sensor.entrance_hall_motion_sensor.attributes.temperature }}"
 
     top_floor_light:
       friendly_name: "Top Floor Light"
       unit_of_measurement: Lux
-      value_template: "{{ states.sensor.top_floor_motion_sensor.attributes.light_level }}"
+      value_template: "{{ states.binary_sensor.top_floor_motion_sensor.attributes.light_level }}"
 
     top_floor_temperature:
       friendly_name: "Top Floor Temperature"
       unit_of_measurement: °C
-      value_template: "{{ states.sensor.top_floor_motion_sensor.attributes.temperature }}"
+      value_template: "{{ states.binary_sensor.top_floor_motion_sensor.attributes.temperature }}"

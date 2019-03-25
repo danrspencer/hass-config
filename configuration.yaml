@@ -115,8 +115,6 @@ http:
     - https://hassio.local:7080
 
   base_url: !secret hass_base_url
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
   trusted_networks:
     - 192.168.0.0/24
 
