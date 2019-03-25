@@ -1,0 +1,6 @@
+- platform: huesensor
+
+- platform: nmap_tracker
+  hosts:
+    - 192.168.0.6
+    - 192.168.0.9
