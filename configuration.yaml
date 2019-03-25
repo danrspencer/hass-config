@@ -129,7 +129,6 @@ history_graph: !include_dir_merge_named configuration/history_graph
 input_boolean: !include_dir_merge_named configuration/input_boolean
 light: !include_dir_merge_list configuration/light
 media_player: !include_dir_merge_list configuration/media_player
-nest: !include configuration/nest.yaml
 scene: !include_dir_merge_list configuration/scene
 script: !include_dir_merge_named configuration/script
 sensor: !include_dir_merge_list configuration/sensor
