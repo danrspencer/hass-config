@@ -1,3 +1,5 @@
+- platform: huesensor
+
 - platform: template
   sensors:
     house_motion:
