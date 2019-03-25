@@ -1,0 +1,15 @@
+- platform: tplink
+  name: Kitchen Heater
+  host: 192.168.0.42
+
+- platform: tplink
+  name: Living Room Fairy Lights
+  host: 192.168.0.48
+
+- platform: tplink
+  name: Garage Heater
+  host: 192.168.0.66
+
+- platform: tplink
+  name: Hair Straighteners
+  host: 192.168.0.56
