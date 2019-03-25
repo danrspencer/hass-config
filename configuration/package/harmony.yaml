@@ -27,7 +27,7 @@ harmony:
   automation:
     - alias: Harmony Auto Off Warn
       trigger:
-        - entity_id: binary_sensor.living_room_motion
+        - entity_id: binary_sensor.living_room_motion_sensor
           platform: state
           from: "on"
           to: "off"
@@ -46,7 +46,7 @@ harmony:
 
     - alias: Harmony Auto Off
       trigger:
-        - entity_id: binary_sensor.living_room_motion
+        - entity_id: binary_sensor.living_room_motion_sensor
           platform: state
           from: "on"
           to: "off"

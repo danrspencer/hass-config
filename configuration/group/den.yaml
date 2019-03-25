@@ -2,6 +2,6 @@ den_switches:
   name: Den
   icon: mdi:gamepad-variant
   entities:
-  - switch.playstation_4
-  - light.den
-  - light.den_lamp
+    - switch.playstation_4
+    - light.den
+    - light.den_lamp

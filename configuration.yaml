@@ -44,10 +44,10 @@ logbook:
       - group
     entities:
       - input_boolean.node_red_heartbeat
-      - binary_sensor.kitchen_motion
-      - binary_sensor.living_room_motion
-      - binary_sensor.entrance_hall_motion
-      - binary_sensor.top_floor_motion
+      - binary_sensor.kitchen_motion_sensor
+      - binary_sensor.living_room_motion_sensor
+      - binary_sensor.entrance_hall_motion_sensor
+      - binary_sensor.top_floor_motion_sensor
       - sensor.log_db_file_size
       - sensor.cpu_temp
       - sensor.average_load_15m
