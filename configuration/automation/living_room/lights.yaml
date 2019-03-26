@@ -1,6 +1,6 @@
 - alias: Living Room Lights Off
   trigger:
-    - entity_id: binary_sensor.living_room_motion_sensor
+    - entity_id: binary_sensor.living_room_motion
       platform: state
       from: "on"
       to: "off"
@@ -20,7 +20,7 @@
 
 - alias: Living Room Lights On
   trigger:
-    - entity_id: binary_sensor.living_room_motion_sensor
+    - entity_id: binary_sensor.living_room_motion
       platform: state
       from: "off"
       to: "on"

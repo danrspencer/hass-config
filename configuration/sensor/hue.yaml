@@ -15,12 +15,12 @@
     living_room_light:
       friendly_name: "Living Room Light"
       unit_of_measurement: Lux
-      value_template: "{{ states.binary_sensor.living_room_motion_sensor.attributes.light_level }}"
+      value_template: "{{ states.binary_sensor.living_room_motion.attributes.light_level }}"
 
     living_room_temperature:
       friendly_name: "Living Room Temperature"
       unit_of_measurement: °C
-      value_template: "{{ states.binary_sensor.living_room_motion_sensor.attributes.temperature }}"
+      value_template: "{{ states.binary_sensor.living_room_motion.attributes.temperature }}"
 
     entrance_hall_light:
       friendly_name: "Entrance Hall Light"

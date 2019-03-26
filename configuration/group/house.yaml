@@ -31,7 +31,7 @@ house_other:
     - sensor.entrance_hall_light
     - binary_sensor.entrance_hall_motion
     - sensor.living_room_light
-    - binary_sensor.living_room_motion_sensor
+    - binary_sensor.living_room_motion
     - sensor.top_floor_light
     - binary_sensor.top_floor_motion
     - sensor.bathroom_light

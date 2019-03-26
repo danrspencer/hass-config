@@ -20,7 +20,7 @@ living_room:
   icon: mdi:sofa
   view: yes
   entities:
-    - binary_sensor.living_room_motion_sensor
+    - binary_sensor.living_room_motion
     - sensor.living_room_light
     - sensor.living_room_temperature
     - group.living_room_activities

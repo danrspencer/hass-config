@@ -6,10 +6,40 @@
       friendly_name: "House Motion"
       value_template: >
         {{ 
-          states.binary_sensor.entrance_hall_motion_sensor.state == 'on' or
-          states.binary_sensor.kitchen_motion_sensor.state == 'on' or
-          states.binary_sensor.living_room_motion_sensor.state == 'on' or
-          states.binary_sensor.top_floor_motion_sensor.state == 'on' or
-          states.binary_sensor.toilet_motion_sensor.state == 'on' or
-          states.binary_sensor.bathroom_motion_sensor.state == 'on'
+          states.binary_sensor.entrance_hall_motion.state == 'on' or
+          states.binary_sensor.kitchen_motion.state == 'on' or
+          states.binary_sensor.living_room_motion.state == 'on' or
+          states.binary_sensor.top_floor_motion.state == 'on' or
+          states.binary_sensor.toilet_motion.state == 'on' or
+          states.binary_sensor.bathroom_motion.state == 'on'
         }}
+
+    kitchen_motion:
+      friendly_name: "Kitchen Motion"
+      value_template: >
+        {{ states.binary_sensor.kitchen_motion_sensor.state == 'on' }}
+
+    living_room_motion:
+      friendly_name: "Living Room Motion"
+      value_template: >
+        {{ states.binary_sensor.living_room_motion_sensor.state == 'on' }}
+
+    entrance_hall_motion:
+      friendly_name: "Entrance Hall Motion"
+      value_template: >
+        {{ states.binary_sensor.entrance_hall_motion_sensor.state == 'on' }}
+
+    top_floor_motion:
+      friendly_name: "Top Floor Motion"
+      value_template: >
+        {{ states.binary_sensor.top_floor_motion_sensor.state == 'on' }}
+
+    toilet_motion:
+      friendly_name: "Toilet Motion"
+      value_template: >
+        {{ states.binary_sensor.toilet_motion_sensor.state == 'on' }}
+
+    bathroom_motion:
+      friendly_name: "Bathroom Motion"
+      value_template: >
+        {{ states.binary_sensor.bathroom_motion_sensor.state == 'on' }}
