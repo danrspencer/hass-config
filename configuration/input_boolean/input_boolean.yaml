@@ -1,8 +1,3 @@
-living_room_lights:
-  name: Living Room Lights
-  initial: off
-  icon: mdi:traffic-light
-
 away_mode:
   name: Away Mode
   initial: off
