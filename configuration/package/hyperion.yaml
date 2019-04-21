@@ -1,7 +1,7 @@
 hyperion:
-  light:
-    - platform: hyperion
-      host: 192.168.0.27
+  # light:
+  #   - platform: hyperion
+  #     host: 192.168.0.27
 
   automation:
     - alias: Hyperion Sync
