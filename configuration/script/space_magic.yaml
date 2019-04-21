@@ -1,19 +1,20 @@
 space_magic:
   sequence:
-  - service: media_player.turn_on
-    data:
-      entity_id: media_player.playstation_4
-  - service: remote.turn_on
-    data:
-      entity_id:  remote.living_room_tv
-      activity: "Play PS4"
-  - delay:
-      seconds: 20
-  - service: remote.send_command
-    data: 
-      entity_id: remote.living_room_tv
-      device: "Sony PS4",
-      command: "Cross",
-      num_repeats: 5,
-      delay_secs: 2
-    
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.playstation_4
+    - service: remote.turn_on
+      data:
+        entity_id: remote.living_room_tv
+        activity: "Play PS4"
+    - delay:
+        seconds: 20
+    # - condition: state
+    #   entity_id: media_player.playstation_4
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room_tv
+        device: "Sony PS4"
+        command: "Cross"
+        num_repeats: 5
+        delay_secs: 2
