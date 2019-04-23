@@ -6,10 +6,10 @@ google_actions:
       - switch.living_room_fairy_lights
       - switch.living_room_tv
 
-      - script.cinema_mode
-
       - input_boolean.holiday_mode
       - input_boolean.night_mode
+      - input_boolean.cinema_mode
+
       - input_boolean.day_phase_morning
       - input_boolean.day_phase_day
       - input_boolean.day_phase_evening
