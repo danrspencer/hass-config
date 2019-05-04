@@ -23,8 +23,8 @@
     living_room_tv:
       friendly_name: "Living Room TV"
       value_template: >
-        {% if states.remote.remote.state == "on" %}
-          {{ states.remote.living_room.attributes.current_activity  }}
+        {% if states.remote.living_room_tv.state == "on" %}
+          {{ states.remote.living_room_tv.attributes.current_activity }}
         {% else %}
           off
         {% endif %}
