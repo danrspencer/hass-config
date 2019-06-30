@@ -1,0 +1,3 @@
+[submodule "submodules/Hue-sensors-HASS"]
+	path = submodules/Hue-sensors-HASS
+	url = https://github.com/robmarkcole/Hue-sensors-HASS.git
