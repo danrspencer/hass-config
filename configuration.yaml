@@ -106,12 +106,6 @@ zone:
     longitude: !secret zone_d_work_long
     icon: mdi:briefcase
 
-http:
-  api_password: !secret hass_password
-  base_url: !secret hass_base_url
-  trusted_networks:
-    - 192.168.0.0/24
-
 system_health:
 
 # Components

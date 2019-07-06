@@ -10,3 +10,5 @@ homebridge/accessories
 homebridge/persist
 
 google-assistant
+
+node_modules
