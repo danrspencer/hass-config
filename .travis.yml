@@ -1,12 +1,13 @@
 language: python
 cache: pip
 python:
-  - '3.5'
+  - "3.5"
 install:
-  - 'pip3 install homeassistant'
+  - "pip3 install homeassistant"
 script:
-  - 'mv secrets.yaml.sample secrets.yaml'
-  - 'touch fullchain.pem'
-  - 'touch privkey.pem'
-  - 'hass -c . --script check_config | tee check.output'
+  - "mv secrets.yaml.sample secrets.yaml"
+  - "touch fullchain.pem"
+  - "touch privkey.pem"
+  - "hass --version"
+  - "hass -c . --script check_config | tee check.output"
   - '! less check.output | grep -q "Failed config"'
