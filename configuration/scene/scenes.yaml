@@ -4,7 +4,3 @@
     group.all_remotes: off
     group.all_switches: off
     group.media: off
-
-- name: Relaxed Cooking
-  entities:
-    script.relaxed_cooking: on
