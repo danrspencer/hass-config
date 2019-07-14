@@ -19,9 +19,6 @@ frontend:
   javascript_version: latest
 ios:
 map:
-# ring:
-#   username: !secret ring_username
-#   password: !secret ring_password
 hue:
   bridges:
     - host: 192.168.0.2
