@@ -19,11 +19,6 @@ frontend:
   javascript_version: latest
 ios:
 map:
-hue:
-  bridges:
-    - host: 192.168.0.2
-      allow_unreachable: false
-      allow_hue_groups: true
 sun:
 updater:
   include_used_components: true

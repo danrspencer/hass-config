@@ -1,4 +1,2 @@
-# - platform: ring
-
 - platform: yr
   name: Weather
