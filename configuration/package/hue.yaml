@@ -5,14 +5,7 @@ hue:
         allow_unreachable: false
         allow_hue_groups: true
 
-  binary_sensor:
-    - platform: huesensor
-
-  device_tracker:
-    - platform: huesensor
-
   sensor:
-    - platform: huesensor
     - platform: template
       sensors:
         house_motion:
