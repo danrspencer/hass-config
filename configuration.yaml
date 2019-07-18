@@ -109,7 +109,7 @@ system_health:
 automation: !include_dir_merge_list configuration/automation
 binary_sensor: !include_dir_merge_list configuration/binary_sensor
 climate: !include_dir_merge_list configuration/climate
-device_tracker: !include_dir_merge_list configuration/device_tracker
+# device_tracker: !include_dir_merge_list configuration/device_tracker
 dyson: !include configuration/dyson.yaml
 group: !include_dir_merge_named configuration/group
 history_graph: !include_dir_merge_named configuration/history_graph
