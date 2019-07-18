@@ -5,4 +5,4 @@
   min_temp: 10
   max_temp: 25
   target_temp: 12
-  initial_operation_mode: "off"
+  initial_hvac_mode: "off"
