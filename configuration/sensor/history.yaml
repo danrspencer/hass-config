@@ -40,4 +40,4 @@
   state: "on"
   end: "{{ now() }}"
   duration:
-    minutes: 30
+    minutes: 60
