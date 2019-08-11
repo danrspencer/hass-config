@@ -11,6 +11,7 @@ homeassistant:
 
 # Enablers
 browser:
+circadian_lighting:
 cloud: !include configuration/cloud.yaml
 config:
 conversation:
