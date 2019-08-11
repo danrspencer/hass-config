@@ -17,3 +17,8 @@ node_red_heartbeat:
   name: Node Red Heartbeat
   initial: off
   icon: mdi:heart-pulse
+
+ps4_living_room:
+  name: PS4 Living Room
+  initial: on
+  icon: mdi:game
