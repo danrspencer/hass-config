@@ -18,7 +18,6 @@ discovery:
 frontend:
   javascript_version: latest
 ios:
-mobile_app:
 map:
 hue:
   bridges:
