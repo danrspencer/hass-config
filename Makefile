@@ -19,7 +19,7 @@ restart:
 	ssh ${REMOTE} "hassio homeassistant restart"
 
 secrets:
-	cp ./secrets.yaml.sample ./config/secrets.yaml
+	cp ./secrets.yaml.sample ./secrets.yaml
 
 sync-config:
 	scp -r ${REMOTE}:/config/*.yaml ./
