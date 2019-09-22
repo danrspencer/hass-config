@@ -17,6 +17,7 @@ google_actions:
 
       - climate.kitchen
       - fan.bedroom
+      - media_player.playstation_4
 
   entity_config:
     switch.hyperion:
