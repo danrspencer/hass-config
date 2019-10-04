@@ -12,14 +12,6 @@ day_phase:
         - input_boolean.holiday_mode
         - sensor.day_phase_real
 
-  binary_sensor:
-    - platform: template
-      sensors:
-        civil_twilight:
-          friendly_name: "Civil Twilight"
-          value_template: >
-            {{ states.sun.sun.attributes.elevation < -5 }}
-
   sensor:
     - platform: template
       sensors:
@@ -41,7 +33,7 @@ day_phase:
           friendly_name: "Day Phase Real"
           value_template: >
             {% set time = now() %}
-            {% set isDaylight = states.input_boolean.civil_twilight.state == "off" %}
+            {% set isDaylight = states.sun.sun.attributes.elevation < -5 %}
             {% set notHoliday = states.input_boolean.holiday_mode.state == "off" %}
             {% set isWeekday = time.isoweekday() <= 5 %}
             {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
