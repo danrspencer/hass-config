@@ -12,6 +12,14 @@ day_phase:
         - input_boolean.holiday_mode
         - sensor.day_phase_real
 
+  binary_sensor:
+    - platform: template
+      sensors:
+        civil_twilight:
+          friendly_name: "Civil Twilight"
+          value_template: >
+            {{ states.sun.sun.attributes.elevation < -5 }}
+
   sensor:
     - platform: template
       sensors:
