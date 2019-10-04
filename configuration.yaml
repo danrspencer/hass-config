@@ -25,6 +25,10 @@ hue:
     - host: 192.168.0.2
       allow_unreachable: false
       allow_hue_groups: true
+      filename: lights.conf
+    - host: 192.168.0.71
+      filename: sensors.conf
+
 sun:
 updater:
   include_used_components: true
