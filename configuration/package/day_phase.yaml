@@ -13,6 +13,9 @@ day_phase:
         - sensor.day_phase_real
 
   sensor:
+    - platform: time_date
+      display_options:
+        - "time"
     - platform: template
       sensors:
         day_phase:
