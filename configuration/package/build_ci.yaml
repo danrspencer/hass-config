@@ -40,9 +40,8 @@ build_ci:
       name: "Travis Build Status"
 
     - platform: command_line
-      command: >
-        'git log -1 --pretty=format:\'{"commit": "%H", "abbreviated_commit": "%h", "refs": "%D", "subject": "%s", "author": { "name": "%aN", "email": "%aE", "date": "%aD"}, "commiter": { "name": "%cN", "email": "%cE", "date": "%cD" } }\''
       name: Git
+      command: 'git log -1 --pretty=format:''{"commit": "%H", "abbreviated_commit": "%h", "refs": "%D", "subject": "%s", "author": { "name": "%aN", "email": "%aE", "date": "%aD"}, "commiter": { "name": "%cN", "email": "%cE", "date": "%cD" } }'''
       value_template: >
         {{ value_json.abbreviated_commit }}
       json_attributes:
