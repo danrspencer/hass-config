@@ -7,7 +7,7 @@ build_ci:
           from: "started"
           to: "failed"
       action:
-        - service: notify.ios_dphone
+        - service: notify.mobile_app_dphone
           data_template:
             message: >
               Travis build failed! {{ "\uD83E\uDD2C" }}
@@ -21,7 +21,7 @@ build_ci:
           from: "started"
           to: "passed"
       action:
-        - service: notify.ios_dphone
+        - service: notify.mobile_app_dphone
           data_template:
             message: >
               Travis build passed! {{ "\uD83D\uDC4D" }}
