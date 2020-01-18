@@ -42,6 +42,7 @@ day_phase:
             {% set isWeekday = time.isoweekday() <= 5 %}
             {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
             {% set t0600 = t0000.replace(hour=6) %}
+            {% set t0800 = t0000.replace(hour=8) %}
             {% set t1200 = t0000.replace(hour=12) %}
             {% set t1600 = t0000.replace(hour=16) %}
             {% set t1900 = t0000.replace(hour=19) %}
