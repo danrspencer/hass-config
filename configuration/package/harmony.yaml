@@ -1,26 +1,5 @@
 harmony:
   remote:
     - platform: harmony
-      name: Living Room TV
+      name: Harmony Remote
       host: 192.168.0.189
-
-  switch:
-    - platform: template
-      switches:
-        living_room_tv:
-          friendly_name: Living Room TV
-          value_template: '{{ states.sensor.living_room_tv.state != "PowerOff" }}'
-          entity_id: sensor.living_room_tv
-          turn_on:
-            service: remote.turn_on
-            entity_id: remote.living_room_tv
-          turn_off:
-            service: remote.turn_off
-            entity_id: remote.living_room_tv
-
-  sensor:
-    - platform: template
-      sensors:
-        living_room_tv:
-          friendly_name: "Living Room TV"
-          value_template: "{{ states.remote.living_room_tv.attributes.current_activity }}"
