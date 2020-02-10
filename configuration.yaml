@@ -99,20 +99,17 @@ tts:
 
 # Device Tracking
 zone:
-  - zone:
-    name: Home
+  - name: Home
     latitude: !secret zone_home_lat
     longitude: !secret zone_home_long
     radius: 250
 
-  - zone 2:
-    name: Work
+  - name: Work
     latitude: !secret zone_l_work_lat
     longitude: !secret zone_l_work_long
     icon: mdi:briefcase
 
-  - zone 3:
-    name: Work
+  - name: Work
     latitude: !secret zone_d_work_lat
     longitude: !secret zone_d_work_long
     icon: mdi:briefcase
