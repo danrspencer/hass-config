@@ -1,17 +1,4 @@
 day_phase:
-  group:
-    day_phase:
-      name: Day Phase
-      control: hidden
-      entities:
-        - sensor.day_phase
-        - input_boolean.day_phase_morning
-        - input_boolean.day_phase_day
-        - input_boolean.day_phase_evening
-        - input_boolean.day_phase_night
-        - input_boolean.holiday_mode
-        - sensor.day_phase_real
-
   sensor:
     - platform: time_date
       display_options:
