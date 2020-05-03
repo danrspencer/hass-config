@@ -24,7 +24,7 @@ day_phase:
           entity_id: sensor.time
           value_template: >
             {% set time = now() %}
-            {% set isDaylight = states.sun.sun.attributes.elevation > -5 %}
+            {% set isDaylight = states.sun.sun.state == "above_horizon" %}
             {% set notHoliday = states.input_boolean.holiday_mode.state == "off" %}
             {% set isWeekday = time.isoweekday() <= 5 %}
             {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
