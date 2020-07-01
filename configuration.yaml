@@ -69,25 +69,6 @@ logbook:
       - sensor.replay_top_floor_landing
       - sensor.replay_ensuite
 
-# external links
-weblink:
-  entities:
-    - name: Sky Router
-      icon: mdi:ethernet
-      url: http://192.168.0.1
-    - name: BT WiFi
-      icon: mdi:router-wireless
-      url: http://mybtdevice.home
-    - name: Travis
-      icon: mdi:worker
-      url: https://travis-ci.org/danrspencer/hass-config
-    - name: Node Red
-      icon: mdi:sitemap
-      url: https://hass5bill.duckdns.org:1880/
-    - name: Pi Hole
-      icon: mdi:block-helper
-      url: http://hassio.local
-
 # Text To Speech
 tts:
   platform: amazon_polly
@@ -122,7 +103,6 @@ binary_sensor: !include_dir_merge_list configuration/binary_sensor
 climate: !include_dir_merge_list configuration/climate
 # device_tracker: !include_dir_merge_list configuration/device_tracker
 dyson: !include configuration/dyson.yaml
-history_graph: !include_dir_merge_named configuration/history_graph
 input_boolean: !include_dir_merge_named configuration/input_boolean
 light: !include_dir_merge_list configuration/light
 media_player: !include_dir_merge_list configuration/media_player
