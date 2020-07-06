@@ -13,4 +13,5 @@ homebridge/persist
 
 google-assistant
 
+deps
 node_modules

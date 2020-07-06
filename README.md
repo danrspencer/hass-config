@@ -11,7 +11,6 @@ My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal idea
 - [Day Phase Sensor](#day-phase-sensor)
 - [Lighting Automations (Philips Hue)](#lighting-automations)
 - Harmony Integration
-- Hyperion Integration
 - Dynamic Group For Active Media Players
 - Audio Greeters
 - Nest Synced Generic Thermostat

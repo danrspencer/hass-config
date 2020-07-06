@@ -1,7 +1,6 @@
 google_actions:
   filter:
     include_entities:
-      - switch.hyperion
       - switch.garage_heater
       - switch.living_room_fairy_lights
       - switch.living_room_tv
@@ -18,13 +17,6 @@ google_actions:
       - climate.kitchen
       - fan.bedroom
       - media_player.playstation_4
-
-  entity_config:
-    switch.hyperion:
-      name: Ambilights
-      room: Living Room
-      aliases:
-        - Hyperion
 
     script.cinema_mode:
       name: Cinema Mode
