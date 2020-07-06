@@ -1,3 +1,6 @@
 [submodule "submodules/ha-illuminance"]
 	path = submodules/ha-illuminance
 	url = https://github.com/pnbruckner/ha-illuminance.git
+[submodule "submodules/hacs"]
+	path = submodules/hacs
+	url = https://github.com/hacs/integration.git
