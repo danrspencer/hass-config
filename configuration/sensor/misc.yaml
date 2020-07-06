@@ -2,4 +2,4 @@
   name: Weather
 
 - platform: illuminance
-  entity_id: sensor.yr_symbol
+  entity_id: sensor.weather_symbol
