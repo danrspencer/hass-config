@@ -18,6 +18,7 @@ google_actions:
       - fan.bedroom
       - media_player.playstation_4
 
+  entity_config:
     script.cinema_mode:
       name: Cinema Mode
       room: Living Room
