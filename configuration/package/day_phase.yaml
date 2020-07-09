@@ -25,7 +25,7 @@ day_phase:
           value_template: >
             {% set time = now() %}
             {% set isDaylight = states.sun.sun.state == "above_horizon" %}
-            {% set isBright = states.sensor.illuminance.state >= "1000" %}
+            {% set isBright = states.sensor.illuminance.state | int >= 1000 %}
             {% set notHoliday = states.input_boolean.holiday_mode.state == "off" %}
             {% set isWeekday = time.isoweekday() <= 5 %}
             {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
