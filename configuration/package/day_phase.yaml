@@ -34,7 +34,7 @@ day_phase:
             {% set t1200 = t0000.replace(hour=12) %}
             {% set t1600 = t0000.replace(hour=16) %}
             {% set t1900 = t0000.replace(hour=19) %}
-            {% set t2130 = t0000.replace(hour=21).replace(minute=30) %}
+            {% set t2200 = t0000.replace(hour=22) %}
 
             {% if t0600 <= time and time < t0800 and isWeekday %}
               Morning
@@ -43,7 +43,7 @@ day_phase:
                 or (t0600 <= time and time < t1600)
             %} 
                 Day
-            {% elif t1600 <= time and time < t2130 %}
+            {% elif t1600 <= time and time < t2200 %}
                 Evening
             {% else %}
                 Night
