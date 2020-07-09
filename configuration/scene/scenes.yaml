@@ -1,6 +1,0 @@
-- name: Everything Off
-  entities:
-    group.all_lights: off
-    group.all_remotes: off
-    group.all_switches: off
-    group.media: off
