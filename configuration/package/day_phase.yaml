@@ -38,7 +38,7 @@ day_phase:
 
             {% if t0600 <= time and time < t0800 and isWeekday %}
               Morning
-            {% elif (isBright or isDaylight)
+            {% elif (isBright and isDaylight)
                 or (t0600 <= time and time < t1900 and isWeekday and notHoliday)
                 or (t0600 <= time and time < t1600)
             %} 
