@@ -80,15 +80,21 @@ day_phase:
       trigger:
         - entity_id: sensor.day_phase_real
           platform: state
+        - entity_id: input_boolean.day_phase_morning
+          platform: state
+          to: "off"
+        - entity_id: input_boolean.day_phase_day
+          platform: state
+          to: "off"
+        - entity_id: input_boolean.day_phase_evening
+          platform: state
+          to: "off"
+        - entity_id: input_boolean.day_phase_night
+          platform: state
+          to: "off"
       action:
-        - service: input_boolean.turn_off
-          entity_id: input_boolean.day_phase_morning
-        - service: input_boolean.turn_off
-          entity_id: input_boolean.day_phase_day
-        - service: input_boolean.turn_off
-          entity_id: input_boolean.day_phase_evening
-        - service: input_boolean.turn_off
-          entity_id: input_boolean.day_phase_night
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
 
     - alias: Day Phase Override Morning
       trigger:
