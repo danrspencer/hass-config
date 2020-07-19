@@ -11,7 +11,6 @@ climate:
   name: Climate
   entities:
     - climate.house
-    - climate.kitchen
     - switch.garage_heater
   hours_to_show: 24
 
