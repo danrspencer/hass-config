@@ -94,7 +94,8 @@ day_phase:
           to: "off"
       action:
         - service: input_boolean.turn_on
-          entity_id: input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
+          entity_id: >
+            input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
 
     - alias: Day Phase Override Morning
       trigger:
