@@ -76,10 +76,18 @@ day_phase:
       icon: mdi:human-handsup
 
   automation:
-    - alias: Day Phase Overrride Reset
+    - alias: Day Phase Overrride Update
       trigger:
         - entity_id: sensor.day_phase_real
           platform: state
+      action:
+        - service: input_boolean.turn_on
+          data_template:
+            entity_id: >
+              input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
+
+    - alias: Day Phase Overrride Reset
+      trigger:
         - entity_id: input_boolean.day_phase_morning
           platform: state
           to: "off"
@@ -92,11 +100,20 @@ day_phase:
         - entity_id: input_boolean.day_phase_night
           platform: state
           to: "off"
+      condition:
+        - condition: state
+          entity_id:
+            - input_boolean.day_phase_morning
+            - input_boolean.day_phase_day
+            - input_boolean.day_phase_evening
+            - input_boolean.day_phase_night
+          state: "off"
       action:
         - service: input_boolean.turn_on
           data_template:
             entity_id: >
               input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
+
 
     - alias: Day Phase Override Morning
       trigger:
