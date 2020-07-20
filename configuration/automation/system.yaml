@@ -7,6 +7,10 @@
       data_template:
         message: >
           Home Assistant back online! {{ "\uD83E\uDD29" }}
+    - service: notify.mobile_app_ipad
+      data_template:
+        message: >
+          Home Assistant back online! {{ "\uD83E\uDD29" }}
     - delay:
         seconds: 30
     - service: hassio.addon_stop
@@ -19,6 +23,10 @@
       event: shutdown
   action:
     - service: notify.mobile_app_dphone
+      data_template:
+        message: >
+          Home Assistant is going down! {{ "\uD83D\uDE34" }}
+    - service: notify.mobile_app_ipad
       data_template:
         message: >
           Home Assistant is going down! {{ "\uD83D\uDE34" }}
