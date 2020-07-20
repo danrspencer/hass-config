@@ -102,11 +102,16 @@ day_phase:
           to: "off"
       condition:
         - condition: state
-          entity_id:
-            - input_boolean.day_phase_morning
-            - input_boolean.day_phase_day
-            - input_boolean.day_phase_evening
-            - input_boolean.day_phase_night
+          entity_id: input_boolean.day_phase_morning
+          state: "off"
+        - condition: state
+          entity_id: input_boolean.day_phase_day
+          state: "off"
+        - condition: state
+          entity_id: input_boolean.day_phase_evening
+          state: "off"
+        - condition: state
+          entity_id: input_boolean.day_phase_night
           state: "off"
       action:
         - service: input_boolean.turn_on
