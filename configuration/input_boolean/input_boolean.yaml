@@ -4,7 +4,7 @@ away_mode:
   icon: mdi:exit-run
 
 sleep_mode:
-  name: Night Mode
+  name: Sleep Mode
   initial: on
   icon: mdi:bed
 
