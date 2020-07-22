@@ -3,10 +3,10 @@ away_mode:
   initial: off
   icon: mdi:exit-run
 
-night_mode:
+sleep_mode:
   name: Night Mode
   initial: on
-  icon: mdi:power-sleep
+  icon: mdi:bed
 
 cinema_mode:
   name: Cinema Mode
