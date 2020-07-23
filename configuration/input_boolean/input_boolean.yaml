@@ -6,7 +6,7 @@ away_mode:
 sleep_mode:
   name: Sleep Mode
   initial: on
-  icon: mdi:power-sleep
+  icon: mdi:bed
 
 cinema_mode:
   name: Cinema Mode
