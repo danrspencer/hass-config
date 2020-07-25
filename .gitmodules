@@ -4,3 +4,6 @@
 [submodule "submodules/hass-node-red"]
 	path = submodules/hass-node-red
 	url = https://github.com/zachowj/hass-node-red.git
+[submodule "submodules/hacs"]
+	path = submodules/hacs
+	url = https://github.com/hacs/integration.git
