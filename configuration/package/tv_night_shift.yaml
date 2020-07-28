@@ -19,17 +19,17 @@ tv_night_shift:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 100
+            seconds: 1
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "RIGHT"
-        - delay:
-          seconds: 1
 
     tv_night_shift_on:
       sequence:
         - service: script.tv_picture_settings
+        - delay:
+            milliseconds: 100
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
