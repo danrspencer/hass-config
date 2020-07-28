@@ -1,0 +1,53 @@
+ night_shift_on:
+    sequence:
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "MENU"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "UP"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "ENTER"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "RIGHT"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "DOWN"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "ENTER"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "ENTER"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "BACK"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "DOWN"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "ENTER"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "ENTER"
+      - service: webostv.button
+        data:
+          entity_id:  media_player.lg_webos_smart_tv
+          button: "EXIT"
+
+
+
