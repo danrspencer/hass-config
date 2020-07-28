@@ -4,53 +4,53 @@ tv_night_shift:
       sequence:
         - service: webostv.button
           data:
-            entity_id:  media_player.lg_webos_smart_tv
+            entity_id:  media_player.living_room_tv
             button: "MENU"
         - service: webostv.button
           data:
-            entity_id:  media_player.lg_webos_smart_tv
+            entity_id:  media_player.living_room_tv
             button: "UP"
         - service: webostv.button
           data:
-            entity_id:  media_player.lg_webos_smart_tv
+            entity_id:  media_player.living_room_tv
             button: "ENTER"
         - service: webostv.button
           data:
-            entity_id:  media_player.lg_webos_smart_tv
+            entity_id:  media_player.living_room_tv
             button: "RIGHT"
 #  night_shift_on:
 #     sequence:
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "DOWN"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "ENTER"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "ENTER"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "BACK"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "DOWN"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "ENTER"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "ENTER"
 #       - service: webostv.button
 #         data:
-#           entity_id:  media_player.lg_webos_smart_tv
+#           entity_id:  media_player.living_room_tv
 #           button: "EXIT"
 
 
