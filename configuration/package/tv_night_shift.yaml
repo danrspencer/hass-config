@@ -1,7 +1,8 @@
 tv_night_shift:
   script:
-    tv_picture_settings:
+    tv_night_shift_toggle:
       sequence:
+        # Open picture settings
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
@@ -19,21 +20,80 @@ tv_night_shift:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            seconds: 1
+            milliseconds: 1000
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "RIGHT"
-
-    tv_night_shift_on:
-      sequence:
-        - service: script.tv_picture_settings
+        - delay:
+            milliseconds: 300
+        # Goto bottom to work around Aspect Ratio not always being active
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "DOWN"
         - delay:
             milliseconds: 300
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "DOWN"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "DOWN"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "DOWN"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "DOWN"
+        - delay:
+            milliseconds: 300
+        # Toggle Eye Comfort
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "UP"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "UP"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "ENTER"
+        - delay:
+            milliseconds: 1000
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "ENTER"
+        - delay:
+            milliseconds: 300
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "BACK"
+        - delay:
+          milliseconds: 300
+        # Change Energy Saving
+        - service: webostv.button
+          data:
+            entity_id:  media_player.living_room_tv
+            button: "UP"
         - delay:
             milliseconds: 300
         - service: webostv.button
@@ -57,25 +117,7 @@ tv_night_shift:
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
-            button: "DOWN"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            seconds: 1
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "EXIT"
+            button: "BACK"
 
 
 
