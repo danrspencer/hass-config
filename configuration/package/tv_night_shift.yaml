@@ -40,91 +40,79 @@ tv_night_shift:
             button: "DOWN"
         - delay:
             milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "DOWN"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "DOWN"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "DOWN"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "DOWN"
-        - delay:
-            milliseconds: 300
-        # Toggle Eye Comfort
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "UP"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "UP"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            milliseconds: 1000
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "BACK"
-        - delay:
-            milliseconds: 1000
-        # Change Energy Saving
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "UP"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            milliseconds: 300
-        # TODO - Find some way to decide if we should turn energy saving on or off
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "ENTER"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "BACK"
-        - delay:
-            milliseconds: 300
-        - service: webostv.button
-          data:
-            entity_id:  media_player.living_room_tv
-            button: "BACK"
+        - choose:
+          # IF motion detected
+          - conditions:
+            - condition: template
+              value_template: "{{ states.media_player.living_room_tv.attributes.source == "Live TV" }}"
+            sequence:
+              - service: webostv.button
+                data:
+                  entity_id:  media_player.living_room_tv
+                  button: "DOWN"
+              - delay:
+                milliseconds: 300
+        # # Toggle Eye Comfort
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "UP"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "UP"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "ENTER"
+        # - delay:
+        #     milliseconds: 1000
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "ENTER"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "BACK"
+        # - delay:
+        #     milliseconds: 1000
+        # # Change Energy Saving
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "UP"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "ENTER"
+        # - delay:
+        #     milliseconds: 300
+        # # TODO - Find some way to decide if we should turn energy saving on or off
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "ENTER"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "BACK"
+        # - delay:
+        #     milliseconds: 300
+        # - service: webostv.button
+        #   data:
+        #     entity_id:  media_player.living_room_tv
+        #     button: "BACK"
 
 
 
