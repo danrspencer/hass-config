@@ -40,18 +40,16 @@ tv_night_shift:
             button: "DOWN"
         - delay:
             milliseconds: 300
-        - choose:
-          - conditions:
-            - condition: template
-              value_template: >
-                {{ states.media_player.living_room_tv.attributes.source == "Live TV" }}
-            sequence:
-              - service: webostv.button
-                data:
-                  entity_id: media_player.living_room_tv
-                  button: "DOWN"
-              - delay:
-                milliseconds: 300
+        - service_template: >
+            {% if states.media_player.living_room_tv.attributes.source == "Live TV" %}
+              webostv.button
+            {% else %}
+              script.noop
+            {% endif %}
+        - data:
+            entity_id:  media_player.living_room_tv
+            button: "DOWN"
+        
         # # Toggle Eye Comfort
         # - service: webostv.button
         #   data:
