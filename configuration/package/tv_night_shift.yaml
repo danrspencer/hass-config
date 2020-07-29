@@ -48,11 +48,11 @@ tv_night_shift:
             button: "DOWN"
         - delay:
             milliseconds: 300
+        # Handle the fact there's an extra option when on Live TV
         - service: webostv.button
           data_template:
             entity_id:  media_player.living_room_tv
             button: >
-              # Handle the fact there's an extra option when on Live TV
               {% if states.media_player.living_room_tv.attributes.source == "Live TV" %}
                 DOWN
               {% endif %}
@@ -64,11 +64,11 @@ tv_night_shift:
             button: "ENTER"
         - delay:
             milliseconds: 1000
+        # Go down to turn off power saving if we're turning Night Shift off
         - service: webostv.button
           data_template:
             entity_id:  media_player.living_room_tv
             button: >
-              # Go down to turn off power saving if we're turning Night Shift off
               {% if states.input_boolean.night_shift.state == "off" %}
                 DOWN
               {% endif %}
