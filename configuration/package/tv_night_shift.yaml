@@ -1,4 +1,9 @@
 tv_night_shift:
+  input_boolean:
+    night_shift:
+      name: Night Shift
+      icon: mdi-monitor-eye
+
   script:
     tv_night_shift_toggle:
       sequence:
@@ -28,6 +33,7 @@ tv_night_shift:
         - delay:
             milliseconds: 300
         # Goto bottom to work around Aspect Ratio not always being active
+        # TODO - Check source for live TV then go down once or twice
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
@@ -102,6 +108,7 @@ tv_night_shift:
             button: "ENTER"
         - delay:
             milliseconds: 300
+        # TODO - Find some way to decide if we should turn energy saving on or off
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
