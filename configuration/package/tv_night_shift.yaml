@@ -2,7 +2,7 @@ tv_night_shift:
   input_boolean:
     night_shift:
       name: Night Shift
-      icon: mdi-monitor-eye
+      icon: mdi:monitor-eye
 
   script:
     tv_night_shift_toggle:
