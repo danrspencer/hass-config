@@ -1,5 +1,0 @@
-harmony:
-  remote:
-    - platform: harmony
-      name: Harmony Remote
-      host: 192.168.0.189
