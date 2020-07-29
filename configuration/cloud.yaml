@@ -8,6 +8,7 @@ google_actions:
       - input_boolean.holiday_mode
       - input_boolean.sleep_mode
       - input_boolean.cinema_mode
+      - input_boolean.night_shift
 
       - input_boolean.day_phase_morning
       - input_boolean.day_phase_day
