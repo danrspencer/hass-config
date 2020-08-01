@@ -1,0 +1,5 @@
+
+- platform: scrape
+  resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0
+  name: Kennel club
+  select: '.data2'
