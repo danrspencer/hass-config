@@ -1,5 +1,20 @@
 
 - platform: scrape
+  resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4096&area=0
+  name: Kennel Club Miniature Schnauzer
+  select: '.data2'
+
+- platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0
-  name: Kennel club
+  name: Kennel Club Havanese
+  select: '.data2'
+
+- platform: scrape
+  resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
+  name: Kennel Club Shih Tzu
+  select: '.data2'
+
+- platform: scrape
+  resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
+  name: Kennel Club Miniature Poodle
   select: '.data2'
