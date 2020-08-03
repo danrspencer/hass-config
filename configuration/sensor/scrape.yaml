@@ -3,7 +3,7 @@
   name: Kennel Club Miniature Schnauzer
   select: '.data2'
   scan_interval: 3600
-  value_template: >
+  value_template: |-
     {% set dogs = value.split('\n') 
       | reject("eq", "") 
       | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
