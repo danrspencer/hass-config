@@ -3,7 +3,7 @@
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4096&area=0
   name: Kennel Club Miniature Schnauzer
   select: '.data2'
-  value_tample: >
+  value_template: >
     {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
       | reject("eq", "") 
       | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
@@ -25,7 +25,7 @@
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0
   name: Kennel Club Havanese
   select: '.data2'
-  value_tample: >
+  value_template: >
     {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
       | reject("eq", "") 
       | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
@@ -47,7 +47,7 @@
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4102&area=0
   name: Kennel Club Shih Tzu
   select: '.data2'
-  value_tample: >
+  value_template: >
     {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
       | reject("eq", "") 
       | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
@@ -69,7 +69,7 @@
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
   name: Kennel Club Miniature Poodle
   select: '.data2'
-  value_tample: >
+  value_template: >
     {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
       | reject("eq", "") 
       | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
