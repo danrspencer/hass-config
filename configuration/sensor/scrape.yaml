@@ -2,8 +2,7 @@
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4096&area=0
   name: Kennel Club Miniature Schnauzer
-  select: '.data2'
-    
+  select: '.data2'    
 
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0
@@ -18,4 +17,9 @@
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
   name: Kennel Club Miniature Poodle
+  select: '.data2'
+
+- platform: scrape
+  resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6149&area=0
+  name: Kennel Club Cavalier King Charles Spaniel
   select: '.data2'
