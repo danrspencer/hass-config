@@ -18,4 +18,4 @@
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
   name: Kennel Club Miniature Poodle
-  select: '.data2' 
+  select: '.data2'
