@@ -12,21 +12,21 @@
     {% for dog in dogs -%}
       {% set breeder = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\1"
         )
         | truncate(20)
       -%}
       {% set place = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\3"
         )
         | truncate(20)
       -%}
       {% set born = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\4"
         )
       -%}
@@ -47,21 +47,21 @@
     {% for dog in dogs -%}
       {% set breeder = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\1"
         )
         | truncate(20)
       -%}
       {% set place = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\3"
         )
         | truncate(20)
       -%}
       {% set born = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\4"
         )
       -%}
@@ -82,21 +82,21 @@
     {% for dog in dogs -%}
       {% set breeder = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\1"
         )
         | truncate(20)
       -%}
       {% set place = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\3"
         )
         | truncate(20)
       -%}
       {% set born = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\4"
         )
       -%}
@@ -117,21 +117,21 @@
     {% for dog in dogs -%}
       {% set breeder = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\1"
         )
         | truncate(20)
       -%}
       {% set place = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\3"
         )
         | truncate(20)
       -%}
       {% set born = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\4"
         )
       -%}
@@ -152,21 +152,21 @@
     {% for dog in dogs -%}
       {% set breeder = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\1"
         )
         | truncate(20)
       -%}
       {% set place = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\3"
         )
         | truncate(20)
       -%}
       {% set born = dog 
         | regex_replace(
-          "([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", 
+          "([a-zA-Z\s\.&]*)([//\d-]*)([[a-zA-Z\s\.&,-]*)([//\d-]*)", 
           "\\4"
         )
       -%}
