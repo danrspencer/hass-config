@@ -3,86 +3,19 @@
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4096&area=0
   name: Kennel Club Miniature Schnauzer
   select: '.data2'
-  value_template: >
-    {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
-      | reject("eq", "") 
-      | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
-      | list
-    -%} 
-
-    | Breeder  | Location  |  Born  |
-    |---|---|---|
-    {% for dog in dogs -%}
-      {% set breeder =  dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\1") -%}
-      {% set place = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\3") -%}
-      {% set date = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\4") -%}
-      | {{ breeder }} | {{ place }} | {{ date }} |
-    {% endfor %}
-
-    [Goto](https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4096&area=0)
+    
 
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0
   name: Kennel Club Havanese
   select: '.data2'
-  value_template: >
-    {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
-      | reject("eq", "") 
-      | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
-      | list
-    -%} 
-
-    | Breeder  | Location  |  Born  |
-    |---|---|---|
-    {% for dog in dogs -%}
-      {% set breeder =  dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\1") -%}
-      {% set place = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\3") -%}
-      {% set date = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\4") -%}
-      | {{ breeder }} | {{ place }} | {{ date }} |
-    {% endfor %}
-
-    [Goto](https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=6254&area=0)
-
+  
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4102&area=0
   name: Kennel Club Shih Tzu
   select: '.data2'
-  value_template: >
-    {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
-      | reject("eq", "") 
-      | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
-      | list
-    -%} 
-
-    | Breeder  | Location  |  Born  |
-    |---|---|---|
-    {% for dog in dogs -%}
-      {% set breeder =  dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\1") -%}
-      {% set place = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\3") -%}
-      {% set date = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\4") -%}
-      | {{ breeder }} | {{ place }} | {{ date }} |
-    {% endfor %}
-
-    [Goto](https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4102&area=0)
-
+  
 - platform: scrape
   resource: https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0
   name: Kennel Club Miniature Poodle
   select: '.data2'
-  value_template: >
-    {% set dogs = states.sensor.kennel_club_miniature_schnauzer.state.split('\n') 
-      | reject("eq", "") 
-      | reject("eq", "NameDate Visit ApprovedTown/RegionDate Of Birth")
-      | list
-    -%} 
-
-    | Breeder  | Location  |  Born  |
-    |---|---|---|
-    {% for dog in dogs -%}
-      {% set breeder =  dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\1") -%}
-      {% set place = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\3") -%}
-      {% set date = dog | regex_replace("([a-zA-Z\s&]*)([//\d-]*)([[a-zA-Z\s&,-]*)([//\d-]*)", "\\4") -%}
-      | {{ breeder }} | {{ place }} | {{ date }} |
-    {% endfor %}
-
-    [Goto](https://www.thekennelclub.org.uk/services/public/findapuppy/display.aspx?breed=4098&area=0)
