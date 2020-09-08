@@ -1,7 +1,6 @@
 google_actions:
   filter:
     include_entities:
-      - switch.garage_heater
       - switch.living_room_fairy_lights
       - switch.living_room_tv
 

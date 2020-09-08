@@ -1,0 +1,5 @@
+garage_heaters:
+  name: Garage Heaters
+  entities:
+    - switch.fan_heater
+    - switch.oil_heater

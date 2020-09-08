@@ -3,3 +3,7 @@ image:
 
 tasks:
   - init: make
+
+vscode:
+  extensions:
+    - keesschollaart.vscode-home-assistant@1.8.1:2f5fZ2N8+09m4Le+Sgrnbg==

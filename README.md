@@ -2,18 +2,13 @@
 
 [![Build Status](https://travis-ci.org/danrspencer/hass-config.svg?branch=master)](https://travis-ci.org/danrspencer/hass-config)
 
-My Home Assistant (HA) Config, updated pretty regularly. Feel free to steal ideas / use it for examples.
+My Home Assistant (HA) Config, updated pretty regularly.
 
 ***-- this document is still very much work in progress --***
 
 ## Interesting Bits
 - [Workflow / Build Pipeline](#workflow)
 - [Day Phase Sensor](#day-phase-sensor)
-- [Lighting Automations (Philips Hue)](#lighting-automations)
-- Harmony Integration
-- Dynamic Group For Active Media Players
-- Audio Greeters
-- Nest Synced Generic Thermostat
 
 ## <a name="workflow"></a>Workflow / Build Pipeline
 
