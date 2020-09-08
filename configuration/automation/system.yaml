@@ -30,23 +30,3 @@
       data_template:
         message: >
           Home Assistant is going down! {{ "\uD83D\uDE34" }}
-
-- alias: Node Red Watchdog
-  trigger:
-    - platform: state
-      entity_id: input_boolean.node_red_heartbeat
-      to: "off"
-      for:
-        minutes: 5
-    - platform: state
-      entity_id: input_boolean.node_red_heartbeat
-      to: "on"
-      for:
-        minutes: 5
-  action:
-    - service: hassio.addon_restart
-      data:
-        addon: a0d7b954_nodered
-    - service: notify.mobile_app_dphone
-      data:
-        message: "Node-RED has flatlined, restarting..."
