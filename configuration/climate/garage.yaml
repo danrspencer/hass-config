@@ -1,0 +1,4 @@
+  - platform: generic_thermostat
+    name: Garage
+    heater: switch.garage_heaters
+    target_sensor: sensor.garage_sensor_temperature
