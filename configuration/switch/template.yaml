@@ -3,6 +3,10 @@
     garage_heaters:
       value_template: "{{ is_state('group.garage_heaters', 'on') }}"
       turn_on:
-        service: scene.garage_heaters_on
+        service: scene.turn_on
+        data:
+          entity_id: scene.garage_heaters_on
       turn_off:
-        service: scene.garage_heaters_off
+        service: group.turn_on
+        data:
+          entity_id: scene.garage_heaters_off
