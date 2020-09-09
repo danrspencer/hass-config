@@ -1,6 +1,6 @@
 - platform: template
   switches:
-    skylight:
+    garage_heaters:
       value_template: "{{ is_state('group.garage_heaters', 'on') }}"
       turn_on:
         service: group.turn_on
