@@ -14,7 +14,7 @@ google_actions:
       - input_boolean.day_phase_evening
       - input_boolean.day_phase_night
 
-      - climate.kitchen
+      - climate.garage
       - fan.bedroom
       - media_player.playstation_4
 
