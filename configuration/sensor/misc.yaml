@@ -9,5 +9,5 @@
   command: "cd /config && git log --pretty=format:'%h' | tail -n 1"
 
 - platform: command_line
-  name: Git Hash
+  name: Git Message
   command: "cd /config && git log --pretty=format:'%s' | tail -n 1"

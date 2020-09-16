@@ -4,12 +4,4 @@
 *.conf
 secrets.yaml
 
-backup
-
-homebridge/accessories
-homebridge/persist
-
-google-assistant
-
-deps
-node_modules
+node-red
