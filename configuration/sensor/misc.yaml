@@ -6,8 +6,8 @@
 
 - platform: command_line
   name: Git Hash
-  command: "cd /config && git log --pretty=format:'%h' | tail -n 1"
+  command: "cd /config && git log --pretty=format:'%h' | head -n 1"
 
 - platform: command_line
   name: Git Message
-  command: "cd /config && git log --pretty=format:'%s' | tail -n 1"
+  command: "cd /config && git log --pretty=format:'%s' | head -n 1"
