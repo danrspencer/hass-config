@@ -21,25 +21,25 @@ tv_night_shift:
             entity_id:  media_player.living_room_tv
             button: "MENU"
         - delay:
-            milliseconds: 1000
+            milliseconds: 1200
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "UP"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 1000
+            milliseconds: 1200
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "RIGHT"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
 
         # Set energy saving mode
         - service: webostv.button
@@ -47,7 +47,7 @@ tv_night_shift:
             entity_id:  media_player.living_room_tv
             button: "DOWN"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         # Handle the fact there's an extra option when on Live TV
         - service: webostv.button
           data_template:
@@ -57,13 +57,13 @@ tv_night_shift:
                 DOWN
               {% endif %}
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         # Go down to turn off power saving if we're turning Night Shift off
         - service: webostv.button
           data_template:
@@ -73,19 +73,19 @@ tv_night_shift:
                 DOWN
               {% endif %}
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "BACK"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         
         # Toggle Eye Comfort
         - service: webostv.button
@@ -93,25 +93,25 @@ tv_night_shift:
             entity_id:  media_player.living_room_tv
             button: "DOWN"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 1000
+            milliseconds: 1200
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "ENTER"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
             button: "BACK"
         - delay:
-            milliseconds: 500
+            milliseconds: 700
         - service: webostv.button
           data:
             entity_id:  media_player.living_room_tv
