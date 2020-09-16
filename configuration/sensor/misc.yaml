@@ -3,3 +3,11 @@
 
 - platform: illuminance
   entity_id: sensor.weather_symbol
+
+- platform: command_line
+  name: Git Hash
+  command: "cd /config && git log --pretty=format:'%h' | tail -n 1"
+
+- platform: command_line
+  name: Git Hash
+  command: "cd /config && git log --pretty=format:'%s' | tail -n 1"
