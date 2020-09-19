@@ -3,3 +3,5 @@
 
 *.conf
 secrets.yaml
+
+node-red
