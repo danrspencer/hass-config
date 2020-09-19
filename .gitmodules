@@ -1,6 +1,3 @@
-[submodule "submodules/ha-illuminance"]
-	path = submodules/ha-illuminance
-	url = https://github.com/pnbruckner/ha-illuminance.git
 [submodule "submodules/hass-node-red"]
 	path = submodules/hass-node-red
 	url = https://github.com/zachowj/hass-node-red.git

@@ -25,7 +25,6 @@ day_phase:
           value_template: >
             {% set time = now() %}
             {% set isDaylight = states.sun.sun.state == "above_horizon" %}
-            {% set isBright = states.sensor.illuminance.state | int >= 1000 %}
             {% set notHoliday = states.input_boolean.holiday_mode.state == "off" %}
             {% set isWeekday = time.isoweekday() <= 5 %}
             {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
@@ -38,7 +37,7 @@ day_phase:
 
             {% if t0600 <= time and time < t0800 and isWeekday %}
               Morning
-            {% elif (isBright and isDaylight)
+            {% elif isDaylight
                 or (t0600 <= time and time < t1900 and isWeekday and notHoliday)
                 or (t0600 <= time and time < t1600)
             %} 
