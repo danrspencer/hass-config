@@ -1,13 +1,2 @@
 - platform: yr
   name: Weather
-
-- platform: illuminance
-  entity_id: sensor.weather_symbol
-
-- platform: command_line
-  name: Git Hash
-  command: "cd /config && git log --pretty=format:'%h' | head -n 1"
-
-- platform: command_line
-  name: Git Message
-  command: "cd /config && git log --pretty=format:'%s' | head -n 1"
