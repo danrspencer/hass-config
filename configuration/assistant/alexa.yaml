@@ -1,3 +1,4 @@
 filter:
   include_entities:
-    !include include_entities.yaml
+    !include default_include_entities.yaml
+    - climate.house
