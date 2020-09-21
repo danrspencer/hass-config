@@ -21,7 +21,6 @@ day_phase:
             {% endif %}
         day_phase_real:
           friendly_name: "Day Phase Real"
-          entity_id: sensor.time
           value_template: >
             {% set time = now() %}
             {% set isDaylight = states.sun.sun.state == "above_horizon" %}
