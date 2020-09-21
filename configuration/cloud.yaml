@@ -20,7 +20,6 @@ filter:
 entity_config:
   script.cinema_mode:
     name: Cinema Mode
-    room: Living Room
 
   fan.bedroom:
     room: Bedroom
