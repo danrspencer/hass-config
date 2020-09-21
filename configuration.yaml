@@ -13,9 +13,9 @@ homeassistant:
 browser:
 cloud: 
   google_actions:
-    !include configuration/cloud.yaml
+    !include configuration/assistant/google.yaml
   alexa:
-    !include configuration/cloud.yaml
+    !include configuration/assistant/alexa.yaml
 config:
 conversation:
 discovery:
@@ -34,7 +34,7 @@ hue:
     - host: 192.168.0.71
       filename: sensors.conf
 homekit:
-  !include configuration/cloud.yaml
+  !include configuration/assistant/homekit.yaml
 sun:
 updater:
   include_used_components: true
@@ -50,6 +50,7 @@ logbook:
   exclude:
     domains:
       - group
+      - sensor.date
     entities:
       - input_boolean.node_red_heartbeat
       - binary_sensor.kitchen_motion_sensor

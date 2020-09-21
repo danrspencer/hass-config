@@ -1,0 +1,16 @@
+- switch.living_room_fairy_lights
+- switch.living_room_tv
+
+- input_boolean.holiday_mode
+- input_boolean.sleep_mode
+- input_boolean.cinema_mode
+- input_boolean.night_shift
+
+- input_boolean.day_phase_morning
+- input_boolean.day_phase_day
+- input_boolean.day_phase_evening
+- input_boolean.day_phase_night
+
+- climate.garage
+- fan.bedroom
+- media_player.playstation_4
