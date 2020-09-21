@@ -33,7 +33,8 @@ hue:
       filename: lights.conf
     - host: 192.168.0.71
       filename: sensors.conf
-
+homekit:
+  !include configuration/cloud.yaml
 sun:
 updater:
   include_used_components: true
