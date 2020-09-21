@@ -4,4 +4,5 @@
 *.conf
 secrets.yaml
 
+custom_components
 node-red
