@@ -11,7 +11,11 @@ homeassistant:
 
 # Enablers
 browser:
-cloud: !include configuration/cloud.yaml
+cloud: 
+  google_actions:
+    !include configuration/cloud.yaml
+  alexa:
+    !include configuration/cloud.yaml
 config:
 conversation:
 discovery:
