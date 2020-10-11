@@ -9,5 +9,6 @@ script:
   - "touch fullchain.pem"
   - "touch privkey.pem"
   - "hass --version"
+  - "ls"
   - "hass -c $(pwd) --script check_config | tee check.output"
   - '! less check.output | grep -q "Failed config"'
