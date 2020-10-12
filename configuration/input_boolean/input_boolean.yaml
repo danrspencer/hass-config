@@ -13,3 +13,6 @@ cinema_mode:
 node_red_heartbeat:
   name: Node Red Heartbeat
   icon: mdi:heart-pulse
+
+living_room_occupied:
+  name: Living Room Occupied
