@@ -2,3 +2,6 @@
     name: Garage
     heater: switch.garage_heaters
     target_sensor: sensor.garage_sensor_temperature
+    max_temp: 18
+    cold_tolerance: 3
+    hot_tolerance: 0
