@@ -35,6 +35,7 @@ hue:
       filename: sensors.conf
 homekit:
   !include configuration/assistant/homekit.yaml
+logger:
 sun:
 updater:
   include_used_components: true
