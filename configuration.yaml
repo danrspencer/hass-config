@@ -36,7 +36,7 @@ hue:
 homekit:
   !include configuration/assistant/homekit.yaml
 logger:
-  default: info
+  default: debug
 sun:
 updater:
   include_used_components: true
