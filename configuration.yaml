@@ -59,6 +59,7 @@ logbook:
       - binary_sensor.living_room_motion_sensor
       - binary_sensor.entrance_hall_motion_sensor
       - binary_sensor.top_floor_motion_sensor
+      - sensor.time
       - sensor.log_db_file_size
       - sensor.cpu_temp
       - sensor.average_load_15m
@@ -108,9 +109,7 @@ group: !include_dir_merge_named configuration/group
 # light: !include_dir_merge_list configuration/light
 media_player: !include_dir_merge_list configuration/media_player
 nest: !include configuration/nest.yaml
-webostv:
-  host: 192.168.0.90
-  name: Living Room TV
+webostv: !include configuration/webos.yaml
 notify: !include_dir_merge_list configuration/notify
 scene: !include_dir_merge_list configuration/scene
 script: !include_dir_merge_named configuration/script
