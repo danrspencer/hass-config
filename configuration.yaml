@@ -25,14 +25,6 @@ frontend:
 ios:
 map:
 mobile_app:
-hue:
-  bridges:
-    - host: 192.168.0.2
-      allow_unreachable: false
-      allow_hue_groups: true
-      filename: lights.conf
-    - host: 192.168.0.71
-      filename: sensors.conf
 homekit:
   !include configuration/assistant/homekit.yaml
 logger:
