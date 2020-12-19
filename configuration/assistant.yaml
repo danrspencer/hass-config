@@ -1,4 +1,6 @@
 filter:
+  include_domains:
+    - light
   include_entities:
     - switch.living_room_fairy_lights
     - switch.living_room_tv

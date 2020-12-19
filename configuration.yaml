@@ -13,9 +13,9 @@ homeassistant:
 browser:
 cloud: 
   google_actions:
-    !include configuration/assistant/google.yaml
+    !include configuration/assistant.yaml
   alexa:
-    !include configuration/assistant/alexa.yaml
+    !include configuration/assistant.yaml
 config:
 conversation:
 discovery:
@@ -26,7 +26,7 @@ ios:
 map:
 mobile_app:
 homekit:
-  !include configuration/assistant/homekit.yaml
+  !include configuration/assistant.yaml
 logger:
   default: debug
 sun:
