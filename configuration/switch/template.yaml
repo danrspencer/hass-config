@@ -12,15 +12,12 @@
         data:
           entity_id: scene.garage_heaters_off
 
-- platform: template
-  switches:
-    skylight:
+    sonos_group_house:
       value_template: >
         {{ 
           states.media_player.sonos_bedroom.attributes.sonos_group 
-          | sort 
           | map("replace", "media_player.sonos_", "") 
-          | list 
+          | list | sort 
           == ["bedroom", "den", "dressing_room", "kitchen"]
         }}
       turn_on:
