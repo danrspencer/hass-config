@@ -11,3 +11,31 @@
         service: scene.turn_on
         data:
           entity_id: scene.garage_heaters_off
+
+- platform: template
+  switches:
+    skylight:
+      value_template: >
+        {{ 
+          states.media_player.sonos_bedroom.attributes.sonos_group 
+          | sort 
+          | map("replace", "media_player.sonos_", "") 
+          | list 
+          == ["bedroom", "den", "dressing_room", "kitchen"]
+        }}
+      turn_on:
+        service: sonos.join
+        data:
+          master: media_player.sonos_bedroom
+          entity_id: 
+          - media_player.sonos_den
+          - media_player.sonos_dressing_room
+          - media_player.sonos_kitchen
+      turn_off:
+        service: sonos.unjoin
+        data:
+          entity_id: 
+          - media_player.sonos_bedroom
+          - media_player.sonos_den          
+          - media_player.sonos_dressing_room          
+          - media_player.sonos_kitchen
