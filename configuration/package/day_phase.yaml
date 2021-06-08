@@ -32,7 +32,7 @@ day_phase:
             {% set t1200 = t0000.replace(hour=12) %}
             {% set t1600 = t0000.replace(hour=16) %}
             {% set t1900 = t0000.replace(hour=19) %}
-            {% set t2200 = t0000.replace(hour=22) %}
+            {% set t2100 = t0000.replace(hour=22) %}
 
             {% if t0600 <= time and time < t0800 and isWeekday %}
               Morning
