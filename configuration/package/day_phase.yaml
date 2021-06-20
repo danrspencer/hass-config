@@ -32,13 +32,14 @@ day_phase:
             {% set t1200 = t0000.replace(hour=12) %}
             {% set t1600 = t0000.replace(hour=16) %}
             {% set t1900 = t0000.replace(hour=19) %}
-            {% set t2100 = t0000.replace(hour=22) %}
+            {% set t2100 = t0000.replace(hour=21) %}
+            {% set t2200 = t0000.replace(hour=22) %}
 
             {% if t0600 <= time and time < t0800 and isWeekday %}
               Morning
-            {% elif isDaylight
+            {% elif (t0600 <= time and time < t1600)
                 or (t0600 <= time and time < t1900 and isWeekday and notHoliday)
-                or (t0600 <= time and time < t1600)
+                or (t0600 <= time and time < t2100 and isDaylight)
             %} 
                 Day
             {% elif t1600 <= time and time < t2200 %}
@@ -116,7 +117,6 @@ day_phase:
           data_template:
             entity_id: >
               input_boolean.day_phase_{{ states.sensor.day_phase_real.state | lower }}
-
 
     - alias: Day Phase Override Morning
       trigger:
