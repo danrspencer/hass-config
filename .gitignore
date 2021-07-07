@@ -1,8 +1,17 @@
-.DS_Store
-.vscode
+*
 
-*.conf
-secrets.yaml
+!configuration
+!documentation
 
-custom_components
-node-red
+!.gitignore
+
+!.gitpod*
+
+!.travis.yaml
+
+!automations.yaml
+!configuration.yaml
+!secrets.yaml.sample
+
+!LICENSE
+!Makefile

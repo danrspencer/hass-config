@@ -1,0 +1,159 @@
+- id: '1618087302165'
+  alias: Living Room TV - Set to Soundbar
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv
+    attribute: sound_output
+    for: 0:00:30
+  - platform: state
+    entity_id: media_player.living_room_tv
+    to: 'on'
+  condition:
+    condition: not
+    conditions:
+    - condition: state
+      entity_id: media_player.living_room_tv
+      state: bt_soundbar
+      attribute: sound_output
+  action:
+  - service: webostv.select_sound_output
+    data:
+      entity_id: media_player.living_room_tv
+      sound_output: external_arc
+  mode: single
+- id: '1618094589663'
+  alias: System Startup Notification
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - service: notify.mobile_app_dphone
+    data_template:
+      message: 'Home Assistant back online! {{ "\uD83E\uDD29" }}
+
+        '
+  - service: notify.mobile_app_ipad
+    data_template:
+      message: 'Home Assistant back online! {{ "\uD83E\uDD29" }}
+
+        '
+  - delay:
+      seconds: 30
+  - service: hassio.addon_stop
+    data:
+      addon: core_git_pull
+- id: '1618094617818'
+  alias: System Shutdown Notification
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  action:
+  - service: notify.mobile_app_dphone
+    data_template:
+      message: 'Home Assistant is going down! {{ "\uD83D\uDE34" }}
+
+        '
+  - service: notify.mobile_app_ipad
+    data_template:
+      message: 'Home Assistant is going down! {{ "\uD83D\uDE34" }}
+
+        '
+- id: '1619361364283'
+  alias: Sonos - Morning Reset
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.day_phase_real
+    to: Morning
+  condition: []
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.sonos_group_everywhere
+  - wait_for_trigger:
+    - platform: state
+      entity_id: switch.sonos_group_everywhere
+      to: 'on'
+    timeout: '30'
+  - service: switch.turn_off
+    target:
+      entity_id: switch.sonos_group_everywhere
+  - wait_for_trigger:
+    - platform: state
+      entity_id: switch.sonos_group_everywhere
+      to: 'off'
+    timeout: '30'
+  - service: switch.turn_on
+    target:
+      entity_id: switch.sonos_group_top_floor
+  mode: single
+- id: '1621083124308'
+  alias: Sonos - Clear Top Floor grouping
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00:00
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.sonos_group_top_floor
+  mode: single
+- id: '1623187073052'
+  alias: Garage TV - Apple - Playing
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 7f69ca1ad9b75f75e73feb38bf953e48
+    domain: media_player
+    entity_id: media_player.garage_apple_tv_apple_tv
+    type: playing
+  condition: []
+  action:
+  - type: turn_on
+    device_id: d373e3d7f2264c299f7a3ab625e6a694
+    entity_id: switch.harmony_hub_apple_tv
+    domain: switch
+  mode: single
+- id: '1625482356250'
+  alias: Away Mode - Presence Simulation
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.replay_bedroom
+    - sensor.replay_dressing_room
+    - sensor.replay_ensuite
+    - sensor.replay_garden
+    - sensor.replay_guest_ensuite
+    - sensor.replay_hallways
+    - sensor.replay_living_room
+  condition:
+  - condition: state
+    entity_id: input_boolean.away_mode
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ is_state("sun.sun", "below_horizon") }}'
+      - condition: template
+        value_template: '{{ trigger.to_state == "on" }} '
+      sequence:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: '{{ trigger.entity_id.replace("sensor.replay_","light.") }}'
+          scene_name: '{{ states.sensor.day_phase.state }}'
+    default:
+    - service: light.turn_off
+      data:
+        entity_id: '{{ trigger.entity_id.replace("sensor.replay_","light.") }}'
+  mode: single
