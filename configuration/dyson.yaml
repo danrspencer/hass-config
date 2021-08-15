@@ -1,6 +1,6 @@
 username: !secret dyson_username
 password: !secret dyson_password
 language: GB
-# devices:
-#   - device_id: !secret dyson_serial
-#     device_ip: 192.168.0.34
+devices:
+  - device_id: !secret dyson_serial
+    device_ip: 192.168.0.13

@@ -4,9 +4,7 @@
 !documentation
 
 !.gitignore
-
 !.gitpod*
-
 !.travis.yaml
 
 !automations.yaml

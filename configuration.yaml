@@ -11,11 +11,9 @@ homeassistant:
 
 # Enablers
 browser:
-cloud: 
-  google_actions:
-    !include configuration/assistant.yaml
-  alexa:
-    !include configuration/assistant.yaml
+cloud:
+  google_actions: !include configuration/assistant.yaml
+  alexa: !include configuration/assistant.yaml
 config:
 conversation:
 discovery:
@@ -25,8 +23,7 @@ frontend:
 ios:
 map:
 mobile_app:
-homekit:
-  !include configuration/assistant.yaml
+homekit: !include configuration/assistant.yaml
 logger:
   default: info
 sun:
@@ -41,16 +38,13 @@ recorder:
     entities:
       - sensor.date
       - sensor.time
+history:
 logbook:
   exclude:
     domains:
       - group
     entities:
       - input_boolean.node_red_heartbeat
-      - binary_sensor.kitchen_motion_sensor
-      - binary_sensor.living_room_motion_sensor
-      - binary_sensor.entrance_hall_motion_sensor
-      - binary_sensor.top_floor_motion_sensor
       - sensor.time
       - sensor.date
       - sensor.log_db_file_size
@@ -62,6 +56,12 @@ logbook:
       - sensor.replay_hallways
       - sensor.replay_top_floor_landing
       - sensor.replay_ensuite
+
+panel_iframe:
+  router:
+    title: "GitPod"
+    url: "https://gitpod.io/workspaces"
+    icon: "mdi:code-braces"
 
 # Text To Speech
 tts:

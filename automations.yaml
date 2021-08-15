@@ -23,7 +23,7 @@
       sound_output: external_arc
   mode: single
 - id: '1618094589663'
-  alias: System Startup Notification
+  alias: 🛠 Startup Notification
   trigger:
   - platform: homeassistant
     event: start
@@ -43,8 +43,9 @@
   - service: hassio.addon_stop
     data:
       addon: core_git_pull
+  mode: single
 - id: '1618094617818'
-  alias: System Shutdown Notification
+  alias: 🛠 Shutdown Notification
   trigger:
   - platform: homeassistant
     event: shutdown
@@ -59,6 +60,7 @@
       message: 'Home Assistant is going down! {{ "\uD83D\uDE34" }}
 
         '
+  mode: single
 - id: '1619361364283'
   alias: Sonos - Morning Reset
   description: ''
@@ -89,7 +91,7 @@
       entity_id: switch.sonos_group_top_floor
   mode: single
 - id: '1621083124308'
-  alias: Sonos - Clear Top Floor grouping
+  alias: Sonos - Clear Top Floor Grouping
   description: ''
   trigger:
   - platform: time
@@ -108,7 +110,7 @@
       entity_id: switch.sonos_group_top_floor
   mode: single
 - id: '1623187073052'
-  alias: Garage TV - Apple - Playing
+  alias: 🏋️‍♂️Apple TV - Playing
   description: ''
   trigger:
   - platform: device
@@ -156,4 +158,16 @@
     - service: light.turn_off
       data:
         entity_id: '{{ trigger.entity_id.replace("sensor.replay_","light.") }}'
+  mode: single
+- id: '1628502137509'
+  alias: 🏠Sleep Mode On
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.sleep_mode
   mode: single
