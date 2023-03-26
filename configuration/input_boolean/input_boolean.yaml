@@ -9,7 +9,3 @@ sleep_mode:
 cinema_mode:
   name: Cinema Mode
   icon: mdi:video-vintage
-
-node_red_heartbeat:
-  name: Node Red Heartbeat
-  icon: mdi:heart-pulse

@@ -1,9 +1,0 @@
-- name: Garage Heaters On
-  entities:
-   switch.fan_heater: on
-   switch.oil_heater: on
-
-- name: Garage Heaters Off
-  entities:
-   switch.fan_heater: off
-   switch.oil_heater: off

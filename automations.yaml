@@ -23,107 +23,24 @@
       sound_output: external_arc
   mode: single
 - id: '1618094589663'
-  alias: 🛠 Startup Notification
+  alias: "\U0001F6E0 Startup Notification"
   trigger:
   - platform: homeassistant
     event: start
   action:
-  - service: notify.mobile_app_dphone
-    data_template:
-      message: 'Home Assistant back online! {{ "\uD83E\uDD29" }}
-
-        '
-  - service: notify.mobile_app_ipad
-    data_template:
-      message: 'Home Assistant back online! {{ "\uD83E\uDD29" }}
-
-        '
-  - delay:
-      seconds: 30
-  - service: hassio.addon_stop
+  - service: notify.dans_devices
     data:
-      addon: core_git_pull
+      message: "Home Assistant back online! \U0001F389\n"
   mode: single
 - id: '1618094617818'
-  alias: 🛠 Shutdown Notification
+  alias: "\U0001F6E0 Shutdown Notification"
   trigger:
   - platform: homeassistant
     event: shutdown
   action:
-  - service: notify.mobile_app_dphone
-    data_template:
-      message: 'Home Assistant is going down! {{ "\uD83D\uDE34" }}
-
-        '
-  - service: notify.mobile_app_ipad
-    data_template:
-      message: 'Home Assistant is going down! {{ "\uD83D\uDE34" }}
-
-        '
-  mode: single
-- id: '1619361364283'
-  alias: Sonos - Morning Reset
-  description: ''
-  trigger:
-  - platform: state
-    entity_id: sensor.day_phase_real
-    to: Morning
-  condition: []
-  action:
-  - service: switch.turn_on
-    target:
-      entity_id: switch.sonos_group_everywhere
-  - wait_for_trigger:
-    - platform: state
-      entity_id: switch.sonos_group_everywhere
-      to: 'on'
-    timeout: '30'
-  - service: switch.turn_off
-    target:
-      entity_id: switch.sonos_group_everywhere
-  - wait_for_trigger:
-    - platform: state
-      entity_id: switch.sonos_group_everywhere
-      to: 'off'
-    timeout: '30'
-  - service: switch.turn_on
-    target:
-      entity_id: switch.sonos_group_top_floor
-  mode: single
-- id: '1621083124308'
-  alias: Sonos - Clear Top Floor Grouping
-  description: ''
-  trigger:
-  - platform: time
-    at: 09:00:00
-  condition:
-  - condition: time
-    weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-  action:
-  - service: switch.turn_off
-    target:
-      entity_id: switch.sonos_group_top_floor
-  mode: single
-- id: '1623187073052'
-  alias: 🏋️‍♂️Apple TV - Playing
-  description: ''
-  trigger:
-  - platform: device
-    device_id: 7f69ca1ad9b75f75e73feb38bf953e48
-    domain: media_player
-    entity_id: media_player.garage_apple_tv_apple_tv
-    type: playing
-  condition: []
-  action:
-  - type: turn_on
-    device_id: d373e3d7f2264c299f7a3ab625e6a694
-    entity_id: switch.harmony_hub_apple_tv
-    domain: switch
+  - service: notify.dans_devices
+    data:
+      message: "Home Assistant is going down! \U0001F44B\n"
   mode: single
 - id: '1625482356250'
   alias: Away Mode - Presence Simulation
@@ -133,10 +50,10 @@
     entity_id:
     - sensor.replay_bedroom
     - sensor.replay_dressing_room
-    - sensor.replay_ensuite
+    - sensor.replay_bedroom_ensuite
     - sensor.replay_garden
     - sensor.replay_guest_ensuite
-    - sensor.replay_hallways
+    - sensor.replay_entrance_hall
     - sensor.replay_living_room
   condition:
   - condition: state
@@ -160,7 +77,7 @@
         entity_id: '{{ trigger.entity_id.replace("sensor.replay_","light.") }}'
   mode: single
 - id: '1628502137509'
-  alias: 🏠Sleep Mode On
+  alias: "\U0001F3E0 Sleep Mode On"
   description: ''
   trigger:
   - platform: time
@@ -170,4 +87,242 @@
   - service: input_boolean.turn_on
     target:
       entity_id: input_boolean.sleep_mode
+    data: {}
+  mode: single
+- id: '1658090323476'
+  alias: "\U0001F6E0 Run Watchman"
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: watchman.report
+    data: {}
+  mode: single
+- id: '1676995186530'
+  alias: "\U0001F697 Reconcile Home Charge Limit"
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: '5'
+  condition:
+  - condition: zone
+    entity_id: device_tracker.tesla_location_tracker
+    zone: zone.home
+  action:
+  - if:
+    - condition: time
+      after: 05:30:00
+      before: '23:30:00'
+      alias: Is Variable Off Peak
+    then:
+    - condition: not
+      conditions:
+      - condition: state
+        entity_id: number.tesla_charge_limit
+        state: '100'
+      alias: If Not In Correct State
+    - service: number.set_value
+      data:
+        value: '100'
+      target:
+        entity_id: number.tesla_charge_limit
+    else:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.tesla_home_reduced_charging
+        state: 'on'
+      - condition: template
+        value_template: '{{ states.number.tesla_charge_limit.state != states.input_number.tesla_home_overnight_charge_limit.state
+          }}'
+        alias: Not In Correct State
+    - service: number.set_value
+      data_template:
+        entity_id: number.tesla_charge_limit
+        value: '{{ states.input_number.tesla_home_overnight_charge_limit.state }}
+
+          '
+      target:
+        entity_id: number.tesla_charge_limit
+  mode: single
+- id: '1676996174224'
+  alias: "\U0001F697 Auto Reduced Charging"
+  description: ''
+  trigger:
+  - type: plugged_in
+    platform: device
+    device_id: cbc82858929f108b40302fcc67bcc77d
+    entity_id: binary_sensor.tesla_charger
+    domain: binary_sensor
+  condition:
+  - condition: zone
+    entity_id: device_tracker.tesla_location_tracker
+    zone: zone.home
+  action:
+  - if:
+    - condition: template
+      value_template: '{{  (now() - strptime(states.sensor.tesla_full_battery.state,
+        ''%Y-%m-%d %H:%M:%S.%f%z'')).days >= 14 }}'
+    then:
+    - service: input_boolean.turn_off
+      data: {}
+      target:
+        entity_id: input_boolean.tesla_home_reduced_charging
+    else:
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.tesla_home_reduced_charging
+  mode: single
+- id: '1676999116232'
+  alias: "\U0001F419 Home Only Smart Charging"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.tesla_location_tracker
+  condition:
+  - condition: not
+    conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: device_tracker.tesla_location_tracker
+        state: unavailable
+      - condition: state
+        entity_id: device_tracker.tesla_location_tracker
+        state: unknown
+      alias: State Unknown
+    alias: Not State Unknown
+  action:
+  - if:
+    - condition: zone
+      entity_id: device_tracker.tesla_location_tracker
+      zone: zone.home
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.octopus_smart_charging
+    else:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.octopus_smart_charging
+  mode: single
+- id: '1677146988940'
+  alias: "\U0001F419 Dehumidify Off Peak"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.octopus_intelligent_slot
+  - platform: time_pattern
+    minutes: '5'
+  condition: []
+  action:
+  - if:
+    - condition: state
+      entity_id: binary_sensor.octopus_intelligent_slot
+      state: 'on'
+    then:
+    - type: turn_on
+      device_id: 8cee0df6b6a02ba0be61b4e9058c7449
+      entity_id: switch.dehumidifier
+      domain: switch
+    else:
+    - type: turn_off
+      device_id: 8cee0df6b6a02ba0be61b4e9058c7449
+      entity_id: switch.dehumidifier
+      domain: switch
+  mode: single
+- id: '1678816456729'
+  alias: "\U0001F4A1 Bathroom"
+  description: ''
+  use_blueprint:
+    path: motion_dayphase.yaml
+    input:
+      motion_entity: binary_sensor.bathroom_sensor_motion
+      light_target:
+        entity_id: light.bathroom
+- id: '1678872073534'
+  alias: "\U0001F4A1 Bathroom"
+  description: ''
+  use_blueprint:
+    path: motion_dayphase.yaml
+    input:
+      motion_entity: binary_sensor.bathroom_sensor_motion
+      light_target: light.bathroom
+      no_motion_wait: 10
+- id: '1678872412394'
+  alias: "\U0001F4A1 Toilet"
+  description: ''
+  use_blueprint:
+    path: motion_dayphase.yaml
+    input:
+      motion_entity: binary_sensor.toilet_sensor_motion
+      light_target: light.toilet
+- id: '1678899778275'
+  alias: "\U0001F4A1 Playroom"
+  description: ''
+  use_blueprint:
+    path: motion_dayphase.yaml
+    input:
+      motion_entity: binary_sensor.playroom_sensor_motion
+      light_target: light.playroom
+      no_motion_wait: 10
+- id: '1679074324706'
+  alias: "\U0001F518 Playroom Button"
+  description: ''
+  trigger:
+  - device_id: a526c8841f0ddce4f0aa71ba6f81dbb7
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  - device_id: a526c8841f0ddce4f0aa71ba6f81dbb7
+    domain: zha
+    platform: device
+    type: remote_button_long_release
+    subtype: dim_up
+  action:
+  - service: counter.increment
+    data: {}
+    target:
+      entity_id: counter.playroom_button_counter
+  - if:
+    - condition: template
+      value_template: "{{ (states.counter.playroom_button_counter.state | int) > states.scene
+        \n | map(attribute=\"entity_id\")\n | select(\"match\", \".*playroom.*\")\n
+        | list | length * 2\n}}\n"
+    then:
+    - service: counter.reset
+      data: {}
+      target:
+        entity_id: counter.playroom_button_counter
+    else:
+    - service: counter.increment
+      data: {}
+      target:
+        entity_id: counter.playroom_button_counter
+  - service: hue.activate_scene
+    data: {}
+    target:
+      entity_id: "{{ (states.scene \n | map(attribute=\"entity_id\")\n | select(\"match\",
+        \".*playroom.*\")\n | list)[(states.counter.playroom_button_counter.state
+        | int / 2) | int] }}\n"
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - service: hue.activate_scene
+    data:
+      transition: 30
+    target:
+      entity_id: '{{ "scene.playroom_" ~ states.sensor.day_phase.state }}
+
+        '
   mode: single

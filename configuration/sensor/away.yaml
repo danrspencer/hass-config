@@ -1,6 +1,6 @@
 - platform: history_stats
-  name: "Replay Hallways"
-  entity_id: light.hallways
+  name: "Replay Entrance Hall"
+  entity_id: light.entrance_hall
   state: "on"
   type: count
   start: >
@@ -26,8 +26,8 @@
   duration: 00:00:30
 
 - platform: history_stats
-  name: "Replay Ensuite"
-  entity_id: light.ensuite
+  name: "Replay Bedroom Ensuite"
+  entity_id: light.bedroom_ensuite
   state: "on"
   type: count
   start: >
@@ -45,7 +45,7 @@
 
 - platform: history_stats
   name: "Replay Guest Ensuite"
-  entity_id: light.guest_ensuite
+  entity_id: light.guest_room_ensuite
   state: "on"
   type: count
   start: >
@@ -55,6 +55,24 @@
 - platform: history_stats
   name: "Replay Garden"
   entity_id: light.garden
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: 00:00:30
+
+- platform: history_stats
+  name: "Replay Kitchen"
+  entity_id: light.kitchen
+  state: "on"
+  type: count
+  start: >
+    {{ as_timestamp(now()) - (7*86400) }}
+  duration: 00:00:30
+
+- platform: history_stats
+  name: "Replay Top Floor Landing"
+  entity_id: light.top_floor_landing
   state: "on"
   type: count
   start: >

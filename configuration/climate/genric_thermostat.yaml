@@ -1,0 +1,6 @@
+  - platform: generic_thermostat
+    name: Playroom
+    heater: switch.fan_heater
+    target_sensor: sensor.playroom_sensor_temperature
+    cold_tolerance: 0
+    hot_tolerance: 0

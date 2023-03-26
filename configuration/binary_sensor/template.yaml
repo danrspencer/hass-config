@@ -1,5 +1,21 @@
 - platform: template
   sensors:
+    kitchen_composite_motion:
+      friendly_name: "Kitchen Composite Motion"
+      value_template: >
+        {{
+          states.binary_sensor.kitchen_sensor_motion.state == "on" or
+          states.binary_sensor.ktichen_corner_sensor_motion.state == "on"
+        }}
+
+    top_floor_landing_smart_motion:
+      friendly_name: "Top Floor Landing Smart Motion"
+      value_template: >
+        {{
+          states.binary_sensor.top_floor_landing_sensor_motion.state == "on" and
+          states.input_boolean.sleep_mode.state == "off"
+        }}
+
     occupied:
       friendly_name: "Occupied"
       value_template: >
@@ -12,11 +28,10 @@
     house_motion:
       friendly_name: "House Motion"
       value_template: >
-        {{ 
-          states.binary_sensor.entrance_hall_sensor_motion.state == 'on' or
-          states.binary_sensor.kitchen_sensor_motion.state == 'on' or
-          states.binary_sensor.living_room_sensor_motion.state == 'on' or
-          states.binary_sensor.top_floor_sensor_motion.state == 'on' or
-          states.binary_sensor.toilet_sensor_motion.state == 'on' or
-          states.binary_sensor.bathroom_sensor_motion.state == 'on'
+        {{
+          states.binary_sensor
+        | selectattr('entity_id', 'search', 'sensor_motion') 
+        | map(attribute='state')
+        | select('eq', 'on')
+        | list | count > 0
         }}

@@ -1,12 +1,6 @@
-homeassistant:
-  name: Home
-  latitude: !secret zone_home_lat
-  longitude: !secret zone_home_long
-  elevation: 150
-  unit_system: metric
-  time_zone: Europe/London
+default_config:
 
-  customize: !include_dir_merge_named configuration/customize
+homeassistant:
   packages: !include_dir_merge_named configuration/package
 
 # Enablers
@@ -17,18 +11,12 @@ cloud:
 config:
 conversation:
 discovery:
-frontend:
-  javascript_version: latest
-  themes: !include_dir_merge_named themes
 ios:
 map:
 mobile_app:
 homekit: !include configuration/assistant.yaml
 logger:
   default: info
-sun:
-updater:
-  include_used_components: true
 
 # History
 recorder:
@@ -36,7 +24,6 @@ recorder:
   purge_keep_days: 30
   exclude:
     entities:
-      - sensor.date
       - sensor.time
 history:
 logbook:
@@ -44,24 +31,8 @@ logbook:
     domains:
       - group
     entities:
-      - input_boolean.node_red_heartbeat
       - sensor.time
-      - sensor.date
-      - sensor.log_db_file_size
       - sensor.cpu_temp
-      - sensor.average_load_15m
-      - sensor.since_last_boot
-      - sensor.replay_kitchen
-      - sensor.replay_living_room
-      - sensor.replay_hallways
-      - sensor.replay_top_floor_landing
-      - sensor.replay_ensuite
-
-panel_iframe:
-  router:
-    title: "GitPod"
-    url: "https://gitpod.io/workspaces"
-    icon: "mdi:code-braces"
 
 # Text To Speech
 tts:
@@ -73,21 +44,21 @@ tts:
   voice: Brian
 
 # Device Tracking
-zone:
-  - name: Home
-    latitude: !secret zone_home_lat
-    longitude: !secret zone_home_long
-    radius: 250
+# zone:
+#   - name: Home
+#     latitude: !secret zone_home_lat
+#     longitude: !secret zone_home_long
+#     radius: 250
 
-  - name: Work
-    latitude: !secret zone_l_work_lat
-    longitude: !secret zone_l_work_long
-    icon: mdi:briefcase
+#   - name: Work
+#     latitude: !secret zone_l_work_lat
+#     longitude: !secret zone_l_work_long
+#     icon: mdi:briefcase
 
-  - name: Work
-    latitude: !secret zone_d_work_lat
-    longitude: !secret zone_d_work_long
-    icon: mdi:briefcase
+#   - name: Work
+#     latitude: !secret zone_d_work_lat
+#     longitude: !secret zone_d_work_long
+#     icon: mdi:briefcase
 
 system_health:
 
@@ -95,18 +66,14 @@ system_health:
 automation: !include automations.yaml
 binary_sensor: !include_dir_merge_list configuration/binary_sensor
 climate: !include_dir_merge_list configuration/climate
-dyson: !include configuration/dyson.yaml
-group: !include_dir_merge_named configuration/group
 input_boolean: !include_dir_merge_named configuration/input_boolean
-# light: !include_dir_merge_list configuration/light
 media_player: !include_dir_merge_list configuration/media_player
 nest: !include configuration/nest.yaml
 notify: !include_dir_merge_list configuration/notify
 scene: !include_dir_merge_list configuration/scene
-script: !include_dir_merge_named configuration/script
+script: !include scripts.yaml
 sensor: !include_dir_merge_list configuration/sensor
 switch: !include_dir_merge_list configuration/switch
-weather: !include_dir_merge_list configuration/weather
 webostv:
-  host: 192.168.0.34
+  host: 192.168.4.75
   name: Living Room TV

@@ -1,2 +1,8 @@
 - platform: webostv
   host: 192.168.0.68
+- platform: group
+  name: "Dans Devices"
+  services:
+    - service: mobile_app_iphone
+    - service: mobile_app_ipad
+    - service: mobile_app_c02gj0q2md6r
