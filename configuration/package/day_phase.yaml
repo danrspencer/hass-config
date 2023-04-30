@@ -19,6 +19,20 @@ day_phase:
             {% else %}
                 {{ states.sensor.day_phase_real.state }}
             {% endif %}
+        top_floor_scene:
+          friendly_name: Top Floor Scene
+          value_template: >
+            {% set time = now() %}
+            {% set t0000 = time.replace(hour=0).replace(minute=0).replace(second=0) %}
+            {% set t1700 = t0000.replace(hour=17) %}
+
+            {% if  states.input_boolean.sleep_mode.state == "on" %}
+              Night
+            {% elif t1700 < time %}
+              Evening
+            {% else %}
+              {{ states.sensor.day_phase.state }}
+            {% endif %}
         day_phase_real:
           friendly_name: "Day Phase Real"
           value_template: >

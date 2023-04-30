@@ -100,55 +100,8 @@
   - service: watchman.report
     data: {}
   mode: single
-- id: '1676995186530'
-  alias: "\U0001F697 Reconcile Home Charge Limit"
-  description: ''
-  trigger:
-  - platform: time_pattern
-    minutes: '5'
-  condition:
-  - condition: zone
-    entity_id: device_tracker.tesla_location_tracker
-    zone: zone.home
-  action:
-  - if:
-    - condition: time
-      after: 05:30:00
-      before: '23:30:00'
-      alias: Is Variable Off Peak
-    then:
-    - condition: not
-      conditions:
-      - condition: state
-        entity_id: number.tesla_charge_limit
-        state: '100'
-      alias: If Not In Correct State
-    - service: number.set_value
-      data:
-        value: '100'
-      target:
-        entity_id: number.tesla_charge_limit
-    else:
-    - condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.tesla_home_reduced_charging
-        state: 'on'
-      - condition: template
-        value_template: '{{ states.number.tesla_charge_limit.state != states.input_number.tesla_home_overnight_charge_limit.state
-          }}'
-        alias: Not In Correct State
-    - service: number.set_value
-      data_template:
-        entity_id: number.tesla_charge_limit
-        value: '{{ states.input_number.tesla_home_overnight_charge_limit.state }}
-
-          '
-      target:
-        entity_id: number.tesla_charge_limit
-  mode: single
 - id: '1676996174224'
-  alias: "\U0001F697 Auto Reduced Charging"
+  alias: "\U0001F697 Manage Intelligent Charging"
   description: ''
   trigger:
   - type: plugged_in
@@ -166,15 +119,26 @@
       value_template: '{{  (now() - strptime(states.sensor.tesla_full_battery.state,
         ''%Y-%m-%d %H:%M:%S.%f%z'')).days >= 14 }}'
     then:
-    - service: input_boolean.turn_off
-      data: {}
+    - service: automation.turn_off
+      data:
+        stop_actions: true
       target:
-        entity_id: input_boolean.tesla_home_reduced_charging
+        entity_id: automation.tesla_intelligent_charging
+    - service: number.set_value
+      data:
+        value: '16'
+      target:
+        entity_id: number.tesla_charging_amps
+    - service: number.set_value
+      data:
+        value: '100'
+      target:
+        entity_id: number.tesla_charge_limit
     else:
-    - service: input_boolean.turn_on
+    - service: automation.turn_on
       data: {}
       target:
-        entity_id: input_boolean.tesla_home_reduced_charging
+        entity_id: automation.tesla_intelligent_charging
   mode: single
 - id: '1676999116232'
   alias: "\U0001F419 Home Only Smart Charging"
@@ -262,15 +226,17 @@
   use_blueprint:
     path: motion_dayphase.yaml
     input:
-      motion_entity: binary_sensor.toilet_sensor_motion
+      motion_entity: binary_sensor.hue_motion_sensor_1_motion_2
       light_target: light.toilet
+      max_override_brightness: 1
+      no_motion_wait: 2
 - id: '1678899778275'
   alias: "\U0001F4A1 Playroom"
   description: ''
   use_blueprint:
     path: motion_dayphase.yaml
     input:
-      motion_entity: binary_sensor.playroom_sensor_motion
+      motion_entity: binary_sensor.hue_motion_sensor_1_motion
       light_target: light.playroom
       no_motion_wait: 10
 - id: '1679074324706'
@@ -288,15 +254,11 @@
     type: remote_button_long_release
     subtype: dim_up
   action:
-  - service: counter.increment
-    data: {}
-    target:
-      entity_id: counter.playroom_button_counter
   - if:
     - condition: template
       value_template: "{{ (states.counter.playroom_button_counter.state | int) > states.scene
         \n | map(attribute=\"entity_id\")\n | select(\"match\", \".*playroom.*\")\n
-        | list | length * 2\n}}\n"
+        | list | length - 1\n}}\n"
     then:
     - service: counter.reset
       data: {}
@@ -312,7 +274,7 @@
     target:
       entity_id: "{{ (states.scene \n | map(attribute=\"entity_id\")\n | select(\"match\",
         \".*playroom.*\")\n | list)[(states.counter.playroom_button_counter.state
-        | int / 2) | int] }}\n"
+        | int) | int] }}\n"
   - delay:
       hours: 0
       minutes: 2
@@ -325,4 +287,91 @@
       entity_id: '{{ "scene.playroom_" ~ states.sensor.day_phase.state }}
 
         '
+  mode: restart
+- id: '1679864047368'
+  alias: "\U0001F4A1 Toilet - Pre"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.entrance_hall_sensor_motion
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.toilet
+    state: 'off'
+  action:
+  - service: hue.activate_scene
+    data:
+      brightness: 1
+    target:
+      entity_id: scene.toilet_day
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - if:
+    - condition: not
+      conditions:
+      - condition: numeric_state
+        entity_id: light.toilet
+        above: 1
+    then:
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: light.toilet
+  - wait_for_trigger:
+    - platform: state
+      entity_id:
+      - binary_sensor.entrance_hall_sensor_motion
+      from: 'off'
+      to: 'on'
   mode: single
+- id: '1680104208576'
+  alias: "\U0001F697 Tesla Intelligent Charging"
+  description: ''
+  use_blueprint:
+    path: tesla_intelligent_charging.yaml
+- id: '1680270439426'
+  alias: "\U0001F419 Dishwasher Autostart"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.013030526524018532_bsh_common_status_doorstate
+    from: 'on'
+    to: 'off'
+  - platform: state
+    entity_id:
+    - binary_sensor.octopus_intelligent_slot
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.013030526524018532_bsh_common_status_doorstate
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.013030526524018532_bsh_common_status_remotecontrolstartallowed
+    state: 'on'
+  - condition: state
+    entity_id: binary_sensor.octopus_intelligent_slot_next_3_hours
+    state: 'on'
+  action:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.013030526524018532_start_pause
+  mode: single
+- id: '1682784582585'
+  alias: "\U0001F4A1 Toilet"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.day_phase
+      motion_sensor: binary_sensor.hue_motion_sensor_1_motion_2
+      light_target: light.toilet
+      pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
