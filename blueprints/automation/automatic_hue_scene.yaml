@@ -162,6 +162,7 @@ condition:
                 entity_id: !input hue_group
                 state: "on"
               - condition: template
+                alias: Room Brightness
                 value_template: >
                   {{ illuminance_sensor == None
                   or illuminance_threshold == 0
@@ -222,11 +223,19 @@ action:
           - conditions:
               condition: or
               conditions:
+                # If the light is off
                 - condition: state
                   entity_id: !input hue_group
                   state: "off"
-                - condition: template
-                  value_template: "{{ in_pre_motion_state }}"
+                # Or less than or euqual to the pre_motion_brightness
+                - condition: numeric_state
+                  entity_id: !input hue_group
+                  attribute: brightness
+                  below: !input pre_motion_brightness
+                - condition: state
+                  entity_id: !input hue_group
+                  attribute: brightness
+                  state: !input pre_motion_brightness
             sequence:
               if:
                 - condition: trigger
@@ -248,8 +257,10 @@ action:
             id: motion
         then:
           - wait_for_trigger:
-              - platform: template
-                value_template: "{{ is_state(motion_sensor,'off') }}"
+              - platform: state
+                entity_id:
+                  - !input motion_sensor
+                to: "off"
 
       # If we triggered from pre_motion, wait for it to stop
       - if:
@@ -257,8 +268,10 @@ action:
             id: pre_motion
         then:
           - wait_for_trigger:
-              - platform: template
-                value_template: "{{ is_state(pre_motion_sensor,'off') }}"
+              - platform: state
+                entity_id:
+                  - !input pre_motion_sensor
+                to: "off"
 
       # If we're in a pre-motion state then wait for pre-motion delay
       - if:
@@ -266,8 +279,16 @@ action:
             conditions:
               - condition: trigger
                 id: pre_motion
-              - condition: template
-                value_template: "{{ in_pre_motion_state }}"
+              - condition: or
+                conditions:
+                  - condition: numeric_state
+                    entity_id: !input hue_group
+                    attribute: brightness
+                    below: !input pre_motion_brightness
+                  - condition: state
+                    entity_id: !input hue_group
+                    attribute: brightness
+                    state: !input pre_motion_brightness
         then:
           - delay:
               hours: 0
@@ -287,4 +308,4 @@ action:
     target:
       entity_id: !input hue_group
     data:
-      transition: !input off_duration
+      transition: 10
