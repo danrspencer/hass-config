@@ -211,34 +211,6 @@
       motion_entity: binary_sensor.bathroom_sensor_motion
       light_target:
         entity_id: light.bathroom
-- id: '1678872073534'
-  alias: "\U0001F4A1 Bathroom"
-  description: ''
-  use_blueprint:
-    path: motion_dayphase.yaml
-    input:
-      motion_entity: binary_sensor.bathroom_sensor_motion
-      light_target: light.bathroom
-      no_motion_wait: 10
-- id: '1678872412394'
-  alias: "\U0001F4A1 Toilet"
-  description: ''
-  use_blueprint:
-    path: motion_dayphase.yaml
-    input:
-      motion_entity: binary_sensor.hue_motion_sensor_1_motion_2
-      light_target: light.toilet
-      max_override_brightness: 1
-      no_motion_wait: 2
-- id: '1678899778275'
-  alias: "\U0001F4A1 Playroom"
-  description: ''
-  use_blueprint:
-    path: motion_dayphase.yaml
-    input:
-      motion_entity: binary_sensor.hue_motion_sensor_1_motion
-      light_target: light.playroom
-      no_motion_wait: 10
 - id: '1679074324706'
   alias: "\U0001F518 Playroom Button"
   description: ''
@@ -288,53 +260,13 @@
 
         '
   mode: restart
-- id: '1679864047368'
-  alias: "\U0001F4A1 Toilet - Pre"
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.entrance_hall_sensor_motion
-    from: 'off'
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.toilet
-    state: 'off'
-  action:
-  - service: hue.activate_scene
-    data:
-      brightness: 1
-    target:
-      entity_id: scene.toilet_day
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 30
-      milliseconds: 0
-  - if:
-    - condition: not
-      conditions:
-      - condition: numeric_state
-        entity_id: light.toilet
-        above: 1
-    then:
-    - service: light.turn_off
-      data: {}
-      target:
-        entity_id: light.toilet
-  - wait_for_trigger:
-    - platform: state
-      entity_id:
-      - binary_sensor.entrance_hall_sensor_motion
-      from: 'off'
-      to: 'on'
-  mode: single
 - id: '1680104208576'
   alias: "\U0001F697 Tesla Intelligent Charging"
   description: ''
   use_blueprint:
     path: tesla_intelligent_charging.yaml
+    input:
+      limit_low: 70
 - id: '1680270439426'
   alias: "\U0001F419 Dishwasher Autostart"
   description: ''
@@ -373,5 +305,57 @@
     input:
       scene_sensor: sensor.day_phase
       motion_sensor: binary_sensor.hue_motion_sensor_1_motion_2
-      light_target: light.toilet
+      hue_group: light.toilet
       pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
+- id: '1682869286884'
+  alias: "\U0001F4A1 Playroom"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.day_phase
+      motion_sensor: binary_sensor.hue_motion_sensor_1_motion
+      hue_group: light.playroom
+      pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
+- id: '1682882397419'
+  alias: "\U0001F4A1 Kitchen"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.day_phase
+      motion_sensor: binary_sensor.kitchen_composite_motion
+      hue_group: light.kitchen
+      no_motion_wait: 10
+      pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
+- id: '1682882582736'
+  alias: "\U0001F4A1 Bathroom"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      motion_sensor: binary_sensor.bathroom_sensor_motion
+      pre_motion_sensor: binary_sensor.top_floor_landing_sensor_motion
+      hue_group: light.bathroom
+- id: '1683131674250'
+  alias: "\U0001F4A1 Top Floor Landing"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      motion_sensor: binary_sensor.top_floor_landing_sensor_motion
+      hue_group: light.top_floor_landing
+      pre_motion_sensor: binary_sensor.first_floor_landing_sensor_motion
+      off_duration: 5
+- id: '1683146129107'
+  alias: "\U0001F4A1 Living Room"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.day_phase
+      hue_group: light.living_room
+      motion_sensor: binary_sensor.living_room_sensor_motion
+      pre_motion_sensor: binary_sensor.first_floor_landing_sensor_motion
