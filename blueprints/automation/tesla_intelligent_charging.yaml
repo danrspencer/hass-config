@@ -1,0 +1,165 @@
+blueprint:
+  domain: automation
+  name: Tesla Intelligent Charging
+  description: |
+    Automatic charging management for your Tesla on when on the Intelligent Octopus tarrif
+  input:
+    triggers:
+      name: Triggers
+      description: Additional triggers for the reconciliation.
+      default:
+        - binary_sensor.tesla_charger
+        - binary_sensor.tesla_charging
+      selector:
+        entity:
+          integration: tesla_custom
+          multiple: true
+    home:
+      name: Home Location
+      description: This automation will only run when your car is at home
+      default: zone.home
+      selector:
+        entity:
+          domain: zone
+    tracker:
+      name: Tesla Location Tracker
+      description: The entity tracking your car's location so we know when it's home
+      default: device_tracker.tesla_location_tracker
+      selector:
+        entity:
+          domain: device_tracker
+          integration: tesla_custom
+    offpeak_start:
+      name: Off-Peak Start
+      description: When you are on the cheaper tarrif, even if the car isn't plugged in
+      default: "23:30:00"
+      selector:
+        time:
+    offpeak_end:
+      name: Off-Peak End
+      description: When the cheaper tarrif ends if the car isn't plugged in
+      default: "05:30:00"
+      selector:
+        time:
+    tesla_battery:
+      name: Tesla Battery
+      description: The entity which tracks your car's current battery level
+      default: sensor.tesla_battery
+      selector:
+        entity:
+          domain: sensor
+          integration: tesla_custom
+    tesla_charge_limit:
+      name: Tesla Charge Limit
+      description: The entity which tracks your car's current charge limit
+      default: number.tesla_charge_limit
+      selector:
+        entity:
+          domain: number
+          integration: tesla_custom
+    limit_high:
+      name: Charge Limit High
+      description: The top limit for charging the car's battery. Used outside of core off-peak hours.
+      default: 100
+      selector:
+        number:
+          min: 0
+          max: 100
+    limit_low:
+      name: Charge Limit Low
+      description: The lower limit for the car's battery. We won't charge past this during core off-peak hours. If the car does fall below this level then we will use the high charging amps to attempt to reach the low limit quickly.
+      default: 60
+      selector:
+        number:
+          min: 0
+          max: 100
+    tesla_charging_amps:
+      name: Tesla Charging Amps
+      description: The entity which tracks your car's current charging amps
+      default: number.tesla_charging_amps
+      selector:
+        entity:
+          domain: number
+          integration: tesla_custom
+    amps_high:
+      name: Charging Amps High
+      description: Used when the battery is below the "Charge Limit Low" to boost your car's battery up
+      default: 10
+      selector:
+        number:
+          min: 5
+          max: 16
+    amps_low:
+      name: Charging Amps Low
+      description: Used when the battery is above "Charge Limit Low"
+      default: 5
+      selector:
+        number:
+          min: 5
+          max: 10
+
+variables:
+  limit_high: !input limit_high
+  limit_low: !input limit_low
+  amps_high: !input amps_high
+  amps_low: !input amps_low
+  tesla_charge_limit: !input tesla_charge_limit
+  tesla_charging_amps: !input tesla_charging_amps
+
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+  - platform: state
+    entity_id: !input triggers
+
+condition:
+  - condition: zone
+    entity_id: !input tracker
+    zone: !input home
+
+action:
+  # Set the charge limit
+  - if:
+      - condition: time
+        after: !input offpeak_end
+        before: !input offpeak_start
+    then:
+      - condition: template
+        value_template: "{{ limit_high | string != states(tesla_charge_limit) }}"
+      - service: number.set_value
+        data:
+          value: !input limit_high
+        target:
+          entity_id: !input tesla_charge_limit
+
+    else:
+      - condition: template
+        value_template: "{{ limit_low | string != states(tesla_charge_limit) }}"
+      - service: number.set_value
+        data:
+          value: !input limit_low
+        target:
+          entity_id: !input tesla_charge_limit
+
+  # Set the charging amps
+  - if:
+      - condition: numeric_state
+        entity_id: !input tesla_battery
+        below: !input limit_low
+    then:
+      - condition: template
+        value_template: "{{ amps_high | string != states(tesla_charging_amps) }}"
+      - service: number.set_value
+        data:
+          value: !input amps_high
+        target:
+          entity_id: !input tesla_charging_amps
+    else:
+      - condition: template
+        value_template: "{{ amps_low | string != states(tesla_charging_amps) }}"
+      - service: number.set_value
+        data:
+          value: !input amps_low
+        target:
+          entity_id: !input tesla_charging_amps
+mode: single
