@@ -244,9 +244,9 @@ action:
                   entity_id: !input hue_group
                   attribute: brightness
                   state: !input pre_motion_brightness
-                # Or triggered by leaving unavailable
+                # Or triggered by a manual turn on event
                 - condition: trigger
-                  id: not_unavailable
+                  id: manual
             sequence:
               if:
                 - condition: trigger
