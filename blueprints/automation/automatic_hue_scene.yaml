@@ -22,7 +22,7 @@ blueprint:
           domain: light
     motion_sensor:
       name: Motion Sensor (Optional)
-      description: A motion sensor that triggers the automation when motion is detected.
+      description: A motion sensor that triggers the automation when motion is detected. If no motion sensor is selected then the automation will instead activate when the lights are turned on manually.
       default: null
       selector:
         entity:
@@ -30,7 +30,7 @@ blueprint:
           device_class: motion
     no_motion_wait:
       name: Wait Time
-      description: Time to leave the light on after the last motion is detected.
+      description: Time to leave the light on after the last motion is detected. If no motion sensor is selected the lights will not turn off automatically.
       default: 5
       selector:
         number:
@@ -112,6 +112,7 @@ mode: restart
 max_exceeded: silent
 
 trigger_variables:
+  hue_group: !input hue_group
   motion_sensor: !input motion_sensor
   pre_motion_sensor: !input pre_motion_sensor
 
@@ -125,20 +126,20 @@ trigger:
   - id: scene
     platform: state
     entity_id: !input scene_sensor
-  # - id: light_state
-  #   platform: template
-  #   value_template: >
-  #     {% set light_states = state_attr('light.living_room', 'lights')
-  #       | map('replace', ' ', '_')
-  #       | map('lower')
-  #       | map('replace', '', 'light.', 1)
-  #       | map('states')
-  #       | list
-  #     %}
-
-  #     {% set state_precedence = ["on", "off", "unavailable", "unknown"] %}
-
-  #     {{ state_precedence | select('in', light_states) | first }}
+  # Triggers when the lights are turned on manually
+  - id: manual
+    platform: template
+    value_template: >
+      {% set lights_on = state_attr(hue_group, 'lights')
+        | map('replace', ' ', '_')
+        | map('lower')
+        | map('replace', '', 'light.', 1)
+        | map('states')
+        | select('eq', 'on')
+        | list
+        | length > 0
+      %}
+      {{ motion_sensor == None and lights_on }}
 
 variables:
   hue_group: !input hue_group
@@ -179,6 +180,7 @@ condition:
           - condition: trigger
             id: pre_motion
           - or:
+              # If the light if off and dark enough
               - and:
                   - condition: state
                     entity_id: !input hue_group
@@ -188,10 +190,17 @@ condition:
                       {{ illuminance_sensor == None
                       or pre_motion_illuminance_threshold == 0
                       or states(illuminance_sensor) < pre_motion_illuminance_threshold }}
+              # Or in pre motion state
+              - condition: numeric_state
+                entity_id: !input hue_group
+                attribute: brightness
+                below: !input pre_motion_brightness
               - condition: state
                 entity_id: !input hue_group
                 attribute: brightness
                 state: !input pre_motion_brightness
+      - condition: trigger
+        id: manual
 
 action:
   # If the scene changed to one that doesn't exist then we skip everything and
@@ -215,7 +224,7 @@ action:
             sequence:
               - service: hue.activate_scene
                 data:
-                  transition: 5
+                  transition: !input transition_duration
                 target:
                   entity_id: "{{ scene_entity }}"
 
@@ -236,6 +245,9 @@ action:
                   entity_id: !input hue_group
                   attribute: brightness
                   state: !input pre_motion_brightness
+                # Or triggered by leaving unavailable
+                - condition: trigger
+                  id: not_unavailable
             sequence:
               if:
                 - condition: trigger
@@ -256,22 +268,14 @@ action:
           - condition: trigger
             id: motion
         then:
-          - wait_for_trigger:
-              - platform: state
-                entity_id:
-                  - !input motion_sensor
-                to: "off"
+          - wait_template: "{{ is_state(motion_sensor, 'off') }}"
 
       # If we triggered from pre_motion, wait for it to stop
       - if:
           - condition: trigger
             id: pre_motion
         then:
-          - wait_for_trigger:
-              - platform: state
-                entity_id:
-                  - !input pre_motion_sensor
-                to: "off"
+          - wait_template: "{{ is_state(pre_motion_sensor, 'off') }}"
 
       # If we're in a pre-motion state then wait for pre-motion delay
       - if:
@@ -279,16 +283,7 @@ action:
             conditions:
               - condition: trigger
                 id: pre_motion
-              - condition: or
-                conditions:
-                  - condition: numeric_state
-                    entity_id: !input hue_group
-                    attribute: brightness
-                    below: !input pre_motion_brightness
-                  - condition: state
-                    entity_id: !input hue_group
-                    attribute: brightness
-                    state: !input pre_motion_brightness
+
         then:
           - delay:
               hours: 0
@@ -303,9 +298,13 @@ action:
               seconds: 0
               milliseconds: 0
 
-  # Turn the light off slowly
-  - service: light.turn_off
-    target:
-      entity_id: !input hue_group
-    data:
-      transition: 10
+  - if:
+      - not:
+          - condition: trigger
+            id: manual
+    then:
+      - service: light.turn_off
+        target:
+          entity_id: !input hue_group
+        data:
+          transition: !input off_duration

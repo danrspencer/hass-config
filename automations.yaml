@@ -359,3 +359,11 @@
       hue_group: light.living_room
       motion_sensor: binary_sensor.living_room_sensor_motion
       pre_motion_sensor: binary_sensor.first_floor_landing_sensor_motion
+- id: '1683448384347'
+  alias: "\U0001F4A1 Guest Ensuite"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.day_phase
+      hue_group: light.guest_room_ensuite
