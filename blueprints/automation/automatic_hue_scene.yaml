@@ -6,6 +6,8 @@ blueprint:
     When motion is detected the value of the scene sensor will be used to set the Hue scene in the room.
 
     e.g. If the scene sensor's value is "movie" and the Hue room is "Living Room" then the scene "scene.living_room_movie" will be applied.
+
+    Trouble shooting: Ensure that your Hue entity names are lined up correctly. If your entity name for your hue group is "light.living_room" but your scenes are "scene.lightroom_scene" then this automation will not work. By default the names should line up but if you have renamed entities in the hue app they can become out of sync.
   domain: automation
   input:
     scene_sensor:
@@ -167,7 +169,7 @@ condition:
                 value_template: >
                   {{ illuminance_sensor == None
                   or illuminance_threshold == 0
-                  or states(illuminance_sensor) < illuminance_threshold }}
+                  or states(illuminance_sensor) | int < illuminance_threshold }}
       # If scene trigger check the light is on
       - and:
           - condition: trigger
@@ -189,7 +191,7 @@ condition:
                     value_template: >
                       {{ illuminance_sensor == None
                       or pre_motion_illuminance_threshold == 0
-                      or states(illuminance_sensor) < pre_motion_illuminance_threshold }}
+                      or states(illuminance_sensor) | int < pre_motion_illuminance_threshold }}
               # Or in pre motion state
               - condition: numeric_state
                 entity_id: !input hue_group
@@ -206,10 +208,8 @@ action:
   # If the scene changed to one that doesn't exist then we skip everything and
   # just turn off the light
   - if:
-      - condition: not
-        conditions:
-          - condition: and
-            conditions:
+      - not:
+          - and:
               - condition: trigger
                 id: scene
               - condition: template
@@ -230,8 +230,7 @@ action:
 
           # Otherwise check the light is off before setting the scene
           - conditions:
-              condition: or
-              conditions:
+              or:
                 # If the light is off
                 - condition: state
                   entity_id: !input hue_group
@@ -277,12 +276,10 @@ action:
         then:
           - wait_template: "{{ is_state(pre_motion_sensor, 'off') }}"
 
-      # If we're in a pre-motion state then wait for pre-motion delay
+      # If pre_motion trigger wait for the pre motion delay
       - if:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id: pre_motion
+          - condition: trigger
+            id: pre_motion
 
         then:
           - delay:

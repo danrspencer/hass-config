@@ -317,6 +317,7 @@
       motion_sensor: binary_sensor.hue_motion_sensor_1_motion
       hue_group: light.playroom
       pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
+      illuminance_sensor: sensor.hue_motion_sensor_1_illuminance
 - id: '1682882397419'
   alias: "\U0001F4A1 Kitchen"
   description: ''
