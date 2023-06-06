@@ -225,12 +225,15 @@ action:
               - "{{ above_pre_motion_brightness }}"
             then:
               - service: hue.activate_scene
+                data:
+                  transition: !input transition_duration
                 target:
                   entity_id: "{{ scene_entity }}"
             else:
               - service: hue.activate_scene
                 data:
                   brightness: !input pre_motion_brightness
+                  transition: !input transition_duration
                 target:
                   entity_id: "{{ scene_entity }}"
       # Turn Off
