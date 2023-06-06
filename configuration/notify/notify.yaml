@@ -3,6 +3,10 @@
 - platform: group
   name: "Dans Devices"
   services:
-    - service: mobile_app_iphone
-    - service: mobile_app_ipad
-    - service: mobile_app_c02gj0q2md6r
+    - service: mobile_app_dphone
+    - service: mobile_app_dpad
+- platform: group
+  name: "Phones"
+  services:
+    - service: mobile_app_dphone
+    - service: mobile_app_lphone

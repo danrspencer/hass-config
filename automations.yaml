@@ -360,6 +360,7 @@
       hue_group: light.living_room
       motion_sensor: binary_sensor.living_room_sensor_motion
       pre_motion_sensor: binary_sensor.first_floor_landing_sensor_motion
+      no_motion_wait: 15
 - id: '1683448384347'
   alias: "\U0001F4A1 Guest Ensuite"
   description: ''
@@ -368,3 +369,102 @@
     input:
       scene_sensor: sensor.day_phase
       hue_group: light.guest_room_ensuite
+- id: '1683463835179'
+  alias: "\U0001FAAB Roam Battery"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.sonos_roam_battery
+  condition:
+  - condition: state
+    entity_id: sensor.sonos_roam_battery
+    state: '20'
+  - condition: state
+    entity_id: sensor.sonos_roam_battery
+    state: '10'
+  action:
+  - service: notify.phones
+    data:
+      message: "Sonos Roam battery is {{ states.sensor.sonos_roam_battery.state }}%
+        \U0001FAAB\n"
+  mode: single
+- id: '1683464466681'
+  alias: "\U0001F4A1 Bedroom Ensuite"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      hue_group: light.bedroom_ensuite
+- id: '1684426956639'
+  alias: "\U0001F4A1 Harrison’s Room"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      hue_group: light.den
+      off_duration: 10
+      transition_duration: 60
+- id: '1685456564351'
+  alias: "\U0001F4A1 Bedroom"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      hue_group: light.bedroom
+- id: '1685457118799'
+  alias: "\U0001F518 Bedroom Lights On/Off"
+  description: ''
+  trigger:
+  - device_id: 4419b2f4dd290d63dbf4e81500d99ecf
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 1
+    unique_id: c95b29ea-bc1e-491b-9957-e0d8c11cd7b7
+  condition: []
+  action:
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.bedroom
+  - if:
+    - condition: state
+      entity_id: light.bedroom
+      state: 'off'
+    then:
+    - service: automation.trigger
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.bedroom
+    else:
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: light.bedroom
+  mode: single
+- id: '1685724752054'
+  alias: "\U0001F4A1 Dressing Room"
+  description: ''
+  use_blueprint:
+    path: automatic_hue_scene.yaml
+    input:
+      scene_sensor: sensor.top_floor_scene
+      hue_group: light.dressing_room
+      motion_sensor: binary_sensor.top_floor_landing_sensor_motion
+      no_motion_wait: 15
+      pre_motion_illuminance_threshold: 1000
+- id: '1686061107325'
+  alias: Test
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: script.brown_noise_on_roam
+    data: {}
+  mode: single

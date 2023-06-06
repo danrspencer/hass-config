@@ -122,9 +122,19 @@ trigger:
   - id: motion
     platform: template
     value_template: "{{ motion_sensor != None and is_state(motion_sensor,'on') }}"
+  - id: motion_off
+    platform: template
+    value_template: "{{ motion_sensor != None and is_state(motion_sensor,'off') }}"
+    for:
+      minutes: !input no_motion_wait
   - id: pre_motion
     platform: template
     value_template: "{{ pre_motion_sensor != None and is_state(pre_motion_sensor,'on') }}"
+  - id: pre_motion_off
+    platform: template
+    value_template: "{{ pre_motion_sensor != None and is_state(pre_motion_sensor,'on') }}"
+    for:
+      seconds: !input no_motion_wait
   - id: scene
     platform: state
     entity_id: !input scene_sensor
