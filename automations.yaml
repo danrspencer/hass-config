@@ -307,6 +307,7 @@
       motion_sensor: binary_sensor.hue_motion_sensor_1_motion_2
       hue_group: light.toilet
       pre_motion_sensor: binary_sensor.entrance_hall_sensor_motion
+      no_motion_wait: 2
 - id: '1682869286884'
   alias: "\U0001F4A1 Playroom"
   description: ''
@@ -456,7 +457,6 @@
     input:
       scene_sensor: sensor.top_floor_scene
       hue_group: light.dressing_room
-      motion_sensor: binary_sensor.top_floor_landing_sensor_motion
       no_motion_wait: 15
       pre_motion_illuminance_threshold: 1000
 - id: '1686061107325'

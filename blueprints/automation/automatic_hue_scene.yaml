@@ -170,31 +170,50 @@ variables:
   known_scene: >
     {{ states(scene_entity) != "unknown" }}
 
-  below_illuminance_threshold: >
-    {{ illuminance_sensor == None
-    or illuminance_threshold == 0
-    or states(illuminance_sensor) | int < illuminance_threshold }}
+  above_immumiance_threshold: >
+    {{ illuminance_sensor != None 
+    and illuminance_threshold != 0
+    and states(illuminance_sensor) | int > illuminance_threshold }}
 
-  below_pre_motion_illuminance_threshold: >
-    {{ illuminance_sensor == None
-    or pre_motion_illuminance_threshold == 0
-    or states(illuminance_sensor) | int < pre_motion_illuminance_threshold }}
+  above_pre_motion_immumiance_threshold: >
+    {{ illuminance_sensor != None 
+    and illuminance_threshold != 0
+    and states(illuminance_sensor) | int > illuminance_threshold }}
 
   above_pre_motion_brightness: >
     {{ state_attr(hue_group, "brightness") | default(0, true) > pre_motion_brightness }}
 
-  light_off: >
-    {{ states(hue_group) == "off" or not above_pre_motion_brightness }}
+  light_on: >
+    {{ states(hue_group) == "on" or above_pre_motion_brightness }}
+
+condition:
+  - not:
+      - and:
+          - id: motion
+            condition: trigger
+          - or:
+              - "{{ lights_on }}"
+              - "{{ above_immumiance_threshold }}"
+  - not:
+      - and:
+          - id: pre_motion
+            condition: trigger
+          - or:
+              - "{{ lights_on }}"
+              - "{{ above_pre_motion_brightness }}"
+              - "{{ above_pre_motion_immumiance_threshold }}"
+  - not:
+      - and:
+          - id: pre_motion_off
+            condition: trigger
+          - "{{ above_pre_motion_brightness }}"
 
 action:
   - choose:
       # Motion Trigger
       - conditions:
-          - alias: Motion Trigger
+          - id: motion
             condition: trigger
-            id: motion
-          - "{{ below_illuminance_threshold }}"
-          - "{{ light_off }}"
           - "{{ known_scene }}"
         sequence:
           - service: hue.activate_scene
@@ -202,11 +221,8 @@ action:
               entity_id: "{{ scene_entity }}"
       # Pre Motion Trigger
       - conditions:
-          - alias: Pre Motion Trigger
+          - id: pre_motion
             condition: trigger
-            id: pre_motion
-          - "{{ below_pre_motion_illuminance_threshold }}"
-          - "{{ light_off }}"
           - "{{ known_scene }}"
         sequence:
           - service: hue.activate_scene
@@ -216,9 +232,8 @@ action:
               entity_id: "{{ scene_entity }}"
       # Scene
       - conditions:
-          - condition: trigger
-            alias: Scene Trigger
-            id: scene
+          - id: scene
+            condition: trigger
           - "{{ known_scene }}"
         sequence:
           - if:
@@ -239,15 +254,11 @@ action:
       # Turn Off
       - conditions:
           - or:
-              - alias: Motion Off
+              - id: motion_off
                 condition: trigger
-                id: motion_off
+              - id: pre_motion_off
+                condition: trigger
               - "{{ not known_scene }}"
-              - and:
-                  - alias: Pre Motion Off
-                    condition: trigger
-                    id: pre_motion_off
-                  - "{{ not above_pre_motion_brightness }}"
         sequence:
           service: light.turn_off
           target:
