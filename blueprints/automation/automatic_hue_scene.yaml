@@ -117,6 +117,31 @@ trigger_variables:
   hue_group: !input hue_group
   motion_sensor: !input motion_sensor
   pre_motion_sensor: !input pre_motion_sensor
+  light_recently_on: >
+    {% set current_time = as_timestamp(now()) %}
+    {% set recently = current_time - 60 %}
+
+    {% set light_entity_ids = state_attr(hue_group, 'lights') 
+      | map('replace', ' ', '_')
+      | map('lower')
+      | map('replace', '', 'light.', 1)
+    %}
+
+    {% set lights = namespace(recently_changed=[]) %}
+
+    {% for light_id in light_entity_ids %}
+      {% set last_changed = as_timestamp(states[light_id].last_changed) %}
+      {% if recently_changed < last_changed %}
+        {% set lights.recently_changed = lights.recently_changed + [light_id] %}
+      {% endif %}
+    {% endfor %}
+
+    {% set light_recently_on = lights.recently_changed
+      | map('states')
+      | select('eq', 'on')
+      | list
+      | length > 0
+    %}
 
 trigger:
   - id: motion
@@ -141,17 +166,7 @@ trigger:
   # Triggers when the lights are turned on manually
   - id: manual
     platform: template
-    value_template: >
-      {% set lights_on = state_attr(hue_group, 'lights')
-        | map('replace', ' ', '_')
-        | map('lower')
-        | map('replace', '', 'light.', 1)
-        | map('states')
-        | select('eq', 'on')
-        | list
-        | length > 0
-      %}
-      {{ lights_on }}
+    value_template: "{{ light_recently_on }}"
 
 variables:
   hue_group: !input hue_group
@@ -170,12 +185,12 @@ variables:
   known_scene: >
     {{ states(scene_entity) != "unknown" }}
 
-  above_immumiance_threshold: >
+  above_illuminance_threshold: >
     {{ illuminance_sensor != None 
     and illuminance_threshold != 0
     and states(illuminance_sensor) | int > illuminance_threshold }}
 
-  above_pre_motion_immumiance_threshold: >
+  above_pre_motion_illuminance_threshold: >
     {{ illuminance_sensor != None 
     and illuminance_threshold != 0
     and states(illuminance_sensor) | int > illuminance_threshold }}
@@ -187,26 +202,38 @@ variables:
     {{ states(hue_group) == "on" or above_pre_motion_brightness }}
 
 condition:
-  - not:
-      - and:
-          - id: motion
-            condition: trigger
-          - or:
-              - "{{ lights_on }}"
-              - "{{ above_immumiance_threshold }}"
-  - not:
-      - and:
-          - id: pre_motion
-            condition: trigger
-          - or:
-              - "{{ lights_on }}"
+  # Putting these all inside an "and" to clean up the trace
+  - and:
+      # Block if the trigger was manual and the previous state wasn't unavailable
+      - not:
+          - and:
+              - id: manual
+                condition: trigger
+              - "{{ trigger.from_state.state != 'unavailable' }}"
+
+      # Block if the trigger was motion and the lights are already on or above illuminance threshold
+      - not:
+          - and:
+              - id: motion
+                condition: trigger
+              - or:
+                  - "{{ lights_on }}"
+                  - "{{ above_illuminance_threshold }}"
+      # Block if the trigger was pre_motion and the lights are already on, above illuminance threshold or above pre_motion brightness
+      - not:
+          - and:
+              - id: pre_motion
+                condition: trigger
+              - or:
+                  - "{{ lights_on }}"
+                  - "{{ above_pre_motion_brightness }}"
+                  - "{{ above_pre_motion_illuminance_threshold }}"
+      # Block if the trigger was pre_motion_off and we're above the pre_motion_brightness (e.g. the pre_motion_sensor is no longer in control)
+      - not:
+          - and:
+              - id: pre_motion_off
+                condition: trigger
               - "{{ above_pre_motion_brightness }}"
-              - "{{ above_pre_motion_immumiance_threshold }}"
-  - not:
-      - and:
-          - id: pre_motion_off
-            condition: trigger
-          - "{{ above_pre_motion_brightness }}"
 
 action:
   - choose:
